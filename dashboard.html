@@ -288,11 +288,6 @@
         </div>
     </section>
 
-    <!-- Floating Contact Button (Mobile) -->
-    <a href="contact.html" class="fixed bottom-6 right-6 md:hidden z-50 bg-gradient-to-r from-blue-600 to-purple-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-        <i class="fas fa-envelope text-xl"></i>
-    </a>
-
     <!-- Footer -->
     <footer class="border-t border-gray-800 py-8 px-4">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
@@ -303,14 +298,14 @@
                 <a href="https://github.com/maisymylod" class="text-gray-400 hover:text-white transition">
                     <i class="fab fa-github text-xl"></i>
                 </a>
-                <a href="/cdn-cgi/l/email-protection#b8d5d9d1cbc1d5c1d4d7dcf8dfd5d9d1d496dbd7d5" class="text-gray-400 hover:text-white transition">
+                <a href="mailto:maisymylod@gmail.com" class="text-gray-400 hover:text-white transition">
                     <i class="fas fa-envelope text-xl"></i>
                 </a>
             </div>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuBtn.addEventListener('click', () => {
@@ -498,4 +493,11 @@
             
             document.getElementById(`${symbol}-price`).textContent = priceFormatted;
             document.getElementById(`${symbol}-change`).innerHTML = `${icon} ${changeFormatted}`;
-            document.getElementById(`${symbol}-change`).className 
+            document.getElementById(`${symbol}-change`).className = `text-xs ${colorClass}`;
+        }
+        
+        updateStockPrices();
+        setInterval(updateStockPrices, 60000);
+    </script>
+</body>
+</html>
