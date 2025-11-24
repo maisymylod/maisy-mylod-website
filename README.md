@@ -34,28 +34,6 @@ A professional, multi-page portfolio showcasing front-end development and client
 2. Open `index.html` in your browser
 3. Navigate between pages using the menu
 
-### Deploy to GitHub Pages
-
-```bash
-# Clone or create your repository
-git init
-git add .
-git commit -m "Initial commit: Multi-page portfolio"
-
-# Push to GitHub
-git remote add origin https://github.com/maisymylod/portfolio.git
-git branch -M main
-git push -u origin main
-```
-
-### Enable GitHub Pages
-1. Go to repository Settings
-2. Navigate to Pages
-3. Source: Deploy from main branch
-4. Save
-
-Your site will be live at: `https://maisymylod.github.io/portfolio`
-
 ## File Structure
 
 ```
