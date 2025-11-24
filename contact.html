@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Maisy Mylod</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000000;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stock-up { color: #10b981; }
+        .stock-down { color: #ef4444; }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Stock Ticker Bar -->
+    <div class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 py-2">
+            <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-gray-400">CLEAR</span>
+                        <span class="font-mono font-bold" id="clear-price">--</span>
+                        <span class="text-xs" id="clear-change">--</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-gray-400">EL</span>
+                        <span class="font-mono font-bold" id="el-price">--</span>
+                        <span class="text-xs" id="el-change">--</span>
+                    </div>
+                </div>
+                <div class="text-gray-500 text-xs hidden md:block">
+                    <i class="fas fa-clock mr-1"></i>
+                    <span id="last-update">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-black/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold gradient-text">Maisy Mylod</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="experience.html" class="text-gray-400 hover:text-white transition">Experience</a>
+                    <a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a>
+                    <a href="dashboard.html" class="text-gray-400 hover:text-white transition">Dashboard</a>
+                    <a href="contact.html" class="text-white font-medium">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-black">
+            <div class="px-4 py-3 space-y-2">
+                <a href="index.html" class="block py-2 text-gray-400">Home</a>
+                <a href="experience.html" class="block py-2 text-gray-400">Experience</a>
+                <a href="projects.html" class="block py-2 text-gray-400">Projects</a>
+                <a href="dashboard.html" class="block py-2 text-gray-400">Dashboard</a>
+                <a href="contact.html" class="block py-2 text-white font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="py-12 px-4 border-b border-gray-800">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl font-bold mb-4">Get in Touch</h1>
+            <p class="text-xl text-gray-400">
+                Looking for data infrastructure, client portals, or full-stack development work.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 px-4">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+            <!-- Contact Form -->
+            <div class="glass-card p-8 rounded-xl">
+                <h2 class="text-2xl font-bold mb-6">Send a Message</h2>
+                <!-- 
+                    SETUP REQUIRED: To make this form work:
+                    1. Go to https://formspree.io/
+                    2. Sign up for free
+                    3. Create a new form for email: maisymylod@gmail.com
+                    4. Copy your form endpoint (looks like: https://formspree.io/f/xyzabc123)
+                    5. Replace the action URL below with your endpoint
+                -->
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form" class="space-y-6">
+                    <!-- Name -->
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2">
+                            Full Name <span class="text-red-400">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required
+                            class="w-full px-4 py-3 bg-white/5 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-500"
+                            placeholder="John Doe"
+                        >
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-2">
+                            Email Address <span class="text-red-400">*</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required
+                            class="w-full px-4 py-3 bg-white/5 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-500"
+                            placeholder="john@company.com"
+                        >
+                    </div>
+
+                    <!-- Company -->
+                    <div>
+                        <label for="company" class="block text-sm font-medium mb-2">
+                            Company
+                        </label>
+                        <input 
+                            type="text" 
+                            id="company" 
+                            name="company"
+                            class="w-full px-4 py-3 bg-white/5 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-500"
+                            placeholder="Company Name"
+                        >
+                    </div>
+
+                    <!-- Subject -->
+                    <div>
+                        <label for="subject" class="block text-sm font-medium mb-2">
+                            Subject <span class="text-red-400">*</span>
+                        </label>
+                        <select 
+                            id="subject" 
+                            name="subject" 
+                            required
+                            class="w-full px-4 py-3 bg-white/5 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white"
+                        >
+                            <option value="">Select a subject</option>
+                            <option value="job">Job Opportunity</option>
+                            <option value="project">Project Inquiry</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label for="message" class="block text-sm font-medium mb-2">
+                            Message <span class="text-red-400">*</span>
+                        </label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            rows="5" 
+                            required
+                            class="w-full px-4 py-3 bg-white/5 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-white placeholder-gray-500"
+                            placeholder="Tell me about your project or opportunity..."
+                        ></textarea>
+                        <p class="text-sm text-gray-500 mt-2" id="char-count">0 / 500 characters</p>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg hover:opacity-90 transition font-medium"
+                    >
+                        <i class="fas fa-paper-plane mr-2"></i>Send Message
+                    </button>
+                </form>
+
+                <!-- Success/Error Messages -->
+                <div id="form-message" class="hidden mt-6"></div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="space-y-6">
+                <!-- Info Cards -->
+                <div class="glass-card p-6 rounded-xl">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-envelope text-blue-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-1">Email</h3>
+                            <p class="text-gray-400"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5b8b4bca6acb8acb9bab195b2b8b4bcb9fbb6bab8">[email&#160;protected]</a></p>
+                            <a href="/cdn-cgi/l/email-protection#1e737f776d67736772717a5e79737f7772307d7173" class="text-blue-400 hover:underline text-sm">Send email →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fab fa-github text-purple-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-1">GitHub</h3>
+                            <p class="text-gray-400">@maisymylod</p>
+                            <a href="https://github.com/maisymylod" target="_blank" class="text-blue-400 hover:underline text-sm">View profile →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-green-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-1">Location</h3>
+                            <p class="text-gray-400">New York, NY</p>
+                            <p class="text-gray-500 text-sm">Available for remote work</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-phone text-orange-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-1">Phone</h3>
+                            <p class="text-gray-400">(248) 707-0429</p>
+                            <p class="text-gray-500 text-sm">Mon-Fri, 9am-6pm EST</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="glass-card p-6 rounded-xl border-blue-500/20">
+                    <h3 class="font-bold mb-4">Quick Info</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mt-1 mr-2"></i>
+                            <p class="text-gray-300">Available for full-time opportunities</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mt-1 mr-2"></i>
+                            <p class="text-gray-300">Open to contract/consulting work</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mt-1 mr-2"></i>
+                            <p class="text-gray-300">Response time: 24-48 hours</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-blue-400 mt-1 mr-2"></i>
+                            <p class="text-gray-300">Remote or NY-based roles preferred</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-8 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <p class="text-sm text-gray-500">© 2025 Maisy Mylod</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://github.com/maisymylod" class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="/cdn-cgi/l/email-protection#ee838f879d97839782818aae89838f8782c08d8183" class="text-gray-400 hover:text-white transition">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Character count
+        const messageInput = document.getElementById('message');
+        const charCount = document.getElementById('char-count');
+        const maxLength = 500;
+
+        messageInput.addEventListener('input', () => {
+            const length = messageInput.value.length;
+            charCount.textContent = `${length} / ${maxLength} characters`;
+            
+            if (length > maxLength) {
+                charCount.classList.add('text-red-400');
+                charCount.classList.remove('text-gray-500');
+            } else {
+                charCount.classList.remove('text-red-400');
+                charCount.classList.add('text-gray-500');
+            }
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+
+        contactForm.addEventListener('submit', (e) => {
+            // Validate message length before submitting
+            const messageValue = document.getElementById('message').value;
+            if (messageValue.length > maxLength) {
+                e.preventDefault();
+                showMessage('Message is too long. Please keep it under 500 characters.', 'error');
+                return;
+            }
+            
+            // Show loading message (form will actually submit to Formspree)
+            showMessage('Sending message...', 'loading');
+            // Form will now submit naturally to Formspree endpoint
+        });
+
+        function showMessage(text, type) {
+            formMessage.classList.remove('hidden');
+            
+            if (type === 'success') {
+                formMessage.className = 'mt-6 p-4 bg-green-500/20 border border-green-500/50 text-green-400 rounded-lg';
+                formMessage.innerHTML = `<i class="fas fa-check-circle mr-2"></i>${text}`;
+            } else if (type === 'error') {
+                formMessage.className = 'mt-6 p-4 bg-red-500/20 border border-red-500/50 text-red-400 rounded-lg';
+                formMessage.innerHTML = `<i class="fas fa-exclamation-circle mr-2"></i>${text}`;
+            } else if (type === 'loading') {
+                formMessage.className = 'mt-6 p-4 glass-card text-blue-400 rounded-lg';
+                formMessage.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i>${text}`;
+            }
+        }
+
+        // Stock ticker
+        async function updateStockPrices() {
+            try {
+                const clearResponse = await fetch('https://query1.finance.yahoo.com/v8/finance/chart/YOU');
+                const clearData = await clearResponse.json();
+                const clearPrice = clearData.chart.result[0].meta.regularMarketPrice;
+                const clearChange = clearData.chart.result[0].meta.regularMarketChange;
+                const clearChangePercent = clearData.chart.result[0].meta.regularMarketChangePercent;
+                
+                const elResponse = await fetch('https://query1.finance.yahoo.com/v8/finance/chart/EL');
+                const elData = await elResponse.json();
+                const elPrice = elData.chart.result[0].meta.regularMarketPrice;
+                const elChange = elData.chart.result[0].meta.regularMarketChange;
+                const elChangePercent = elData.chart.result[0].meta.regularMarketChangePercent;
+                
+                updatePrice('clear', clearPrice, clearChange, clearChangePercent);
+                updatePrice('el', elPrice, elChange, elChangePercent);
+                
+                const now = new Date();
+                document.getElementById('last-update').textContent = now.toLocaleTimeString('en-US', { 
+                    hour: '2-digit', 
+                    minute: '2-digit'
+                });
+            } catch (error) {
+                updatePrice('clear', 23.45, 0.78, 3.44);
+                updatePrice('el', 87.23, -1.12, -1.27);
+                document.getElementById('last-update').textContent = 'Demo Mode';
+            }
+        }
+        
+        function updatePrice(symbol, price, change, changePercent) {
+            const isPositive = change >= 0;
+            const priceFormatted = `$${price.toFixed(2)}`;
+            const changeFormatted = `${isPositive ? '+' : ''}${change.toFixed(2)} (${isPositive ? '+' : ''}${changePercent.toFixed(2)}%)`;
+            const colorClass = isPositive ? 'stock-up' : 'stock-down';
+            const icon = isPositive ? '▲' : '▼';
+            
+            document.getElementById(`${symbol}-price`).textContent = priceFormatted
