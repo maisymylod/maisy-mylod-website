@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maisy Mylod - Data Analyst & Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000000;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stock-up {
+            color: #10b981;
+        }
+        
+        .stock-down {
+            color: #ef4444;
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Stock Ticker Bar -->
+    <div class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 py-2">
+            <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-gray-400">CLEAR</span>
+                        <span class="font-mono font-bold" id="clear-price">--</span>
+                        <span class="text-xs" id="clear-change">--</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-gray-400">EL</span>
+                        <span class="font-mono font-bold" id="el-price">--</span>
+                        <span class="text-xs" id="el-change">--</span>
+                    </div>
+                </div>
+                <div class="text-gray-500 text-xs hidden md:block">
+                    <i class="fas fa-clock mr-1"></i>
+                    <span id="last-update">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-black/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold gradient-text">Maisy Mylod</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-white font-medium">Home</a>
+                    <a href="experience.html" class="text-gray-400 hover:text-white transition">Experience</a>
+                    <a href="projects.html" class="text-gray-400 hover:text-white transition">Projects</a>
+                    <a href="dashboard.html" class="text-gray-400 hover:text-white transition">Dashboard</a>
+                    <a href="contact.html" class="px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition font-medium">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-black">
+            <div class="px-4 py-3 space-y-2">
+                <a href="index.html" class="block py-2 text-white font-medium">Home</a>
+                <a href="experience.html" class="block py-2 text-gray-400">Experience</a>
+                <a href="projects.html" class="block py-2 text-gray-400">Projects</a>
+                <a href="dashboard.html" class="block py-2 text-gray-400">Dashboard</a>
+                <a href="contact.html" class="block py-2 text-gray-400">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-6xl md:text-7xl font-bold mb-6 leading-tight">
+                Data Analyst &<br/>
+                <span class="gradient-text">Software Engineer</span>
+            </h1>
+            <p class="text-xl text-gray-400 mb-12 max-w-2xl">
+                Building data infrastructure and client portals for high-growth tech companies. 
+                Currently at CLEAR, previously Estée Lauder.
+            </p>
+            <div class="flex flex-wrap gap-4 mb-16">
+                <a href="contact.html" class="bg-white text-black px-8 py-4 rounded-lg hover:bg-gray-200 transition font-medium">
+                    Get in Touch
+                </a>
+                <a href="projects.html" class="glass-card px-8 py-4 rounded-lg hover:bg-white/10 transition font-medium">
+                    View Projects
+                </a>
+                <a href="https://github.com/maisymylod" target="_blank" class="glass-card px-8 py-4 rounded-lg hover:bg-white/10 transition font-medium">
+                    <i class="fab fa-github mr-2"></i>GitHub
+                </a>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-xl hover-lift">
+                    <div class="text-4xl font-bold gradient-text mb-2">$1B+</div>
+                    <div class="text-sm text-gray-400">Revenue Forecasted</div>
+                </div>
+                <div class="glass-card p-6 rounded-xl hover-lift">
+                    <div class="text-4xl font-bold gradient-text mb-2">40%</div>
+                    <div class="text-sm text-gray-400">Time Saved</div>
+                </div>
+                <div class="glass-card p-6 rounded-xl hover-lift">
+                    <div class="text-4xl font-bold gradient-text mb-2">2+</div>
+                    <div class="text-sm text-gray-400">Years Experience</div>
+                </div>
+                <div class="glass-card p-6 rounded-xl hover-lift">
+                    <div class="text-4xl font-bold gradient-text mb-2">Real-Time</div>
+                    <div class="text-sm text-gray-400">Dashboards</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Companies Section with Logos -->
+    <section class="py-16 px-4 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <p class="text-center text-gray-500 text-sm mb-8 uppercase tracking-wider">Experience With</p>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- CLEAR -->
+                <div class="glass-card p-8 rounded-xl hover-lift">
+                    <img src="data:image/webp;base64,UklGRoAdAABXRUJQVlA4WAoAAAAgAAAAVwIAVwIASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggkhsAANC4AJ0BKlgCWAI+USiTRqOioaEidWhIcAoJZ278fJnixWJFz/Vfkz4eHiO4fjB+T3zrWT+tfdf8i+d2sXzTvGfy7+3/2j9pf7v/////8QH45fRX83f5L3AP0o/w/9o/cn+5f/////Tt7Bf51/tvUB/Lv6n/wP8d+///m+lL+n/9L/N+4/9c/8l+wHyAfx/+s/+X1ZvYD/b72B/6J/jP/r7Mf+w/93+z+Cz9pv/f/uvgR/o/9w/9P7kf/////QB///UA/+3WX9Kv7t/U/2T8Fv7//VenU9NZ1OR/sM1O/iv2S/b/1zzz7yflZqC/jv9E/zn5S8Ffa/0BfX37Z/xvCU1PvD3sAfzrwsvCE9L9gX+i/4/1Yf8Px6fVHsFfzv/C/9rsTelIF/9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+Z9+SbRMFyb9qeNtmGNUnhkvwVXt4w3hSDzlxr/9+Z99DBmGjOUG6xOyywwGPoGaJEDII46gvGaRUy6So+VS4bxvmv/35n35n35n35n35KZbJY2/+o1F0A6zdhpJRDNYIQJngMG+yZFeWoMv2WNHHsoXu5PD83I9UDO7r0UqKf+XMQmas60/eFV2ABEK323IjTxIJmuF/LMvth11SjlTy8BaXJBm4VfFRDHYp2GnIRmEmjOIcumhRYjURT4ZGnthE/LHkiEJXKVxh+H9KRbqCHvMjtnMF0R8p3cAlsWILbZ2nO4C+fdZ+NEz8CU2LPA6p0Y1zW68rzJr3GFS5MeGIX2LTQEfUXI4P1IPfCvb/DpGiX+ga7cA3dd3DUn5XMyDWsaMTICIr0OteThsWWSHmpuIiPo81kOX9E0BX+MgaGmdP66+NCQKbPCQgGJ7egrB/UpSECofAMa86nNs8uvFQjEduUVcwohFI0rWKop8zzYDV8rOCNEhbPrMQyKrcSHBDPtima3AsxQBGel8sAB7Q6PmODejoxj+sLu45I9c40ft+Ye1cLhvOacLqLyXhJaExQNsdKMXY7SEcu1FRqLrxgETa6JrKuqvMVngfnnl3kNc55ZWXsBwC34zkN7Q2NubqEyQL1kKcSKGg81FSH5+rbXV0W2T20QSCkFD68BAy9DdOHOTpF198txn56vRRMZNJjBhurzuvd/A5uvW0M+bhPaQLFbjQ9QOm7FFSJUlcCMgfviXbINczWBZrSXJ+4nQjOBZsZtJZF+F1LfTf2Y40D8RhFKf+GorOJ+GNCHZuODFcY59xDcqyJ0pe9WbKBkwCzv1QO4ZFMuaGpSSLwncy+B9m4WvCDzlxr/9+Z9+dqIt+N1+QMmSVpakhZtAxabKbFbv+KvE5l7eMN4Ug85ca//fmffR3pByzagI8IBv9+Z9+Z9+Z9+Z9+Z9+Z9+aK3M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/M+/MqAAP7+wgAAAAAAAAAAAAAAAAAAAAAAAAAAAPidF1ilpq1z7X5f1pOZDlJDuUmZCtij86RvtYQmM27tV7xKtOSFeqoRfqC9Nl4irZU50IxLDZjb43lrZXhOq8nBV1S1xGN120lQEfZyQN2XBjVOMjkbpuqWM9BvLAOUI83le5mc8X2ej7M6aBg4RKwXjx8Bdv7z8ng9KerARBr4CDHBfwwDNpcA1jPx8LYpinCIHO7eKWBkAUHzC8cS5dbGhBCFKlRKBahFaJ8vMD9fbbiK9BFGDBwE88xDQ+9+Oatzy6rBDm0Ag5sf0Cf6C3ecv14TIMwGndub5t8b8UIObc9uzz8xWw0myzzkzcLR96OSsEPAj2eiq2Ly+53FkzzsXiUm7+iCf+kWohKwxkQ2OHpoDu1ItRV/IxGaFFapKv7iLJxYSNh59rGqhAgX0ceRW1rfO1Z9KQ0L1Af0lNGsgeM95hiTplHjLRP4Q81/Splnokf42gpAt8p7O6b/ek/os/LlVoIgmYLDzwrm0D7G9RaLuv/2+PUj7taBeBBF/DlYB88g2MLsEFp8QeGIi6lr31IN0qliw1PoY242JGxYkcoVrdY+HhQDECZkY5063dCAHKYEeqW7uZYiWb+FjvSjD7ayLJaG/7PqARi3qz2zDXmCBOimvbD3+mv0jX9Nc9FaFy61pLDrV1QvY3jrzglx5/H9J61VaG3MTQ0PIeEIz7Eq/RVD3nJf75kumeiFApNtjzs6fCESSsx+3lkE9r94IADuPWLw9mS7rCsiUpL5jiZYGxda02QTyQustO9jDXC4MtesCiUmsv57r/Oub7/smT4+2kEBxUp7jgELiGFL3MWz6J+dISWZLkkQ8oy/Ptg1SgQmjVr+BZL+C0Y04xyWqBwRB6C0GnMhqHv8S42ui/v+zVbscSZUnXDBHG1MouWx2Gk+oRgniTd2mEbxoNGvv9MgzJomoqJBbO0YwzcHlPGluulsA/18AqbCTH2M8QM1crb7SGayu2I87no3bRj/CbClCue75F1IZVyheDeXY+GnzsN/KZj5treuCGHjz11xz0Qlx/HP9jZ1Go+tNwGDjeCMGZTeKk89FLgzBd7wlXx/OQpTimdXCBmevw/gEH3rSR1hAJdrCwp2MnBBY+t1cQJFUuHy2aYirMVy+n9O7tI/C2s0UFafeMp60nWRIJL4JlesXOsrPEra+zgeEoq7WJAvkaYO7np2MZYSWubN7tPA8nXkFX0jrvNqPs3+baxkwRPJeTAU844scMk/Mn4OM2XX1wZ0mLYM0QMegLXOMpVGgVsRoxhh4tIU28axmt7bZpVpBiWeI3j/eSOr1285487cNYR2453ONqWG0GqcMLIy6wpSARAFVVjybZcOdSHc75mbxLKRVcsrDsycZOSIYc+CObDbpeGAOLS/kOTzijZfH9siu9AySa7lboBLdtOJEzVZ3LwGVNbmuSVcauek31OxhvSPOfJwEl6kZpfqQE8Yan7CObDbp5Yir/sHyECF7Dvus6d+shpFo6rd+B7H/3lcjsJJaHTIMLnAXrBnXY+6VqlReGxmEQRh+oYROhyoNIDHTJdi5IZ7ZxYQ4OxKODsKazoPkZPu4jEGkljqi+GqmcjWS1WZllTtzR/w+5/wFQm36MOK6WcJB1pOdZBdHDjqpL01W/ytHFGfurBB82/MRtc9lytMBSrUV/h8T8xsAZ3Mw0nwD6zaCkHnOhxbDi2cQQMO9mf9gKn6Sb7jDTZuFPsYGABa/hl5bT1kBNLySpP/J7aCe2nMnFSG8z3O772t2DwpRLurRi2bzd3d9a6VGqn9Oa9mAzMjgIVDAxF1tKjS/zh2/xul93JK0poBJY4V1PUSUoegIQIH/O/6BXY4RScfh02NO/fCQMFyPh5sVTMn38E/yXo1sVgtW6dWfOurNXj72fFefdABIUi2wSYWTc6vsDj1R7+j8MCYE/8OZXh4Ovwd034gi6D27+48NZI9i6ngpcjLs5jC6Nh9C097QG6d57jEjxZJasSyCZf4g8DQANqxOYXtnxec0qyMFyPBVGCfeT4pH5p4ucCKy9NeDmlt614GgSCSW6ouTr5QLFaRtO0NI87B4z80Yp5fw7Oa6IBmXe37m+PJHB6Wi906BnsN89ygVPCug/mOZVWECl4WbKTvoy/f66asqJDBTh9yM+Bau84ONt9S3bnXhuA6A0sdvqioP6Uxogv94Tf04r5mk8jaBDSRdt/DPLGKjmcDr3d+VJGlpDr6Wj8k2FELwMV3afeDd3SSXiE1mF37RQIXAY2DwmiOXom7lmVB+QgC972wqN64N4C358rDErO0oNuVyaJL+grcxLM+7Lm+e/DATfkIuOIpxBXUxiiAczFaNqIq7FeOTDDD2PIBN4DwbRgovcW/HMSqgAFGyyQaBqyCzdbU3xXZeRJO0XL+2WfSEjLiX82PG6bEIp+xDnT3TvQr/AmssCBQ6+A4sYkLz+2rwgxeZiBuxaMQz1K0SCrwOGl4OyS4UOKZ90EUk3aqPXBniOS+uUM6Hpa/5JfD95J00enXE79gZHHxroxY3/Mgh6MLf307TK/t4jDYcX0CQuVD2flh7PqMiEhgH7liykimoKBqDaFPghfNyQog2mr4W+BKzyUAh1nRNPyRUAiKJFPXHtQrS1M/oDR8SptFqCQfGOuQdL+ixLcmxsLTX95onAUrhBdp2O/vGvudTpTgr2xv4XgeDaYTzm+f55BGEkntKnnK1Bw7Xv0hAbV7ugAn6e1nZRdyheH+Of+ONZKyfBNjK84t0Z+28b1k2ru2awcWjJ+f/Nwzujk5wLWKHcuJu0/+l6V46kjQuh1ZKUzmzRVvlHujL92eJzWTWswX1d5l5F6EG3H1ZBcFyNsrIM47z+Ew3yYlxwoZ7tCkVFGny76J+YYcnCccM2ZEz5WiNjNq7L94nA4aheyTIbcR1xFrFHfc31IXRq/C73/HLxj4N8w/nO8uMGIQhbpJ6Kdndk3cCJrKlnEhTGvW5Oov/C8V69Pwd3G8/VxEV6XIHDDXqi6sQwesNWeajMGy0nb+9kOKxlhqPTNOpWmY/dWeovGFd+MaaK7A4jaeJu/UHj57LZkIM+z1NcWS43Qn0ZU5H8UNiErozBVxyx40LZJzTTbn/ap9QQUbOwCY10JJrg3UKqgPG5yTWFu6/yjnuT/z2+fNXGFWdDs0Eocf1S3YiCMxOGo7isd64tizf2MIEbHg0utYaTgcTcipo9JaL7ZmV2uQ/U1jO4ydFQh3YclptPh2gWXe+NUstEZOghigJiBcJ7YQXUvBXLBIAZvMX8Sqp8Tk5qR6vfBYHzgGILZNrh81tSdehxUZq+nsjGTA7xTBlcVNvq2CYT4sz8ImwN4yFV/5K4VE2h+Y6E3fD9qtLkvsxYaW5+Qmq+Lh97//PSMe8oEyspYfEkhFtZlbwZrtpan5m1UNZ93mRcl+PKzq+s/+ra2eIjZr6T4dpw9+l+mrp+TSbPkg86mnLVpEnDC70nqhG1oRM+lMlGJhjJCoiNMm0qYoWajQtArh6f5Gaw2NPiTnq49O7FD9CgB1GGRmekADa9QkvVPY2GKIFYvCONHIHEhm17wQjdm/yXUOt1mRooJJnP7SFKOKCp50qrbjod1EAsIE3VBF/0hU9U1ucM4HVz/e3n23EdpFM9Yp7Hp6vSNVV3jg0pyZMaXp1eQBOM7xBVpc+OUg6Mf1hHxCswz60i0tAWM6skP8F0MEUo70u+gpRIGwzq3qU4JUje9DDEf/j8qsX+aadPNSqwNtgyJnP+ZU31OTtuOpHVwh64x7YofXhNmVtv4y0VDRnZi8Xhc3TuwZvVJ8uVG/w6e8YazopSuJ+Obkb0Xq4xQBBxVZS8Kfjv19zgkI+ZHhaK4NKK0/JGGPLeRQXgOwpYcY+HrbEqCxJ3Xct/Stk6AKiwSY1HWm/EaU7gjogTiYfQA420UK+/YlkRJzBphCFXYINHqKVtlzKVctoiPh6ij4sV4jG4FwX3IP28prrEsybMSkCA4CJQCBRs40T8Hu72gX9KrStfTr2tT42EmOJr7DAxHhZ1KkMTL4ydIw9sGDcnDlvtOHz/pWpKoV+wGMfBRNOSghBduvE0JqMjUeAcbb72e/QkTVzL1rxBqHoP2kdIVaB+KBD3d6rEkf/W2c1tjLhOVNPxE7020hNewjxgycgVYE3NyEUH5syqSeVkPdkSzHlweaWuUFBL3by3sPx5Q7eNS7gg4gxDmgoTi/eug/M82GKISuGuUHHiErWDrcuVBGAHQabWwdUaST9hdFELnx5iartnM+5jH0rM7Oz9/4fLt5wxM32LTQ6MfMIQSwV8wDSjD+fsX51kHbMcmJA0fYex/w6wFXeRuqk0uaLzMKjqPFhQEOQzezZNFmrm8uDffEt99VGPNxj6edP0zgHAigooTLewRP2TuUZTUL0V1N//q5KZrYnnum12GTeekgmpOI3tokXCi5PN5ORft/F707M0gXcFwGQawJIy8ofuEvn5yUq4y0+J0H5dEgntFQa7M7LeDbS88xDEMIEAVVrYJ8F32w0iQaW9ppEwX+DEU0wSopIScTglxvdIoDByXbupR0keB0xhwnXckUpYYZOwIoKBIrom6zAha0mLpC3WG5sgDDb+l/PpBURq2RV4d4ck1S+M0xhXHui1jnWgmtVn7r/JsCXq7lFP8zdyjv90M+M/QPT1FF1z1gxz1/xyuOBg5hoS1zE7yiOqgPb5gKDmj5AADDAIATgPWW8cBp5ByWb6mwjEm6tAeGz44UZ5HeBNXZQZ5bYT0xMxnuH0wXpPT+iYF/8X/NZhG3sT13TVtjhHoeAaXsSF9aPGxu6gSDOLEX3lRJJeLrO6Bu7z+b37986jN7gFneZrC/ECryDhvXvY/VU5hK15viCKg7yQ1TGl9otkSooXHfjc8TynLPwS7hlpnkgbSl2u12QpOZ6h87mn98iUsXoWtrMVB6sGinrYnrXUWnLMA/YRXrrjLB11xDPZRisc8FUcedg2tZjagRvbxqjIFQNP9OnrR9zy94Ncm2EU7G2avRP7i8GoPZaCkGU/mSTNnHMiVg6L9N6YHfnvk7XNF7z3EkEn1ndwcrR9vqPDs7ZP4iPxPTkNkWsdGHqVKZLjetSDTH/sAscYQFszJ5teFVlr52T0twnEGKkEQs+8+Vn8zuIVA4pKykAqv5kNzOXp+0AbPvP+s3ZbaXnFZMEw48+x/j5pjP3EN3twpy7k/7Ck9Btky8eJ/N5qZlXrNi1W26whXjqqyKYkC+Gz2SBZvPKSsiKTozM/2u9cJF60L+gDd4Qjwm3Ixc9Cvoqr17fReZKkv3ARNyavivxw5tqUtof44halTncKtM7FcyA1FOptsSbmDfZNLM53JavRBkDKo5IkTDqeYKjX6uaZZ3VezoUNblqpTLBTbUroIp0FcDF0tKbtG4ObMa9bRjE2xEnaVsUsNZOoD8IG/znA0vNueuJcLP0cY2DFfZvUYAPiXqRmn/fn1xW3w9/5KRv2L0EXCN3MWIYChC/PPuwwrbBjg7CRb83Q/PpJfVKhHmLdtDgTMJNKVBFvULBYLKC74+gZ8cGiAsNETAVKycMZP8SDSRKMr+CMs+mnDsGbphjI958Xm1v7iJa0nsIjL26qonmp/6IaXJnMYxSlCiw/CIXdLvtNBUeAEuw9Zg5KDf6cYtDq3gLzGru5OmCM0NGtFpe+SzaQsXUfbGKSw8nIQNVQSxr1QBN4Iqu6w0v3JLvDNzQKZLPF96fXursJMm6oDO3+cZ8M7Jut/M2skghs8ZToUp3IwTKTakuWRcbenu7+2P26V1V9UNmQiuiSVOVvCAkgyNvZzUNyD/p9mA80ju0vaGaiuT9z+YPl7VWW4BPPAoBJTH/PIHnPHMibYAWLcck9+J/xsSa/5Zwyhs5DFLiHwyOjVXR34Vyp+q+gnW8rOJt3zP6HujTKAS68vAfmnj3jbIr99Tn++1X5UYW76cIMf14ctMpfsnjPQUmfj6+xb3A3p5Ws/bvA4yzwgCbLNssfy5enBF/tteh05aQWT4Q8SUs9nd73t4CVhP+hNBE3Ncr4fRBXFwJVOR/CVoSdu8j8uNbdozdlEmwBrREw1fi1DeC1DpiHoNf+W5bePKmzCGgAXFP8/shZ5AxOUSpsDZn6Zc6BGxGnHapvKZngyaJSXwWZ62r0oYP/ggIU0xvsvctDTH/GTCfu5AEXVA4CTorHXt5eCPzd5UdtVypNtRQks4r1Cmj/DDu3tLMlP0U4SxjcqJIcnIT1aAK/U0vWZQFQ+dthREueq8DFGn/xNYPl5JO6K2P0N0cHdg074q+Fl+AixGsBkLeRFVMETRC3CdELtO4Js8ChxqdF4pCFon5LlkVzWhuSyDPrJW3ismeq6E1n3aD+IEMOkXvUqWvkx9gysgu+zczyP0X2/SxsvAtihnPTQLNh+N0zT8ZvZF1bn7jYJqc1a3+79CHbTlffOvgNcCAT42qle9fYzV4bMBTtNP7WMgEmGrnNaXzetCd7WX4YT/3Ewt83eRhDn13BcnpCV6IH9Xie0nJTLBQiQjrycB4gZsDCLtxvC6Zz+z70hoQ3cLaF9MgysAyIE8FqRRIdyy6+mJ3DmxXBLY6sKyRPG1aHoofkcK2t5HY6w7vRfYr9YAtk7Gm8j38w7Nc6/cyKC+c2ANKlcqVfFP4JA2vEl3C3jjXbq24bnyuyMU1oho6q9D3bj54VTo8lC2pHvfqlNhmPR82ZpIAg8ryr5zG4mHXdRlBIJZElvEDqZw3vW2uaEaxenY1sQoWMemwqD1s9QJLYotwVPgifOKfaw7eVzrTyFZhBaPsc4fVe+WyLYoELMdSfNsOCY2Gov6en/uxR68g1DJd+dXx2WupbcsNoM7NCSfM3JmZr/7GZFSpdyN1VWO4QVN/pZo0C44z3BNnFKADb2KpZ3Dw84gl2drbkIIvNMnKlibrBz4w/bk5SIgE2+04O0aZxMcnCoG92+J2LKObA9rZyvMouaN1crPRcHmkvi6RKwDST3KKH1lrNfO/B7vvy9a4lu3AER0MZI6yLzx5pT6VntGQ9boAAABL1u8ET/Ni49q0u/f0b63QMa3+SRBuGW0+zQ2/YcPwIh8LUjMFWp6ufMp2k8ZQamuKY6V91663iy/qLgPxI/awOsg0tQ7GsASvdgErcmMS+r3lhLYJsoYRXwp+yVCLvLhp7t88hnCY+vqT12WK+H8F8jgxBPIHHyEMjnpCzluZXKa/ZwStJ8O9K37GuYUbXw+FDnMRURPjnWU7QBHSDrSu/JUXl7i71WIPdkqEQ+wkq2C6KeEhEkKOw1JBLd63PBRxQ14f9Q8lJAHycVinIpl3t1RA0j8Vbl/gCpXXKoB78KGGoQiVqzlw0BKBNjIZF9NCX3CusiuDpm1bX9iLRQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="CLEAR" class="h-12 mb-4 brightness-0 invert">
+                    <div class="flex items-center justify-between mt-4">
+                        <div>
+                            <p class="text-sm text-gray-400">NYSE: YOU</p>
+                            <p class="text-xs text-gray-500 mt-1">Current Position</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-mono font-bold" id="clear-price-card">--</p>
+                            <p class="text-xs" id="clear-change-card">--</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estée Lauder -->
+                <div class="glass-card p-8 rounded-xl hover-lift">
+                    <img src="estee-lauder-logo.png" alt="Estée Lauder" class="h-12 mb-4 brightness-0 invert">
+                    <div class="flex items-center justify-between mt-4">
+                        <div>
+                            <p class="text-sm text-gray-400">NYSE: EL</p>
+                            <p class="text-xs text-gray-500 mt-1">Software Development Intern</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-mono font-bold" id="el-price-card">--</p>
+                            <p class="text-xs" id="el-change-card">--</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12">Technical Skills</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Frontend -->
+                <div class="glass-card p-8 rounded-xl hover-lift">
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Frontend</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <div>React, JavaScript, TypeScript</div>
+                        <div>HTML/CSS, Tailwind</div>
+                        <div>Responsive Design</div>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="glass-card p-8 rounded-xl hover-lift">
+                    <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-server text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Backend</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <div>Python, Flask, SQLAlchemy</div>
+                        <div>REST APIs, Authentication</div>
+                        <div>C++, Node.js</div>
+                    </div>
+                </div>
+
+                <!-- Data -->
+                <div class="glass-card p-8 rounded-xl hover-lift">
+                    <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-database text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Data & Analytics</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <div>SQL, Snowflake, LookML</div>
+                        <div>Power BI, Looker, Sigma</div>
+                        <div>Machine Learning, Pandas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Work -->
+    <section class="py-16 px-4 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex justify-between items-end mb-12">
+                <h2 class="text-4xl font-bold">Recent Work</h2>
+                <a href="projects.html" class="text-blue-400 hover:underline">View all projects →</a>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- CLEAR Project -->
+                <div class="glass-card p-8 rounded-xl hover-lift">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Financial Forecasting System</h3>
+                            <p class="text-blue-400 font-medium">CLEAR (NYSE:YOU)</p>
+                        </div>
+                        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">Current</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Built automated data pipelines and real-time dashboards informing $1B+ revenue decisions.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-sm">Snowflake</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-sm">SQL</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-sm">LookML</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-sm">Python</span>
+                    </div>
+                </div>
+
+                <!-- Estée Lauder Project -->
+                <div class="glass-card p-8 rounded-xl hover-lift">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Internal IT Application</h3>
+                            <p class="text-blue-400 font-medium">Estée Lauder Companies</p>
+                        </div>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">2022</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Full-stack web app with authentication, real-time sync, and automated reporting.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-sm">Python</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-sm">Flask</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-sm">SQLAlchemy</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-sm">APIs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="glass-card p-12 rounded-2xl">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Let's Build Something Together
+                </h2>
+                <p class="text-xl text-gray-400 mb-10">
+                    Looking for data infrastructure, client portals, or full-stack development.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="bg-white text-black px-8 py-4 rounded-lg hover:bg-gray-200 transition font-medium">
+                        Contact Me
+                    </a>
+                    <a href="dashboard.html" class="bg-white/10 px-8 py-4 rounded-lg hover:bg-white/20 transition font-medium">
+                        View Analytics Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Contact Button (Mobile) -->
+    <a href="contact.html" class="fixed bottom-6 right-6 md:hidden z-50 bg-gradient-to-r from-blue-600 to-purple-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+        <i class="fas fa-envelope text-xl"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-8 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <p class="text-sm text-gray-500">© 2025 Maisy Mylod</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="https://github.com/maisymylod" class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="/cdn-cgi/l/email-protection#167b777f656f7b6f7a797256717b777f7a3875797b" class="text-gray-400 hover:text-white transition">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Stock ticker functionality
+        async function updateStockPrices() {
+            try {
+                // Using Yahoo Finance API (free, no key needed)
+                const clearSymbol = 'YOU';
+                const elSymbol = 'EL';
+                
+                // Fetch CLEAR stock
+                const clearResponse = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${clearSymbol}`);
+                const clearData = await clearResponse.json();
+                const clearPrice = clearData.chart.result[0].meta.regularMarketPrice;
+                const clearChange = clearData.chart.result[0].meta.regularMarketChange;
+                const clearChangePercent = clearData.chart.result[0].meta.regularMarketChangePercent;
+                
+                // Fetch Estée Lauder stock
+                const elResponse = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${elSymbol}`);
+                const elData = await elResponse.json();
+                const elPrice = elData.chart.result[0].meta.regularMarketPrice;
+                const elChange = elData.chart.result[0].meta.regularMarketChange;
+                const elChangePercent = elData.chart.result[0].meta.regularMarketChangePercent;
+                
+                // Update CLEAR price
+                updatePrice('clear', clearPrice, clearChange, clearChangePercent);
+                updatePrice('el', elPrice, elChange, elChangePercent);
+                
+                // Update timestamp
+                const now = new Date();
+                document.getElementById('last-update').textContent = now.toLocaleTimeString('en-US', { 
+                    hour: '2-digit', 
+                    minute: '2-digit'
+                });
+                
+            } catch (error) {
+                console.error('Error fetching stock prices:', error);
+                // Fallback to demo data
+                updatePrice('clear', 23.45, 0.78, 3.44);
+                updatePrice('el', 87.23, -1.12, -1.27);
+                document.getElementById('last-update').textContent = 'Demo Mode';
+            }
+        }
+        
+        function updatePrice(symbol, price, change, changePercent) {
+            const isPositive = change >= 0;
+            const priceFormatted = `$${price.toFixed(2)}`;
+            const changeFormatted = `${isPositive ? '+' : ''}${change.toFixed(2)} (${isPositive ? '+' : ''}${changePercent.toFixed(2)}%)`;
+            const colorClass = isPositive ? 'stock-up' : 'stock-down';
+            const icon = isPositive ? '▲' : '▼';
+            
+            // Update ticker bar
+            document.getElementById(`${symbol}-price`).textContent = priceFormatted;
+            document.getElementById(`${symbol}-change`).innerHTML = `${icon} ${changeFormatted}`;
+            document.getElementById(`${symbol}-change`).className = `text-xs ${colorClass}`;
+            
+            // Update company cards
+            document.getElementById(`${symbol}-price-card`).textContent = priceFormatted;
+            document.getElementById(`${symbol}-change-card`).innerHTML = `${icon} ${changeFormatted}`;
+            document.getElementById(`${symbol}-change-card`).className = `text-xs ${colorClass}`;
+        }
+        
+        // Initial load
+        updateStockPrices();
+        
+        // Update every 60 seconds
+        setInterval(updateStockPrices, 60000);
+    </script>
+</body>
+</html>
