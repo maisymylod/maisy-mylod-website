@@ -154,9 +154,9 @@ portfolio/
 
 ### Update Content
 All content is in the HTML files. Search for:
-- `maisymylod@gmail.com` - Your email
-- `(248) 707-0429` - Your phone
-- `https://github.com/maisymylod` - Your GitHub
+- `maisymylod@gmail.com` 
+- `(248) 707-0429`
+- `https://github.com/maisymylod`
 - Company names and dates in experience.html
 - Project details in projects.html
 
