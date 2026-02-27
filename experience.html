@@ -33,8 +33,10 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .timeline-line {
-            background: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+        .timeline-border {
+            border-left-width: 2px;
+            border-left-style: solid;
+            border-image: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%) 1;
         }
 
         /* Scroll animations */
@@ -150,13 +152,14 @@
         <div class="max-w-4xl mx-auto">
 
             <!-- Goldsmith & Co -->
-            <div class="relative pl-8 pb-12 border-l-2 timeline-line scroll-fade">
+            <div class="relative pl-8 pb-12 timeline-border scroll-fade">
                 <div class="absolute -left-3 top-0 w-5 h-5 bg-amber-500 rounded-full ring-4 ring-black"></div>
                 <div class="glass-card p-8 rounded-xl hover-glow">
                     <div class="flex flex-wrap justify-between items-start mb-4">
                         <div>
                             <h2 class="text-2xl font-bold mb-2">Software Engineer</h2>
                             <p class="text-amber-400 font-medium text-lg">Goldsmith & Co</p>
+                            <img src="goldsmith-logo.webp" alt="Goldsmith & Co" class="h-8 brightness-0 invert">
                         </div>
                         <div class="text-right">
                             <p class="text-gray-400">New York, NY</p>
@@ -195,13 +198,14 @@
             </div>
 
             <!-- CLEAR -->
-            <div class="relative pl-8 pb-12 border-l-2 timeline-line scroll-fade">
+            <div class="relative pl-8 pb-12 timeline-border scroll-fade">
                 <div class="absolute -left-3 top-0 w-5 h-5 bg-blue-500 rounded-full ring-4 ring-black"></div>
                 <div class="glass-card p-8 rounded-xl hover-glow">
                     <div class="flex flex-wrap justify-between items-start mb-4">
                         <div>
                             <h2 class="text-2xl font-bold mb-2">Data Analyst</h2>
                             <p class="text-blue-400 font-medium text-lg">CLEAR</p>
+                            <img src="clear_logo.png" alt="CLEAR" class="h-8">
                         </div>
                         <div class="text-right">
                             <p class="text-gray-400">New York, NY</p>
@@ -249,13 +253,14 @@
             </div>
 
             <!-- Estee Lauder -->
-            <div class="relative pl-8 pb-12 border-l-2 timeline-line scroll-fade">
+            <div class="relative pl-8 pb-12 timeline-border scroll-fade">
                 <div class="absolute -left-3 top-0 w-5 h-5 bg-purple-500 rounded-full ring-4 ring-black"></div>
                 <div class="glass-card p-8 rounded-xl hover-glow">
                     <div class="flex flex-wrap justify-between items-start mb-4">
                         <div>
                             <h2 class="text-2xl font-bold mb-2">Software Development Intern</h2>
                             <p class="text-purple-400 font-medium text-lg">Estee Lauder Companies</p>
+                            <img src="estee-lauder-logo.png" alt="Estée Lauder" class="h-8 brightness-0 invert">
                         </div>
                         <div class="text-right">
                             <p class="text-gray-400">New York, NY</p>
@@ -298,7 +303,7 @@
             </div>
 
             <!-- Production Assistant -->
-            <div class="relative pl-8 border-l-2 timeline-line scroll-fade">
+            <div class="relative pl-8 timeline-border scroll-fade">
                 <div class="absolute -left-3 top-0 w-5 h-5 bg-pink-500 rounded-full ring-4 ring-black"></div>
                 <div class="glass-card p-8 rounded-xl hover-glow">
                     <div class="flex flex-wrap justify-between items-start mb-4">

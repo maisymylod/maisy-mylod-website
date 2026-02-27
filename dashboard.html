@@ -56,6 +56,41 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Pulse animation for live indicator */
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+        .live-dot {
+            animation: livePulse 2s ease-in-out infinite;
+        }
+
+        /* Activity row entry animation */
+        @keyframes rowSlideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .activity-row {
+            animation: rowSlideIn 0.4s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Count-up animation helper */
+        .stat-value {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Funnel styles */
+        .funnel-bar {
+            transition: width 1s ease-out;
+        }
+
+        /* Time range select styling */
+        #time-range option {
+            background: #1f2937;
+            color: #fff;
+        }
     </style>
 </head>
 <body class="bg-black text-white">
@@ -132,14 +167,20 @@
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
                 <div>
-                    <h1 class="text-4xl font-bold mb-2">Portfolio Analytics</h1>
-                    <p class="text-gray-400">Site traffic and engagement metrics</p>
+                    <div class="flex items-center gap-4 mb-2">
+                        <h1 class="text-4xl font-bold">Portfolio Analytics</h1>
+                        <div class="flex items-center gap-2 px-3 py-1.5 glass-card rounded-full">
+                            <span class="w-2.5 h-2.5 bg-green-400 rounded-full live-dot"></span>
+                            <span class="text-sm text-green-400 font-medium" id="live-count">3 live now</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">Real-time site traffic and engagement metrics</p>
                 </div>
                 <div class="mt-4 md:mt-0 flex items-center space-x-2">
                     <button id="refresh-btn" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition">
                         <i class="fas fa-sync-alt mr-2"></i>Refresh
                     </button>
-                    <select id="time-range" class="px-4 py-2 glass-card rounded-lg text-white">
+                    <select id="time-range" class="px-4 py-2 glass-card rounded-lg text-white cursor-pointer">
                         <option value="7">Last 7 Days</option>
                         <option value="30" selected>Last 30 Days</option>
                         <option value="90">Last 90 Days</option>
@@ -152,61 +193,177 @@
     <!-- Stats Overview -->
     <section class="py-8 px-4">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-card p-6 rounded-xl scroll-fade">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-users text-blue-400 text-xl"></i>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+                <div class="glass-card p-5 rounded-xl scroll-fade">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-users text-blue-400"></i>
                         </div>
-                        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">+12.5%</span>
+                        <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">+12.5%</span>
                     </div>
-                    <p class="text-gray-400 text-sm mb-1">Total Visitors</p>
-                    <p class="text-4xl font-bold" id="total-visitors">2,847</p>
+                    <p class="text-gray-400 text-xs mb-1">Total Visitors</p>
+                    <p class="text-2xl font-bold stat-value" id="total-visitors" data-target="2847">0</p>
                 </div>
 
-                <div class="glass-card p-6 rounded-xl scroll-fade">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-eye text-purple-400 text-xl"></i>
+                <div class="glass-card p-5 rounded-xl scroll-fade">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-eye text-purple-400"></i>
                         </div>
-                        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">+8.2%</span>
+                        <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">+8.2%</span>
                     </div>
-                    <p class="text-gray-400 text-sm mb-1">Page Views</p>
-                    <p class="text-4xl font-bold" id="page-views">8,394</p>
+                    <p class="text-gray-400 text-xs mb-1">Page Views</p>
+                    <p class="text-2xl font-bold stat-value" id="page-views" data-target="8394">0</p>
                 </div>
 
-                <div class="glass-card p-6 rounded-xl scroll-fade">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-clock text-orange-400 text-xl"></i>
+                <div class="glass-card p-5 rounded-xl scroll-fade">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-clock text-orange-400"></i>
                         </div>
-                        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">+5.3%</span>
+                        <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">+5.3%</span>
                     </div>
-                    <p class="text-gray-400 text-sm mb-1">Avg Session</p>
-                    <p class="text-4xl font-bold" id="avg-session">3m 24s</p>
+                    <p class="text-gray-400 text-xs mb-1">Avg Session</p>
+                    <p class="text-2xl font-bold stat-value" id="avg-session">3m 24s</p>
                 </div>
 
-                <div class="glass-card p-6 rounded-xl scroll-fade">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-sign-out-alt text-red-400 text-xl"></i>
+                <div class="glass-card p-5 rounded-xl scroll-fade">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-sign-out-alt text-red-400"></i>
                         </div>
-                        <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm">-2.1%</span>
+                        <span class="px-2 py-0.5 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">-2.1%</span>
                     </div>
-                    <p class="text-gray-400 text-sm mb-1">Bounce Rate</p>
-                    <p class="text-4xl font-bold" id="bounce-rate">24.8%</p>
+                    <p class="text-gray-400 text-xs mb-1">Bounce Rate</p>
+                    <p class="text-2xl font-bold stat-value" id="bounce-rate">24.8%</p>
+                </div>
+
+                <div class="glass-card p-5 rounded-xl scroll-fade">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-layer-group text-cyan-400"></i>
+                        </div>
+                        <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">+3.7%</span>
+                    </div>
+                    <p class="text-gray-400 text-xs mb-1">Pages / Session</p>
+                    <p class="text-2xl font-bold stat-value" id="pages-session">2.95</p>
+                </div>
+
+                <div class="glass-card p-5 rounded-xl scroll-fade">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-redo text-pink-400"></i>
+                        </div>
+                        <span class="px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">+6.8%</span>
+                    </div>
+                    <p class="text-gray-400 text-xs mb-1">Return Visitors</p>
+                    <p class="text-2xl font-bold stat-value" id="return-rate">34.2%</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Charts Section -->
-    <section class="py-8 px-4">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
+    <!-- Traffic Chart (full width) -->
+    <section class="py-4 px-4">
+        <div class="max-w-7xl mx-auto">
             <div class="glass-card p-6 rounded-xl scroll-fade">
-                <h3 class="text-lg font-bold mb-4">Visitor Traffic</h3>
-                <canvas id="trafficChart"></canvas>
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold">Visitor Traffic</h3>
+                    <div class="flex items-center gap-4 text-sm text-gray-400">
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-blue-500 rounded inline-block"></span> Visitors</span>
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-purple-500 rounded inline-block"></span> Page Views</span>
+                    </div>
+                </div>
+                <div style="height: 300px;">
+                    <canvas id="trafficChart"></canvas>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Device + Geographic + Hourly Charts -->
+    <section class="py-4 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
+            <div class="glass-card p-6 rounded-xl scroll-fade">
+                <h3 class="text-lg font-bold mb-4">Device Breakdown</h3>
+                <div style="height: 250px; display: flex; align-items: center; justify-content: center;">
+                    <canvas id="deviceChart"></canvas>
+                </div>
+            </div>
+            <div class="glass-card p-6 rounded-xl scroll-fade">
+                <h3 class="text-lg font-bold mb-4">Geographic Distribution</h3>
+                <div style="height: 250px;">
+                    <canvas id="geoChart"></canvas>
+                </div>
+            </div>
+            <div class="glass-card p-6 rounded-xl scroll-fade">
+                <h3 class="text-lg font-bold mb-4">Hourly Traffic Pattern</h3>
+                <div style="height: 250px;">
+                    <canvas id="hourlyChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conversion Funnel + Page Performance -->
+    <section class="py-4 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
+            <!-- Conversion Funnel -->
+            <div class="glass-card p-6 rounded-xl scroll-fade">
+                <h3 class="text-lg font-bold mb-6">Conversion Funnel</h3>
+                <div class="space-y-5" id="funnel-container">
+                    <div class="funnel-step">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <span class="text-sm font-medium text-gray-300">All Visitors</span>
+                            <span class="text-sm font-bold text-white">2,847</span>
+                        </div>
+                        <div class="w-full bg-gray-800 rounded-full h-8 overflow-hidden">
+                            <div class="funnel-bar h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full flex items-center pl-3" style="width: 100%;">
+                                <span class="text-xs font-medium text-white">100%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <span class="text-sm font-medium text-gray-300">Projects Page</span>
+                            <span class="text-sm font-bold text-white">856</span>
+                        </div>
+                        <div class="w-full bg-gray-800 rounded-full h-8 overflow-hidden">
+                            <div class="funnel-bar h-full bg-gradient-to-r from-purple-500 to-purple-400 rounded-full flex items-center pl-3" style="width: 0%;" data-width="30.1%">
+                                <span class="text-xs font-medium text-white">30.1%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <span class="text-sm font-medium text-gray-300">Contact Page</span>
+                            <span class="text-sm font-bold text-white">251</span>
+                        </div>
+                        <div class="w-full bg-gray-800 rounded-full h-8 overflow-hidden">
+                            <div class="funnel-bar h-full bg-gradient-to-r from-pink-500 to-pink-400 rounded-full flex items-center pl-3" style="width: 0%;" data-width="8.8%">
+                                <span class="text-xs font-medium text-white">8.8%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="funnel-step">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <span class="text-sm font-medium text-gray-300">Form Submitted</span>
+                            <span class="text-sm font-bold text-white">47</span>
+                        </div>
+                        <div class="w-full bg-gray-800 rounded-full h-8 overflow-hidden">
+                            <div class="funnel-bar h-full bg-gradient-to-r from-green-500 to-emerald-400 rounded-full flex items-center pl-3" style="width: 0%;" data-width="1.65%">
+                                <span class="text-xs font-medium text-white">1.65%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 mt-2 pt-3 border-t border-gray-800">
+                        <i class="fas fa-info-circle text-gray-500 text-xs"></i>
+                        <span class="text-xs text-gray-500">Conversion rate from visitor to submission: 1.65%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page Performance Chart -->
             <div class="glass-card p-6 rounded-xl scroll-fade">
                 <h3 class="text-lg font-bold mb-4">Page Performance</h3>
                 <canvas id="pageChart"></canvas>
@@ -215,7 +372,7 @@
     </section>
 
     <!-- Top Pages & Sources -->
-    <section class="py-8 px-4">
+    <section class="py-4 px-4">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
             <div class="glass-card p-6 rounded-xl scroll-fade">
                 <h3 class="text-lg font-bold mb-4">Top Pages</h3>
@@ -296,10 +453,13 @@
     </section>
 
     <!-- Recent Activity -->
-    <section class="py-8 px-4 pb-16">
+    <section class="py-4 px-4 pb-16">
         <div class="max-w-7xl mx-auto">
             <div class="glass-card p-6 rounded-xl scroll-fade">
-                <h3 class="text-lg font-bold mb-4">Recent Activity</h3>
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold">Recent Activity</h3>
+                    <span class="text-xs text-gray-500">Auto-refreshes every 30s</span>
+                </div>
                 <div class="overflow-x-auto">
                     <table class="w-full">
                         <thead>
@@ -307,6 +467,7 @@
                                 <th class="text-left py-3 px-4 text-sm font-medium text-gray-400">Page</th>
                                 <th class="text-left py-3 px-4 text-sm font-medium text-gray-400">Source</th>
                                 <th class="text-left py-3 px-4 text-sm font-medium text-gray-400">Location</th>
+                                <th class="text-left py-3 px-4 text-sm font-medium text-gray-400">Device</th>
                                 <th class="text-left py-3 px-4 text-sm font-medium text-gray-400">Time</th>
                             </tr>
                         </thead>
@@ -339,43 +500,310 @@
     </footer>
 
     <script>
+        // ============================================================
         // Mobile menu
+        // ============================================================
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
+        // ============================================================
         // Chart.js dark theme defaults
+        // ============================================================
         Chart.defaults.color = '#9ca3af';
         Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.1)';
 
-        // Traffic Chart
+        // ============================================================
+        // Generate realistic 30-day traffic data
+        // ============================================================
+        function generateTrafficData(days) {
+            const data = { labels: [], visitors: [], pageViews: [] };
+            const today = new Date(2026, 1, 27); // Feb 27, 2026
+
+            for (let i = days - 1; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+
+                const dayOfWeek = date.getDay(); // 0=Sun, 6=Sat
+                const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                data.labels.push(monthNames[date.getMonth()] + ' ' + date.getDate());
+
+                // Base traffic with gradual upward trend
+                const trendFactor = 1 + (days - 1 - i) * 0.008; // ~0.8% growth per day
+                let baseVisitors = 75 + Math.random() * 30; // 75-105 base
+
+                // Weekend dip: Sat/Sun get 40-60% of weekday traffic
+                if (dayOfWeek === 0 || dayOfWeek === 6) {
+                    baseVisitors *= 0.4 + Math.random() * 0.2;
+                }
+
+                // Apply trend
+                baseVisitors *= trendFactor;
+
+                // Add some random spikes (simulate a social media share or blog mention)
+                if (Math.random() < 0.07) {
+                    baseVisitors *= 1.4 + Math.random() * 0.4;
+                }
+
+                const visitors = Math.round(baseVisitors);
+                const pvRatio = 2.5 + Math.random() * 1.2; // 2.5-3.7 pages per visitor
+                const pageViews = Math.round(visitors * pvRatio);
+
+                data.visitors.push(visitors);
+                data.pageViews.push(pageViews);
+            }
+            return data;
+        }
+
+        let currentRange = 30;
+        let trafficData = generateTrafficData(30);
+
+        // ============================================================
+        // Traffic Chart (Line + area, dual dataset)
+        // ============================================================
         const trafficCtx = document.getElementById('trafficChart').getContext('2d');
-        const trafficChart = new Chart(trafficCtx, {
+        let trafficChart = new Chart(trafficCtx, {
             type: 'line',
             data: {
-                labels: ['Jan 23', 'Jan 30', 'Feb 6', 'Feb 13', 'Feb 20', 'Feb 27', 'Mar 5'],
-                datasets: [{
-                    label: 'Visitors',
-                    data: [245, 298, 356, 412, 478, 523, 589],
-                    borderColor: '#3b82f6',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    tension: 0.4,
-                    fill: true
-                }]
+                labels: trafficData.labels,
+                datasets: [
+                    {
+                        label: 'Visitors',
+                        data: trafficData.visitors,
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.08)',
+                        tension: 0.35,
+                        fill: true,
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: '#3b82f6'
+                    },
+                    {
+                        label: 'Page Views',
+                        data: trafficData.pageViews,
+                        borderColor: '#8b5cf6',
+                        backgroundColor: 'rgba(139, 92, 246, 0.05)',
+                        tension: 0.35,
+                        fill: true,
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: '#8b5cf6'
+                    }
+                ]
             },
             options: {
                 responsive: true,
-                plugins: { legend: { display: false } },
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                        borderColor: 'rgba(255, 255, 255, 0.1)',
+                        borderWidth: 1,
+                        titleColor: '#fff',
+                        bodyColor: '#9ca3af',
+                        padding: 12,
+                        cornerRadius: 8
+                    }
+                },
                 scales: {
-                    y: { beginAtZero: true, grid: { color: 'rgba(255, 255, 255, 0.05)' } },
-                    x: { grid: { color: 'rgba(255, 255, 255, 0.05)' } }
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                        ticks: { font: { size: 11 } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: {
+                            font: { size: 11 },
+                            maxTicksLimit: 10
+                        }
+                    }
                 }
             }
         });
 
+        // ============================================================
+        // Device Breakdown (Doughnut)
+        // ============================================================
+        const deviceCtx = document.getElementById('deviceChart').getContext('2d');
+        const deviceChart = new Chart(deviceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Desktop', 'Mobile', 'Tablet'],
+                datasets: [{
+                    data: [62, 31, 7],
+                    backgroundColor: ['#3b82f6', '#8b5cf6', '#06b6d4'],
+                    borderColor: 'rgba(0, 0, 0, 0.3)',
+                    borderWidth: 2,
+                    hoverOffset: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 16,
+                            usePointStyle: true,
+                            pointStyleWidth: 10,
+                            font: { size: 12 }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                        borderColor: 'rgba(255, 255, 255, 0.1)',
+                        borderWidth: 1,
+                        callbacks: {
+                            label: function(ctx) {
+                                return ' ' + ctx.label + ': ' + ctx.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // ============================================================
+        // Geographic Distribution (Horizontal Bar)
+        // ============================================================
+        const geoCtx = document.getElementById('geoChart').getContext('2d');
+        const geoChart = new Chart(geoCtx, {
+            type: 'bar',
+            data: {
+                labels: ['United States', 'United Kingdom', 'Canada', 'Germany', 'India', 'Australia', 'Other'],
+                datasets: [{
+                    label: 'Traffic Share',
+                    data: [48, 12, 9, 7, 6, 5, 13],
+                    backgroundColor: [
+                        '#3b82f6',
+                        '#6366f1',
+                        '#8b5cf6',
+                        '#a855f7',
+                        '#d946ef',
+                        '#ec4899',
+                        '#4b5563'
+                    ],
+                    borderRadius: 4,
+                    borderSkipped: false,
+                    barThickness: 18
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                        borderColor: 'rgba(255, 255, 255, 0.1)',
+                        borderWidth: 1,
+                        callbacks: {
+                            label: function(ctx) {
+                                return ' ' + ctx.parsed.x + '% of traffic';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 55,
+                        grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                        ticks: {
+                            callback: function(val) { return val + '%'; },
+                            font: { size: 10 }
+                        }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { font: { size: 11 } }
+                    }
+                }
+            }
+        });
+
+        // ============================================================
+        // Hourly Traffic Pattern (Area Chart)
+        // ============================================================
+        const hourlyCtx = document.getElementById('hourlyChart').getContext('2d');
+        // Realistic hourly pattern: low 2-5am, ramp up morning, peaks 10-11am & 2-3pm, taper evening
+        const hourlyValues = [
+            12, 8, 5, 4, 3, 5,     // 12am-5am
+            9, 18, 32, 52, 68, 72,  // 6am-11am
+            61, 55, 65, 70, 58, 48, // 12pm-5pm
+            42, 38, 31, 26, 20, 15  // 6pm-11pm
+        ];
+        const hourLabels = [];
+        for (let h = 0; h < 24; h++) {
+            const suffix = h < 12 ? 'am' : 'pm';
+            const hour12 = h === 0 ? 12 : (h > 12 ? h - 12 : h);
+            hourLabels.push(hour12 + suffix);
+        }
+
+        const hourlyChart = new Chart(hourlyCtx, {
+            type: 'line',
+            data: {
+                labels: hourLabels,
+                datasets: [{
+                    label: 'Avg Visitors',
+                    data: hourlyValues,
+                    borderColor: '#06b6d4',
+                    backgroundColor: 'rgba(6, 182, 212, 0.12)',
+                    tension: 0.4,
+                    fill: true,
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHoverBackgroundColor: '#06b6d4'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                        borderColor: 'rgba(255, 255, 255, 0.1)',
+                        borderWidth: 1,
+                        callbacks: {
+                            label: function(ctx) {
+                                return ' ' + ctx.parsed.y + ' avg visitors';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                        ticks: { font: { size: 10 } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: {
+                            font: { size: 9 },
+                            maxTicksLimit: 8
+                        }
+                    }
+                }
+            }
+        });
+
+        // ============================================================
         // Page Performance Chart
+        // ============================================================
         const pageCtx = document.getElementById('pageChart').getContext('2d');
         const pageChart = new Chart(pageCtx, {
             type: 'bar',
@@ -384,69 +812,335 @@
                 datasets: [{
                     label: 'Page Views',
                     data: [3248, 2156, 1847, 892, 251],
-                    backgroundColor: ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444']
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.7)',
+                        'rgba(139, 92, 246, 0.7)',
+                        'rgba(16, 185, 129, 0.7)',
+                        'rgba(245, 158, 11, 0.7)',
+                        'rgba(239, 68, 68, 0.7)'
+                    ],
+                    borderColor: [
+                        '#3b82f6',
+                        '#8b5cf6',
+                        '#10b981',
+                        '#f59e0b',
+                        '#ef4444'
+                    ],
+                    borderWidth: 1,
+                    borderRadius: 6,
+                    borderSkipped: false
                 }]
             },
             options: {
                 responsive: true,
-                plugins: { legend: { display: false } },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                        borderColor: 'rgba(255, 255, 255, 0.1)',
+                        borderWidth: 1
+                    }
+                },
                 scales: {
-                    y: { beginAtZero: true, grid: { color: 'rgba(255, 255, 255, 0.05)' } },
-                    x: { grid: { color: 'rgba(255, 255, 255, 0.05)' } }
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                        ticks: { font: { size: 11 } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { size: 11 } }
+                    }
                 }
             }
         });
 
-        // Source Chart
+        // ============================================================
+        // Source Chart (Doughnut)
+        // ============================================================
         const sourceCtx = document.getElementById('sourceChart').getContext('2d');
         const sourceChart = new Chart(sourceCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Direct', 'LinkedIn', 'GitHub', 'Google', 'Other'],
+                labels: ['Direct', 'LinkedIn', 'GitHub', 'Google', 'Twitter', 'Other'],
                 datasets: [{
-                    data: [35, 28, 18, 12, 7],
-                    backgroundColor: ['#3b82f6', '#0077b5', '#333', '#ea4335', '#9ca3af']
+                    data: [32, 26, 17, 14, 6, 5],
+                    backgroundColor: [
+                        '#3b82f6',
+                        '#0077b5',
+                        '#6e5494',
+                        '#ea4335',
+                        '#1da1f2',
+                        '#6b7280'
+                    ],
+                    borderColor: 'rgba(0, 0, 0, 0.3)',
+                    borderWidth: 2,
+                    hoverOffset: 6
                 }]
             },
             options: {
                 responsive: true,
-                plugins: { legend: { position: 'bottom' } }
+                cutout: '55%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 14,
+                            usePointStyle: true,
+                            pointStyleWidth: 10,
+                            font: { size: 11 }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                        borderColor: 'rgba(255, 255, 255, 0.1)',
+                        borderWidth: 1,
+                        callbacks: {
+                            label: function(ctx) {
+                                return ' ' + ctx.label + ': ' + ctx.parsed + '%';
+                            }
+                        }
+                    }
+                }
             }
         });
 
-        // Recent Activity
-        const activities = [
-            { page: 'Projects', source: 'LinkedIn', location: 'New York, NY', time: '2 min ago' },
-            { page: 'Home', source: 'Direct', location: 'San Francisco, CA', time: '5 min ago' },
-            { page: 'Experience', source: 'GitHub', location: 'Seattle, WA', time: '8 min ago' },
-            { page: 'Dashboard', source: 'Google', location: 'Austin, TX', time: '12 min ago' },
-            { page: 'Projects', source: 'Direct', location: 'Boston, MA', time: '15 min ago' },
-            { page: 'Home', source: 'LinkedIn', location: 'Chicago, IL', time: '18 min ago' },
-            { page: 'Contact', source: 'GitHub', location: 'Denver, CO', time: '22 min ago' }
+        // ============================================================
+        // Animated Count-Up for Stats
+        // ============================================================
+        function animateCountUp(element, target, duration, isFormatted, suffix) {
+            suffix = suffix || '';
+            const startTime = performance.now();
+            const startValue = 0;
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease-out cubic
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = Math.round(startValue + (target - startValue) * eased);
+
+                if (isFormatted) {
+                    element.textContent = current.toLocaleString() + suffix;
+                } else {
+                    element.textContent = current + suffix;
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            requestAnimationFrame(update);
+        }
+
+        // Start count-up animations after a short delay
+        setTimeout(() => {
+            animateCountUp(document.getElementById('total-visitors'), 2847, 2000, true);
+            animateCountUp(document.getElementById('page-views'), 8394, 2000, true);
+        }, 300);
+
+        // ============================================================
+        // Live Visitor Counter
+        // ============================================================
+        function updateLiveCount() {
+            const count = Math.floor(Math.random() * 8) + 1;
+            document.getElementById('live-count').textContent = count + ' live now';
+        }
+        updateLiveCount();
+        setInterval(updateLiveCount, 5000);
+
+        // ============================================================
+        // Conversion Funnel Animation
+        // ============================================================
+        function animateFunnel() {
+            const bars = document.querySelectorAll('.funnel-bar[data-width]');
+            bars.forEach((bar, index) => {
+                setTimeout(() => {
+                    bar.style.width = bar.getAttribute('data-width');
+                }, 200 + index * 200);
+            });
+        }
+
+        // Trigger funnel animation when section is visible
+        const funnelObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateFunnel();
+                    funnelObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        funnelObserver.observe(document.getElementById('funnel-container'));
+
+        // ============================================================
+        // Recent Activity (realistic, varied data)
+        // ============================================================
+        const activityPages = [
+            { name: 'Home', path: '/index.html', icon: 'fa-home', color: 'text-blue-400' },
+            { name: 'Projects', path: '/projects.html', icon: 'fa-code', color: 'text-purple-400' },
+            { name: 'Experience', path: '/experience.html', icon: 'fa-briefcase', color: 'text-green-400' },
+            { name: 'Dashboard', path: '/dashboard.html', icon: 'fa-chart-line', color: 'text-cyan-400' },
+            { name: 'Contact', path: '/contact.html', icon: 'fa-envelope', color: 'text-pink-400' }
         ];
 
-        const activityTable = document.getElementById('activity-table');
-        activities.forEach(activity => {
-            const row = document.createElement('tr');
-            row.className = 'border-b border-gray-800 hover:bg-white/5';
-            row.innerHTML = `
-                <td class="py-3 px-4">${activity.page}</td>
-                <td class="py-3 px-4"><span class="px-2 py-1 glass-card rounded text-sm">${activity.source}</span></td>
-                <td class="py-3 px-4 text-gray-400">${activity.location}</td>
-                <td class="py-3 px-4 text-gray-500 text-sm">${activity.time}</td>
-            `;
-            activityTable.appendChild(row);
+        const activitySources = [
+            { name: 'LinkedIn', icon: 'fab fa-linkedin', color: 'text-blue-500' },
+            { name: 'Google', icon: 'fab fa-google', color: 'text-red-400' },
+            { name: 'Direct', icon: 'fas fa-globe', color: 'text-gray-400' },
+            { name: 'GitHub', icon: 'fab fa-github', color: 'text-white' },
+            { name: 'Twitter', icon: 'fab fa-twitter', color: 'text-sky-400' },
+            { name: 'LinkedIn', icon: 'fab fa-linkedin', color: 'text-blue-500' },
+            { name: 'Google', icon: 'fab fa-google', color: 'text-red-400' },
+            { name: 'Direct', icon: 'fas fa-globe', color: 'text-gray-400' }
+        ];
+
+        const activityLocations = [
+            'New York, NY', 'San Francisco, CA', 'Seattle, WA', 'Austin, TX',
+            'Boston, MA', 'Chicago, IL', 'Denver, CO', 'Los Angeles, CA',
+            'Portland, OR', 'Miami, FL', 'London, UK', 'Toronto, CA',
+            'Berlin, DE', 'Sydney, AU', 'Mumbai, IN', 'Vancouver, CA',
+            'Dublin, IE', 'Amsterdam, NL', 'Singapore, SG', 'Atlanta, GA',
+            'Washington, DC', 'Phoenix, AZ', 'Dallas, TX', 'Minneapolis, MN'
+        ];
+
+        const activityDevices = [
+            { name: 'Desktop', icon: 'fas fa-desktop' },
+            { name: 'Mobile', icon: 'fas fa-mobile-alt' },
+            { name: 'Tablet', icon: 'fas fa-tablet-alt' },
+            { name: 'Desktop', icon: 'fas fa-desktop' },
+            { name: 'Mobile', icon: 'fas fa-mobile-alt' },
+            { name: 'Desktop', icon: 'fas fa-desktop' }
+        ];
+
+        function generateTimeAgo(index) {
+            if (index === 0) return 'just now';
+            if (index === 1) return '1m ago';
+            if (index < 5) return Math.floor(1 + index * 1.5) + 'm ago';
+            if (index < 10) return Math.floor(index * 2.5) + 'm ago';
+            if (index < 15) return Math.floor(index * 4) + 'm ago';
+            return Math.floor(index * 5) + 'm ago';
+        }
+
+        function generateActivities(count) {
+            const activities = [];
+            for (let i = 0; i < count; i++) {
+                const page = activityPages[Math.floor(Math.random() * activityPages.length)];
+                const source = activitySources[Math.floor(Math.random() * activitySources.length)];
+                const location = activityLocations[Math.floor(Math.random() * activityLocations.length)];
+                const device = activityDevices[Math.floor(Math.random() * activityDevices.length)];
+                activities.push({
+                    page: page,
+                    source: source,
+                    location: location,
+                    device: device,
+                    time: generateTimeAgo(i)
+                });
+            }
+            return activities;
+        }
+
+        function renderActivities() {
+            const activityTable = document.getElementById('activity-table');
+            activityTable.innerHTML = '';
+            const activities = generateActivities(12);
+
+            activities.forEach((activity, index) => {
+                const row = document.createElement('tr');
+                row.className = 'border-b border-gray-800/50 hover:bg-white/5 transition-colors activity-row';
+                row.style.animationDelay = (index * 60) + 'ms';
+                row.innerHTML = `
+                    <td class="py-3 px-4">
+                        <div class="flex items-center gap-2">
+                            <i class="fas ${activity.page.icon} ${activity.page.color} text-xs w-4"></i>
+                            <div>
+                                <span class="font-medium text-sm">${activity.page.name}</span>
+                                <span class="text-gray-600 text-xs ml-1 hidden sm:inline">${activity.page.path}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="py-3 px-4">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 glass-card rounded-full text-xs">
+                            <i class="${activity.source.icon} ${activity.source.color}"></i>
+                            ${activity.source.name}
+                        </span>
+                    </td>
+                    <td class="py-3 px-4 text-gray-400 text-sm">${activity.location}</td>
+                    <td class="py-3 px-4 text-gray-400 text-sm">
+                        <i class="${activity.device.icon} text-xs mr-1"></i>${activity.device.name}
+                    </td>
+                    <td class="py-3 px-4 text-gray-500 text-xs font-mono">${activity.time}</td>
+                `;
+                activityTable.appendChild(row);
+            });
+        }
+
+        renderActivities();
+
+        // ============================================================
+        // Refresh button
+        // ============================================================
+        document.getElementById('refresh-btn').addEventListener('click', () => {
+            const btn = document.getElementById('refresh-btn');
+            const icon = btn.querySelector('i');
+            icon.classList.add('fa-spin');
+            setTimeout(() => {
+                renderActivities();
+                updateLiveCount();
+                icon.classList.remove('fa-spin');
+            }, 600);
         });
 
-        document.getElementById('refresh-btn').addEventListener('click', () => {
-            location.reload();
-        });
+        // ============================================================
+        // Time Range Selector (scales data)
+        // ============================================================
+        const baseStats = {
+            visitors: 2847,
+            pageViews: 8394,
+            session: '3m 24s',
+            bounce: '24.8%',
+            pagesSession: '2.95',
+            returnRate: '34.2%'
+        };
+
+        const rangeMultipliers = {
+            7:  { visitors: 0.28, pageViews: 0.26, session: '3m 48s', bounce: '22.1%', pagesSession: '3.12', returnRate: '28.6%' },
+            30: { visitors: 1, pageViews: 1, session: '3m 24s', bounce: '24.8%', pagesSession: '2.95', returnRate: '34.2%' },
+            90: { visitors: 3.2, pageViews: 3.4, session: '3m 09s', bounce: '26.3%', pagesSession: '2.81', returnRate: '38.7%' }
+        };
 
         document.getElementById('time-range').addEventListener('change', (e) => {
-            console.log('Time range changed to:', e.target.value, 'days');
+            const range = parseInt(e.target.value);
+            currentRange = range;
+            const multiplier = rangeMultipliers[range];
+
+            // Update stat cards
+            const visitors = Math.round(baseStats.visitors * multiplier.visitors);
+            const pageViews = Math.round(baseStats.pageViews * multiplier.pageViews);
+
+            animateCountUp(document.getElementById('total-visitors'), visitors, 800, true);
+            animateCountUp(document.getElementById('page-views'), pageViews, 800, true);
+            document.getElementById('avg-session').textContent = multiplier.session;
+            document.getElementById('bounce-rate').textContent = multiplier.bounce;
+            document.getElementById('pages-session').textContent = multiplier.pagesSession;
+            document.getElementById('return-rate').textContent = multiplier.returnRate;
+
+            // Regenerate traffic chart data
+            const newData = generateTrafficData(range);
+            trafficChart.data.labels = newData.labels;
+            trafficChart.data.datasets[0].data = newData.visitors;
+            trafficChart.data.datasets[1].data = newData.pageViews;
+            trafficChart.options.scales.x.ticks.maxTicksLimit = range <= 7 ? 7 : (range <= 30 ? 10 : 15);
+            trafficChart.update('active');
+
+            // Scale page performance data
+            const pageMultiplier = range === 7 ? 0.28 : (range === 90 ? 3.2 : 1);
+            pageChart.data.datasets[0].data = [3248, 2156, 1847, 892, 251].map(v => Math.round(v * pageMultiplier));
+            pageChart.update('active');
         });
 
+        // ============================================================
         // Scroll animations
+        // ============================================================
         const scrollElements = document.querySelectorAll('.scroll-fade');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {

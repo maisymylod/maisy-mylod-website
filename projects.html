@@ -111,6 +111,11 @@
             position: absolute;
             pointer-events: none;
         }
+
+        /* Code snippet styling */
+        .code-snippet {
+            font-family: 'JetBrains Mono', monospace;
+        }
     </style>
 </head>
 <body class="bg-black text-white">
@@ -204,12 +209,11 @@
                             <div class="flex flex-wrap items-center gap-3 mb-4">
                                 <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">AI</span>
                                 <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium">Full Stack</span>
-                                <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">Pinned</span>
+                                <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-medium">Social Impact</span>
                             </div>
-                            <h2 class="text-3xl font-bold mb-3">Athena AI</h2>
+                            <h2 class="text-3xl font-bold mb-3">AI-Powered Knowledge & Learning Platform</h2>
                             <p class="text-gray-400 mb-6 text-lg">
-                                A fullstack AI-powered platform featuring advanced NLP,
-                                intelligent conversation management, and seamless user experiences.
+                                Athena AI democratizes access to education by providing an intelligent tutoring system that helps learners master complex STEM topics through personalized, conversational AI. Named after the Greek goddess of wisdom, Athena bridges the gap between quality education and accessibility — making advanced knowledge available to anyone, anywhere.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-6">
                                 <span class="px-3 py-1 bg-white/10 rounded-full text-sm">Python</span>
@@ -276,6 +280,13 @@
                         <p class="text-gray-400 mb-4 text-sm">
                             Interactive visualization of persistent homology and Betti numbers. Applied algebraic topology to real-world data clustering.
                         </p>
+                        <div class="bg-black/50 rounded-lg p-3 text-xs overflow-x-auto border border-white/5 mb-4">
+<pre class="code-snippet text-gray-300"><span class="text-purple-400">from</span> ripser <span class="text-purple-400">import</span> Rips
+rips = Rips(maxdim=<span class="text-emerald-400">2</span>)
+dgms = rips.fit_transform(point_cloud)
+<span class="text-gray-500"># Betti numbers: &#946;&#8320;=1, &#946;&#8321;=2</span>
+plot_diagrams(dgms)</pre>
+                        </div>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Python</span>
                             <span class="px-2 py-1 bg-white/10 rounded-full text-xs">NumPy</span>
@@ -299,6 +310,13 @@
                         <p class="text-gray-400 mb-4 text-sm">
                             Stochastic calculus-based derivatives pricing using geometric Brownian motion. Simulated 100K+ paths for European/American options.
                         </p>
+                        <div class="bg-black/50 rounded-lg p-3 text-xs overflow-x-auto border border-white/5 mb-4">
+<pre class="code-snippet text-gray-300">S = S0 * np.exp(np.cumsum(
+    (mu - <span class="text-emerald-400">0.5</span>*&#963;**<span class="text-emerald-400">2</span>)*dt + &#963;*np.sqrt(dt)*Z,
+    axis=<span class="text-emerald-400">1</span>), axis=<span class="text-emerald-400">1</span>)
+C = np.exp(-r*T) * np.mean(
+    np.maximum(S[:,-<span class="text-emerald-400">1</span>] - K, <span class="text-emerald-400">0</span>))</pre>
+                        </div>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Python</span>
                             <span class="px-2 py-1 bg-white/10 rounded-full text-xs">NumPy</span>
@@ -322,6 +340,12 @@
                         <p class="text-gray-400 mb-4 text-sm">
                             Spectral graph theory for community detection in social networks. Eigenvalue decomposition of adjacency matrices for clustering.
                         </p>
+                        <div class="bg-black/50 rounded-lg p-3 text-xs overflow-x-auto border border-white/5 mb-4">
+<pre class="code-snippet text-gray-300">L = D - A  <span class="text-gray-500"># Graph Laplacian</span>
+eigenvalues, eigvecs = np.linalg.eigh(L)
+<span class="text-gray-500"># Fiedler vector &#8594; community split</span>
+communities = eigvecs[:,<span class="text-emerald-400">1</span>] > <span class="text-emerald-400">0</span></pre>
+                        </div>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Python</span>
                             <span class="px-2 py-1 bg-white/10 rounded-full text-xs">NetworkX</span>

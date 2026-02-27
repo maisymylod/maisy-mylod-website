@@ -15,16 +15,13 @@
             overflow-x: hidden;
         }
 
-        .font-mono-code {
-            font-family: 'JetBrains Mono', monospace;
-        }
+        .font-mono-code { font-family: 'JetBrains Mono', monospace; }
 
         .gradient-text {
             background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: none;
         }
 
         .glass-card {
@@ -36,20 +33,14 @@
         .hover-lift {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
         .hover-lift:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
         }
 
         /* Page fade-in */
-        body {
-            animation: pageFadeIn 0.6s ease-out;
-        }
-        @keyframes pageFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        body { animation: pageFadeIn 0.6s ease-out; }
+        @keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* Scroll animations */
         .scroll-fade {
@@ -57,31 +48,25 @@
             transform: translateY(30px);
             transition: opacity 0.7s ease, transform 0.7s ease;
         }
-        .scroll-fade.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .scroll-fade.visible { opacity: 1; transform: translateY(0); }
 
         /* Particle canvas */
         #particle-canvas {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: 0;
         }
 
         /* Animated gradient mesh */
         .hero-gradient-mesh {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 40% 80%, rgba(236, 72, 153, 0.06) 0%, transparent 50%);
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 80%, rgba(236, 72, 153, 0.06) 0%, transparent 50%);
             animation: meshShift 15s ease-in-out infinite alternate;
             z-index: 0;
         }
@@ -95,47 +80,31 @@
         /* Typing cursor */
         .typing-cursor {
             display: inline-block;
-            width: 3px;
-            height: 1em;
+            width: 3px; height: 1em;
             background: #3b82f6;
             margin-left: 4px;
             animation: blink 1s step-end infinite;
             vertical-align: text-bottom;
         }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
+        @keyframes blink { 50% { opacity: 0; } }
 
         /* Skill marquee */
-        .marquee-container {
-            overflow: hidden;
-            white-space: nowrap;
-        }
+        .marquee-container { overflow: hidden; white-space: nowrap; }
         .marquee-track {
             display: inline-flex;
             animation: marqueeScroll 40s linear infinite;
         }
-        .marquee-track:hover {
-            animation-play-state: paused;
-        }
+        .marquee-track:hover { animation-play-state: paused; }
         @keyframes marqueeScroll {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
 
         /* Skills orbit */
-        .orbit-container {
-            position: relative;
-            width: 320px;
-            height: 320px;
-            margin: 0 auto;
-        }
+        .orbit-container { position: relative; width: 320px; height: 320px; margin: 0 auto; }
         .orbit-ring {
-            position: absolute;
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
+            position: absolute; border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 50%; top: 50%; left: 50%;
         }
         .orbit-ring-1 {
             width: 200px; height: 200px;
@@ -147,42 +116,27 @@
             margin-top: -140px; margin-left: -140px;
             animation: orbitSpin 30s linear infinite reverse;
         }
-        @keyframes orbitSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        @keyframes orbitSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .orbit-icon {
-            position: absolute;
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 600;
+            position: absolute; width: 40px; height: 40px;
+            border-radius: 50%; display: flex;
+            align-items: center; justify-content: center;
+            font-size: 16px; font-weight: 600;
             background: rgba(255,255,255,0.1);
             border: 1px solid rgba(255,255,255,0.15);
         }
-        /* Counter orbit icons positions */
         .orbit-ring-1 .orbit-icon { animation: orbitCounterSpin 20s linear infinite; }
         .orbit-ring-2 .orbit-icon { animation: orbitCounterSpin 30s linear infinite reverse; }
-        @keyframes orbitCounterSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
-        }
+        @keyframes orbitCounterSpin { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
 
-        /* Animated gradient border for featured card */
-        .glow-border {
-            position: relative;
-            overflow: hidden;
-        }
+        /* Animated gradient border */
+        .glow-border { position: relative; overflow: hidden; }
         .glow-border::before {
             content: '';
             position: absolute;
             top: -2px; left: -2px; right: -2px; bottom: -2px;
             background: conic-gradient(from 0deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
-            border-radius: inherit;
-            z-index: -1;
+            border-radius: inherit; z-index: -1;
             animation: rotateBorder 4s linear infinite;
         }
         .glow-border::after {
@@ -190,25 +144,24 @@
             position: absolute;
             top: 2px; left: 2px; right: 2px; bottom: 2px;
             background: #0a0a0a;
-            border-radius: inherit;
-            z-index: -1;
+            border-radius: inherit; z-index: -1;
         }
-        @keyframes rotateBorder {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        @keyframes rotateBorder { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* Math formula styling */
-        .math-formula {
-            font-family: 'JetBrains Mono', monospace;
-            color: rgba(139, 92, 246, 0.6);
-            font-size: 0.85rem;
-        }
+        /* Math canvas */
+        .math-canvas { border-radius: 12px; background: rgba(0,0,0,0.3); }
 
-        /* Micro-interactions */
-        .hover-glow:hover {
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+        /* Hover glow */
+        .hover-glow:hover { box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); }
+
+        /* Company logo container */
+        .company-logo-wrap {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
         }
+        .company-logo-wrap img { max-height: 48px; }
     </style>
 </head>
 <body class="bg-black text-white">
@@ -308,7 +261,7 @@
                 </a>
             </div>
 
-            <!-- Stats Grid with counter animation -->
+            <!-- Stats Grid -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="glass-card p-6 rounded-xl hover-lift scroll-fade">
                     <div class="text-4xl font-bold gradient-text mb-2" data-count="1" data-suffix="B+" data-prefix="$">$0</div>
@@ -330,37 +283,34 @@
         </div>
     </section>
 
-    <!-- Companies Section -->
+    <!-- Companies Section with Logos -->
     <section class="py-16 px-4 border-t border-gray-800">
         <div class="max-w-6xl mx-auto">
             <p class="text-center text-gray-500 text-sm mb-8 uppercase tracking-wider scroll-fade">Experience With</p>
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <!-- Goldsmith & Co -->
                 <div class="glass-card p-8 rounded-xl hover-lift hover-glow scroll-fade">
-                    <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-building text-white text-xl"></i>
+                    <div class="company-logo-wrap">
+                        <img src="goldsmith-logo.webp" alt="Goldsmith & Co" class="h-10 brightness-0 invert">
                     </div>
-                    <h3 class="text-xl font-bold mb-1">Goldsmith & Co</h3>
                     <p class="text-sm text-gray-400 mb-1">Software Engineer</p>
                     <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Current</span>
                 </div>
 
                 <!-- CLEAR -->
                 <div class="glass-card p-8 rounded-xl hover-lift hover-glow scroll-fade">
-                    <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-shield-alt text-white text-xl"></i>
+                    <div class="company-logo-wrap">
+                        <img src="clear_logo.png" alt="CLEAR" class="h-10">
                     </div>
-                    <h3 class="text-xl font-bold mb-1">CLEAR</h3>
                     <p class="text-sm text-gray-400 mb-1">Data Analyst</p>
                     <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">Previous</span>
                 </div>
 
                 <!-- Estee Lauder -->
                 <div class="glass-card p-8 rounded-xl hover-lift hover-glow scroll-fade">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mb-4">
-                        <i class="fas fa-flask text-white text-xl"></i>
+                    <div class="company-logo-wrap">
+                        <img src="estee-lauder-logo.png" alt="Estee Lauder" class="h-10 brightness-0 invert">
                     </div>
-                    <h3 class="text-xl font-bold mb-1">Estee Lauder</h3>
                     <p class="text-sm text-gray-400 mb-1">Software Dev Intern</p>
                     <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">2022</span>
                 </div>
@@ -373,76 +323,49 @@
         <div class="max-w-6xl mx-auto">
             <h2 class="text-4xl font-bold mb-4 text-center scroll-fade">Technical Skills</h2>
             <p class="text-gray-400 text-center mb-12 scroll-fade">Full-stack engineering, data science, and pure mathematics</p>
-
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <!-- Orbit visualization -->
                 <div class="orbit-container mx-auto">
-                    <!-- Center node -->
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center z-10 shadow-lg shadow-blue-500/30">
                         <span class="text-white font-bold text-lg">MM</span>
                     </div>
-                    <!-- Ring 1 -->
                     <div class="orbit-ring orbit-ring-1">
-                        <div class="orbit-icon" style="top: -20px; left: 50%; margin-left: -20px;"><i class="fab fa-react text-cyan-400"></i></div>
-                        <div class="orbit-icon" style="bottom: -20px; left: 50%; margin-left: -20px;"><i class="fab fa-python text-yellow-400"></i></div>
-                        <div class="orbit-icon" style="top: 50%; left: -20px; margin-top: -20px;"><i class="fab fa-js-square text-yellow-300"></i></div>
-                        <div class="orbit-icon" style="top: 50%; right: -20px; margin-top: -20px;"><i class="fas fa-database text-purple-400"></i></div>
+                        <div class="orbit-icon" style="top:-20px;left:50%;margin-left:-20px;"><i class="fab fa-react text-cyan-400"></i></div>
+                        <div class="orbit-icon" style="bottom:-20px;left:50%;margin-left:-20px;"><i class="fab fa-python text-yellow-400"></i></div>
+                        <div class="orbit-icon" style="top:50%;left:-20px;margin-top:-20px;"><i class="fab fa-js-square text-yellow-300"></i></div>
+                        <div class="orbit-icon" style="top:50%;right:-20px;margin-top:-20px;"><i class="fas fa-database text-purple-400"></i></div>
                     </div>
-                    <!-- Ring 2 -->
                     <div class="orbit-ring orbit-ring-2">
-                        <div class="orbit-icon" style="top: -20px; left: 50%; margin-left: -20px;"><i class="fab fa-node-js text-green-400"></i></div>
-                        <div class="orbit-icon" style="bottom: -20px; left: 50%; margin-left: -20px;"><i class="fas fa-chart-line text-pink-400"></i></div>
-                        <div class="orbit-icon" style="top: 50%; left: -20px; margin-top: -20px;"><i class="fas fa-brain text-purple-300"></i></div>
-                        <div class="orbit-icon" style="top: 50%; right: -20px; margin-top: -20px;"><i class="fas fa-square-root-alt text-blue-300"></i></div>
-                        <div class="orbit-icon" style="top: 15%; left: 5%; margin-top: -20px;"><i class="fas fa-code text-green-300"></i></div>
-                        <div class="orbit-icon" style="bottom: 15%; right: 5%; margin-top: -20px;"><i class="fas fa-snowflake text-cyan-300"></i></div>
+                        <div class="orbit-icon" style="top:-20px;left:50%;margin-left:-20px;"><i class="fab fa-node-js text-green-400"></i></div>
+                        <div class="orbit-icon" style="bottom:-20px;left:50%;margin-left:-20px;"><i class="fas fa-chart-line text-pink-400"></i></div>
+                        <div class="orbit-icon" style="top:50%;left:-20px;margin-top:-20px;"><i class="fas fa-brain text-purple-300"></i></div>
+                        <div class="orbit-icon" style="top:50%;right:-20px;margin-top:-20px;"><i class="fas fa-square-root-alt text-blue-300"></i></div>
+                        <div class="orbit-icon" style="top:15%;left:5%;"><i class="fas fa-code text-green-300"></i></div>
+                        <div class="orbit-icon" style="bottom:15%;right:5%;"><i class="fas fa-snowflake text-cyan-300"></i></div>
                     </div>
                 </div>
-
-                <!-- Skills list -->
                 <div class="grid grid-cols-1 gap-4">
                     <div class="glass-card p-5 rounded-xl hover-lift scroll-fade">
                         <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-laptop-code text-blue-400"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold">Frontend</h3>
-                                <p class="text-sm text-gray-400">React, TypeScript, Tailwind, HTML/CSS</p>
-                            </div>
+                            <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-laptop-code text-blue-400"></i></div>
+                            <div><h3 class="font-bold">Frontend</h3><p class="text-sm text-gray-400">React, TypeScript, Tailwind, HTML/CSS</p></div>
                         </div>
                     </div>
                     <div class="glass-card p-5 rounded-xl hover-lift scroll-fade">
                         <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-server text-purple-400"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold">Backend</h3>
-                                <p class="text-sm text-gray-400">Node.js, Python, Flask, PostgreSQL, REST APIs, C++</p>
-                            </div>
+                            <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-server text-purple-400"></i></div>
+                            <div><h3 class="font-bold">Backend</h3><p class="text-sm text-gray-400">Node.js, Python, Flask, PostgreSQL, REST APIs, C++</p></div>
                         </div>
                     </div>
                     <div class="glass-card p-5 rounded-xl hover-lift scroll-fade">
                         <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-database text-pink-400"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold">Data & Analytics</h3>
-                                <p class="text-sm text-gray-400">SQL, Snowflake, LookML, Power BI, Looker, Pandas</p>
-                            </div>
+                            <div class="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-database text-pink-400"></i></div>
+                            <div><h3 class="font-bold">Data & Analytics</h3><p class="text-sm text-gray-400">SQL, Snowflake, LookML, Power BI, Looker, Pandas</p></div>
                         </div>
                     </div>
                     <div class="glass-card p-5 rounded-xl hover-lift scroll-fade">
                         <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
-                                <i class="fas fa-square-root-alt text-green-400"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold">Mathematics</h3>
-                                <p class="text-sm text-gray-400">Topology, Stochastic Calculus, Graph Theory, Linear Algebra</p>
-                            </div>
+                            <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-square-root-alt text-green-400"></i></div>
+                            <div><h3 class="font-bold">Mathematics</h3><p class="text-sm text-gray-400">Topology, Stochastic Calculus, Graph Theory, Linear Algebra</p></div>
                         </div>
                     </div>
                 </div>
@@ -450,27 +373,41 @@
         </div>
     </section>
 
-    <!-- Math + Code Section -->
+    <!-- Math + Code Section with Live Demos -->
     <section class="py-16 px-4 border-t border-gray-800 scroll-fade">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-4xl font-bold mb-4 text-center scroll-fade">Math + Code</h2>
-            <p class="text-gray-400 text-center mb-12 scroll-fade">Where pure mathematics meets software engineering</p>
+            <p class="text-gray-400 text-center mb-12 scroll-fade">Where pure mathematics meets software engineering &mdash; live demos</p>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass-card p-8 rounded-xl hover-lift hover-glow scroll-fade text-center">
-                    <div class="math-formula text-2xl mb-4">&nabla; &times; F = 0</div>
-                    <h3 class="text-lg font-bold mb-2">Topology</h3>
-                    <p class="text-sm text-gray-400">Persistent homology and Betti numbers applied to data clustering and shape analysis</p>
+                <!-- Monte Carlo Simulation - Live Canvas -->
+                <div class="glass-card rounded-xl overflow-hidden hover-glow scroll-fade">
+                    <canvas id="monte-carlo-canvas" class="w-full" height="200" style="display:block;"></canvas>
+                    <div class="p-6">
+                        <div class="font-mono-code text-purple-400 text-sm mb-2">dS = &mu;Sdt + &sigma;SdW</div>
+                        <h3 class="text-lg font-bold mb-2">Monte Carlo Simulation</h3>
+                        <p class="text-sm text-gray-400">Live geometric Brownian motion paths for option pricing. Each line is a simulated asset price path.</p>
+                    </div>
                 </div>
-                <div class="glass-card p-8 rounded-xl hover-lift hover-glow scroll-fade text-center">
-                    <div class="math-formula text-2xl mb-4">dS = &mu;S dt + &sigma;S dW</div>
-                    <h3 class="text-lg font-bold mb-2">Stochastic Calculus</h3>
-                    <p class="text-sm text-gray-400">Geometric Brownian motion models for derivative pricing and risk analysis</p>
+
+                <!-- Graph Network - Live Canvas -->
+                <div class="glass-card rounded-xl overflow-hidden hover-glow scroll-fade">
+                    <canvas id="graph-canvas" class="w-full" height="200" style="display:block;"></canvas>
+                    <div class="p-6">
+                        <div class="font-mono-code text-blue-400 text-sm mb-2">&lambda;v = Av</div>
+                        <h3 class="text-lg font-bold mb-2">Spectral Graph Theory</h3>
+                        <p class="text-sm text-gray-400">Interactive force-directed network graph with community detection via eigenvalue clustering.</p>
+                    </div>
                 </div>
-                <div class="glass-card p-8 rounded-xl hover-lift hover-glow scroll-fade text-center">
-                    <div class="math-formula text-2xl mb-4">&lambda;v = Av</div>
-                    <h3 class="text-lg font-bold mb-2">Spectral Theory</h3>
-                    <p class="text-sm text-gray-400">Eigenvalue decomposition of adjacency matrices for community detection in graphs</p>
+
+                <!-- Topology - Live Canvas -->
+                <div class="glass-card rounded-xl overflow-hidden hover-glow scroll-fade">
+                    <canvas id="topology-canvas" class="w-full" height="200" style="display:block;"></canvas>
+                    <div class="p-6">
+                        <div class="font-mono-code text-pink-400 text-sm mb-2">H<sub>n</sub>(X) &cong; ker &part;<sub>n</sub> / im &part;<sub>n+1</sub></div>
+                        <h3 class="text-lg font-bold mb-2">Persistent Homology</h3>
+                        <p class="text-sm text-gray-400">Animated simplicial complex construction showing topological features at varying scales.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -494,23 +431,35 @@
                         <div class="flex flex-wrap items-center gap-3 mb-6">
                             <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">AI</span>
                             <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium">Full Stack</span>
-                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">Featured</span>
+                            <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-medium">Social Impact</span>
                         </div>
-                        <h3 class="text-3xl font-bold mb-4">Intelligent AI Assistant Platform</h3>
-                        <p class="text-gray-400 mb-8 max-w-2xl text-lg">
-                            A fullstack AI-powered platform featuring advanced natural language processing,
-                            intelligent conversation management, and seamless user experiences.
+                        <h3 class="text-3xl font-bold mb-4">AI-Powered Knowledge & Learning Platform</h3>
+                        <p class="text-gray-300 mb-3 max-w-3xl text-lg">
+                            Athena AI democratizes access to education by providing an intelligent tutoring system
+                            that helps learners master complex STEM topics through personalized, conversational AI.
+                        </p>
+                        <p class="text-gray-400 mb-8 max-w-3xl">
+                            Named after the Greek goddess of wisdom, Athena bridges the gap between
+                            quality education and accessibility &mdash; making advanced knowledge available to anyone, anywhere.
+                            Built with a fullstack architecture combining NLP, real-time conversation management,
+                            and adaptive learning algorithms.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-8">
                             <span class="px-3 py-1 bg-white/10 rounded-full text-sm">Python</span>
                             <span class="px-3 py-1 bg-white/10 rounded-full text-sm">React</span>
                             <span class="px-3 py-1 bg-white/10 rounded-full text-sm">NLP</span>
                             <span class="px-3 py-1 bg-white/10 rounded-full text-sm">TypeScript</span>
-                            <span class="px-3 py-1 bg-white/10 rounded-full text-sm">APIs</span>
+                            <span class="px-3 py-1 bg-white/10 rounded-full text-sm">REST APIs</span>
+                            <span class="px-3 py-1 bg-white/10 rounded-full text-sm">Adaptive Learning</span>
                         </div>
-                        <a href="https://github.com/maisymylod/athena-ai" target="_blank" class="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-200 transition font-medium">
-                            <i class="fab fa-github"></i> View on GitHub
-                        </a>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://github.com/maisymylod/athena-ai" target="_blank" class="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-200 transition font-medium">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                            <a href="projects.html" class="inline-flex items-center gap-2 glass-card px-6 py-3 rounded-lg hover:bg-white/10 transition font-medium">
+                                Learn More &rarr;
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -525,7 +474,6 @@
                 <a href="projects.html" class="text-blue-400 hover:underline">View all projects &rarr;</a>
             </div>
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Goldsmith Portal -->
                 <div class="glass-card p-8 rounded-xl hover-lift scroll-fade">
                     <div class="flex items-start justify-between mb-4">
                         <div>
@@ -544,8 +492,6 @@
                         <span class="px-3 py-1 bg-white/10 rounded-full text-sm">PostgreSQL</span>
                     </div>
                 </div>
-
-                <!-- CLEAR Project -->
                 <div class="glass-card p-8 rounded-xl hover-lift scroll-fade">
                     <div class="flex items-start justify-between mb-4">
                         <div>
@@ -572,25 +518,17 @@
     <section class="py-20 px-4 scroll-fade">
         <div class="max-w-4xl mx-auto text-center">
             <div class="glass-card p-12 rounded-2xl hover-glow">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    Let's Build Something Together
-                </h2>
-                <p class="text-xl text-gray-400 mb-10">
-                    Fullstack engineering, data infrastructure, and mathematical modeling.
-                </p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build Something Together</h2>
+                <p class="text-xl text-gray-400 mb-10">Fullstack engineering, data infrastructure, and mathematical modeling.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="contact.html" class="bg-white text-black px-8 py-4 rounded-lg hover:bg-gray-200 transition font-medium">
-                        Contact Me
-                    </a>
-                    <a href="dashboard.html" class="bg-white/10 px-8 py-4 rounded-lg hover:bg-white/20 transition font-medium">
-                        View Analytics Dashboard
-                    </a>
+                    <a href="contact.html" class="bg-white text-black px-8 py-4 rounded-lg hover:bg-gray-200 transition font-medium">Contact Me</a>
+                    <a href="dashboard.html" class="bg-white/10 px-8 py-4 rounded-lg hover:bg-white/20 transition font-medium">View Analytics Dashboard</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Floating Contact Button (Mobile) -->
+    <!-- Floating Contact Button -->
     <a href="contact.html" class="fixed bottom-6 right-6 md:hidden z-50 bg-gradient-to-r from-blue-600 to-purple-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
         <i class="fas fa-envelope text-xl"></i>
     </a>
@@ -598,19 +536,11 @@
     <!-- Footer -->
     <footer class="border-t border-gray-800 py-8 px-4">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <p class="text-sm text-gray-500">&copy; 2026 Maisy Mylod</p>
-            </div>
+            <div class="mb-4 md:mb-0"><p class="text-sm text-gray-500">&copy; 2026 Maisy Mylod</p></div>
             <div class="flex space-x-6">
-                <a href="https://github.com/maisymylod" target="_blank" class="text-gray-400 hover:text-white transition">
-                    <i class="fab fa-github text-xl"></i>
-                </a>
-                <a href="https://linkedin.com/in/maisymylod" target="_blank" class="text-gray-400 hover:text-white transition">
-                    <i class="fab fa-linkedin text-xl"></i>
-                </a>
-                <a href="mailto:maisymylod@gmail.com" class="text-gray-400 hover:text-white transition">
-                    <i class="fas fa-envelope text-xl"></i>
-                </a>
+                <a href="https://github.com/maisymylod" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-github text-xl"></i></a>
+                <a href="https://linkedin.com/in/maisymylod" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="mailto:maisymylod@gmail.com" class="text-gray-400 hover:text-white transition"><i class="fas fa-envelope text-xl"></i></a>
             </div>
         </div>
     </footer>
@@ -619,39 +549,19 @@
         // Mobile menu
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
         // Typing animation
         const titles = ['Software Engineer', 'Mathematician', 'Data Scientist'];
-        let titleIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+        let titleIndex = 0, charIndex = 0, isDeleting = false;
         const typingEl = document.getElementById('typing-text');
-
         function typeText() {
             const current = titles[titleIndex];
-
-            if (isDeleting) {
-                typingEl.textContent = current.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingEl.textContent = current.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
+            if (isDeleting) { typingEl.textContent = current.substring(0, charIndex - 1); charIndex--; }
+            else { typingEl.textContent = current.substring(0, charIndex + 1); charIndex++; }
             let speed = isDeleting ? 40 : 80;
-
-            if (!isDeleting && charIndex === current.length) {
-                speed = 2000; // Pause at end
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                titleIndex = (titleIndex + 1) % titles.length;
-                speed = 400;
-            }
-
+            if (!isDeleting && charIndex === current.length) { speed = 2000; isDeleting = true; }
+            else if (isDeleting && charIndex === 0) { isDeleting = false; titleIndex = (titleIndex + 1) % titles.length; speed = 400; }
             setTimeout(typeText, speed);
         }
         typeText();
@@ -660,8 +570,7 @@
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        let mouseX = 0, mouseY = 0;
-
+        let mouseX = -1000, mouseY = -1000;
         function resizeCanvas() {
             const hero = canvas.parentElement;
             canvas.width = hero.offsetWidth;
@@ -671,9 +580,7 @@
         window.addEventListener('resize', resizeCanvas);
 
         class Particle {
-            constructor() {
-                this.reset();
-            }
+            constructor() { this.reset(); }
             reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
@@ -681,7 +588,6 @@
                 this.vy = (Math.random() - 0.5) * 0.5;
                 this.size = Math.random() * 3 + 1;
                 this.opacity = Math.random() * 0.5 + 0.1;
-                // Shape: 0=circle, 1=triangle, 2=hexagon
                 this.shape = Math.floor(Math.random() * 3);
             }
             draw() {
@@ -689,77 +595,33 @@
                 ctx.strokeStyle = 'rgba(139, 92, 246, 0.6)';
                 ctx.fillStyle = 'rgba(59, 130, 246, 0.3)';
                 ctx.lineWidth = 0.5;
-
-                if (this.shape === 0) {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.stroke();
-                } else if (this.shape === 1) {
-                    ctx.beginPath();
-                    for (let i = 0; i < 3; i++) {
-                        const angle = (i * 2 * Math.PI / 3) - Math.PI / 2;
-                        const px = this.x + Math.cos(angle) * this.size * 1.5;
-                        const py = this.y + Math.sin(angle) * this.size * 1.5;
-                        i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-                    }
-                    ctx.closePath();
-                    ctx.fill();
-                    ctx.stroke();
-                } else {
-                    ctx.beginPath();
-                    for (let i = 0; i < 6; i++) {
-                        const angle = (i * Math.PI / 3);
-                        const px = this.x + Math.cos(angle) * this.size * 1.2;
-                        const py = this.y + Math.sin(angle) * this.size * 1.2;
-                        i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-                    }
-                    ctx.closePath();
-                    ctx.fill();
-                    ctx.stroke();
-                }
+                if (this.shape === 0) { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
+                else if (this.shape === 1) { ctx.beginPath(); for (let i = 0; i < 3; i++) { const a = (i * 2 * Math.PI / 3) - Math.PI / 2; const px = this.x + Math.cos(a) * this.size * 1.5; const py = this.y + Math.sin(a) * this.size * 1.5; i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py); } ctx.closePath(); ctx.fill(); ctx.stroke(); }
+                else { ctx.beginPath(); for (let i = 0; i < 6; i++) { const a = i * Math.PI / 3; const px = this.x + Math.cos(a) * this.size * 1.2; const py = this.y + Math.sin(a) * this.size * 1.2; i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py); } ctx.closePath(); ctx.fill(); ctx.stroke(); }
                 ctx.globalAlpha = 1;
             }
             update() {
-                this.x += this.vx;
-                this.y += this.vy;
+                this.x += this.vx; this.y += this.vy;
                 if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
                 if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
             }
         }
-
-        // Create particles
         const particleCount = Math.min(60, Math.floor(canvas.width * canvas.height / 15000));
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-
+        for (let i = 0; i < particleCount; i++) particles.push(new Particle());
         canvas.parentElement.addEventListener('mousemove', (e) => {
             const rect = canvas.getBoundingClientRect();
-            mouseX = e.clientX - rect.left;
-            mouseY = e.clientY - rect.top;
+            mouseX = e.clientX - rect.left; mouseY = e.clientY - rect.top;
         });
-
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-
-            // Draw connections on hover proximity
+            particles.forEach(p => { p.update(); p.draw(); });
             for (let i = 0; i < particles.length; i++) {
-                const dx = particles[i].x - mouseX;
-                const dy = particles[i].y - mouseY;
+                const dx = particles[i].x - mouseX, dy = particles[i].y - mouseY;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-
                 if (dist < 150) {
                     for (let j = i + 1; j < particles.length; j++) {
-                        const dx2 = particles[i].x - particles[j].x;
-                        const dy2 = particles[i].y - particles[j].y;
+                        const dx2 = particles[i].x - particles[j].x, dy2 = particles[i].y - particles[j].y;
                         const dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
-
                         if (dist2 < 120) {
                             ctx.beginPath();
                             ctx.strokeStyle = `rgba(139, 92, 246, ${0.2 * (1 - dist2 / 120)})`;
@@ -771,21 +633,283 @@
                     }
                 }
             }
-
             requestAnimationFrame(animateParticles);
         }
         animateParticles();
 
+        // ========== LIVE MATH DEMOS ==========
+
+        // Monte Carlo GBM Simulation
+        (function() {
+            const mc = document.getElementById('monte-carlo-canvas');
+            if (!mc) return;
+            const mctx = mc.getContext('2d');
+            mc.width = mc.offsetWidth;
+            mc.height = 200;
+            const W = mc.width, H = mc.height;
+            const paths = [];
+            const numPaths = 20, steps = 100;
+            const S0 = 100, mu = 0.08, sigma = 0.3, dt = 1 / steps;
+
+            for (let p = 0; p < numPaths; p++) {
+                const path = [S0];
+                for (let t = 1; t <= steps; t++) {
+                    const z = (Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() - 3) / Math.sqrt(3);
+                    const prev = path[t - 1];
+                    path.push(prev * Math.exp((mu - 0.5 * sigma * sigma) * dt + sigma * Math.sqrt(dt) * z));
+                }
+                paths.push(path);
+            }
+
+            let allVals = paths.flat();
+            let minV = Math.min(...allVals), maxV = Math.max(...allVals);
+            const colors = ['#8b5cf6','#a78bfa','#7c3aed','#6d28d9','#c084fc','#ddd6fe','#5b21b6','#9333ea','#a855f7','#7e22ce'];
+            let frame = 0;
+
+            function drawMC() {
+                mctx.clearRect(0, 0, W, H);
+                mctx.fillStyle = 'rgba(0,0,0,0.9)';
+                mctx.fillRect(0, 0, W, H);
+                const showSteps = Math.min(frame, steps);
+
+                for (let p = 0; p < numPaths; p++) {
+                    mctx.beginPath();
+                    mctx.strokeStyle = colors[p % colors.length];
+                    mctx.globalAlpha = 0.6;
+                    mctx.lineWidth = 1;
+                    for (let t = 0; t <= showSteps; t++) {
+                        const x = (t / steps) * W;
+                        const y = H - ((paths[p][t] - minV) / (maxV - minV)) * (H - 20) - 10;
+                        t === 0 ? mctx.moveTo(x, y) : mctx.lineTo(x, y);
+                    }
+                    mctx.stroke();
+                }
+                mctx.globalAlpha = 1;
+
+                if (frame <= steps + 30) { frame++; requestAnimationFrame(drawMC); }
+            }
+
+            const mcObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) { frame = 0; drawMC(); mcObserver.unobserve(mc); }
+            }, { threshold: 0.3 });
+            mcObserver.observe(mc);
+        })();
+
+        // Force-Directed Graph
+        (function() {
+            const gc = document.getElementById('graph-canvas');
+            if (!gc) return;
+            const gctx = gc.getContext('2d');
+            gc.width = gc.offsetWidth;
+            gc.height = 200;
+            const W = gc.width, H = gc.height;
+
+            const nodes = [];
+            const edges = [];
+            const numNodes = 18;
+            const communities = [
+                { color: '#3b82f6', count: 6 },
+                { color: '#ec4899', count: 6 },
+                { color: '#10b981', count: 6 }
+            ];
+
+            let idx = 0;
+            communities.forEach((c, ci) => {
+                const cx = W * (0.25 + ci * 0.25);
+                const cy = H / 2;
+                for (let i = 0; i < c.count; i++) {
+                    nodes.push({
+                        x: cx + (Math.random() - 0.5) * 80,
+                        y: cy + (Math.random() - 0.5) * 80,
+                        vx: 0, vy: 0,
+                        color: c.color,
+                        community: ci,
+                        r: 4 + Math.random() * 3
+                    });
+                    idx++;
+                }
+            });
+
+            // Intra-community edges (dense)
+            for (let i = 0; i < numNodes; i++) {
+                for (let j = i + 1; j < numNodes; j++) {
+                    if (nodes[i].community === nodes[j].community && Math.random() < 0.5) {
+                        edges.push([i, j]);
+                    } else if (nodes[i].community !== nodes[j].community && Math.random() < 0.05) {
+                        edges.push([i, j]);
+                    }
+                }
+            }
+
+            function simGraph() {
+                // Force simulation
+                for (let iter = 0; iter < 3; iter++) {
+                    // Repulsion
+                    for (let i = 0; i < numNodes; i++) {
+                        for (let j = i + 1; j < numNodes; j++) {
+                            let dx = nodes[j].x - nodes[i].x, dy = nodes[j].y - nodes[i].y;
+                            let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+                            let force = 200 / (dist * dist);
+                            nodes[i].vx -= (dx / dist) * force;
+                            nodes[i].vy -= (dy / dist) * force;
+                            nodes[j].vx += (dx / dist) * force;
+                            nodes[j].vy += (dy / dist) * force;
+                        }
+                    }
+                    // Attraction (edges)
+                    edges.forEach(([a, b]) => {
+                        let dx = nodes[b].x - nodes[a].x, dy = nodes[b].y - nodes[a].y;
+                        let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+                        let force = (dist - 40) * 0.01;
+                        nodes[a].vx += (dx / dist) * force;
+                        nodes[a].vy += (dy / dist) * force;
+                        nodes[b].vx -= (dx / dist) * force;
+                        nodes[b].vy -= (dy / dist) * force;
+                    });
+                    // Center gravity
+                    nodes.forEach(n => {
+                        n.vx += (W / 2 - n.x) * 0.001;
+                        n.vy += (H / 2 - n.y) * 0.001;
+                        n.vx *= 0.9; n.vy *= 0.9;
+                        n.x += n.vx; n.y += n.vy;
+                        n.x = Math.max(10, Math.min(W - 10, n.x));
+                        n.y = Math.max(10, Math.min(H - 10, n.y));
+                    });
+                }
+
+                gctx.clearRect(0, 0, W, H);
+                gctx.fillStyle = 'rgba(0,0,0,0.9)';
+                gctx.fillRect(0, 0, W, H);
+
+                // Edges
+                edges.forEach(([a, b]) => {
+                    gctx.beginPath();
+                    gctx.strokeStyle = 'rgba(255,255,255,0.1)';
+                    gctx.lineWidth = 0.5;
+                    gctx.moveTo(nodes[a].x, nodes[a].y);
+                    gctx.lineTo(nodes[b].x, nodes[b].y);
+                    gctx.stroke();
+                });
+
+                // Nodes
+                nodes.forEach(n => {
+                    gctx.beginPath();
+                    gctx.fillStyle = n.color;
+                    gctx.globalAlpha = 0.8;
+                    gctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+                    gctx.fill();
+                    gctx.globalAlpha = 0.3;
+                    gctx.arc(n.x, n.y, n.r + 4, 0, Math.PI * 2);
+                    gctx.fill();
+                    gctx.globalAlpha = 1;
+                });
+
+                requestAnimationFrame(simGraph);
+            }
+
+            const gObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) { simGraph(); gObserver.unobserve(gc); }
+            }, { threshold: 0.3 });
+            gObserver.observe(gc);
+        })();
+
+        // Persistent Homology / Simplicial Complex
+        (function() {
+            const tc = document.getElementById('topology-canvas');
+            if (!tc) return;
+            const tctx = tc.getContext('2d');
+            tc.width = tc.offsetWidth;
+            tc.height = 200;
+            const W = tc.width, H = tc.height;
+
+            const points = [];
+            for (let i = 0; i < 24; i++) {
+                // Two clusters + some noise
+                if (i < 10) {
+                    const angle = (i / 10) * Math.PI * 2;
+                    points.push({ x: W * 0.35 + Math.cos(angle) * 50 + (Math.random() - 0.5) * 20, y: H * 0.5 + Math.sin(angle) * 50 + (Math.random() - 0.5) * 20 });
+                } else if (i < 20) {
+                    const angle = ((i - 10) / 10) * Math.PI * 2;
+                    points.push({ x: W * 0.65 + Math.cos(angle) * 40 + (Math.random() - 0.5) * 20, y: H * 0.5 + Math.sin(angle) * 40 + (Math.random() - 0.5) * 20 });
+                } else {
+                    points.push({ x: W * 0.5 + (Math.random() - 0.5) * W * 0.6, y: H * 0.5 + (Math.random() - 0.5) * H * 0.6 });
+                }
+            }
+
+            let radius = 0;
+            const maxRadius = 80;
+
+            function drawTopology() {
+                tctx.clearRect(0, 0, W, H);
+                tctx.fillStyle = 'rgba(0,0,0,0.9)';
+                tctx.fillRect(0, 0, W, H);
+
+                const r = radius;
+
+                // Draw simplices (triangles where all 3 are within radius)
+                for (let i = 0; i < points.length; i++) {
+                    for (let j = i + 1; j < points.length; j++) {
+                        for (let k = j + 1; k < points.length; k++) {
+                            const d1 = Math.hypot(points[i].x - points[j].x, points[i].y - points[j].y);
+                            const d2 = Math.hypot(points[j].x - points[k].x, points[j].y - points[k].y);
+                            const d3 = Math.hypot(points[i].x - points[k].x, points[i].y - points[k].y);
+                            if (d1 < r && d2 < r && d3 < r) {
+                                tctx.beginPath();
+                                tctx.fillStyle = 'rgba(236, 72, 153, 0.08)';
+                                tctx.moveTo(points[i].x, points[i].y);
+                                tctx.lineTo(points[j].x, points[j].y);
+                                tctx.lineTo(points[k].x, points[k].y);
+                                tctx.closePath();
+                                tctx.fill();
+                            }
+                        }
+                    }
+                }
+
+                // Edges
+                for (let i = 0; i < points.length; i++) {
+                    for (let j = i + 1; j < points.length; j++) {
+                        const d = Math.hypot(points[i].x - points[j].x, points[i].y - points[j].y);
+                        if (d < r) {
+                            tctx.beginPath();
+                            tctx.strokeStyle = 'rgba(236, 72, 153, 0.4)';
+                            tctx.lineWidth = 1;
+                            tctx.moveTo(points[i].x, points[i].y);
+                            tctx.lineTo(points[j].x, points[j].y);
+                            tctx.stroke();
+                        }
+                    }
+                }
+
+                // Points
+                points.forEach(p => {
+                    tctx.beginPath();
+                    tctx.fillStyle = '#ec4899';
+                    tctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                    tctx.fill();
+                });
+
+                // Radius indicator
+                tctx.fillStyle = 'rgba(255,255,255,0.4)';
+                tctx.font = '11px JetBrains Mono, monospace';
+                tctx.fillText(`r = ${r.toFixed(0)}`, 10, 18);
+
+                radius += 0.3;
+                if (radius > maxRadius) radius = 0;
+                requestAnimationFrame(drawTopology);
+            }
+
+            const tObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) { drawTopology(); tObserver.unobserve(tc); }
+            }, { threshold: 0.3 });
+            tObserver.observe(tc);
+        })();
+
         // Scroll-triggered animations
         const scrollElements = document.querySelectorAll('.scroll-fade');
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
         scrollElements.forEach(el => observer.observe(el));
 
         // Counter animation
@@ -798,21 +922,15 @@
                     const prefix = entry.target.dataset.prefix || '';
                     const suffix = entry.target.dataset.suffix || '';
                     let current = 0;
-                    const duration = 2000;
-                    const step = Math.max(1, Math.floor(target / (duration / 30)));
-
+                    const step = Math.max(1, Math.floor(target / 60));
                     const timer = setInterval(() => {
                         current += step;
-                        if (current >= target) {
-                            current = target;
-                            clearInterval(timer);
-                        }
+                        if (current >= target) { current = target; clearInterval(timer); }
                         entry.target.textContent = prefix + current + suffix;
                     }, 30);
                 }
             });
         }, { threshold: 0.5 });
-
         counterElements.forEach(el => counterObserver.observe(el));
     </script>
 </body>
