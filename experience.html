@@ -7,55 +7,100 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
         body {
             font-family: 'Inter', sans-serif;
             background: #000000;
+            overflow-x: hidden;
+            animation: pageFadeIn 0.6s ease-out;
         }
-        
+        @keyframes pageFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .gradient-text {
             background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .glass-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        .stock-up { color: #10b981; }
-        .stock-down { color: #ef4444; }
-        
+
         .timeline-line {
             background: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+        }
+
+        /* Scroll animations */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Skill marquee */
+        .marquee-container { overflow: hidden; white-space: nowrap; }
+        .marquee-track {
+            display: inline-flex;
+            animation: marqueeScroll 40s linear infinite;
+        }
+        .marquee-track:hover { animation-play-state: paused; }
+        @keyframes marqueeScroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Hover micro-interactions */
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
         }
     </style>
 </head>
 <body class="bg-black text-white">
-    <!-- Stock Ticker Bar -->
+    <!-- Skill Marquee Bar -->
     <div class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 py-2">
-            <div class="flex items-center justify-between text-sm">
-                <div class="flex items-center space-x-8">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-gray-400">CLEAR</span>
-                        <span class="font-mono font-bold" id="clear-price">--</span>
-                        <span class="text-xs" id="clear-change">--</span>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <span class="text-gray-400">EL</span>
-                        <span class="font-mono font-bold" id="el-price">--</span>
-                        <span class="text-xs" id="el-change">--</span>
-                    </div>
-                </div>
-                <div class="text-gray-500 text-xs hidden md:block">
-                    <i class="fas fa-clock mr-1"></i>
-                    <span id="last-update">Loading...</span>
-                </div>
+        <div class="marquee-container py-2">
+            <div class="marquee-track">
+                <span class="inline-flex items-center space-x-8 px-4 text-sm text-gray-400">
+                    <span class="flex items-center gap-2"><i class="fab fa-react text-cyan-400"></i> React</span>
+                    <span class="flex items-center gap-2"><i class="fab fa-js-square text-yellow-400"></i> TypeScript</span>
+                    <span class="flex items-center gap-2"><i class="fab fa-python text-blue-400"></i> Python</span>
+                    <span class="flex items-center gap-2"><i class="fab fa-node-js text-green-400"></i> Node.js</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-database text-purple-400"></i> PostgreSQL</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-snowflake text-cyan-300"></i> Snowflake</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-chart-bar text-pink-400"></i> Power BI</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-brain text-purple-400"></i> Machine Learning</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-square-root-alt text-blue-300"></i> Pure Mathematics</span>
+                    <span class="flex items-center gap-2"><i class="fab fa-git-alt text-orange-400"></i> Git</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-server text-gray-300"></i> REST APIs</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-code text-green-300"></i> C++</span>
+                    <span class="px-4"></span>
+                </span>
+                <span class="inline-flex items-center space-x-8 px-4 text-sm text-gray-400">
+                    <span class="flex items-center gap-2"><i class="fab fa-react text-cyan-400"></i> React</span>
+                    <span class="flex items-center gap-2"><i class="fab fa-js-square text-yellow-400"></i> TypeScript</span>
+                    <span class="flex items-center gap-2"><i class="fab fa-python text-blue-400"></i> Python</span>
+                    <span class="flex items-center gap-2"><i class="fab fa-node-js text-green-400"></i> Node.js</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-database text-purple-400"></i> PostgreSQL</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-snowflake text-cyan-300"></i> Snowflake</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-chart-bar text-pink-400"></i> Power BI</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-brain text-purple-400"></i> Machine Learning</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-square-root-alt text-blue-300"></i> Pure Mathematics</span>
+                    <span class="flex items-center gap-2"><i class="fab fa-git-alt text-orange-400"></i> Git</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-server text-gray-300"></i> REST APIs</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-code text-green-300"></i> C++</span>
+                    <span class="px-4"></span>
+                </span>
             </div>
         </div>
     </div>
@@ -95,7 +140,7 @@
         <div class="max-w-4xl mx-auto">
             <h1 class="text-5xl font-bold mb-4">Experience</h1>
             <p class="text-xl text-gray-400">
-                Building data systems and client applications at high-growth companies.
+                Building fullstack portals, data systems, and client applications at high-growth companies.
             </p>
         </div>
     </section>
@@ -103,25 +148,67 @@
     <!-- Timeline -->
     <section class="py-16 px-4">
         <div class="max-w-4xl mx-auto">
-            <!-- CLEAR -->
-            <div class="relative pl-8 pb-12 border-l-2 timeline-line">
-                <div class="absolute -left-3 top-0 w-5 h-5 bg-blue-500 rounded-full ring-4 ring-black"></div>
-                <div class="glass-card p-8 rounded-xl">
+
+            <!-- Goldsmith & Co -->
+            <div class="relative pl-8 pb-12 border-l-2 timeline-line scroll-fade">
+                <div class="absolute -left-3 top-0 w-5 h-5 bg-amber-500 rounded-full ring-4 ring-black"></div>
+                <div class="glass-card p-8 rounded-xl hover-glow">
                     <div class="flex flex-wrap justify-between items-start mb-4">
                         <div>
-                            <h2 class="text-2xl font-bold mb-2">Data Analyst</h2>
-                            <p class="text-blue-400 font-medium text-lg mb-2">CLEAR (NYSE:YOU)</p>
-                            <div class="flex items-center space-x-2 text-sm">
-                                <span class="font-mono" id="clear-price-exp">--</span>
-                                <span id="clear-change-exp">--</span>
-                            </div>
+                            <h2 class="text-2xl font-bold mb-2">Software Engineer</h2>
+                            <p class="text-amber-400 font-medium text-lg">Goldsmith & Co</p>
                         </div>
                         <div class="text-right">
                             <p class="text-gray-400">New York, NY</p>
-                            <p class="text-sm text-gray-500">Jan 2025 - Present</p>
+                            <p class="text-sm text-gray-500">2025 - Present</p>
+                            <span class="inline-block mt-1 px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Current</span>
                         </div>
                     </div>
-                    
+
+                    <div class="space-y-3 text-gray-300">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                            <p>Building <strong class="text-white">fullstack client portal</strong> with React frontend, Node.js backend, and PostgreSQL data layer</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                            <p>Architecting frontend component systems and backend API services for scalable portal infrastructure</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                            <p>Implementing authentication, data visualization, and real-time client communication features</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-3"></i>
+                            <p>Collaborating across engineering and product teams to deliver user-facing portal experiences</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm">React</span>
+                        <span class="px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm">TypeScript</span>
+                        <span class="px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm">Node.js</span>
+                        <span class="px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm">PostgreSQL</span>
+                        <span class="px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm">REST APIs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLEAR -->
+            <div class="relative pl-8 pb-12 border-l-2 timeline-line scroll-fade">
+                <div class="absolute -left-3 top-0 w-5 h-5 bg-blue-500 rounded-full ring-4 ring-black"></div>
+                <div class="glass-card p-8 rounded-xl hover-glow">
+                    <div class="flex flex-wrap justify-between items-start mb-4">
+                        <div>
+                            <h2 class="text-2xl font-bold mb-2">Data Analyst</h2>
+                            <p class="text-blue-400 font-medium text-lg">CLEAR</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-gray-400">New York, NY</p>
+                            <p class="text-sm text-gray-500">Jan 2025 - Sep 2025</p>
+                        </div>
+                    </div>
+
                     <div class="space-y-3 text-gray-300">
                         <div class="flex items-start">
                             <i class="fas fa-check-circle text-blue-500 mt-1 mr-3"></i>
@@ -161,25 +248,21 @@
                 </div>
             </div>
 
-            <!-- Estée Lauder -->
-            <div class="relative pl-8 pb-12 border-l-2 timeline-line">
+            <!-- Estee Lauder -->
+            <div class="relative pl-8 pb-12 border-l-2 timeline-line scroll-fade">
                 <div class="absolute -left-3 top-0 w-5 h-5 bg-purple-500 rounded-full ring-4 ring-black"></div>
-                <div class="glass-card p-8 rounded-xl">
+                <div class="glass-card p-8 rounded-xl hover-glow">
                     <div class="flex flex-wrap justify-between items-start mb-4">
                         <div>
                             <h2 class="text-2xl font-bold mb-2">Software Development Intern</h2>
-                            <p class="text-purple-400 font-medium text-lg mb-2">Estée Lauder Companies (NYSE: EL)</p>
-                            <div class="flex items-center space-x-2 text-sm">
-                                <span class="font-mono" id="el-price-exp">--</span>
-                                <span id="el-change-exp">--</span>
-                            </div>
+                            <p class="text-purple-400 font-medium text-lg">Estee Lauder Companies</p>
                         </div>
                         <div class="text-right">
                             <p class="text-gray-400">New York, NY</p>
                             <p class="text-sm text-gray-500">Jun 2022 - Aug 2022</p>
                         </div>
                     </div>
-                    
+
                     <div class="space-y-3 text-gray-300">
                         <div class="flex items-start">
                             <i class="fas fa-check-circle text-purple-500 mt-1 mr-3"></i>
@@ -215,9 +298,9 @@
             </div>
 
             <!-- Production Assistant -->
-            <div class="relative pl-8 border-l-2 timeline-line">
+            <div class="relative pl-8 border-l-2 timeline-line scroll-fade">
                 <div class="absolute -left-3 top-0 w-5 h-5 bg-pink-500 rounded-full ring-4 ring-black"></div>
-                <div class="glass-card p-8 rounded-xl">
+                <div class="glass-card p-8 rounded-xl hover-glow">
                     <div class="flex flex-wrap justify-between items-start mb-4">
                         <div>
                             <h2 class="text-2xl font-bold mb-1">Production Assistant</h2>
@@ -228,7 +311,7 @@
                             <p class="text-sm text-gray-500">Jun 2021 - Aug 2021</p>
                         </div>
                     </div>
-                    
+
                     <div class="space-y-3 text-gray-300">
                         <div class="flex items-start">
                             <i class="fas fa-check-circle text-pink-500 mt-1 mr-3"></i>
@@ -249,10 +332,10 @@
     </section>
 
     <!-- Education -->
-    <section class="py-16 px-4 border-t border-gray-800">
+    <section class="py-16 px-4 border-t border-gray-800 scroll-fade">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl font-bold mb-8">Education</h2>
-            <div class="glass-card p-8 rounded-xl">
+            <div class="glass-card p-8 rounded-xl hover-glow">
                 <div class="flex flex-wrap justify-between items-start mb-4">
                     <div>
                         <h3 class="text-2xl font-bold mb-2">University of Michigan</h3>
@@ -281,67 +364,40 @@
     <footer class="border-t border-gray-800 py-8 px-4 mt-16">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
-                <p class="text-sm text-gray-500">© 2025 Maisy Mylod</p>
+                <p class="text-sm text-gray-500">&copy; 2026 Maisy Mylod</p>
             </div>
             <div class="flex space-x-6">
-                <a href="https://github.com/maisymylod" class="text-gray-400 hover:text-white transition">
+                <a href="https://github.com/maisymylod" target="_blank" class="text-gray-400 hover:text-white transition">
                     <i class="fab fa-github text-xl"></i>
                 </a>
-                <a href="/cdn-cgi/l/email-protection#660b070f151f0b1f0a090226010b070f0a4805090b" class="text-gray-400 hover:text-white transition">
+                <a href="https://linkedin.com/in/maisymylod" target="_blank" class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-linkedin text-xl"></i>
+                </a>
+                <a href="mailto:maisymylod@gmail.com" class="text-gray-400 hover:text-white transition">
                     <i class="fas fa-envelope text-xl"></i>
                 </a>
             </div>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
+        // Mobile menu
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Stock ticker
-        async function updateStockPrices() {
-            try {
-                const clearResponse = await fetch('https://query1.finance.yahoo.com/v8/finance/chart/YOU');
-                const clearData = await clearResponse.json();
-                const clearPrice = clearData.chart.result[0].meta.regularMarketPrice;
-                const clearChange = clearData.chart.result[0].meta.regularMarketChange;
-                const clearChangePercent = clearData.chart.result[0].meta.regularMarketChangePercent;
-                
-                const elResponse = await fetch('https://query1.finance.yahoo.com/v8/finance/chart/EL');
-                const elData = await elResponse.json();
-                const elPrice = elData.chart.result[0].meta.regularMarketPrice;
-                const elChange = elData.chart.result[0].meta.regularMarketChange;
-                const elChangePercent = elData.chart.result[0].meta.regularMarketChangePercent;
-                
-                updatePrice('clear', clearPrice, clearChange, clearChangePercent);
-                updatePrice('el', elPrice, elChange, elChangePercent);
-                
-                const now = new Date();
-                document.getElementById('last-update').textContent = now.toLocaleTimeString('en-US', { 
-                    hour: '2-digit', 
-                    minute: '2-digit'
-                });
-            } catch (error) {
-                updatePrice('clear', 23.45, 0.78, 3.44);
-                updatePrice('el', 87.23, -1.12, -1.27);
-                document.getElementById('last-update').textContent = 'Demo Mode';
-            }
-        }
-        
-        function updatePrice(symbol, price, change, changePercent) {
-            const isPositive = change >= 0;
-            const priceFormatted = `$${price.toFixed(2)}`;
-            const changeFormatted = `${isPositive ? '+' : ''}${change.toFixed(2)} (${isPositive ? '+' : ''}${changePercent.toFixed(2)}%)`;
-            const colorClass = isPositive ? 'stock-up' : 'stock-down';
-            const icon = isPositive ? '▲' : '▼';
-            
-            document.getElementById(`${symbol}-price`).textContent = priceFormatted;
-            document.getElementById(`${symbol}-change`).innerHTML = `${icon} ${changeFormatted}`;
-            document.getElementById(`${symbol}-change`).className = `text-xs ${colorClass}`;
-            
-            document.getElementById(`${symbol}-price-exp`).textContent = priceFormatted;
-            document.getElementById(`${symbol}-change-exp`).innerHTML = `${icon} ${changeFormatted}`;
-            document.getElementById(`${symbol}-change-exp`).cl
+        // Scroll animations
+        const scrollElements = document.querySelectorAll('.scroll-fade');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        scrollElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
