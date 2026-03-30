@@ -501,7 +501,7 @@
                 <!-- Goldsmith & Co -->
                 <div class="glass-card p-8 rounded-xl hover-lift hover-glow scroll-fade">
                     <div class="company-logo-wrap">
-                        <img src="goldsmith-logo.webp" alt="Goldsmith & Co" class="h-10 brightness-0 invert">
+                        <span class="text-2xl font-bold text-white tracking-tight">Goldsmith <span class="font-light">&amp;</span> Co</span>
                     </div>
                     <p class="text-sm text-gray-400 mb-1">Software Engineer</p>
                     <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Current</span>
@@ -594,9 +594,16 @@
                 <div class="glass-card rounded-xl overflow-hidden hover-glow scroll-fade">
                     <canvas id="monte-carlo-canvas" class="w-full" height="200" style="display:block;"></canvas>
                     <div class="p-6">
+                        <p class="text-purple-400 text-sm font-medium mb-2">Math / Finance</p>
                         <div class="font-mono-code text-purple-400 text-sm mb-2">dS = &mu;Sdt + &sigma;SdW</div>
+<pre class="font-mono-code text-xs bg-black/60 rounded-lg p-3 mb-3 overflow-x-auto border border-white/5"><code><span class="text-purple-400">from</span> quantlib_mm <span class="text-purple-400">import</span> MonteCarlo
+<span class="text-green-400">mc = MonteCarlo(S0=100, r=0.05)</span>
+paths = mc.simulate(n=100_000, T=1.0)
+price = mc.european_call(K=105)
+<span class="text-gray-500"># price = 8.021, std = 0.043</span></code></pre>
                         <h3 class="text-lg font-bold mb-2">Monte Carlo Simulation</h3>
                         <p class="text-sm text-gray-400">Live geometric Brownian motion paths for option pricing. Each line is a simulated asset price path.</p>
+                        <div class="flex flex-wrap gap-2 mt-3"><span class="px-2 py-1 bg-white/10 rounded text-xs">Python</span><span class="px-2 py-1 bg-white/10 rounded text-xs">NumPy</span><span class="px-2 py-1 bg-white/10 rounded text-xs">SciPy</span><span class="px-2 py-1 bg-white/10 rounded text-xs">C++</span></div>
                     </div>
                 </div>
 
@@ -604,9 +611,15 @@
                 <div class="glass-card rounded-xl overflow-hidden hover-glow scroll-fade">
                     <canvas id="graph-canvas" class="w-full" height="200" style="display:block;"></canvas>
                     <div class="p-6">
+                        <p class="text-blue-400 text-sm font-medium mb-2">Math</p>
                         <div class="font-mono-code text-blue-400 text-sm mb-2">&lambda;v = Av</div>
+<pre class="font-mono-code text-xs bg-black/60 rounded-lg p-3 mb-3 overflow-x-auto border border-white/5"><code>L = D - A  <span class="text-gray-500"># Graph Laplacian</span>
+eigenvalues, eigvecs = np.linalg.eigh(L)
+<span class="text-gray-500"># Fiedler vector → community split</span>
+communities = eigvecs[:,1] > 0</code></pre>
                         <h3 class="text-lg font-bold mb-2">Spectral Graph Theory</h3>
                         <p class="text-sm text-gray-400">Interactive force-directed network graph with community detection via eigenvalue clustering.</p>
+                        <div class="flex flex-wrap gap-2 mt-3"><span class="px-2 py-1 bg-white/10 rounded text-xs">Python</span><span class="px-2 py-1 bg-white/10 rounded text-xs">NetworkX</span><span class="px-2 py-1 bg-white/10 rounded text-xs">NumPy</span><span class="px-2 py-1 bg-white/10 rounded text-xs">D3.js</span></div>
                     </div>
                 </div>
 
@@ -614,9 +627,15 @@
                 <div class="glass-card rounded-xl overflow-hidden hover-glow scroll-fade">
                     <canvas id="topology-canvas" class="w-full" height="200" style="display:block;"></canvas>
                     <div class="p-6">
+                        <p class="text-pink-400 text-sm font-medium mb-2">Math</p>
                         <div class="font-mono-code text-pink-400 text-sm mb-2">H<sub>n</sub>(X) &cong; ker &part;<sub>n</sub> / im &part;<sub>n+1</sub></div>
+<pre class="font-mono-code text-xs bg-black/60 rounded-lg p-3 mb-3 overflow-x-auto border border-white/5"><code><span class="text-purple-400">from</span> ripser <span class="text-purple-400">import</span> Rips
+rips = Rips(maxdim=2)
+dgms = rips.fit_transform(point_cloud)
+<span class="text-gray-500"># Betti numbers: β₀=1, β₁=2</span></code></pre>
                         <h3 class="text-lg font-bold mb-2">Persistent Homology</h3>
                         <p class="text-sm text-gray-400">Animated simplicial complex construction showing topological features at varying scales.</p>
+                        <div class="flex flex-wrap gap-2 mt-3"><span class="px-2 py-1 bg-white/10 rounded text-xs">Python</span><span class="px-2 py-1 bg-white/10 rounded text-xs">NumPy</span><span class="px-2 py-1 bg-white/10 rounded text-xs">Matplotlib</span><span class="px-2 py-1 bg-white/10 rounded text-xs">Plotly</span></div>
                     </div>
                 </div>
             </div>
