@@ -211,16 +211,16 @@
                                 <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium">Full Stack</span>
                                 <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-medium">Social Impact</span>
                             </div>
-                            <h2 class="text-3xl font-bold mb-3">AI-Powered Knowledge & Learning Platform</h2>
+                            <h2 class="text-3xl font-bold mb-3">Athena AI</h2>
                             <p class="text-gray-400 mb-6 text-lg">
-                                Athena AI democratizes access to education by providing an intelligent tutoring system that helps learners master complex STEM topics through personalized, conversational AI. Named after the Greek goddess of wisdom, Athena bridges the gap between quality education and accessibility — making advanced knowledge available to anyone, anywhere.
+                                AI-powered platform to detect and report non-consensual AI-generated imagery — protecting women and children online.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-6">
                                 <span class="px-3 py-1 bg-white/10 rounded-full text-sm">Python</span>
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-sm">Computer Vision</span>
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-sm">Deep Learning</span>
                                 <span class="px-3 py-1 bg-white/10 rounded-full text-sm">React</span>
-                                <span class="px-3 py-1 bg-white/10 rounded-full text-sm">NLP</span>
                                 <span class="px-3 py-1 bg-white/10 rounded-full text-sm">TypeScript</span>
-                                <span class="px-3 py-1 bg-white/10 rounded-full text-sm">APIs</span>
                             </div>
                             <a href="https://github.com/maisymylod/athena-ai" target="_blank" class="inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-200 transition font-medium">
                                 <i class="fab fa-github"></i> View on GitHub
@@ -266,137 +266,79 @@
         <div class="max-w-6xl mx-auto">
             <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <!-- Topological Data Analysis Visualizer -->
-                <div class="project-card tilt-card glass-card rounded-xl overflow-hidden scroll-fade relative" data-category="math" data-keywords="topology homology betti numbers clustering algebraic">
-                    <div class="math-decoration top-3 right-3">H_n(X)</div>
-                    <div class="h-40 bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center">
-                        <i class="fas fa-project-diagram text-white text-5xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">Topological Data Analysis Visualizer</h3>
-                        </div>
-                        <p class="text-sm text-indigo-400 font-medium mb-3">Math</p>
-                        <p class="text-gray-400 mb-4 text-sm">
-                            Interactive visualization of persistent homology and Betti numbers. Applied algebraic topology to real-world data clustering.
-                        </p>
-                        <div class="bg-black/50 rounded-lg p-3 text-xs overflow-x-auto border border-white/5 mb-4">
-<pre class="code-snippet text-gray-300"><span class="text-purple-400">from</span> ripser <span class="text-purple-400">import</span> Rips
-rips = Rips(maxdim=<span class="text-emerald-400">2</span>)
-dgms = rips.fit_transform(point_cloud)
-<span class="text-gray-500"># Betti numbers: &#946;&#8320;=1, &#946;&#8321;=2</span>
-plot_diagrams(dgms)</pre>
-                        </div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Python</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">NumPy</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Matplotlib</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Plotly</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Monte Carlo Option Pricing Engine -->
-                <div class="project-card tilt-card glass-card rounded-xl overflow-hidden scroll-fade relative" data-category="math" data-keywords="monte carlo stochastic calculus brownian motion options pricing derivatives finance">
+                <!-- quantlib-mm -->
+                <div class="project-card tilt-card glass-card rounded-xl overflow-hidden scroll-fade relative" data-category="math" data-keywords="quantitative finance monte carlo option pricing portfolio optimization risk analysis black-scholes">
                     <div class="math-decoration top-3 right-3">dS = &mu;Sdt</div>
-                    <div class="h-40 bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
+                    <div class="h-40 bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center">
                         <i class="fas fa-chart-area text-white text-5xl"></i>
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">Monte Carlo Option Pricing Engine</h3>
+                            <h3 class="text-xl font-bold">quantlib-mm</h3>
                         </div>
-                        <p class="text-sm text-emerald-400 font-medium mb-3">Math / Finance</p>
+                        <p class="text-sm text-indigo-400 font-medium mb-3">Math / Finance</p>
                         <p class="text-gray-400 mb-4 text-sm">
-                            Stochastic calculus-based derivatives pricing using geometric Brownian motion. Simulated 100K+ paths for European/American options.
+                            Python quantitative finance library — Monte Carlo, option pricing, portfolio optimization, and risk analysis.
                         </p>
-                        <div class="bg-black/50 rounded-lg p-3 text-xs overflow-x-auto border border-white/5 mb-4">
-<pre class="code-snippet text-gray-300">S = S0 * np.exp(np.cumsum(
-    (mu - <span class="text-emerald-400">0.5</span>*&#963;**<span class="text-emerald-400">2</span>)*dt + &#963;*np.sqrt(dt)*Z,
-    axis=<span class="text-emerald-400">1</span>), axis=<span class="text-emerald-400">1</span>)
-C = np.exp(-r*T) * np.mean(
-    np.maximum(S[:,-<span class="text-emerald-400">1</span>] - K, <span class="text-emerald-400">0</span>))</pre>
-                        </div>
-                        <div class="flex flex-wrap gap-2">
+                        <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Python</span>
                             <span class="px-2 py-1 bg-white/10 rounded-full text-xs">NumPy</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">SciPy</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">C++</span>
+                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Monte Carlo</span>
+                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Black-Scholes</span>
                         </div>
+                        <a href="https://github.com/maisymylod/quantlib-mm" target="_blank" class="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
                     </div>
                 </div>
 
-                <!-- Graph Theory Network Analyzer -->
-                <div class="project-card tilt-card glass-card rounded-xl overflow-hidden scroll-fade relative" data-category="math" data-keywords="graph theory spectral eigenvalue adjacency community detection social networks">
-                    <div class="math-decoration top-3 right-3">&lambda;v = Av</div>
+                <!-- settlers-of-catan -->
+                <div class="project-card tilt-card glass-card rounded-xl overflow-hidden scroll-fade relative" data-category="fullstack" data-keywords="settlers catan game board interactive canvas web html javascript">
+                    <div class="h-40 bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
+                        <i class="fas fa-dice text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Settlers of Catan</h3>
+                        </div>
+                        <p class="text-sm text-emerald-400 font-medium mb-3">Game</p>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            Interactive Settlers of Catan game built with web technologies.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">HTML</span>
+                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">JavaScript</span>
+                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Canvas</span>
+                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Game Logic</span>
+                        </div>
+                        <a href="https://github.com/maisymylod/settlers-of-catan" target="_blank" class="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- accel-kkr-ir-analytics -->
+                <div class="project-card tilt-card glass-card rounded-xl overflow-hidden scroll-fade relative" data-category="data fullstack" data-keywords="accel-kkr investor relations analytics dashboard ir website">
                     <div class="h-40 bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center">
-                        <i class="fas fa-share-alt text-white text-5xl"></i>
+                        <i class="fas fa-chart-bar text-white text-5xl"></i>
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">Graph Theory Network Analyzer</h3>
+                            <h3 class="text-xl font-bold">Accel-KKR IR Analytics</h3>
                         </div>
-                        <p class="text-sm text-violet-400 font-medium mb-3">Math</p>
+                        <p class="text-sm text-violet-400 font-medium mb-3">Accel-KKR</p>
                         <p class="text-gray-400 mb-4 text-sm">
-                            Spectral graph theory for community detection in social networks. Eigenvalue decomposition of adjacency matrices for clustering.
+                            IR analytics website for Accel-KKR. Investor relations data visualization and reporting.
                         </p>
-                        <div class="bg-black/50 rounded-lg p-3 text-xs overflow-x-auto border border-white/5 mb-4">
-<pre class="code-snippet text-gray-300">L = D - A  <span class="text-gray-500"># Graph Laplacian</span>
-eigenvalues, eigvecs = np.linalg.eigh(L)
-<span class="text-gray-500"># Fiedler vector &#8594; community split</span>
-communities = eigvecs[:,<span class="text-emerald-400">1</span>] > <span class="text-emerald-400">0</span></pre>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">HTML</span>
+                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">CSS</span>
+                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">JavaScript</span>
+                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Analytics</span>
                         </div>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Python</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">NetworkX</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">NumPy</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">D3.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Real-Time Sentiment Analysis Pipeline -->
-                <div class="project-card tilt-card glass-card rounded-xl overflow-hidden scroll-fade" data-category="data ai" data-keywords="nlp sentiment analysis kafka pipeline real-time market">
-                    <div class="h-40 bg-gradient-to-br from-rose-500 to-rose-700 flex items-center justify-center">
-                        <i class="fas fa-comments text-white text-5xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">Real-Time Sentiment Analysis Pipeline</h3>
-                        </div>
-                        <p class="text-sm text-rose-400 font-medium mb-3">Data / AI</p>
-                        <p class="text-gray-400 mb-4 text-sm">
-                            NLP pipeline processing 10K+ data points for market sentiment scoring. Dashboard with live updating charts and trend detection.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Python</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Kafka</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">PostgreSQL</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">React</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Predictive Revenue Modeling Suite -->
-                <div class="project-card tilt-card glass-card rounded-xl overflow-hidden scroll-fade" data-category="data" data-keywords="time series forecasting arima prophet lstm revenue prediction">
-                    <div class="h-40 bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center">
-                        <i class="fas fa-chart-line text-white text-5xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">Predictive Revenue Modeling Suite</h3>
-                            <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">94% Acc</span>
-                        </div>
-                        <p class="text-sm text-amber-400 font-medium mb-3">Data Analytics</p>
-                        <p class="text-gray-400 mb-4 text-sm">
-                            Time series forecasting with ARIMA, Prophet, and LSTM ensembles. Achieved 94% accuracy on quarterly revenue predictions.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Python</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">TensorFlow</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Prophet</span>
-                            <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Snowflake</span>
-                        </div>
+                        <a href="https://github.com/maisymylod/accel-kkr-ir-analytics" target="_blank" class="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
                     </div>
                 </div>
 
@@ -412,14 +354,17 @@ communities = eigvecs[:,<span class="text-emerald-400">1</span>] > <span class="
                         </div>
                         <p class="text-sm text-yellow-400 font-medium mb-3">Goldsmith & Co</p>
                         <p class="text-gray-400 mb-4 text-sm">
-                            Fullstack client portal with React frontend, Node.js backend, and PostgreSQL. Architecting frontend/backend systems.
+                            Fullstack client portal for executive search firm. 38 API endpoints, 13 database tables, OAuth2 authentication.
                         </p>
-                        <div class="flex flex-wrap gap-2">
+                        <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-2 py-1 bg-white/10 rounded-full text-xs">React</span>
                             <span class="px-2 py-1 bg-white/10 rounded-full text-xs">TypeScript</span>
                             <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Node.js</span>
                             <span class="px-2 py-1 bg-white/10 rounded-full text-xs">PostgreSQL</span>
                         </div>
+                        <a href="https://github.com/maisymylod/goldsmith-portal" target="_blank" class="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
                     </div>
                 </div>
 
