@@ -163,26 +163,22 @@
         }
         .company-logo-wrap img { max-height: 48px; }
 
-        /* ===== Custom Cursor ===== */
-        .cursor-dot {
-            width: 8px; height: 8px;
+        /* ===== Custom Cursor — Brownian Motion Trail ===== */
+        #brownian-cursor {
+            position: fixed; top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 10000;
+        }
+        .cursor-node {
+            width: 6px; height: 6px;
             background: #8b5cf6;
             border-radius: 50%;
-            position: fixed; top: 0; left: 0;
+            position: fixed;
             pointer-events: none; z-index: 10001;
-            box-shadow: 0 0 12px 4px rgba(139,92,246,0.5);
-            transition: transform 0.1s ease;
-        }
-        .cursor-ring {
-            width: 36px; height: 36px;
-            border: 2px solid rgba(139,92,246,0.4);
-            border-radius: 50%;
-            position: fixed; top: 0; left: 0;
-            pointer-events: none; z-index: 10000;
-            transition: width 0.3s, height 0.3s, border-color 0.3s;
+            box-shadow: 0 0 8px 2px rgba(139,92,246,0.6);
         }
         @media (max-width: 768px) {
-            .cursor-dot, .cursor-ring { display: none !important; }
+            #brownian-cursor, .cursor-node { display: none !important; }
         }
         @media (min-width: 769px) {
             * { cursor: none !important; }
@@ -343,9 +339,9 @@
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress"></div>
 
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
+    <!-- Custom Cursor — Brownian Motion Trail -->
+    <canvas id="brownian-cursor"></canvas>
+    <div class="cursor-node"></div>
 
     <!-- Noise Overlay -->
     <div id="noise-overlay"></div>
@@ -1193,30 +1189,69 @@ dgms = rips.fit_transform(point_cloud)
             }, 600);
         });
 
-        // ========== CUSTOM CURSOR ==========
+        // ========== CUSTOM CURSOR — BROWNIAN MOTION TRAIL ==========
         (function() {
             if (window.innerWidth <= 768) return;
-            const dot = document.querySelector('.cursor-dot');
-            const ring = document.querySelector('.cursor-ring');
-            let mx = -100, my = -100, rx = -100, ry = -100;
+            const canvas = document.getElementById('brownian-cursor');
+            const ctx = canvas.getContext('2d');
+            const node = document.querySelector('.cursor-node');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+
+            let mx = -100, my = -100;
+            const trail = []; // array of {x, y, age}
+            const maxTrail = 80;
+            const sigma = 1.8; // Brownian noise intensity
+
             document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-            function moveCursor() {
-                dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
-                rx += (mx - rx) * 0.15;
-                ry += (my - ry) * 0.15;
-                ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
-                requestAnimationFrame(moveCursor);
+
+            function brownianNoise() { return (Math.random() - 0.5) * 2 * sigma; }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Add new trail point with Brownian perturbation
+                if (mx > 0) {
+                    trail.push({ x: mx + brownianNoise(), y: my + brownianNoise(), age: 0 });
+                    if (trail.length > maxTrail) trail.shift();
+                }
+
+                // Move cursor node
+                node.style.transform = `translate(${mx - 3}px, ${my - 3}px)`;
+
+                // Draw stochastic trail
+                if (trail.length > 1) {
+                    for (let i = 1; i < trail.length; i++) {
+                        const t = i / trail.length; // 0 = old, 1 = new
+                        const alpha = t * 0.7;
+                        // Color shifts from blue (old) → purple (mid) → pink (new)
+                        const r = Math.round(59 + (236 - 59) * t);
+                        const g = Math.round(130 + (72 - 130) * t);
+                        const b = Math.round(246 + (153 - 246) * t);
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(${r},${g},${b},${alpha})`;
+                        ctx.lineWidth = 1 + t * 1.5;
+                        ctx.moveTo(trail[i-1].x, trail[i-1].y);
+                        ctx.lineTo(trail[i].x, trail[i].y);
+                        ctx.stroke();
+                    }
+                }
+
+                // Hover effect: expand node on interactive elements
+                requestAnimationFrame(animate);
             }
-            moveCursor();
+            animate();
+
             document.querySelectorAll('a, button, .hover-lift, .cmd-item').forEach(el => {
                 el.addEventListener('mouseenter', () => {
-                    ring.style.width = '50px'; ring.style.height = '50px';
-                    ring.style.borderColor = 'rgba(236,72,153,0.5)';
-                    ring.style.transform = `translate(${rx - 25}px, ${ry - 25}px)`;
+                    node.style.width = '12px'; node.style.height = '12px';
+                    node.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+                    node.style.boxShadow = '0 0 14px 4px rgba(236,72,153,0.6)';
                 });
                 el.addEventListener('mouseleave', () => {
-                    ring.style.width = '36px'; ring.style.height = '36px';
-                    ring.style.borderColor = 'rgba(139,92,246,0.4)';
+                    node.style.width = '6px'; node.style.height = '6px';
+                    node.style.boxShadow = '0 0 8px 2px rgba(139,92,246,0.6)';
                 });
             });
         })();
