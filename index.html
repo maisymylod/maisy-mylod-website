@@ -162,9 +162,219 @@
             margin-bottom: 16px;
         }
         .company-logo-wrap img { max-height: 48px; }
+
+        /* ===== Custom Cursor ===== */
+        .cursor-dot {
+            width: 8px; height: 8px;
+            background: #8b5cf6;
+            border-radius: 50%;
+            position: fixed; top: 0; left: 0;
+            pointer-events: none; z-index: 10001;
+            box-shadow: 0 0 12px 4px rgba(139,92,246,0.5);
+            transition: transform 0.1s ease;
+        }
+        .cursor-ring {
+            width: 36px; height: 36px;
+            border: 2px solid rgba(139,92,246,0.4);
+            border-radius: 50%;
+            position: fixed; top: 0; left: 0;
+            pointer-events: none; z-index: 10000;
+            transition: width 0.3s, height 0.3s, border-color 0.3s;
+        }
+        @media (max-width: 768px) {
+            .cursor-dot, .cursor-ring { display: none !important; }
+        }
+        @media (min-width: 769px) {
+            * { cursor: none !important; }
+        }
+
+        /* ===== Scroll Progress Bar ===== */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            z-index: 10002; width: 0%; transition: width 0.05s linear;
+        }
+
+        /* ===== Command Palette ===== */
+        #cmd-palette-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+            z-index: 9999; display: none;
+            align-items: flex-start; justify-content: center;
+            padding-top: 20vh;
+        }
+        #cmd-palette-overlay.active { display: flex; }
+        #cmd-palette {
+            width: 90%; max-width: 520px;
+            background: rgba(20,20,30,0.95);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+        #cmd-palette input {
+            width: 100%; padding: 16px 20px;
+            background: transparent; border: none; outline: none;
+            color: #fff; font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        #cmd-palette input::placeholder { color: rgba(255,255,255,0.3); }
+        #cmd-palette-list {
+            max-height: 300px; overflow-y: auto;
+            padding: 8px;
+        }
+        .cmd-item {
+            padding: 10px 16px; border-radius: 8px;
+            color: #ccc; display: flex; align-items: center; gap: 12px;
+            font-size: 14px; cursor: pointer;
+            transition: background 0.15s;
+        }
+        .cmd-item:hover, .cmd-item.active {
+            background: rgba(139,92,246,0.2); color: #fff;
+        }
+        .cmd-item i { width: 20px; text-align: center; color: #8b5cf6; }
+        .cmd-hint {
+            padding: 8px 16px; font-size: 11px;
+            color: rgba(255,255,255,0.25);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+        }
+
+        /* ===== Noise Overlay ===== */
+        #noise-overlay {
+            position: fixed; inset: 0; z-index: 9998;
+            pointer-events: none; opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            animation: noiseShift 0.5s steps(4) infinite;
+        }
+        @keyframes noiseShift {
+            0% { transform: translate(0,0); }
+            25% { transform: translate(-2%,-1%); }
+            50% { transform: translate(1%,2%); }
+            75% { transform: translate(-1%,-2%); }
+            100% { transform: translate(2%,1%); }
+        }
+
+        /* ===== Preloader ===== */
+        #preloader {
+            position: fixed; inset: 0; z-index: 99999;
+            background: #000;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.4s ease;
+        }
+        #preloader.fade-out { opacity: 0; pointer-events: none; }
+        .preloader-spinner {
+            width: 40px; height: 40px;
+            border: 3px solid rgba(139,92,246,0.2);
+            border-top-color: #8b5cf6;
+            border-radius: 50%;
+            animation: preloaderSpin 0.7s linear infinite;
+        }
+        @keyframes preloaderSpin { to { transform: rotate(360deg); } }
+
+        /* ===== Section Indicator Dots ===== */
+        #section-dots {
+            position: fixed; right: 20px; top: 50%;
+            transform: translateY(-50%);
+            z-index: 100; display: flex;
+            flex-direction: column; gap: 12px;
+        }
+        @media (max-width: 768px) { #section-dots { display: none; } }
+        .section-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .section-dot.active {
+            background: #8b5cf6;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 8px rgba(139,92,246,0.5);
+        }
+        .section-dot:hover {
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        /* ===== Text Scramble ===== */
+        .scramble-text { display: inline-block; }
+
+        /* ===== GitHub Heatmap ===== */
+        #heatmap-section canvas {
+            border-radius: 8px;
+            max-width: 100%;
+        }
+        .heatmap-tooltip {
+            position: fixed;
+            background: rgba(20,20,30,0.95);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; padding: 6px 10px;
+            border-radius: 6px; font-size: 12px;
+            pointer-events: none; z-index: 200;
+            display: none;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ===== Radar Chart ===== */
+        #radar-section canvas {
+            max-width: 100%;
+        }
+
+        /* ===== Confetti Canvas ===== */
+        #confetti-canvas {
+            position: fixed; inset: 0;
+            z-index: 99998; pointer-events: none;
+        }
+
+        /* ===== Nav active highlight ===== */
+        nav a.nav-active {
+            color: #fff !important;
+        }
     </style>
 </head>
 <body class="bg-black text-white">
+    <!-- Preloader -->
+    <div id="preloader"><div class="preloader-spinner"></div></div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- Noise Overlay -->
+    <div id="noise-overlay"></div>
+
+    <!-- Section Indicator Dots -->
+    <nav id="section-dots">
+        <div class="section-dot" data-target="hero" title="Hero"></div>
+        <div class="section-dot" data-target="companies" title="Companies"></div>
+        <div class="section-dot" data-target="skills" title="Skills"></div>
+        <div class="section-dot" data-target="math" title="Math"></div>
+        <div class="section-dot" data-target="featured" title="Featured"></div>
+        <div class="section-dot" data-target="recent" title="Recent Work"></div>
+        <div class="section-dot" data-target="heatmap" title="Heatmap"></div>
+        <div class="section-dot" data-target="radar" title="Radar"></div>
+        <div class="section-dot" data-target="cta" title="Contact"></div>
+    </nav>
+
+    <!-- Command Palette -->
+    <div id="cmd-palette-overlay">
+        <div id="cmd-palette">
+            <input type="text" id="cmd-input" placeholder="Type a command or search..." autocomplete="off">
+            <div id="cmd-palette-list"></div>
+            <div class="cmd-hint">Navigate with arrow keys &middot; Enter to select &middot; Esc to close</div>
+        </div>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
     <!-- Skill Marquee Bar -->
     <div class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b border-gray-800">
         <div class="marquee-container py-2">
@@ -234,7 +444,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative py-20 px-4 min-h-[70vh] flex items-center overflow-hidden">
+    <section id="hero" class="relative py-20 px-4 min-h-[70vh] flex items-center overflow-hidden">
         <div class="hero-gradient-mesh"></div>
         <canvas id="particle-canvas"></canvas>
         <div class="max-w-6xl mx-auto relative z-10">
@@ -284,7 +494,7 @@
     </section>
 
     <!-- Companies Section with Logos -->
-    <section class="py-16 px-4 border-t border-gray-800">
+    <section id="companies" class="py-16 px-4 border-t border-gray-800">
         <div class="max-w-6xl mx-auto">
             <p class="text-center text-gray-500 text-sm mb-8 uppercase tracking-wider scroll-fade">Experience With</p>
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -319,9 +529,9 @@
     </section>
 
     <!-- Interactive Skills Orbit -->
-    <section class="py-16 px-4 scroll-fade">
+    <section id="skills" class="py-16 px-4 scroll-fade">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold mb-4 text-center scroll-fade">Technical Skills</h2>
+            <h2 class="text-4xl font-bold mb-4 text-center scroll-fade scramble-text">Technical Skills</h2>
             <p class="text-gray-400 text-center mb-12 scroll-fade">Full-stack engineering, data science, and pure mathematics</p>
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="orbit-container mx-auto">
@@ -374,9 +584,9 @@
     </section>
 
     <!-- Math + Code Section with Live Demos -->
-    <section class="py-16 px-4 border-t border-gray-800 scroll-fade">
+    <section id="math" class="py-16 px-4 border-t border-gray-800 scroll-fade">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold mb-4 text-center scroll-fade">Math + Code</h2>
+            <h2 class="text-4xl font-bold mb-4 text-center scroll-fade scramble-text">Math + Code</h2>
             <p class="text-gray-400 text-center mb-12 scroll-fade">Where pure mathematics meets software engineering &mdash; live demos</p>
 
             <div class="grid md:grid-cols-3 gap-6">
@@ -414,7 +624,7 @@
     </section>
 
     <!-- Featured Project: Athena AI -->
-    <section class="py-16 px-4 border-t border-gray-800 scroll-fade">
+    <section id="featured" class="py-16 px-4 border-t border-gray-800 scroll-fade">
         <div class="max-w-6xl mx-auto">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -467,10 +677,10 @@
     </section>
 
     <!-- Recent Work -->
-    <section class="py-16 px-4 border-t border-gray-800 scroll-fade">
+    <section id="recent" class="py-16 px-4 border-t border-gray-800 scroll-fade">
         <div class="max-w-6xl mx-auto">
             <div class="flex justify-between items-end mb-12">
-                <h2 class="text-4xl font-bold">Recent Work</h2>
+                <h2 class="text-4xl font-bold scramble-text">Recent Work</h2>
                 <a href="projects.html" class="text-blue-400 hover:underline">View all projects &rarr;</a>
             </div>
             <div class="grid md:grid-cols-2 gap-8">
@@ -514,11 +724,36 @@
         </div>
     </section>
 
+    <!-- GitHub Contribution Heatmap -->
+    <section id="heatmap" class="py-16 px-4 border-t border-gray-800 scroll-fade">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-4 text-center scroll-fade scramble-text">Contribution Activity</h2>
+            <p class="text-gray-400 text-center mb-10 scroll-fade">365 days of building, shipping, and iterating</p>
+            <div class="glass-card p-6 md:p-8 rounded-xl overflow-x-auto scroll-fade">
+                <canvas id="heatmap-canvas" height="140" style="display:block; width:100%;"></canvas>
+            </div>
+            <div class="heatmap-tooltip" id="heatmap-tooltip"></div>
+        </div>
+    </section>
+
+    <!-- Skill Radar Chart -->
+    <section id="radar" class="py-16 px-4 border-t border-gray-800 scroll-fade">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-4 text-center scroll-fade scramble-text">Skill Proficiency</h2>
+            <p class="text-gray-400 text-center mb-10 scroll-fade">Relative strengths across engineering domains</p>
+            <div class="flex justify-center scroll-fade">
+                <div class="glass-card p-6 md:p-8 rounded-xl" style="max-width:500px; width:100%;">
+                    <canvas id="radar-canvas" width="450" height="400" style="display:block; margin:0 auto; max-width:100%;"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
-    <section class="py-20 px-4 scroll-fade">
+    <section id="cta" class="py-20 px-4 scroll-fade">
         <div class="max-w-4xl mx-auto text-center">
             <div class="glass-card p-12 rounded-2xl hover-glow">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build Something Together</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 scramble-text">Let's Build Something Together</h2>
                 <p class="text-xl text-gray-400 mb-10">Fullstack engineering, data infrastructure, and mathematical modeling.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="contact.html" class="bg-white text-black px-8 py-4 rounded-lg hover:bg-gray-200 transition font-medium">Contact Me</a>
@@ -932,6 +1167,461 @@
             });
         }, { threshold: 0.5 });
         counterElements.forEach(el => counterObserver.observe(el));
+
+        // ========== PRELOADER ==========
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const pre = document.getElementById('preloader');
+                pre.classList.add('fade-out');
+                setTimeout(() => pre.remove(), 400);
+            }, 600);
+        });
+
+        // ========== CUSTOM CURSOR ==========
+        (function() {
+            if (window.innerWidth <= 768) return;
+            const dot = document.querySelector('.cursor-dot');
+            const ring = document.querySelector('.cursor-ring');
+            let mx = -100, my = -100, rx = -100, ry = -100;
+            document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+            function moveCursor() {
+                dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+                rx += (mx - rx) * 0.15;
+                ry += (my - ry) * 0.15;
+                ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
+                requestAnimationFrame(moveCursor);
+            }
+            moveCursor();
+            document.querySelectorAll('a, button, .hover-lift, .cmd-item').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    ring.style.width = '50px'; ring.style.height = '50px';
+                    ring.style.borderColor = 'rgba(236,72,153,0.5)';
+                    ring.style.transform = `translate(${rx - 25}px, ${ry - 25}px)`;
+                });
+                el.addEventListener('mouseleave', () => {
+                    ring.style.width = '36px'; ring.style.height = '36px';
+                    ring.style.borderColor = 'rgba(139,92,246,0.4)';
+                });
+            });
+        })();
+
+        // ========== SCROLL PROGRESS BAR ==========
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const pct = (scrollTop / scrollHeight) * 100;
+            document.getElementById('scroll-progress').style.width = pct + '%';
+        });
+
+        // ========== COMMAND PALETTE ==========
+        (function() {
+            const overlay = document.getElementById('cmd-palette-overlay');
+            const input = document.getElementById('cmd-input');
+            const list = document.getElementById('cmd-palette-list');
+            const commands = [
+                { label: 'Home', icon: 'fas fa-home', action: () => location.href = 'index.html' },
+                { label: 'Experience', icon: 'fas fa-briefcase', action: () => location.href = 'experience.html' },
+                { label: 'Projects', icon: 'fas fa-code', action: () => location.href = 'projects.html' },
+                { label: 'Dashboard', icon: 'fas fa-chart-line', action: () => location.href = 'dashboard.html' },
+                { label: 'Contact', icon: 'fas fa-envelope', action: () => location.href = 'contact.html' },
+                { label: 'GitHub', icon: 'fab fa-github', action: () => window.open('https://github.com/maisymylod', '_blank') },
+                { label: 'LinkedIn', icon: 'fab fa-linkedin', action: () => window.open('https://linkedin.com/in/maisymylod', '_blank') },
+                { label: 'Go to Hero', icon: 'fas fa-rocket', action: () => { document.getElementById('hero').scrollIntoView({behavior:'smooth'}); } },
+                { label: 'Go to Skills', icon: 'fas fa-cogs', action: () => { document.getElementById('skills').scrollIntoView({behavior:'smooth'}); } },
+                { label: 'Go to Math + Code', icon: 'fas fa-square-root-alt', action: () => { document.getElementById('math').scrollIntoView({behavior:'smooth'}); } },
+                { label: 'Go to Heatmap', icon: 'fas fa-fire', action: () => { document.getElementById('heatmap').scrollIntoView({behavior:'smooth'}); } },
+                { label: 'Go to Radar', icon: 'fas fa-bullseye', action: () => { document.getElementById('radar').scrollIntoView({behavior:'smooth'}); } },
+            ];
+            let activeIdx = 0, filtered = [...commands];
+
+            function render() {
+                list.innerHTML = '';
+                filtered.forEach((cmd, i) => {
+                    const div = document.createElement('div');
+                    div.className = 'cmd-item' + (i === activeIdx ? ' active' : '');
+                    div.innerHTML = `<i class="${cmd.icon}"></i><span>${cmd.label}</span>`;
+                    div.addEventListener('click', () => { cmd.action(); closePalette(); });
+                    list.appendChild(div);
+                });
+            }
+
+            function openPalette() { overlay.classList.add('active'); input.value = ''; filtered = [...commands]; activeIdx = 0; render(); setTimeout(() => input.focus(), 50); }
+            function closePalette() { overlay.classList.remove('active'); }
+
+            document.addEventListener('keydown', e => {
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); overlay.classList.contains('active') ? closePalette() : openPalette(); }
+                if (!overlay.classList.contains('active')) return;
+                if (e.key === 'Escape') closePalette();
+                if (e.key === 'ArrowDown') { e.preventDefault(); activeIdx = (activeIdx + 1) % filtered.length; render(); }
+                if (e.key === 'ArrowUp') { e.preventDefault(); activeIdx = (activeIdx - 1 + filtered.length) % filtered.length; render(); }
+                if (e.key === 'Enter' && filtered[activeIdx]) { filtered[activeIdx].action(); closePalette(); }
+            });
+            input.addEventListener('input', () => {
+                const q = input.value.toLowerCase();
+                filtered = commands.filter(c => c.label.toLowerCase().includes(q));
+                activeIdx = 0; render();
+            });
+            overlay.addEventListener('click', e => { if (e.target === overlay) closePalette(); });
+        })();
+
+        // ========== SECTION INDICATOR DOTS ==========
+        (function() {
+            const dots = document.querySelectorAll('.section-dot');
+            const sectionIds = Array.from(dots).map(d => d.dataset.target);
+            const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const target = document.getElementById(dot.dataset.target);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            const dotObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        dots.forEach(d => d.classList.toggle('active', d.dataset.target === id));
+                    }
+                });
+            }, { threshold: 0.3 });
+            sections.forEach(s => dotObserver.observe(s));
+        })();
+
+        // ========== GITHUB HEATMAP ==========
+        (function() {
+            const hc = document.getElementById('heatmap-canvas');
+            if (!hc) return;
+            const hctx = hc.getContext('2d');
+            const tooltip = document.getElementById('heatmap-tooltip');
+            const weeks = 52, days = 7;
+            const cellSize = 13, gap = 3;
+
+            function resizeHeatmap() {
+                hc.width = hc.offsetWidth;
+                hc.height = 140;
+            }
+            resizeHeatmap();
+            window.addEventListener('resize', () => { resizeHeatmap(); drawHeatmap(); });
+
+            // Generate data
+            const data = [];
+            for (let w = 0; w < weeks; w++) {
+                const week = [];
+                for (let d = 0; d < days; d++) {
+                    const r = Math.random();
+                    let val = 0;
+                    if (r > 0.3) val = 1;
+                    if (r > 0.55) val = 2;
+                    if (r > 0.75) val = 3;
+                    if (r > 0.9) val = 4;
+                    week.push(val);
+                }
+                data.push(week);
+            }
+
+            const levelColors = [
+                'rgba(255,255,255,0.06)',
+                'rgba(59,130,246,0.4)',
+                'rgba(139,92,246,0.55)',
+                'rgba(168,85,247,0.75)',
+                'rgba(236,72,153,0.9)'
+            ];
+
+            let cellPositions = [];
+
+            function drawHeatmap() {
+                const W = hc.width, H = hc.height;
+                hctx.clearRect(0, 0, W, H);
+                cellPositions = [];
+                const totalW = weeks * (cellSize + gap);
+                const offsetX = Math.max(0, (W - totalW) / 2);
+                const offsetY = 10;
+
+                // Day labels
+                hctx.fillStyle = 'rgba(255,255,255,0.3)';
+                hctx.font = '9px JetBrains Mono, monospace';
+                const dayLabels = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
+                dayLabels.forEach((lbl, i) => {
+                    if (lbl) hctx.fillText(lbl, offsetX - 30, offsetY + i * (cellSize + gap) + cellSize - 2);
+                });
+
+                for (let w = 0; w < weeks; w++) {
+                    for (let d = 0; d < days; d++) {
+                        const x = offsetX + w * (cellSize + gap);
+                        const y = offsetY + d * (cellSize + gap);
+                        const val = data[w][d];
+                        hctx.fillStyle = levelColors[val];
+                        hctx.beginPath();
+                        hctx.roundRect(x, y, cellSize, cellSize, 2);
+                        hctx.fill();
+                        cellPositions.push({ x, y, w, d, val });
+                    }
+                }
+
+                // Legend
+                const legendX = W - 120;
+                const legendY = H - 18;
+                hctx.fillStyle = 'rgba(255,255,255,0.3)';
+                hctx.font = '9px JetBrains Mono, monospace';
+                hctx.fillText('Less', legendX, legendY + 9);
+                levelColors.forEach((c, i) => {
+                    hctx.fillStyle = c;
+                    hctx.beginPath();
+                    hctx.roundRect(legendX + 28 + i * 16, legendY, 12, 12, 2);
+                    hctx.fill();
+                });
+                hctx.fillStyle = 'rgba(255,255,255,0.3)';
+                hctx.fillText('More', legendX + 28 + 5 * 16, legendY + 9);
+            }
+
+            drawHeatmap();
+
+            hc.addEventListener('mousemove', e => {
+                const rect = hc.getBoundingClientRect();
+                const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+                let found = null;
+                for (const cp of cellPositions) {
+                    if (mx >= cp.x && mx <= cp.x + cellSize && my >= cp.y && my <= cp.y + cellSize) {
+                        found = cp; break;
+                    }
+                }
+                if (found) {
+                    const date = new Date();
+                    date.setDate(date.getDate() - ((weeks - 1 - found.w) * 7 + (6 - found.d)));
+                    const contributions = found.val === 0 ? 0 : found.val * 2 + Math.floor(Math.random() * 3);
+                    tooltip.style.display = 'block';
+                    tooltip.style.left = (e.clientX + 12) + 'px';
+                    tooltip.style.top = (e.clientY - 30) + 'px';
+                    tooltip.textContent = `${contributions} contributions on ${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+                } else {
+                    tooltip.style.display = 'none';
+                }
+            });
+            hc.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+        })();
+
+        // ========== SKILL RADAR CHART ==========
+        (function() {
+            const rc = document.getElementById('radar-canvas');
+            if (!rc) return;
+            const rctx = rc.getContext('2d');
+
+            function drawRadar() {
+                const W = rc.width, H = rc.height;
+                const cx = W / 2, cy = H / 2;
+                const R = Math.min(cx, cy) - 50;
+                rctx.clearRect(0, 0, W, H);
+
+                const labels = ['Frontend', 'Backend', 'Data', 'Math', 'DevOps', 'ML'];
+                const values = [0.9, 0.85, 0.88, 0.95, 0.6, 0.7];
+                const n = labels.length;
+
+                // Grid rings
+                for (let ring = 1; ring <= 5; ring++) {
+                    const r = (ring / 5) * R;
+                    rctx.beginPath();
+                    for (let i = 0; i <= n; i++) {
+                        const angle = (i / n) * Math.PI * 2 - Math.PI / 2;
+                        const px = cx + Math.cos(angle) * r;
+                        const py = cy + Math.sin(angle) * r;
+                        i === 0 ? rctx.moveTo(px, py) : rctx.lineTo(px, py);
+                    }
+                    rctx.closePath();
+                    rctx.strokeStyle = 'rgba(255,255,255,0.07)';
+                    rctx.lineWidth = 1;
+                    rctx.stroke();
+                }
+
+                // Axis lines + labels
+                for (let i = 0; i < n; i++) {
+                    const angle = (i / n) * Math.PI * 2 - Math.PI / 2;
+                    const px = cx + Math.cos(angle) * R;
+                    const py = cy + Math.sin(angle) * R;
+                    rctx.beginPath();
+                    rctx.moveTo(cx, cy);
+                    rctx.lineTo(px, py);
+                    rctx.strokeStyle = 'rgba(255,255,255,0.08)';
+                    rctx.stroke();
+
+                    // Labels
+                    const lx = cx + Math.cos(angle) * (R + 25);
+                    const ly = cy + Math.sin(angle) * (R + 25);
+                    rctx.fillStyle = 'rgba(255,255,255,0.6)';
+                    rctx.font = '12px Inter, sans-serif';
+                    rctx.textAlign = 'center';
+                    rctx.textBaseline = 'middle';
+                    rctx.fillText(labels[i], lx, ly);
+                }
+
+                // Data polygon fill
+                rctx.beginPath();
+                for (let i = 0; i <= n; i++) {
+                    const idx = i % n;
+                    const angle = (idx / n) * Math.PI * 2 - Math.PI / 2;
+                    const px = cx + Math.cos(angle) * R * values[idx];
+                    const py = cy + Math.sin(angle) * R * values[idx];
+                    i === 0 ? rctx.moveTo(px, py) : rctx.lineTo(px, py);
+                }
+                rctx.closePath();
+                const grad = rctx.createLinearGradient(cx - R, cy - R, cx + R, cy + R);
+                grad.addColorStop(0, 'rgba(59,130,246,0.25)');
+                grad.addColorStop(0.5, 'rgba(139,92,246,0.25)');
+                grad.addColorStop(1, 'rgba(236,72,153,0.25)');
+                rctx.fillStyle = grad;
+                rctx.fill();
+
+                // Data polygon stroke
+                rctx.beginPath();
+                for (let i = 0; i <= n; i++) {
+                    const idx = i % n;
+                    const angle = (idx / n) * Math.PI * 2 - Math.PI / 2;
+                    const px = cx + Math.cos(angle) * R * values[idx];
+                    const py = cy + Math.sin(angle) * R * values[idx];
+                    i === 0 ? rctx.moveTo(px, py) : rctx.lineTo(px, py);
+                }
+                rctx.closePath();
+                rctx.strokeStyle = 'rgba(139,92,246,0.7)';
+                rctx.lineWidth = 2;
+                rctx.stroke();
+
+                // Data points
+                for (let i = 0; i < n; i++) {
+                    const angle = (i / n) * Math.PI * 2 - Math.PI / 2;
+                    const px = cx + Math.cos(angle) * R * values[i];
+                    const py = cy + Math.sin(angle) * R * values[i];
+                    rctx.beginPath();
+                    rctx.arc(px, py, 4, 0, Math.PI * 2);
+                    rctx.fillStyle = '#8b5cf6';
+                    rctx.fill();
+                    rctx.beginPath();
+                    rctx.arc(px, py, 7, 0, Math.PI * 2);
+                    rctx.fillStyle = 'rgba(139,92,246,0.25)';
+                    rctx.fill();
+                }
+            }
+            drawRadar();
+            window.addEventListener('resize', drawRadar);
+        })();
+
+        // ========== MAGNETIC BUTTONS ==========
+        document.querySelectorAll('.hover-lift').forEach(el => {
+            el.addEventListener('mousemove', e => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                el.style.transform = `translateY(-4px) translate(${x * 0.15}px, ${y * 0.15}px)`;
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
+        });
+
+        // ========== TEXT SCRAMBLE ON SCROLL ==========
+        (function() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*';
+            const scrambleEls = document.querySelectorAll('.scramble-text');
+            const scrambled = new Set();
+
+            const scrambleObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !scrambled.has(entry.target)) {
+                        scrambled.add(entry.target);
+                        const el = entry.target;
+                        const original = el.textContent;
+                        let iteration = 0;
+                        const interval = setInterval(() => {
+                            el.textContent = original.split('').map((char, i) => {
+                                if (i < iteration) return original[i];
+                                if (char === ' ') return ' ';
+                                return chars[Math.floor(Math.random() * chars.length)];
+                            }).join('');
+                            iteration += 1;
+                            if (iteration > original.length) clearInterval(interval);
+                        }, 30);
+                    }
+                });
+            }, { threshold: 0.5 });
+            scrambleEls.forEach(el => scrambleObserver.observe(el));
+        })();
+
+        // ========== KONAMI CODE ==========
+        (function() {
+            const code = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','KeyB','KeyA'];
+            let pos = 0;
+            document.addEventListener('keydown', e => {
+                if (e.code === code[pos]) { pos++; } else { pos = 0; }
+                if (pos === code.length) {
+                    pos = 0;
+                    launchConfetti();
+                }
+            });
+
+            function launchConfetti() {
+                const cc = document.getElementById('confetti-canvas');
+                cc.width = window.innerWidth; cc.height = window.innerHeight;
+                const cctx = cc.getContext('2d');
+                const pieces = [];
+                const colors = ['#3b82f6','#8b5cf6','#ec4899','#10b981','#f59e0b','#ef4444','#06b6d4'];
+                for (let i = 0; i < 200; i++) {
+                    pieces.push({
+                        x: Math.random() * cc.width,
+                        y: Math.random() * cc.height * -1,
+                        w: Math.random() * 10 + 5,
+                        h: Math.random() * 6 + 3,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        vx: (Math.random() - 0.5) * 6,
+                        vy: Math.random() * 4 + 2,
+                        rot: Math.random() * 360,
+                        rotSpeed: (Math.random() - 0.5) * 10,
+                        opacity: 1
+                    });
+                }
+                let frame = 0;
+                function animateConfetti() {
+                    cctx.clearRect(0, 0, cc.width, cc.height);
+                    let alive = false;
+                    pieces.forEach(p => {
+                        p.x += p.vx; p.y += p.vy; p.vy += 0.05;
+                        p.rot += p.rotSpeed;
+                        if (frame > 120) p.opacity -= 0.015;
+                        if (p.opacity <= 0) return;
+                        alive = true;
+                        cctx.save();
+                        cctx.translate(p.x, p.y);
+                        cctx.rotate(p.rot * Math.PI / 180);
+                        cctx.globalAlpha = Math.max(0, p.opacity);
+                        cctx.fillStyle = p.color;
+                        cctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                        cctx.restore();
+                    });
+                    frame++;
+                    if (alive) requestAnimationFrame(animateConfetti);
+                    else cctx.clearRect(0, 0, cc.width, cc.height);
+                }
+                animateConfetti();
+            }
+        })();
+
+        // ========== NAV ACTIVE SECTION HIGHLIGHT ==========
+        (function() {
+            const navLinks = document.querySelectorAll('nav .hidden.md\\:flex a');
+            const sectionMap = {
+                'hero': 'index.html',
+                'companies': 'index.html',
+                'skills': 'index.html',
+                'math': 'index.html',
+            };
+            // Highlight Home as default for index page - already done via static class
+        })();
+
+        // ========== SMOOTH SCROLL FOR NAV LINKS ==========
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
     </script>
 </body>
 </html>

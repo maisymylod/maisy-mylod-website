@@ -15,7 +15,13 @@
             background: #000000;
             overflow-x: hidden;
             animation: pageFadeIn 0.6s ease-out;
+            cursor: none;
         }
+        @media (max-width: 768px) {
+            body { cursor: auto; }
+            .custom-cursor, .cursor-trail { display: none !important; }
+        }
+
         @keyframes pageFadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -32,6 +38,11 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .glass-card:hover {
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.15), 0 0 50px rgba(59, 130, 246, 0.08);
+            border-color: rgba(139, 92, 246, 0.25);
         }
 
         /* Skill marquee */
@@ -91,9 +102,255 @@
             background: #1f2937;
             color: #fff;
         }
+
+        /* === NEW: Custom Cursor === */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(139, 92, 246, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            transition: transform 0.15s ease, border-color 0.3s ease;
+            mix-blend-mode: difference;
+        }
+        .custom-cursor.hovering {
+            transform: scale(1.8);
+            border-color: rgba(236, 72, 153, 0.8);
+        }
+        .cursor-trail {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.6), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99998;
+            transition: opacity 0.5s ease;
+        }
+
+        /* === NEW: Scroll Progress Bar === */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            z-index: 99999;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+
+        /* === NEW: Sparkline Styles === */
+        .sparkline-canvas {
+            display: block;
+            width: 100%;
+            height: 30px;
+        }
+
+        /* === NEW: Heatmap Calendar === */
+        .heatmap-grid {
+            display: grid;
+            grid-template-columns: repeat(13, 1fr);
+            grid-template-rows: repeat(7, 1fr);
+            gap: 3px;
+        }
+        .heatmap-cell {
+            aspect-ratio: 1;
+            border-radius: 3px;
+            min-width: 12px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            position: relative;
+        }
+        .heatmap-cell:hover {
+            transform: scale(1.4);
+            z-index: 10;
+            box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+        }
+
+        /* === NEW: Pulse / Breathing animation for live data === */
+        @keyframes breathe {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        .breathing {
+            animation: breathe 3s ease-in-out infinite;
+        }
+
+        /* === NEW: Glassmorphic Tooltip === */
+        .glass-tooltip {
+            position: absolute;
+            background: rgba(15, 15, 30, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #e2e8f0;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        .glass-tooltip.visible {
+            opacity: 1;
+        }
+
+        /* === NEW: Number Flip Animation === */
+        @keyframes numberFlip {
+            0% { transform: translateY(0); opacity: 1; }
+            40% { transform: translateY(-100%); opacity: 0; }
+            60% { transform: translateY(100%); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .number-flip {
+            display: inline-block;
+            animation: numberFlip 0.4s ease-in-out;
+        }
+
+        /* === NEW: Grid Lines Overlay === */
+        .grid-overlay {
+            background-image:
+                linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* === NEW: Real-Time Metrics Strip === */
+        .metrics-strip {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 4px 0;
+            scrollbar-width: none;
+        }
+        .metrics-strip::-webkit-scrollbar { display: none; }
+        .metric-card {
+            flex: 0 0 auto;
+            min-width: 180px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 16px;
+            transition: border-color 0.3s ease;
+        }
+        .metric-card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+        .metric-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        /* === NEW: Session Timeline === */
+        .session-timeline {
+            position: relative;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .session-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.2s ease;
+        }
+        .session-dot:hover {
+            transform: translateY(-50%) scale(1.6);
+            z-index: 5;
+        }
+
+        /* === NEW: Status Bar at Bottom === */
+        .status-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 32px;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #6b7280;
+            z-index: 9999;
+            gap: 24px;
+        }
+        .status-bar .status-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .status-dot-green {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+        }
+
+        /* === NEW: Keyboard shortcut hint === */
+        .kbd-hint {
+            position: fixed;
+            bottom: 44px;
+            right: 16px;
+            background: rgba(15, 15, 30, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 11px;
+            color: #6b7280;
+            z-index: 9998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .kbd-hint.visible { opacity: 1; }
+        .kbd-hint kbd {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            padding: 1px 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+        }
+
+        /* Visitor flow */
+        .flow-canvas-wrap {
+            position: relative;
+            width: 100%;
+            height: 280px;
+        }
+
+        /* Extra bottom padding for status bar */
+        footer { padding-bottom: 40px !important; }
     </style>
 </head>
-<body class="bg-black text-white">
+<body class="bg-black text-white grid-overlay">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress" style="width: 0%;"></div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="cursor-trail" id="cursor-trail-1"></div>
+    <div class="cursor-trail" id="cursor-trail-2"></div>
+    <div class="cursor-trail" id="cursor-trail-3"></div>
+
+    <!-- Heatmap Tooltip -->
+    <div class="glass-tooltip" id="heatmap-tooltip"></div>
+
     <!-- Skill Marquee Bar -->
     <div class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 border-b border-gray-800">
         <div class="marquee-container py-2">
@@ -263,6 +520,49 @@
         </div>
     </section>
 
+    <!-- Real-Time Metrics Strip -->
+    <section class="py-4 px-4">
+        <div class="max-w-7xl mx-auto scroll-fade">
+            <div class="flex items-center gap-3 mb-4">
+                <h3 class="text-lg font-bold">Real-Time Metrics</h3>
+                <span class="w-2 h-2 bg-green-400 rounded-full breathing"></span>
+                <span class="text-xs text-gray-500 font-mono">LIVE</span>
+            </div>
+            <div class="metrics-strip" id="metrics-strip">
+                <div class="metric-card" data-metric="rps">
+                    <p class="text-gray-500 text-xs mb-1">Requests / sec</p>
+                    <p class="metric-value text-blue-400" id="metric-rps">12.4</p>
+                    <canvas class="sparkline-canvas" id="spark-rps"></canvas>
+                </div>
+                <div class="metric-card" data-metric="load">
+                    <p class="text-gray-500 text-xs mb-1">Avg Load Time</p>
+                    <p class="metric-value text-purple-400" id="metric-load">284ms</p>
+                    <canvas class="sparkline-canvas" id="spark-load"></canvas>
+                </div>
+                <div class="metric-card" data-metric="sessions">
+                    <p class="text-gray-500 text-xs mb-1">Active Sessions</p>
+                    <p class="metric-value text-cyan-400" id="metric-sessions">3</p>
+                    <canvas class="sparkline-canvas" id="spark-sessions"></canvas>
+                </div>
+                <div class="metric-card" data-metric="cache">
+                    <p class="text-gray-500 text-xs mb-1">Cache Hit Rate</p>
+                    <p class="metric-value text-green-400" id="metric-cache">94.2%</p>
+                    <canvas class="sparkline-canvas" id="spark-cache"></canvas>
+                </div>
+                <div class="metric-card" data-metric="cdn">
+                    <p class="text-gray-500 text-xs mb-1">CDN Latency</p>
+                    <p class="metric-value text-pink-400" id="metric-cdn">18ms</p>
+                    <canvas class="sparkline-canvas" id="spark-cdn"></canvas>
+                </div>
+                <div class="metric-card" data-metric="errors">
+                    <p class="text-gray-500 text-xs mb-1">Error Rate</p>
+                    <p class="metric-value text-orange-400" id="metric-errors">0.12%</p>
+                    <canvas class="sparkline-canvas" id="spark-errors"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Traffic Chart (full width) -->
     <section class="py-4 px-4">
         <div class="max-w-7xl mx-auto">
@@ -276,6 +576,42 @@
                 </div>
                 <div style="height: 300px;">
                     <canvas id="trafficChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engagement Heatmap Calendar -->
+    <section class="py-4 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="glass-card p-6 rounded-xl scroll-fade">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-bold">Engagement Heatmap</h3>
+                        <p class="text-xs text-gray-500 mt-1">Daily site visits over the last 90 days</p>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-500">
+                        <span>Less</span>
+                        <div class="flex gap-1">
+                            <div class="w-3 h-3 rounded-sm" style="background: rgba(139,92,246,0.1)"></div>
+                            <div class="w-3 h-3 rounded-sm" style="background: rgba(139,92,246,0.3)"></div>
+                            <div class="w-3 h-3 rounded-sm" style="background: rgba(139,92,246,0.55)"></div>
+                            <div class="w-3 h-3 rounded-sm" style="background: rgba(139,92,246,0.8)"></div>
+                            <div class="w-3 h-3 rounded-sm" style="background: rgba(139,92,246,1)"></div>
+                        </div>
+                        <span>More</span>
+                    </div>
+                </div>
+                <div class="flex gap-1 text-xs text-gray-600 mb-2" id="heatmap-week-labels" style="padding-left: 32px;">
+                    <!-- Week labels filled by JS -->
+                </div>
+                <div class="flex gap-0">
+                    <div class="flex flex-col gap-1 text-xs text-gray-600 mr-2 justify-between" style="min-width:24px; padding: 2px 0;">
+                        <span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span><span>Sun</span>
+                    </div>
+                    <div class="heatmap-grid flex-1" id="heatmap-grid">
+                        <!-- Cells filled by JS -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -300,6 +636,28 @@
                 <h3 class="text-lg font-bold mb-4">Hourly Traffic Pattern</h3>
                 <div style="height: 250px;">
                     <canvas id="hourlyChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Radar -->
+    <section class="py-4 px-4">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
+            <div class="glass-card p-6 rounded-xl scroll-fade">
+                <h3 class="text-lg font-bold mb-2">Technology Interest Radar</h3>
+                <p class="text-xs text-gray-500 mb-4">Pages visitors spend the most time on, by technology</p>
+                <div style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                    <canvas id="techRadarCanvas" width="300" height="300"></canvas>
+                </div>
+            </div>
+
+            <!-- Visitor Flow -->
+            <div class="glass-card p-6 rounded-xl scroll-fade">
+                <h3 class="text-lg font-bold mb-2">Visitor Flow</h3>
+                <p class="text-xs text-gray-500 mb-4">How visitors navigate through the site</p>
+                <div class="flow-canvas-wrap">
+                    <canvas id="visitorFlowCanvas"></canvas>
                 </div>
             </div>
         </div>
@@ -367,6 +725,30 @@
             <div class="glass-card p-6 rounded-xl scroll-fade">
                 <h3 class="text-lg font-bold mb-4">Page Performance</h3>
                 <canvas id="pageChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Session Replay Timeline -->
+    <section class="py-4 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="glass-card p-6 rounded-xl scroll-fade">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-bold">Session Replay Timeline</h3>
+                        <p class="text-xs text-gray-500 mt-1">Recent visitor sessions with page views</p>
+                    </div>
+                    <div class="flex items-center gap-3 text-xs">
+                        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-400 inline-block"></span> Home</span>
+                        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-purple-400 inline-block"></span> Projects</span>
+                        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-green-400 inline-block"></span> Experience</span>
+                        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-cyan-400 inline-block"></span> Dashboard</span>
+                        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-pink-400 inline-block"></span> Contact</span>
+                    </div>
+                </div>
+                <div class="space-y-3" id="session-timelines">
+                    <!-- Filled by JS -->
+                </div>
             </div>
         </div>
     </section>
@@ -499,6 +881,43 @@
         </div>
     </footer>
 
+    <!-- Status Bar -->
+    <div class="status-bar" id="status-bar">
+        <div class="status-item">
+            <div class="status-dot-green"></div>
+            <span>All Systems Operational</span>
+        </div>
+        <div class="status-item">
+            <i class="fas fa-clock text-gray-600" style="font-size:9px"></i>
+            <span>Uptime: <span id="status-uptime">99d 14h 32m</span></span>
+        </div>
+        <div class="status-item">
+            <i class="fas fa-rocket text-gray-600" style="font-size:9px"></i>
+            <span>Last Deploy: <span id="status-deploy">2h ago</span></span>
+        </div>
+        <div class="status-item">
+            <i class="fas fa-tachometer-alt text-gray-600" style="font-size:9px"></i>
+            <span>Response: <span id="status-latency">42ms</span></span>
+        </div>
+        <div class="status-item">
+            <i class="fas fa-server text-gray-600" style="font-size:9px"></i>
+            <span>Edge: <span id="status-edge">IAD</span></span>
+        </div>
+        <div class="status-item" style="margin-left:auto;">
+            <span class="text-gray-600">Press <kbd style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:3px;padding:0 4px;font-family:'JetBrains Mono',monospace;font-size:10px;">?</kbd> for shortcuts</span>
+        </div>
+    </div>
+
+    <!-- Keyboard Shortcut Hint Overlay -->
+    <div class="kbd-hint" id="kbd-hint">
+        <div class="space-y-1">
+            <div><kbd>R</kbd> Refresh data</div>
+            <div><kbd>1</kbd> Last 7 days</div>
+            <div><kbd>2</kbd> Last 30 days</div>
+            <div><kbd>3</kbd> Last 90 days</div>
+        </div>
+    </div>
+
     <script>
         // ============================================================
         // Mobile menu
@@ -507,6 +926,55 @@
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // ============================================================
+        // Custom Cursor
+        // ============================================================
+        const cursor = document.getElementById('custom-cursor');
+        const trails = [
+            document.getElementById('cursor-trail-1'),
+            document.getElementById('cursor-trail-2'),
+            document.getElementById('cursor-trail-3')
+        ];
+        let mouseX = 0, mouseY = 0;
+        const trailPositions = trails.map(() => ({ x: 0, y: 0 }));
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursor.style.left = (mouseX - 10) + 'px';
+            cursor.style.top = (mouseY - 10) + 'px';
+        });
+
+        document.querySelectorAll('a, button, select, .heatmap-cell, .metric-card').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        });
+
+        function animateTrails() {
+            trails.forEach((trail, i) => {
+                const prev = i === 0 ? { x: mouseX, y: mouseY } : trailPositions[i - 1];
+                const speed = 0.15 - i * 0.03;
+                trailPositions[i].x += (prev.x - trailPositions[i].x) * speed;
+                trailPositions[i].y += (prev.y - trailPositions[i].y) * speed;
+                trail.style.left = (trailPositions[i].x - 3) + 'px';
+                trail.style.top = (trailPositions[i].y - 3) + 'px';
+                trail.style.opacity = 0.6 - i * 0.18;
+            });
+            requestAnimationFrame(animateTrails);
+        }
+        animateTrails();
+
+        // ============================================================
+        // Scroll Progress Bar
+        // ============================================================
+        const scrollProgress = document.getElementById('scroll-progress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+            scrollProgress.style.width = pct + '%';
         });
 
         // ============================================================
@@ -906,10 +1374,12 @@
         });
 
         // ============================================================
-        // Animated Count-Up for Stats
+        // Animated Count-Up for Stats (with flip effect)
         // ============================================================
         function animateCountUp(element, target, duration, isFormatted, suffix) {
             suffix = suffix || '';
+            element.classList.add('number-flip');
+            setTimeout(() => element.classList.remove('number-flip'), 400);
             const startTime = performance.now();
             const startValue = 0;
 
@@ -1077,6 +1547,14 @@
         renderActivities();
 
         // ============================================================
+        // Auto-refresh simulation every 30s
+        // ============================================================
+        setInterval(() => {
+            renderActivities();
+            updateLiveCount();
+        }, 30000);
+
+        // ============================================================
         // Refresh button
         // ============================================================
         document.getElementById('refresh-btn').addEventListener('click', () => {
@@ -1108,12 +1586,11 @@
             90: { visitors: 3.1, pageViews: 3.2, session: '1m 35s', bounce: '55.1%', pagesSession: '2.04', returnRate: '21.3%' }
         };
 
-        document.getElementById('time-range').addEventListener('change', (e) => {
-            const range = parseInt(e.target.value);
+        function switchTimeRange(range) {
             currentRange = range;
+            document.getElementById('time-range').value = range;
             const multiplier = rangeMultipliers[range];
 
-            // Update stat cards
             const visitors = Math.round(baseStats.visitors * multiplier.visitors);
             const pageViews = Math.round(baseStats.pageViews * multiplier.pageViews);
 
@@ -1124,7 +1601,6 @@
             document.getElementById('pages-session').textContent = multiplier.pagesSession;
             document.getElementById('return-rate').textContent = multiplier.returnRate;
 
-            // Regenerate traffic chart data
             const newData = generateTrafficData(range);
             trafficChart.data.labels = newData.labels;
             trafficChart.data.datasets[0].data = newData.visitors;
@@ -1132,10 +1608,478 @@
             trafficChart.options.scales.x.ticks.maxTicksLimit = range <= 7 ? 7 : (range <= 30 ? 10 : 15);
             trafficChart.update('active');
 
-            // Scale page performance data
             const pageMultiplier = range === 7 ? 0.25 : (range === 90 ? 3.1 : 1);
             pageChart.data.datasets[0].data = [285, 168, 124, 71, 41].map(v => Math.round(v * pageMultiplier));
             pageChart.update('active');
+        }
+
+        document.getElementById('time-range').addEventListener('change', (e) => {
+            switchTimeRange(parseInt(e.target.value));
+        });
+
+        // ============================================================
+        // Engagement Heatmap Calendar
+        // ============================================================
+        (function buildHeatmap() {
+            const grid = document.getElementById('heatmap-grid');
+            const tooltip = document.getElementById('heatmap-tooltip');
+            const today = new Date(2026, 1, 27);
+            const days = 91; // 13 weeks = 91 days
+            const cells = [];
+
+            // Generate 91 days of data
+            for (let i = days - 1; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dow = date.getDay(); // 0=Sun
+                const isWeekend = dow === 0 || dow === 6;
+                let visits = isWeekend ? Math.floor(Math.random() * 5) : Math.floor(3 + Math.random() * 12);
+                if (Math.random() < 0.07) visits = Math.floor(visits * 2.5);
+                cells.push({ date, visits });
+            }
+
+            const maxVisits = Math.max(...cells.map(c => c.visits));
+
+            // Rearrange into columns (weeks) where rows = days of week (Mon=0 ... Sun=6)
+            // First, pad the start so the grid aligns with day-of-week
+            const firstDay = cells[0].date.getDay(); // 0=Sun
+            // Convert to Mon=0: (firstDay + 6) % 7
+            const monBasedFirst = (firstDay + 6) % 7;
+
+            // Clear and rebuild
+            grid.style.gridTemplateColumns = 'repeat(13, 1fr)';
+            grid.style.gridTemplateRows = 'repeat(7, 1fr)';
+
+            // Fill grid column by column
+            // We want 13 columns x 7 rows = 91 cells
+            for (let col = 0; col < 13; col++) {
+                for (let row = 0; row < 7; row++) {
+                    const idx = col * 7 + row;
+                    const cell = document.createElement('div');
+                    cell.className = 'heatmap-cell';
+
+                    if (idx < cells.length) {
+                        const c = cells[idx];
+                        const intensity = maxVisits > 0 ? c.visits / maxVisits : 0;
+                        const alpha = 0.08 + intensity * 0.92;
+                        cell.style.background = `rgba(139, 92, 246, ${alpha.toFixed(2)})`;
+
+                        const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                        const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+                        const label = dayNames[c.date.getDay()] + ', ' + monthNames[c.date.getMonth()] + ' ' + c.date.getDate() + ' — ' + c.visits + ' visits';
+
+                        cell.addEventListener('mouseenter', (e) => {
+                            tooltip.textContent = label;
+                            tooltip.classList.add('visible');
+                        });
+                        cell.addEventListener('mousemove', (e) => {
+                            tooltip.style.left = (e.pageX + 12) + 'px';
+                            tooltip.style.top = (e.pageY - 32) + 'px';
+                        });
+                        cell.addEventListener('mouseleave', () => {
+                            tooltip.classList.remove('visible');
+                        });
+                    } else {
+                        cell.style.background = 'transparent';
+                    }
+
+                    grid.appendChild(cell);
+                }
+            }
+        })();
+
+        // ============================================================
+        // Real-Time Metrics Strip — Sparklines + Ticking Numbers
+        // ============================================================
+        const sparklineData = {
+            rps: { data: [], min: 8, max: 18, current: 12.4, el: 'metric-rps', canvas: 'spark-rps', fmt: v => v.toFixed(1), color: '#3b82f6' },
+            load: { data: [], min: 200, max: 400, current: 284, el: 'metric-load', canvas: 'spark-load', fmt: v => Math.round(v) + 'ms', color: '#8b5cf6' },
+            sessions: { data: [], min: 0, max: 6, current: 3, el: 'metric-sessions', canvas: 'spark-sessions', fmt: v => Math.round(v).toString(), color: '#06b6d4' },
+            cache: { data: [], min: 88, max: 99, current: 94.2, el: 'metric-cache', canvas: 'spark-cache', fmt: v => v.toFixed(1) + '%', color: '#22c55e' },
+            cdn: { data: [], min: 10, max: 35, current: 18, el: 'metric-cdn', canvas: 'spark-cdn', fmt: v => Math.round(v) + 'ms', color: '#ec4899' },
+            errors: { data: [], min: 0, max: 0.5, current: 0.12, el: 'metric-errors', canvas: 'spark-errors', fmt: v => v.toFixed(2) + '%', color: '#f97316' }
+        };
+
+        // Initialize with 60 points
+        Object.values(sparklineData).forEach(m => {
+            for (let i = 0; i < 60; i++) {
+                m.data.push(m.min + Math.random() * (m.max - m.min));
+            }
+        });
+
+        function drawSparkline(canvasId, data, color) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+            const w = rect.width;
+            const h = rect.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            const min = Math.min(...data);
+            const max = Math.max(...data);
+            const range = max - min || 1;
+
+            // Fill
+            ctx.beginPath();
+            ctx.moveTo(0, h);
+            data.forEach((v, i) => {
+                const x = (i / (data.length - 1)) * w;
+                const y = h - ((v - min) / range) * (h * 0.85);
+                if (i === 0) ctx.lineTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.lineTo(w, h);
+            ctx.closePath();
+            const grad = ctx.createLinearGradient(0, 0, 0, h);
+            grad.addColorStop(0, color + '30');
+            grad.addColorStop(1, 'transparent');
+            ctx.fillStyle = grad;
+            ctx.fill();
+
+            // Line
+            ctx.beginPath();
+            data.forEach((v, i) => {
+                const x = (i / (data.length - 1)) * w;
+                const y = h - ((v - min) / range) * (h * 0.85);
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+        }
+
+        function tickMetrics() {
+            Object.entries(sparklineData).forEach(([key, m]) => {
+                // Drift the current value
+                const drift = (Math.random() - 0.5) * (m.max - m.min) * 0.1;
+                m.current = Math.max(m.min, Math.min(m.max, m.current + drift));
+                m.data.push(m.current);
+                if (m.data.length > 60) m.data.shift();
+
+                const el = document.getElementById(m.el);
+                if (el) el.textContent = m.fmt(m.current);
+                drawSparkline(m.canvas, m.data, m.color);
+            });
+        }
+
+        // Tick every 500ms for smooth feel
+        setInterval(tickMetrics, 500);
+        // Initial draw
+        tickMetrics();
+
+        // ============================================================
+        // Technology Radar (Spider Chart on Canvas)
+        // ============================================================
+        (function drawTechRadar() {
+            const canvas = document.getElementById('techRadarCanvas');
+            if (!canvas) return;
+
+            function render() {
+                const rect = canvas.parentElement.getBoundingClientRect();
+                const size = Math.min(rect.width, rect.height, 300);
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = size * dpr;
+                canvas.height = size * dpr;
+                canvas.style.width = size + 'px';
+                canvas.style.height = size + 'px';
+                const ctx = canvas.getContext('2d');
+                ctx.scale(dpr, dpr);
+
+                const cx = size / 2;
+                const cy = size / 2;
+                const maxR = size * 0.38;
+                const labels = ['React', 'Python', 'TypeScript', 'SQL', 'ML/AI', 'DevOps'];
+                const values = [0.85, 0.78, 0.90, 0.72, 0.65, 0.58];
+                const n = labels.length;
+
+                ctx.clearRect(0, 0, size, size);
+
+                // Draw rings
+                for (let ring = 1; ring <= 5; ring++) {
+                    const r = (ring / 5) * maxR;
+                    ctx.beginPath();
+                    for (let i = 0; i <= n; i++) {
+                        const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
+                        const x = cx + Math.cos(angle) * r;
+                        const y = cy + Math.sin(angle) * r;
+                        if (i === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    }
+                    ctx.closePath();
+                    ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+
+                // Draw axes
+                for (let i = 0; i < n; i++) {
+                    const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
+                    ctx.beginPath();
+                    ctx.moveTo(cx, cy);
+                    ctx.lineTo(cx + Math.cos(angle) * maxR, cy + Math.sin(angle) * maxR);
+                    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+                    ctx.stroke();
+                }
+
+                // Draw data polygon
+                ctx.beginPath();
+                values.forEach((v, i) => {
+                    const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
+                    const r = v * maxR;
+                    const x = cx + Math.cos(angle) * r;
+                    const y = cy + Math.sin(angle) * r;
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                });
+                ctx.closePath();
+                const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR);
+                grad.addColorStop(0, 'rgba(139, 92, 246, 0.3)');
+                grad.addColorStop(1, 'rgba(59, 130, 246, 0.1)');
+                ctx.fillStyle = grad;
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(139, 92, 246, 0.7)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Draw data points
+                values.forEach((v, i) => {
+                    const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
+                    const r = v * maxR;
+                    const x = cx + Math.cos(angle) * r;
+                    const y = cy + Math.sin(angle) * r;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 4, 0, Math.PI * 2);
+                    ctx.fillStyle = '#8b5cf6';
+                    ctx.fill();
+                    ctx.strokeStyle = '#000';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                });
+
+                // Labels
+                ctx.font = '11px Inter, sans-serif';
+                ctx.fillStyle = '#9ca3af';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                labels.forEach((label, i) => {
+                    const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
+                    const labelR = maxR + 20;
+                    const x = cx + Math.cos(angle) * labelR;
+                    const y = cy + Math.sin(angle) * labelR;
+                    ctx.fillText(label, x, y);
+                });
+            }
+            render();
+            window.addEventListener('resize', render);
+        })();
+
+        // ============================================================
+        // Visitor Flow Visualization
+        // ============================================================
+        (function drawVisitorFlow() {
+            const canvas = document.getElementById('visitorFlowCanvas');
+            if (!canvas) return;
+            const wrap = canvas.parentElement;
+
+            function render() {
+                const dpr = window.devicePixelRatio || 1;
+                const w = wrap.clientWidth;
+                const h = wrap.clientHeight;
+                canvas.width = w * dpr;
+                canvas.height = h * dpr;
+                canvas.style.width = w + 'px';
+                canvas.style.height = h + 'px';
+                const ctx = canvas.getContext('2d');
+                ctx.scale(dpr, dpr);
+                ctx.clearRect(0, 0, w, h);
+
+                // Stages
+                const stages = [
+                    { label: 'Landing', items: [{ name: 'Home', value: 285, color: '#3b82f6' }, { name: 'Projects', value: 39, color: '#8b5cf6' }] },
+                    { label: 'Browse', items: [{ name: 'Projects', value: 168, color: '#8b5cf6' }, { name: 'Experience', value: 124, color: '#10b981' }, { name: 'Dashboard', value: 71, color: '#06b6d4' }] },
+                    { label: 'Action', items: [{ name: 'Contact', value: 41, color: '#ec4899' }, { name: 'Exit', value: 283, color: '#6b7280' }] }
+                ];
+
+                const colW = w / stages.length;
+                const maxVal = 324;
+                const barW = 80;
+                const padding = 30;
+
+                stages.forEach((stage, si) => {
+                    const x = si * colW + (colW - barW) / 2;
+                    let yOffset = padding + 24;
+
+                    // Stage label
+                    ctx.font = 'bold 12px Inter, sans-serif';
+                    ctx.fillStyle = '#9ca3af';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(stage.label, si * colW + colW / 2, padding);
+
+                    stage.items.forEach(item => {
+                        const barH = Math.max(16, (item.value / maxVal) * (h - padding * 2 - 40));
+                        // Draw bar
+                        ctx.fillStyle = item.color;
+                        ctx.globalAlpha = 0.7;
+                        ctx.beginPath();
+                        ctx.roundRect(x, yOffset, barW, barH, 4);
+                        ctx.fill();
+                        ctx.globalAlpha = 1;
+
+                        // Label inside bar
+                        ctx.font = '10px Inter, sans-serif';
+                        ctx.fillStyle = '#fff';
+                        ctx.textAlign = 'center';
+                        if (barH > 20) {
+                            ctx.fillText(item.name, x + barW / 2, yOffset + barH / 2 - 5);
+                            ctx.font = 'bold 10px JetBrains Mono, monospace';
+                            ctx.fillText(item.value.toString(), x + barW / 2, yOffset + barH / 2 + 8);
+                        }
+
+                        // Store position for connections
+                        item._x = x + barW;
+                        item._y = yOffset + barH / 2;
+                        item._barH = barH;
+                        yOffset += barH + 6;
+                    });
+
+                    // Draw connections to next stage
+                    if (si < stages.length - 1) {
+                        const nextStage = stages[si + 1];
+                        const nextX = (si + 1) * colW + (colW - barW) / 2;
+
+                        stage.items.forEach(item => {
+                            nextStage.items.forEach(next => {
+                                // Create gradient connection
+                                const startX = item._x;
+                                const startY = item._y;
+                                const endX = nextX;
+                                const endY = next._y;
+
+                                ctx.beginPath();
+                                ctx.moveTo(startX, startY - 4);
+                                const cpX = (startX + endX) / 2;
+                                ctx.bezierCurveTo(cpX, startY - 4, cpX, endY - 4, endX, endY - 4);
+                                ctx.lineTo(endX, endY + 4);
+                                ctx.bezierCurveTo(cpX, endY + 4, cpX, startY + 4, startX, startY + 4);
+                                ctx.closePath();
+
+                                const grad = ctx.createLinearGradient(startX, 0, endX, 0);
+                                grad.addColorStop(0, item.color + '20');
+                                grad.addColorStop(1, next.color + '20');
+                                ctx.fillStyle = grad;
+                                ctx.fill();
+                            });
+                        });
+                    }
+                });
+            }
+            render();
+            window.addEventListener('resize', render);
+        })();
+
+        // ============================================================
+        // Session Replay Timeline
+        // ============================================================
+        (function buildSessionTimelines() {
+            const container = document.getElementById('session-timelines');
+            const pageColors = {
+                'Home': '#3b82f6',
+                'Projects': '#8b5cf6',
+                'Experience': '#10b981',
+                'Dashboard': '#06b6d4',
+                'Contact': '#ec4899'
+            };
+            const pageNames = Object.keys(pageColors);
+            const locations = ['New York', 'SF', 'London', 'Austin', 'Seattle', 'Boston', 'Toronto', 'Berlin', 'Chicago', 'LA'];
+
+            for (let s = 0; s < 10; s++) {
+                const sessionLen = 2 + Math.floor(Math.random() * 5); // 2-6 page views
+                const pages = [];
+                for (let p = 0; p < sessionLen; p++) {
+                    pages.push(pageNames[Math.floor(Math.random() * pageNames.length)]);
+                }
+                // First page is usually Home
+                if (Math.random() > 0.3) pages[0] = 'Home';
+
+                const row = document.createElement('div');
+                row.className = 'flex items-center gap-3';
+
+                const label = document.createElement('div');
+                label.className = 'text-xs text-gray-600 font-mono w-20 flex-shrink-0';
+                label.textContent = locations[s % locations.length];
+
+                const timeline = document.createElement('div');
+                timeline.className = 'session-timeline flex-1 relative';
+
+                pages.forEach((page, pi) => {
+                    const dot = document.createElement('div');
+                    dot.className = 'session-dot';
+                    dot.style.background = pageColors[page];
+                    dot.style.boxShadow = '0 0 6px ' + pageColors[page] + '80';
+                    const pct = sessionLen <= 1 ? 50 : (pi / (sessionLen - 1)) * 90 + 5;
+                    dot.style.left = pct + '%';
+                    dot.title = page;
+                    timeline.appendChild(dot);
+                });
+
+                const timeLabel = document.createElement('div');
+                timeLabel.className = 'text-xs text-gray-600 font-mono w-14 flex-shrink-0 text-right';
+                timeLabel.textContent = Math.floor(Math.random() * 50 + 1) + 'm ago';
+
+                row.appendChild(label);
+                row.appendChild(timeline);
+                row.appendChild(timeLabel);
+                container.appendChild(row);
+            }
+        })();
+
+        // ============================================================
+        // Status Bar — Uptime counter + Latency randomizer
+        // ============================================================
+        let uptimeSeconds = 99 * 86400 + 14 * 3600 + 32 * 60; // starting uptime
+        const edges = ['IAD', 'SFO', 'LHR', 'CDG', 'NRT', 'SIN'];
+
+        function updateStatusBar() {
+            uptimeSeconds++;
+            const d = Math.floor(uptimeSeconds / 86400);
+            const h = Math.floor((uptimeSeconds % 86400) / 3600);
+            const m = Math.floor((uptimeSeconds % 3600) / 60);
+            document.getElementById('status-uptime').textContent = d + 'd ' + h + 'h ' + m + 'm';
+
+            // Randomize latency slightly
+            const latency = 35 + Math.floor(Math.random() * 20);
+            document.getElementById('status-latency').textContent = latency + 'ms';
+        }
+        setInterval(updateStatusBar, 1000);
+
+        // ============================================================
+        // Keyboard Shortcuts
+        // ============================================================
+        let kbdHintVisible = false;
+        document.addEventListener('keydown', (e) => {
+            // Ignore if user is typing in an input
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+
+            const key = e.key.toLowerCase();
+            if (key === 'r') {
+                document.getElementById('refresh-btn').click();
+            } else if (key === '1') {
+                switchTimeRange(7);
+            } else if (key === '2') {
+                switchTimeRange(30);
+            } else if (key === '3') {
+                switchTimeRange(90);
+            } else if (key === '?') {
+                kbdHintVisible = !kbdHintVisible;
+                document.getElementById('kbd-hint').classList.toggle('visible', kbdHintVisible);
+            }
         });
 
         // ============================================================
