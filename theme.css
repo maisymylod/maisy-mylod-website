@@ -1,0 +1,60 @@
+/*
+ * Theme tokens. Lifted from codag.ai's live gruvbox-dark palette and
+ * adapted for a personal site. Edit only this file to retune the look.
+ *
+ * Convention: --foo is a hex; --foo-rgb is "R, G, B" for opacity composition.
+ */
+:root {
+    /* --- Brand --- */
+    --accent:        #8ec07c;   /* gruvbox bright aqua-green */
+    --accent-rgb:    142, 192, 124;
+    --accent-light:  #b8bb26;   /* gruvbox bright green */
+    --accent-light-rgb: 184, 187, 38;
+
+    --cyan:          #d3869b;   /* gruvbox bright purple (secondary) */
+    --cyan-rgb:      211, 134, 155;
+
+    --on-accent:     #1d2021;   /* text laid over accent fills */
+
+    /* --- Status --- */
+    --error:         #fb4934;
+    --error-rgb:     251, 73, 52;
+    --warning:       #fabd2f;
+    --warning-bright:#fe8019;
+    --slate:         #928374;
+
+    /* --- Page --- */
+    --bg:            #282828;
+    --bg-deep:       #1d2021;
+    --bg-deep-rgb:   29, 32, 33;
+
+    /* --- Foreground prominence ladder --- */
+    --fg:            #ebdbb2;
+    --fg-strong:     #ebdbb2;
+    --fg-strong-rgb: 235, 219, 178;
+    --fg-soft:       #d5c4a1;
+    --fg-muted:      #bdae93;
+    --fg-faint:      #928374;
+
+    /* --- Surfaces / borders --- */
+    --surface:       rgba(var(--accent-rgb), 0.05);
+    --surface-hover: rgba(var(--accent-rgb), 0.10);
+    --border:        rgba(var(--fg-strong-rgb), 0.10);
+    --border-hover:  rgba(var(--accent-rgb), 0.5);
+
+    /* --- Type --- */
+    --font-display:  'Newsreader', 'Times New Roman', serif;
+    --font-body:     'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+    --font-mono:     'B612 Mono', ui-monospace, Menlo, monospace;
+
+    /* --- Motion --- */
+    --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out:   cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* --- Layout --- */
+    --container:     1140px;
+    --container-narrow: 880px;
+    --radius-card:   0.3rem;
+    --radius-code:   0.25rem;
+    --radius-tight:  0.12rem;
+}

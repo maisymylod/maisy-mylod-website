@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Projects by Maisy Mylod — math, AI, data analytics, and fullstack tools.">
+<meta name="theme-color" content="#282828">
+<title>projects — maisy mylod</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=B612+Mono:wght@400;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><span class="prompt-dot">$</span><span>maisy mylod</span><span class="blink" aria-hidden="true"></span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">home</a>
+      <a href="experience.html" class="nav-link">experience</a>
+      <a href="projects.html" class="nav-link active">projects</a>
+      <a href="dashboard.html" class="nav-link">dashboard</a>
+      <a href="contact.html" class="nav-link">contact</a>
+      <button class="nav-cta" data-open-palette aria-label="Open command palette">⌘ K</button>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div id="mobile-menu" class="hidden" role="menu">
+  <a href="index.html">home</a>
+  <a href="experience.html">experience</a>
+  <a href="projects.html">projects</a>
+  <a href="dashboard.html">dashboard</a>
+  <a href="contact.html">contact</a>
+</div>
+
+<header class="page-header" style="margin-top:3.6rem;">
+  <div class="container">
+    <span class="eyebrow">projects</span>
+    <h1 class="headline">
+      Math, AI, data, fullstack.
+      <span class="dim">Some shipped, some shipping.</span>
+    </h1>
+  </div>
+</header>
+
+<main>
+<section id="featured" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-in">
+      <span class="eyebrow">featured</span>
+      <div class="featured" style="margin-top:1rem;">
+        <h2 class="headline tight" style="margin-bottom:1rem;">
+          Athena AI
+          <span class="dim">deepfake detection for women and children.</span>
+        </h2>
+        <p style="color:rgba(235,219,178,0.78);max-width:62ch;font-size:1.02rem;line-height:1.6;">
+          Combats the spread of non-consensual AI-generated imagery. Deep-learning classifiers, perceptual hashing, automated reporting pipelines. Built to be a tool somebody at risk could actually use.
+        </p>
+        <div class="tech-chips">
+          <span class="chip">python</span><span class="chip">pytorch</span><span class="chip">react</span><span class="chip">typescript</span><span class="chip">computer vision</span><span class="chip">deep learning</span>
+        </div>
+        <div style="margin-top:1.75rem;">
+          <a href="https://github.com/maisymylod/athena-ai" target="_blank" rel="noopener" class="btn btn-primary">view on github ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="all-projects">
+  <div class="container">
+    <div class="fade-in">
+      <span class="eyebrow">all projects</span>
+      <h2 class="headline tight">
+        Everything else.
+        <span class="dim">Filter by domain or search.</span>
+      </h2>
+    </div>
+
+    <div class="filter-bar fade-in" role="toolbar" aria-label="Project filter">
+      <input type="search" class="filter-search" id="proj-search" placeholder="search projects…" aria-label="Search projects">
+      <button class="filter-btn active" data-filter="all">all</button>
+      <button class="filter-btn" data-filter="math">math</button>
+      <button class="filter-btn" data-filter="data">data</button>
+      <button class="filter-btn" data-filter="ai">ai</button>
+      <button class="filter-btn" data-filter="fullstack">fullstack</button>
+    </div>
+
+    <div class="proj-grid stagger" id="proj-grid">
+
+      <article class="proj-card fade-in" data-tags="math fullstack" data-text="quantlib-mm python quantitative monte carlo black-scholes">
+        <div class="proj-head">
+          <h3 class="proj-name">quantlib-mm</h3>
+          <span class="proj-status">python</span>
+        </div>
+        <p class="proj-desc">A small quant library. Monte Carlo + Black-Scholes pricing, mean-variance portfolios, value-at-risk.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">numpy</span><span class="proj-tag">scipy</span></div>
+          <a href="https://github.com/maisymylod/quantlib-mm" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card fade-in" data-tags="fullstack" data-text="client portal rails postgres oauth pundit goldsmith">
+        <div class="proj-head">
+          <h3 class="proj-name">client portal</h3>
+          <span class="proj-status">active</span>
+        </div>
+        <p class="proj-desc">Fullstack portal for an executive-search firm. 38 endpoints, 13 tables, multi-tenant, OAuth2 + Pundit, ATS integration.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">rails</span><span class="proj-tag">postgres</span><span class="proj-tag">react</span><span class="proj-tag">oauth</span></div>
+          <span class="proj-private">private repo</span>
+        </div>
+      </article>
+
+      <article class="proj-card fade-in" data-tags="ai math" data-text="athena deepfake cv pytorch detection">
+        <div class="proj-head">
+          <h3 class="proj-name">athena ai</h3>
+          <span class="proj-status">featured</span>
+        </div>
+        <p class="proj-desc">Deepfake / synthetic-image detection focused on protecting women and children. CV classifiers, perceptual hashing, automated reporting.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">pytorch</span><span class="proj-tag">cv</span></div>
+          <a href="https://github.com/maisymylod/athena-ai" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card fade-in" data-tags="data fullstack" data-text="ir analytics private equity dashboard react postgres">
+        <div class="proj-head">
+          <h3 class="proj-name">ir analytics platform</h3>
+          <span class="proj-status muted">2025</span>
+        </div>
+        <p class="proj-desc">Investor-relations dashboard for a private-equity client. Charts, fund-level drilldowns, scheduled report exports.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">react</span><span class="proj-tag">postgres</span><span class="proj-tag">sql</span></div>
+          <span class="proj-private">private repo</span>
+        </div>
+      </article>
+
+      <article class="proj-card fade-in" data-tags="data" data-text="financial forecasting snowflake sql lookml clear">
+        <div class="proj-head">
+          <h3 class="proj-name">financial forecasting</h3>
+          <span class="proj-status muted">2025</span>
+        </div>
+        <p class="proj-desc">Daily actualization &amp; forecast pipelines informing a $1B+ revenue picture at CLEAR. Derived LookML, Snowflake ML.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">snowflake</span><span class="proj-tag">sql</span><span class="proj-tag">lookml</span><span class="proj-tag">python</span></div>
+          <span class="proj-private">internal</span>
+        </div>
+      </article>
+
+      <article class="proj-card fade-in" data-tags="data" data-text="kpi dashboard power bi looker churn renewal">
+        <div class="proj-head">
+          <h3 class="proj-name">kpi dashboard suite</h3>
+          <span class="proj-status muted">2025</span>
+        </div>
+        <p class="proj-desc">Standardized reporting dashboards giving Finance, Strategy, and Marketing real-time visibility into enrollment, renewal, and churn.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">power bi</span><span class="proj-tag">looker</span><span class="proj-tag">sql</span></div>
+          <span class="proj-private">internal</span>
+        </div>
+      </article>
+
+      <article class="proj-card fade-in" data-tags="fullstack" data-text="settlers catan canvas game multiplayer hex">
+        <div class="proj-head">
+          <h3 class="proj-name">settlers of catan</h3>
+          <span class="proj-status">demo</span>
+        </div>
+        <p class="proj-desc">Browser-based Settlers of Catan. Canvas rendering, hex-grid math, multiplayer state, dice + trading.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">html</span><span class="proj-tag">canvas</span><span class="proj-tag">js</span></div>
+          <a href="https://github.com/maisymylod/settlers-of-catan" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card fade-in" data-tags="fullstack" data-text="internal it estee lauder flask sqlalchemy python">
+        <div class="proj-head">
+          <h3 class="proj-name">internal it app</h3>
+          <span class="proj-status muted">2022</span>
+        </div>
+        <p class="proj-desc">Internal IT web application at Estée Lauder. Authn, automated reporting, sync of legacy datasources.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">flask</span><span class="proj-tag">sqlalchemy</span></div>
+          <span class="proj-private">internal</span>
+        </div>
+      </article>
+
+      <article class="proj-card fade-in" data-tags="math data" data-text="algorithmic trading research time series factor michigan qis">
+        <div class="proj-head">
+          <h3 class="proj-name">algorithmic trading research</h3>
+          <span class="proj-status muted">2021 — 24</span>
+        </div>
+        <p class="proj-desc">Time-series analysis and backtesting for factor-based investing and statistical arbitrage. Michigan QIS.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">scikit-learn</span><span class="proj-tag">pandas</span></div>
+          <span class="proj-private">research</span>
+        </div>
+      </article>
+
+      <article class="proj-card fade-in" data-tags="fullstack" data-text="portfolio website chart analytics this site">
+        <div class="proj-head">
+          <h3 class="proj-name">portfolio site</h3>
+          <span class="proj-status">live</span>
+        </div>
+        <p class="proj-desc">This site. Five pages, three live math demos, animated centerpiece, command-palette nav, dashboard with Chart.js.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">html</span><span class="proj-tag">css</span><span class="proj-tag">js</span><span class="proj-tag">chart.js</span></div>
+          <a href="https://github.com/maisymylod/maisy-mylod-website" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div id="proj-empty" style="display:none;text-align:center;padding:3rem 0;color:rgba(235,219,178,0.45);font-family:var(--font-mono);font-size:0.86rem;">
+      no projects match that filter.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container-narrow">
+    <div class="final-cta fade-in">
+      <span class="eyebrow">collaborate</span>
+      <h2 class="headline" style="margin-top:0.5rem;">
+        Have a build in mind?
+        <span class="dim">Tell me about it.</span>
+      </h2>
+      <div class="actions">
+        <a href="contact.html" class="btn btn-primary">get in touch →</a>
+        <a href="https://github.com/maisymylod" target="_blank" rel="noopener" class="btn btn-secondary">browse all repos ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="row">
+      <span>&copy; 2026 maisy mylod · nyc</span>
+      <div class="links">
+        <a href="mailto:maisymylod@gmail.com">email</a>
+        <a href="https://github.com/maisymylod" target="_blank" rel="noopener">github</a>
+        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">linkedin</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="palette-mask hidden" role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="palette">
+    <input type="text" class="palette-input" placeholder="jump to…  (type to filter)" aria-label="Filter commands">
+    <ul class="palette-list" role="listbox">
+      <li data-label="home" data-href="index.html">home</li>
+      <li data-label="experience" data-href="experience.html">experience</li>
+      <li data-label="projects" data-href="projects.html">projects</li>
+      <li data-label="dashboard" data-href="dashboard.html">dashboard</li>
+      <li data-label="contact" data-href="contact.html">contact</li>
+      <li data-label="featured athena" data-section="featured">↓ featured</li>
+      <li data-label="all projects" data-section="all-projects">↓ all projects</li>
+      <li data-label="github" data-href="https://github.com/maisymylod">open github ↗</li>
+    </ul>
+    <div class="palette-foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> select</span><span><kbd>esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+<script>
+(function projFilter() {
+    const grid = document.getElementById('proj-grid');
+    const empty = document.getElementById('proj-empty');
+    if (!grid) return;
+    const cards = Array.from(grid.querySelectorAll('.proj-card'));
+    const btns = document.querySelectorAll('.filter-btn');
+    const search = document.getElementById('proj-search');
+    let activeFilter = 'all';
+
+    const apply = () => {
+        const q = (search.value || '').trim().toLowerCase();
+        let shown = 0;
+        cards.forEach(c => {
+            const tags = (c.dataset.tags || '').split(/\s+/);
+            const text = (c.dataset.text || '').toLowerCase();
+            const matchFilter = activeFilter === 'all' || tags.includes(activeFilter);
+            const matchSearch = !q || text.includes(q) || c.querySelector('.proj-name').textContent.toLowerCase().includes(q);
+            const show = matchFilter && matchSearch;
+            c.style.display = show ? '' : 'none';
+            if (show) shown++;
+        });
+        empty.style.display = shown === 0 ? 'block' : 'none';
+    };
+    btns.forEach(b => b.addEventListener('click', () => {
+        btns.forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        activeFilter = b.dataset.filter;
+        apply();
+    }));
+    search.addEventListener('input', apply);
+}());
+</script>
+</body>
+</html>

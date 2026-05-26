@@ -3,442 +3,484 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Maisy Mylod — software engineer at Goldsmith & Co. NYC. Pure math, fullstack, quant.">
-<meta name="theme-color" content="#0c0c0c">
-<title>maisy mylod</title>
+<meta name="description" content="Maisy Mylod — software engineer at Goldsmith &amp; Co, pure mathematician from Michigan. Rails, Postgres, Snowflake, quant tooling, NYC.">
+<meta name="theme-color" content="#282828">
+<meta property="og:title" content="maisy mylod — software engineer + pure mathematician">
+<meta property="og:description" content="Building fullstack products in the spread between proof-style math and production code.">
+<meta property="og:type" content="website">
+<title>maisy mylod — software engineer + pure mathematician</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0c0c0c;
-    --fg: #e8e6e3;
-    --muted: #8a8580;
-    --dim: #3a3733;
-    --accent: #d4a843;
-    --accent-soft: #d4a84322;
-    --rule: #1f1d1a;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-    background: var(--bg);
-    color: var(--fg);
-    font-size: 15px;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: "ss01", "calt";
-  }
-
-  ::selection { background: var(--accent); color: var(--bg); }
-
-  main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 64px 28px 96px;
-  }
-
-  /* prompt + caret */
-  .prompt {
-    color: var(--accent);
-    user-select: none;
-    margin-right: 8px;
-  }
-  .prompt::before { content: "$"; }
-
-  .cmd {
-    color: var(--fg);
-    font-weight: 500;
-  }
-
-  /* section blocks */
-  section {
-    margin: 56px 0;
-  }
-  section:first-of-type { margin-top: 16px; }
-
-  .header-line {
-    display: block;
-    margin-bottom: 18px;
-    color: var(--muted);
-    font-size: 14px;
-  }
-  .header-line .cmd { color: var(--fg); }
-
-  h1, h2, h3 {
-    font-weight: 700;
-    color: var(--fg);
-    font-size: 15px;
-  }
-
-  h1 {
-    font-size: 28px;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 6px;
-  }
-
-  /* hero */
-  .hero {
-    margin-top: 24px;
-    margin-bottom: 64px;
-  }
-  .hero .meta {
-    color: var(--muted);
-    font-size: 14px;
-  }
-  .hero .meta a { color: var(--muted); }
-  .hero .meta a:hover { color: var(--accent); }
-  .hero .meta .sep { color: var(--dim); margin: 0 8px; }
-
-  /* ascii rules */
-  .rule {
-    border: none;
-    border-top: 1px solid var(--rule);
-    margin: 56px 0;
-  }
-
-  /* generic links */
-  a {
-    color: var(--fg);
-    text-decoration: none;
-    border-bottom: 1px solid var(--dim);
-    transition: color 0.12s ease, border-color 0.12s ease;
-  }
-  a:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
-
-  /* paragraphs */
-  p {
-    color: var(--fg);
-    margin-bottom: 14px;
-    max-width: 64ch;
-  }
-  p.muted { color: var(--muted); }
-  p .accent { color: var(--accent); }
-
-  /* lists rendered as table-like rows */
-  .row-list {
-    display: grid;
-    grid-template-columns: max-content 1fr max-content;
-    column-gap: 24px;
-    row-gap: 8px;
-    align-items: baseline;
-    margin: 16px 0 24px;
-  }
-  .row-list .key {
-    color: var(--accent);
-    font-weight: 500;
-  }
-  .row-list .val {
-    color: var(--fg);
-  }
-  .row-list .meta {
-    color: var(--muted);
-    font-size: 13px;
-    text-align: right;
-    white-space: nowrap;
-  }
-
-  /* role / project blocks */
-  .block {
-    margin: 0 0 22px;
-    padding-left: 20px;
-    border-left: 1px solid var(--rule);
-  }
-  .block-head {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 8px 16px;
-    margin-bottom: 6px;
-  }
-  .block h3 { color: var(--fg); }
-  .block .where {
-    color: var(--accent);
-    font-weight: 500;
-  }
-  .block .when {
-    color: var(--muted);
-    font-size: 13px;
-    white-space: nowrap;
-  }
-  .block .role {
-    color: var(--muted);
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-  .block ul {
-    list-style: none;
-    margin: 8px 0 0;
-  }
-  .block li {
-    padding-left: 16px;
-    position: relative;
-    color: var(--fg);
-    margin-bottom: 4px;
-    font-size: 14.5px;
-  }
-  .block li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: var(--dim);
-  }
-  .block .stack {
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 8px;
-  }
-
-  /* projects table */
-  .projects {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    column-gap: 24px;
-    row-gap: 16px;
-    margin: 16px 0;
-  }
-  .projects .name { color: var(--accent); font-weight: 500; }
-  .projects .name a { color: var(--accent); border-bottom-color: var(--accent-soft); }
-  .projects .name a:hover { border-bottom-color: var(--accent); }
-  .projects .desc { color: var(--fg); font-size: 14.5px; }
-  .projects .desc small { color: var(--muted); display: block; font-size: 12.5px; margin-top: 2px; }
-
-  /* tags-as-text */
-  .tags { color: var(--muted); font-size: 13px; margin-top: 4px; }
-
-  /* contact */
-  .contact-list a {
-    display: inline-block;
-    margin-right: 12px;
-  }
-
-  /* footer prompt with caret */
-  footer {
-    margin-top: 80px;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 2;
-  }
-  footer .blink {
-    display: inline-block;
-    width: 8px;
-    height: 1em;
-    background: var(--accent);
-    vertical-align: text-bottom;
-    margin-left: 4px;
-    animation: blink 1.05s steps(1) infinite;
-  }
-  @keyframes blink { 50% { opacity: 0; } }
-
-  /* small screens */
-  @media (max-width: 540px) {
-    main { padding: 32px 18px 80px; }
-    h1 { font-size: 22px; }
-    .row-list { grid-template-columns: 1fr; row-gap: 4px; column-gap: 0; }
-    .row-list .meta { text-align: left; }
-    .block-head .when { flex-basis: 100%; }
-    .projects { grid-template-columns: 1fr; row-gap: 4px; }
-    .projects .name { margin-top: 8px; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    footer .blink { animation: none; opacity: 0.6; }
-    html { scroll-behavior: auto; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=B612+Mono:wght@400;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="prompt-dot">$</span>
+      <span>maisy mylod</span>
+      <span class="blink" aria-hidden="true"></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active">home</a>
+      <a href="experience.html" class="nav-link">experience</a>
+      <a href="projects.html" class="nav-link">projects</a>
+      <a href="dashboard.html" class="nav-link">dashboard</a>
+      <a href="contact.html" class="nav-link">contact</a>
+      <button class="nav-cta" data-open-palette aria-label="Open command palette">⌘ K</button>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div id="mobile-menu" class="hidden" role="menu">
+  <a href="index.html">home</a>
+  <a href="experience.html">experience</a>
+  <a href="projects.html">projects</a>
+  <a href="dashboard.html">dashboard</a>
+  <a href="contact.html">contact</a>
+  <a href="https://github.com/maisymylod" target="_blank" rel="noopener">github ↗</a>
+  <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">linkedin ↗</a>
+</div>
+
+<!-- Keyword marquee (pauses on hover, respects reduced motion) -->
+<div class="marquee" aria-label="Tech stack">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot">·</span>react</span>
+    <span class="marquee-item"><span class="dot">·</span>typescript</span>
+    <span class="marquee-item"><span class="dot">·</span>python</span>
+    <span class="marquee-item"><span class="dot">·</span>node.js</span>
+    <span class="marquee-item"><span class="dot">·</span>postgresql</span>
+    <span class="marquee-item"><span class="dot">·</span>snowflake</span>
+    <span class="marquee-item"><span class="dot">·</span>power bi</span>
+    <span class="marquee-item"><span class="dot">·</span>machine learning</span>
+    <span class="marquee-item"><span class="dot">·</span>pure mathematics</span>
+    <span class="marquee-item"><span class="dot">·</span>git</span>
+    <span class="marquee-item"><span class="dot">·</span>rest apis</span>
+    <span class="marquee-item"><span class="dot">·</span>c++</span>
+    <span class="marquee-item"><span class="dot">·</span>rails</span>
+    <span class="marquee-item"><span class="dot">·</span>oauth</span>
+  </div>
+</div>
+
 <main>
 
-  <section class="hero">
-    <div class="header-line"><span class="prompt"></span><span class="cmd">whoami</span></div>
-    <h1>maisy mylod</h1>
-    <p class="meta">
-      <span>software engineer @ goldsmith &amp; co</span>
-      <span class="sep">·</span>
-      <span>nyc</span>
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<section id="hero" style="position:relative;">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-glow-cyan" aria-hidden="true"></div>
+  <div class="container">
+    <span class="eyebrow hero-fade-1">software engineer · pure mathematician</span>
+    <h1 class="headline hero-fade-2">
+      Where pure mathematics
+      <span class="dim">ships in production code.</span>
+    </h1>
+    <p class="lede hero-fade-3">
+      I'm Maisy Mylod. Fullstack engineer at <a href="experience.html" style="color:var(--accent-light);border-bottom:1px solid rgba(184,187,38,0.3);">Goldsmith &amp; Co</a> in NYC, pure-math grad from Michigan.
+      My day job is a Rails &amp; Postgres client portal. Off-hours: quant tooling, topology, small interactive tools.
     </p>
-    <p class="meta" style="margin-top:4px;">
-      <a href="mailto:maisymylod@gmail.com">maisymylod@gmail.com</a>
-      <span class="sep">·</span>
-      <a href="https://github.com/maisymylod" target="_blank" rel="noopener">github</a>
-      <span class="sep">·</span>
-      <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">linkedin</a>
-    </p>
-  </section>
 
-  <hr class="rule">
-
-  <section>
-    <div class="header-line"><span class="prompt"></span><span class="cmd">cat about.txt</span></div>
-    <p>
-      Building fullstack products at a small NYC executive search firm.
-      Day job is a Rails &amp; Postgres client portal &mdash; auth, OAuth, candidate pipelines,
-      reporting. Off-hours I write quant tooling, play with topology, and ship small tools.
-    </p>
-    <p>
-      University of Michigan '24, pure mathematics. James B. Angell Scholar.
-      Comfortable in the spread between proof-style math and production code,
-      which is most of what the job actually is.
-    </p>
-  </section>
-
-  <hr class="rule">
-
-  <section>
-    <div class="header-line"><span class="prompt"></span><span class="cmd">ls -la work/</span></div>
-
-    <div class="block">
-      <div class="block-head">
-        <h3><span class="where">goldsmith &amp; co</span> <span style="color:var(--muted);font-weight:400;">/ software engineer</span></h3>
-        <span class="when">2025 — present · nyc</span>
-      </div>
-      <ul>
-        <li>fullstack client portal: rails api, postgres, vanilla js frontend, oauth2</li>
-        <li>38 endpoints, 13 tables, multi-tenant accounts model wired against the firm's ats</li>
-        <li>shipped reporting and candidate-flow features partner-facing from day one</li>
-      </ul>
-      <div class="stack">stack: rails · postgres · typescript · oauth · react bits</div>
+    <div class="hero-fade-3" style="display:flex;flex-wrap:wrap;gap:0.7rem;margin-bottom:3rem;">
+      <a href="projects.html" class="btn btn-primary">see the work →</a>
+      <a href="contact.html" class="btn btn-secondary">say hi</a>
+      <a href="https://github.com/maisymylod" target="_blank" rel="noopener" class="btn btn-secondary">github ↗</a>
+      <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener" class="btn btn-secondary">linkedin ↗</a>
     </div>
 
-    <div class="block">
-      <div class="block-head">
-        <h3><span class="where">clear</span> <span style="color:var(--muted);font-weight:400;">/ data analyst</span></h3>
-        <span class="when">jan 2025 — sep 2025 · nyc</span>
+    <!-- Hero showpiece: spectral graph community detection -->
+    <div class="hero-fade-4">
+      <div class="compare-card" aria-label="Spectral graph community detection: raw graph vs detected partitions">
+        <div class="compare-grid">
+          <div class="compare-side left has-canvas" style="min-height:360px;">
+            <canvas id="showpiece-raw" class="showpiece-canvas" aria-hidden="true"></canvas>
+            <span class="compare-label">raw graph</span>
+          </div>
+          <div class="compare-side right has-canvas" style="min-height:360px;">
+            <canvas id="showpiece-cluster" class="showpiece-canvas" aria-hidden="true"></canvas>
+            <span class="compare-label">partitioned</span>
+          </div>
+        </div>
       </div>
-      <ul>
-        <li>daily finance and subscriber actualization feeding a $1b+ revenue forecast</li>
-        <li>derived lookml models cut manual reconciliation time by ~40%</li>
-        <li>snowflake ml on churn and pricing scenarios; standardized legacy reporting into looker / power bi</li>
-      </ul>
-      <div class="stack">stack: snowflake · sql · lookml · python · power bi</div>
+
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem;margin-top:1.4rem;">
+        <div class="showpiece-stat">
+          <span class="num">60</span><span>nodes</span>
+          <span class="arrow">→</span>
+          <span class="num">4</span><span>communities</span>
+        </div>
+        <div class="showpiece-stat" style="color:rgba(235,219,178,0.4)">
+          <span>via the Fiedler vector of the graph laplacian L = D − A</span>
+        </div>
+      </div>
+
+      <div style="margin-top:1.2rem;">
+        <span class="copy-cmd">
+          <span class="prompt">$</span>
+          <code>pip install networkx scipy &amp;&amp; python spectral_demo.py</code>
+          <button class="copy-icon" aria-label="Copy install command">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ BY THE NUMBERS ═══════════════════ -->
+<section id="numbers">
+  <div class="container">
+    <div class="fade-in">
+      <span class="eyebrow">by the numbers</span>
+      <h2 class="headline tight">
+        1,219 contributions this year.
+        <span class="dim">11 repos. 196 pull requests. Counting.</span>
+      </h2>
     </div>
 
-    <div class="block">
-      <div class="block-head">
-        <h3><span class="where">estée lauder</span> <span style="color:var(--muted);font-weight:400;">/ software development intern</span></h3>
-        <span class="when">jun 2022 — aug 2022 · nyc</span>
+    <div class="stat-grid stagger" style="margin-top:2.5rem;">
+      <div class="stat-card fade-in">
+        <div class="stat-num" data-counter="1219">0</div>
+        <div class="stat-label">contributions / year</div>
       </div>
-      <ul>
-        <li>internal it web app in python (flask + sqlalchemy), authn and access control</li>
-        <li>modular apis automating reports; ci-style two-week sprint cadence</li>
-      </ul>
-      <div class="stack">stack: python · flask · sqlalchemy · sql</div>
+      <div class="stat-card fade-in">
+        <div class="stat-num" data-counter="733">0</div>
+        <div class="stat-label">commits pushed</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-num" data-counter="196">0</div>
+        <div class="stat-label">pull requests</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-num" data-counter="11">0</div>
+        <div class="stat-label">repos contributed</div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="rule">
-
-  <section>
-    <div class="header-line"><span class="prompt"></span><span class="cmd">ls -la projects/</span></div>
-
-    <div class="projects">
-      <div class="name"><a href="https://github.com/maisymylod/athena-ai" target="_blank" rel="noopener">athena-ai</a></div>
-      <div class="desc">
-        deepfake / synthetic-image detection focused on protecting women and children.
-        cv classifiers, perceptual hashing, automated reporting.
-        <small>python · pytorch · react · typescript</small>
-      </div>
-
-      <div class="name"><a href="https://github.com/maisymylod/goldsmith-portal" target="_blank" rel="noopener">goldsmith-portal</a></div>
-      <div class="desc">
-        client portal for the firm. rails api + postgres, multi-tenant accounts, ats integration.
-        <small>rails · postgres · oauth · typescript</small>
-      </div>
-
-      <div class="name"><a href="https://github.com/maisymylod/quantlib-mm" target="_blank" rel="noopener">quantlib-mm</a></div>
-      <div class="desc">
-        small quant library. monte carlo + black-scholes pricing, mean-variance portfolios, var.
-        <small>python · numpy · scipy · c++ bindings</small>
-      </div>
-
-      <div class="name">ir analytics platform</div>
-      <div class="desc">
-        investor-relations dashboard for a private-equity client. private repo.
-        <small>react · postgres · sql</small>
-      </div>
-
-      <div class="name"><a href="https://github.com/maisymylod/settlers-of-catan" target="_blank" rel="noopener">settlers-of-catan</a></div>
-      <div class="desc">
-        browser settlers of catan. canvas rendering, hex grid math, multiplayer state.
-        <small>html · canvas · javascript</small>
-      </div>
-
-      <div class="name"><a href="https://github.com/maisymylod" target="_blank" rel="noopener">&hellip; more on github</a></div>
-      <div class="desc">11 public repos, ~700 commits this year.</div>
+<!-- ═══════════════════════════ THE WORK ═══════════════════════════ -->
+<section id="work">
+  <div class="container-narrow">
+    <div class="fade-in">
+      <span class="eyebrow">the work</span>
+      <h2 class="headline tight">
+        Fullstack at a small NYC firm.
+        <span class="dim">After a $1B revenue forecast at CLEAR.</span>
+      </h2>
     </div>
-  </section>
 
-  <hr class="rule">
+    <div style="margin-top:3rem;">
+      <article class="role-block fade-in">
+        <div class="role-head">
+          <h3 class="role-where">Goldsmith &amp; Co <span class="role-role">/ software engineer</span></h3>
+          <span class="role-when">2025 — present · nyc</span>
+        </div>
+        <ul class="role-bullets">
+          <li>Rails + Postgres client portal: 38 endpoints, 13 tables, multi-tenant accounts wired against the firm's ats.</li>
+          <li>Shipped recruiter-facing reporting and candidate-pipeline tooling partner-facing from week one.</li>
+          <li>OAuth2 + Pundit authorization; React/TypeScript bits glued to a vanilla-js portal frontend.</li>
+        </ul>
+        <div class="role-stack">
+          <span class="chip">rails</span><span class="chip">postgres</span><span class="chip">typescript</span><span class="chip">react</span><span class="chip">oauth2</span><span class="chip">pundit</span>
+        </div>
+      </article>
 
-  <section>
-    <div class="header-line"><span class="prompt"></span><span class="cmd">cat education.txt</span></div>
+      <article class="role-block fade-in">
+        <div class="role-head">
+          <h3 class="role-where">CLEAR <span class="role-role">/ data analyst</span></h3>
+          <span class="role-when">jan 2025 — sep 2025 · nyc</span>
+        </div>
+        <ul class="role-bullets">
+          <li>Daily finance &amp; subscriber actualization feeding a $1B+ revenue forecast.</li>
+          <li>Derived LookML models cut manual reconciliation time by ~40%.</li>
+          <li>Snowflake ML on churn and pricing scenarios; standardized legacy reporting into Looker / Power BI.</li>
+        </ul>
+        <div class="role-stack">
+          <span class="chip">snowflake</span><span class="chip">sql</span><span class="chip">lookml</span><span class="chip">python</span><span class="chip">power bi</span>
+        </div>
+      </article>
 
-    <div class="block">
-      <div class="block-head">
-        <h3><span class="where">university of michigan</span></h3>
-        <span class="when">aug 2020 — dec 2024 · ann arbor</span>
+      <article class="role-block fade-in">
+        <div class="role-head">
+          <h3 class="role-where">Estée Lauder <span class="role-role">/ software dev intern</span></h3>
+          <span class="role-when">jun 2022 — aug 2022 · nyc</span>
+        </div>
+        <ul class="role-bullets">
+          <li>Internal IT web app in Python (Flask + SQLAlchemy), with authn and access control.</li>
+          <li>Modular APIs automating reporting; ci-style two-week sprint cadence.</li>
+        </ul>
+        <div class="role-stack">
+          <span class="chip">python</span><span class="chip">flask</span><span class="chip">sqlalchemy</span><span class="chip">sql</span>
+        </div>
+      </article>
+
+      <div class="fade-in" style="margin-top:1.5rem;">
+        <a href="experience.html" class="btn btn-secondary">full work history →</a>
       </div>
-      <p style="margin-top:6px;font-size:14.5px;">
-        b.s. pure mathematics. james b. angell scholar (2021, 2022).
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ MATH + CODE ═══════════════════════════ -->
+<section id="math">
+  <div class="container">
+    <div class="fade-in">
+      <span class="eyebrow">math + code</span>
+      <h2 class="headline tight">
+        Pure math, made interactive.
+        <span class="dim">Three live demos, written in the browser.</span>
+      </h2>
+      <p class="lede" style="margin-top:1.2rem;">
+        Math I write code for: stochastic processes for option pricing, spectral methods on graphs, persistent homology on point clouds. Each demo runs locally in your tab.
       </p>
-      <div class="stack">coursework: ml, db systems, software engineering, ds&amp;a, os, ai.</div>
     </div>
-  </section>
 
-  <hr class="rule">
+    <div style="margin-top:3rem;">
 
-  <section>
-    <div class="header-line"><span class="prompt"></span><span class="cmd">cat stack.txt</span></div>
-    <div class="row-list">
-      <span class="key">frontend</span>
-      <span class="val">react, typescript, vanilla js, tailwind, html/css</span>
-      <span class="meta"></span>
+      <!-- Demo 1: Monte Carlo / GBM -->
+      <div class="math-module fade-in">
+        <div>
+          <span class="eyebrow">monte carlo</span>
+          <h3 class="headline tight">
+            100,000 paths
+            <span class="dim">one option price.</span>
+          </h3>
+          <p style="color:rgba(235,219,178,0.65);font-size:0.95rem;margin:0.8rem 0 1.2rem;">
+            Geometric Brownian motion for a European call. Each pale line is a simulated path; the pink one is the latest. Average their payoffs, discount to today, and you get a Black-Scholes-matching price.
+          </p>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="file">quantlib_mm/pricer.py</span>
+            </div>
+            <div class="code-body">
+<pre><span class="tok-kw">from</span> quantlib_mm <span class="tok-kw">import</span> simulate, european_call
 
-      <span class="key">backend</span>
-      <span class="val">rails, node, python, flask, postgres, rest, oauth</span>
-      <span class="meta"></span>
+paths = simulate(s0=<span class="tok-num">100</span>, mu=<span class="tok-num">0.08</span>, sigma=<span class="tok-num">0.22</span>,
+                 n_paths=<span class="tok-num">100_000</span>, n_steps=<span class="tok-num">252</span>)
+price, std = european_call(paths, k=<span class="tok-num">100</span>, r=<span class="tok-num">0.04</span>)
+<span class="tok-com"># price ≈ 10.45, std ≈ 0.04</span></pre>
+            </div>
+          </div>
+          <div class="typing-line"><span class="dots-anim"><i></i><i></i><i></i></span> sampling 252 timesteps × 100k paths…</div>
+        </div>
+        <div class="module-canvas-wrap"><canvas id="monte-carlo-canvas" aria-label="Monte Carlo simulated paths"></canvas></div>
+      </div>
 
-      <span class="key">data</span>
-      <span class="val">sql, snowflake, lookml, looker, power bi, pandas</span>
-      <span class="meta"></span>
+      <!-- Demo 2: Spectral graph -->
+      <div class="math-module fade-in">
+        <div class="module-canvas-wrap"><canvas id="graph-canvas" aria-label="Spectral graph community detection"></canvas></div>
+        <div>
+          <span class="eyebrow">spectral graph</span>
+          <h3 class="headline tight">
+            n nodes
+            <span class="dim">k communities, no labels.</span>
+          </h3>
+          <p style="color:rgba(235,219,178,0.65);font-size:0.95rem;margin:0.8rem 0 1.2rem;">
+            Build the graph laplacian L = D − A, take its bottom eigenvectors, k-means the rows. Communities pop out without ever telling the algorithm what they are.
+          </p>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="file">spectral_cluster.py</span>
+            </div>
+            <div class="code-body">
+<pre><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+<span class="tok-kw">from</span> scipy.linalg <span class="tok-kw">import</span> eigh
 
-      <span class="key">math</span>
-      <span class="val">topology, stochastic calculus, graph theory, linear algebra</span>
-      <span class="meta"></span>
+L = D - A                              <span class="tok-com"># graph laplacian</span>
+vals, vecs = eigh(L)                   <span class="tok-com"># spectrum</span>
+labels = kmeans(vecs[:, <span class="tok-num">1</span>:k+<span class="tok-num">1</span>], k)   <span class="tok-com"># cluster rows</span></pre>
+            </div>
+          </div>
+          <div class="typing-line"><span class="dots-anim"><i></i><i></i><i></i></span> computing fiedler vector…</div>
+        </div>
+      </div>
 
-      <span class="key">tools</span>
-      <span class="val">git, docker, render, vercel, claude code, vim-ish vs code</span>
-      <span class="meta"></span>
+      <!-- Demo 3: Persistent homology -->
+      <div class="math-module fade-in">
+        <div>
+          <span class="eyebrow">persistent homology</span>
+          <h3 class="headline tight">
+            point cloud
+            <span class="dim">Betti(0,1,2), as scale grows.</span>
+          </h3>
+          <p style="color:rgba(235,219,178,0.65);font-size:0.95rem;margin:0.8rem 0 1.2rem;">
+            Grow a ball around each point. Watch the Vietoris-Rips complex form, holes appear and die. The features that persist across scale are the real shape of the data.
+          </p>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="dots"><i></i><i></i><i></i></span>
+              <span class="file">rips_complex.py</span>
+            </div>
+            <div class="code-body">
+<pre><span class="tok-kw">from</span> ripser <span class="tok-kw">import</span> ripser
+
+result = ripser(points, maxdim=<span class="tok-num">2</span>)
+dgms = result[<span class="tok-str">'dgms'</span>]              <span class="tok-com"># persistence diagrams</span>
+betti = [<span class="tok-fn">len</span>(d) <span class="tok-kw">for</span> d <span class="tok-kw">in</span> dgms]    <span class="tok-com"># [β0, β1, β2]</span></pre>
+            </div>
+          </div>
+          <div class="typing-line"><span class="dots-anim"><i></i><i></i><i></i></span> tracking births and deaths…</div>
+        </div>
+        <div class="module-canvas-wrap"><canvas id="topology-canvas" aria-label="Vietoris-Rips complex growing"></canvas></div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="rule">
+<!-- ═══════════════════════════ FEATURED: ATHENA AI ═══════════════════ -->
+<section id="featured">
+  <div class="container">
+    <div class="fade-in">
+      <span class="eyebrow">featured project</span>
+      <div class="featured" style="margin-top:1.2rem;">
+        <h2 class="headline tight" style="margin-bottom:1rem;">
+          Athena AI
+          <span class="dim">deepfake detection for women and children.</span>
+        </h2>
+        <p style="color:rgba(235,219,178,0.78);max-width:62ch;font-size:1.02rem;line-height:1.6;">
+          Athena combats the spread of non-consensual AI-generated imagery. CV classifiers, perceptual hashing, automated reporting pipelines. Named after the Greek goddess of wisdom and strategic warfare.
+        </p>
+        <div class="tech-chips">
+          <span class="chip">python</span><span class="chip">pytorch</span><span class="chip">react</span>
+          <span class="chip">typescript</span><span class="chip">computer vision</span><span class="chip">deep learning</span>
+        </div>
+        <div style="margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:0.7rem;">
+          <a href="https://github.com/maisymylod/athena-ai" target="_blank" rel="noopener" class="btn btn-primary">view on github ↗</a>
+          <a href="projects.html" class="btn btn-secondary">more projects →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <div class="header-line"><span class="prompt"></span><span class="cmd">contact</span></div>
-    <p class="contact-list" style="margin-top:8px;">
-      <a href="mailto:maisymylod@gmail.com">maisymylod@gmail.com</a>
-      <a href="https://github.com/maisymylod" target="_blank" rel="noopener">github.com/maisymylod</a>
-      <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">linkedin</a>
-    </p>
-  </section>
+<!-- ═══════════════════════════ THE STACK (cycling) ═══════════════════ -->
+<section id="stack">
+  <div class="container">
+    <div class="fade-in">
+      <span class="eyebrow">the stack</span>
+      <h2 class="headline tight">
+        Wraps anything I build with.
+        <span class="dim">A few of the systems behind the work.</span>
+      </h2>
+    </div>
 
-  <footer>
-    <div><span class="prompt"></span><span class="blink"></span></div>
-    <div style="margin-top:32px;color:var(--dim);">&copy; 2026 maisy mylod &middot; nyc</div>
-  </footer>
+    <div class="cycling-row" style="margin-top:2.5rem;">
+      <div class="fade-in">
+        <p style="color:rgba(235,219,178,0.65);max-width:48ch;font-size:0.98rem;">
+          The toolchain rotates depending on the problem. Backend leans Rails/Postgres. Analytics goes through Snowflake. Frontends are React or vanilla. Math is Python + numpy + scipy. Some C++ when speed matters.
+        </p>
+      </div>
+
+      <div class="cycling-list fade-in" aria-live="polite" aria-label="Rotating tech examples">
+        <div class="item"><span class="name">Rails + Postgres</span><span class="what">goldsmith client portal</span></div>
+        <div class="item"><span class="name">React + TypeScript</span><span class="what">recruiter-facing dashboards</span></div>
+        <div class="item"><span class="name">Snowflake + LookML</span><span class="what">$1B revenue forecast at clear</span></div>
+        <div class="item"><span class="name">Python + numpy</span><span class="what">quantlib-mm option pricing</span></div>
+        <div class="item"><span class="name">PyTorch + CV</span><span class="what">athena-ai detection models</span></div>
+        <div class="item"><span class="name">Flask + SQLAlchemy</span><span class="what">internal it at estée lauder</span></div>
+      </div>
+    </div>
+
+    <div class="skills-grid stagger">
+      <div class="skill-card fade-in">
+        <h3>frontend</h3>
+        <ul><li>react</li><li>typescript</li><li>tailwind</li><li>html / css</li><li>canvas</li></ul>
+      </div>
+      <div class="skill-card fade-in">
+        <h3>backend</h3>
+        <ul><li>rails</li><li>node.js</li><li>python</li><li>flask</li><li>postgres</li><li>rest / oauth2</li></ul>
+      </div>
+      <div class="skill-card fade-in">
+        <h3>data + analytics</h3>
+        <ul><li>sql</li><li>snowflake</li><li>lookml</li><li>power bi</li><li>looker</li><li>pandas</li></ul>
+      </div>
+      <div class="skill-card fade-in">
+        <h3>mathematics</h3>
+        <ul><li>topology</li><li>stochastic calculus</li><li>graph theory</li><li>linear algebra</li><li>ml / dl</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CLOSING CTA ═══════════════════════════ -->
+<section id="contact-cta">
+  <div class="container-narrow">
+    <div class="final-cta fade-in">
+      <span class="eyebrow">say hi</span>
+      <h2 class="headline" style="margin-top:0.5rem;">
+        Always open to interesting problems.
+        <span class="dim">Let's talk.</span>
+      </h2>
+      <div class="actions">
+        <a href="contact.html" class="btn btn-primary">get in touch →</a>
+        <a href="mailto:maisymylod@gmail.com" class="btn btn-secondary">maisymylod@gmail.com</a>
+      </div>
+      <div style="margin-top:2rem;">
+        <span class="copy-cmd">
+          <span class="prompt">$</span>
+          <code>git clone https://github.com/maisymylod</code>
+          <button class="copy-icon" aria-label="Copy git command">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
 
 </main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="row">
+      <span>&copy; 2026 maisy mylod · nyc</span>
+      <div class="links">
+        <a href="mailto:maisymylod@gmail.com">email</a>
+        <a href="https://github.com/maisymylod" target="_blank" rel="noopener">github</a>
+        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">linkedin</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Command palette (Cmd/Ctrl-K) -->
+<div class="palette-mask hidden" role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="palette">
+    <input type="text" class="palette-input" placeholder="jump to…  (type to filter)" aria-label="Filter commands">
+    <ul class="palette-list" role="listbox">
+      <li data-label="home" data-href="index.html">home <span class="key">g h</span></li>
+      <li data-label="experience" data-href="experience.html">experience <span class="key">g e</span></li>
+      <li data-label="projects" data-href="projects.html">projects <span class="key">g p</span></li>
+      <li data-label="dashboard" data-href="dashboard.html">dashboard <span class="key">g d</span></li>
+      <li data-label="contact" data-href="contact.html">contact <span class="key">g c</span></li>
+      <li data-label="hero showpiece" data-section="hero">↓ hero showpiece</li>
+      <li data-label="by the numbers" data-section="numbers">↓ by the numbers</li>
+      <li data-label="the work" data-section="work">↓ the work</li>
+      <li data-label="math + code demos" data-section="math">↓ math + code</li>
+      <li data-label="featured athena ai" data-section="featured">↓ featured</li>
+      <li data-label="the stack" data-section="stack">↓ the stack</li>
+      <li data-label="github" data-href="https://github.com/maisymylod">open github ↗</li>
+      <li data-label="linkedin" data-href="https://linkedin.com/in/maisymylod">open linkedin ↗</li>
+      <li data-label="email" data-href="mailto:maisymylod@gmail.com">send email ↗</li>
+    </ul>
+    <div class="palette-foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> select</span>
+      <span><kbd>esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<script src="script.js" defer></script>
 </body>
 </html>
