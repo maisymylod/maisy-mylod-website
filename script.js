@@ -648,7 +648,7 @@
             p.y += Math.sin(a) * SPEED;
             p.life++;
             const fade = Math.sin((p.life / p.maxLife) * Math.PI); // 0 → 1 → 0
-            ctx.strokeStyle = p.c + (0.42 * fade).toFixed(3) + ')';
+            ctx.strokeStyle = p.c + (0.6 * fade).toFixed(3) + ')';
             ctx.lineWidth = p.w * dpr;
             ctx.beginPath();
             ctx.moveTo(px, py);
@@ -671,7 +671,7 @@
         function spawnToFill() {
             const count = Math.min(
                 240,
-                Math.round((canvas.width * canvas.height) / (11000 * dpr * dpr))
+                Math.round((canvas.width * canvas.height) / (8500 * dpr * dpr))
             );
             particles = Array.from({ length: count }, newParticle);
         }
