@@ -59,9 +59,11 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
    Particles advect along a smooth pseudo-noise field — see heroFlow() in script.js. */
 .hero-flow {
     position: absolute; inset: 0; z-index: -1;
-    pointer-events: none; opacity: 0.6;
-    mask-image: radial-gradient(ellipse 80% 75% at 50% 42%, #000 55%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 42%, #000 55%, transparent 100%);
+    pointer-events: none; opacity: 0.9;
+    /* Fade the center (behind the headline) so text stays crisp; let the motion
+       live in the open margins around it. */
+    mask-image: radial-gradient(ellipse 62% 58% at 46% 40%, transparent 22%, #000 78%);
+    -webkit-mask-image: radial-gradient(ellipse 62% 58% at 46% 40%, transparent 22%, #000 78%);
 }
 
 /* --- Layout containers --- */
