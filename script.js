@@ -599,4 +599,142 @@
     }
     topologyDemoMain();
 
+    // ─── Hero ambient flow field ───────────────────────────────────────
+    // Full-bleed drifting particle field behind the hero. Particles follow a
+    // smooth pseudo-noise vector field (no noise lib); soft trails come from a
+    // faint per-frame fade. Palette = accent green / accent-light / cyan-purple.
+    // Reduced motion → settle a static frame and stop. Pauses when off-screen.
+    (function heroFlow() {
+        const canvas = document.getElementById('hero-flow');
+        if (!canvas) return;
+        const { ctx, dpr, ready } = setupCanvas(canvas);
+
+        // theme tokens as "rgba(r,g,b," prefixes — alpha appended per stroke
+        const COLORS = [
+            'rgba(142,192,124,',  // --accent
+            'rgba(184,187,38,',   // --accent-light
+            'rgba(211,134,155,',  // --cyan
+        ];
+        const SPEED = 0.55 * dpr;
+        let particles = [];
+
+        const rand = (a, b) => a + Math.random() * (b - a);
+
+        function newParticle() {
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                life: Math.random() * 200,
+                maxLife: rand(140, 320),
+                c: COLORS[(Math.random() * COLORS.length) | 0],
+                w: rand(0.5, 1.4),
+            };
+        }
+
+        // Smooth, cheap, divergence-y angle field. t animates the whole field.
+        function field(x, y, t) {
+            const s = 0.0011 / dpr;
+            return (
+                Math.sin(x * s + t) +
+                Math.cos(y * s * 1.3 - t * 0.8) +
+                Math.sin((x + y) * s * 0.6 + t * 0.5)
+            ) * 1.05 * Math.PI;
+        }
+
+        function advance(p, t) {
+            const px = p.x, py = p.y;
+            const a = field(p.x, p.y, t);
+            p.x += Math.cos(a) * SPEED;
+            p.y += Math.sin(a) * SPEED;
+            p.life++;
+            const fade = Math.sin((p.life / p.maxLife) * Math.PI); // 0 → 1 → 0
+            ctx.strokeStyle = p.c + (0.42 * fade).toFixed(3) + ')';
+            ctx.lineWidth = p.w * dpr;
+            ctx.beginPath();
+            ctx.moveTo(px, py);
+            ctx.lineTo(p.x, p.y);
+            ctx.stroke();
+            if (p.life > p.maxLife ||
+                p.x < -30 || p.x > canvas.width + 30 ||
+                p.y < -30 || p.y > canvas.height + 30) {
+                Object.assign(p, newParticle(), { life: 0 });
+            }
+        }
+
+        function fadeFrame() {
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.fillStyle = 'rgba(29,32,33,0.075)'; // --bg-deep wash → soft trails
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.globalCompositeOperation = 'lighter';
+        }
+
+        function spawnToFill() {
+            const count = Math.min(
+                240,
+                Math.round((canvas.width * canvas.height) / (11000 * dpr * dpr))
+            );
+            particles = Array.from({ length: count }, newParticle);
+        }
+
+        ready.then(() => {
+            spawnToFill();
+
+            if (reducedMotion) {
+                // No animation: trace each particle as one frozen flow-line at a
+                // constant alpha (skip the life-based fade so the still is visible).
+                // Re-render on resize — assigning canvas.width (in setupCanvas's
+                // own ResizeObserver) clears the buffer, so a one-shot draw would
+                // be wiped when fonts finish loading and the hero reflows.
+                const renderStatic = () => {
+                    spawnToFill();
+                    ctx.clearRect(0, 0, canvas.width, canvas.height); // idempotent across resizes
+                    ctx.globalCompositeOperation = 'lighter';
+                    ctx.lineCap = 'round';
+                    for (const p of particles) {
+                        ctx.strokeStyle = p.c + '0.85)';
+                        ctx.lineWidth = (p.w + 0.6) * dpr;
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        for (let i = 0; i < 80; i++) {
+                            const a = field(p.x, p.y, 0.6);
+                            p.x += Math.cos(a) * SPEED * 1.8;
+                            p.y += Math.sin(a) * SPEED * 1.8;
+                            ctx.lineTo(p.x, p.y);
+                        }
+                        ctx.stroke();
+                    }
+                };
+                renderStatic();
+                if ('ResizeObserver' in window) {
+                    new ResizeObserver(renderStatic).observe(canvas);
+                }
+                return;
+            }
+
+            let t = 0;
+            let running = false;
+            const loop = () => {
+                if (!running) return;
+                t += 0.0016;
+                fadeFrame();
+                for (const p of particles) advance(p, t);
+                requestAnimationFrame(loop);
+            };
+
+            // Only animate while the hero is on screen.
+            const hero = document.getElementById('hero');
+            if ('IntersectionObserver' in window && hero) {
+                const io = new IntersectionObserver((entries) => {
+                    const visible = entries[0].isIntersecting;
+                    if (visible && !running) { running = true; requestAnimationFrame(loop); }
+                    else if (!visible) { running = false; }
+                }, { threshold: 0 });
+                io.observe(hero);
+            } else {
+                running = true;
+                requestAnimationFrame(loop);
+            }
+        });
+    }());
+
 }());
