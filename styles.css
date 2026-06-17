@@ -10,7 +10,11 @@ html {
 }
 
 body {
-    background: transparent;
+    /* Carry the dark page colour on body too (not just <html>): the cream/gold
+       hero type is light-on-dark, so if any single background gets stripped
+       (reader view, forced-light extensions, high-contrast) the text must not
+       fall onto a light surface. Belt-and-suspenders with the <html> bg above. */
+    background: var(--bg);
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.65;
@@ -41,6 +45,24 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 256px 256px;
+}
+
+/* --- Hero stage ---
+   The headline is cream/gold — readable ONLY on dark. Don't let it depend on
+   the page background alone (which a reader view or forced-light extension can
+   strip). Give the hero its own opaque dark backing so the gold always reads.
+   The gradient stays inside the dark range, so it's seamless with the page. */
+#hero {
+    background:
+        radial-gradient(ellipse 120% 90% at 50% 0%,
+            var(--bg) 0%, var(--bg-deep) 100%);
+}
+
+/* If the OS/browser forces a high-contrast / inverted palette, stop trusting
+   the gruvbox cream and fall back to the system's guaranteed-readable pair. */
+@media (forced-colors: active) {
+    .headline, .headline .dim, .lede, .eyebrow { color: CanvasText; }
+    #hero { background: Canvas; }
 }
 
 /* --- Hero glows --- */
