@@ -65,6 +65,16 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
     #hero { background: Canvas; }
 }
 
+/* Same defence as #hero, extended to every content band: the cream/gold type
+   reads ONLY on dark, so each section/header/footer carries its OWN opaque dark
+   backing rather than trusting the page background. A reader view or forced-light
+   extension strips the <html>/<body> colour but leaves these element-level
+   backgrounds intact, so the text never lands on a light surface. #hero keeps
+   its own gradient (higher specificity) so its flow animation still shows. */
+main > section:not(#hero),
+.page-header,
+.site-foot { background: var(--bg); position: relative; }
+
 /* --- Hero glows --- */
 .hero-glow {
     position: absolute; width: 80%; height: 70%; top: 8%; left: 10%;
