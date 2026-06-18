@@ -57,20 +57,23 @@
 <section id="featured" style="padding-top:0;">
   <div class="container">
     <div class="fade-in">
-      <span class="eyebrow">featured</span>
+      <span class="eyebrow">flagship</span>
       <div class="featured" style="margin-top:1rem;">
         <h2 class="headline tight" style="margin-bottom:1rem;">
-          Athena AI
-          <span class="dim">deepfake detection for women and children.</span>
+          The Heliosnet ground system
+          <span class="dim">a satellite ground segment, simulated end to end.</span>
         </h2>
-        <p style="color:rgba(235,219,178,0.78);max-width:62ch;font-size:1.02rem;line-height:1.6;">
-          Combats the spread of non-consensual AI-generated imagery. Deep-learning classifiers, perceptual hashing, automated reporting pipelines. Built to be a tool somebody at risk could actually use.
+        <p style="color:rgba(235,219,178,0.78);max-width:64ch;font-size:1.02rem;line-height:1.6;">
+          Four interoperating projects: the agentic brains (<strong>groundstation</strong>), the telemetry data plane (<strong>constellation</strong>), the security layer (<strong>aegis</strong>), and the deploy system (<strong>liftoff</strong>). One coherent system &mdash; <code style="color:var(--accent-light);">liftoff</code> deploys the stack that <code style="color:var(--accent-light);">groundstation</code> operates over <code style="color:var(--accent-light);">constellation</code>'s telemetry, with <code style="color:var(--accent-light);">aegis</code> authenticating the command path. Each also stands alone and runs on its own.
         </p>
         <div class="tech-chips">
-          <span class="chip">python</span><span class="chip">pytorch</span><span class="chip">react</span><span class="chip">typescript</span><span class="chip">computer vision</span><span class="chip">deep learning</span>
+          <span class="chip">langgraph</span><span class="chip">mcp</span><span class="chip">rag</span><span class="chip">ed25519</span><span class="chip">timescaledb</span><span class="chip">go</span><span class="chip">terraform</span>
         </div>
-        <div style="margin-top:1.75rem;">
-          <a href="https://github.com/maisymylod/athena-ai" target="_blank" rel="noopener" class="btn btn-primary">view on github ↗</a>
+        <div style="margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:0.7rem;">
+          <a href="https://github.com/maisymylod/groundstation" target="_blank" rel="noopener" class="btn btn-primary">groundstation ↗</a>
+          <a href="https://github.com/maisymylod/constellation" target="_blank" rel="noopener" class="btn btn-secondary">constellation ↗</a>
+          <a href="https://github.com/maisymylod/aegis" target="_blank" rel="noopener" class="btn btn-secondary">aegis ↗</a>
+          <a href="https://github.com/maisymylod/liftoff" target="_blank" rel="noopener" class="btn btn-secondary">liftoff ↗</a>
         </div>
       </div>
     </div>
@@ -97,6 +100,54 @@
     </div>
 
     <div class="proj-grid stagger" id="proj-grid">
+
+      <article class="proj-card fade-in" data-tags="ai" data-text="groundstation langgraph multi-agent mcp rag mission ops copilot human in the loop tiered model routing anomaly classifier heliosnet">
+        <div class="proj-head">
+          <h3 class="proj-name">groundstation</h3>
+          <span class="proj-status">flagship</span>
+        </div>
+        <p class="proj-desc">Agentic mission-ops copilot. LangGraph multi-agent graph over MCP tools and RAG-cited playbooks, tiered model routing, human-in-the-loop gate. Anomaly-type classifier: 96.7% accuracy, 0.931 macro-F1.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">langgraph</span><span class="proj-tag">mcp</span><span class="proj-tag">rag</span></div>
+          <a href="https://github.com/maisymylod/groundstation" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card fade-in" data-tags="data ai" data-text="constellation telemetry data plane redpanda kafka timescaledb streaming anomaly detection react ops console heliosnet">
+        <div class="proj-head">
+          <h3 class="proj-name">constellation</h3>
+          <span class="proj-status">flagship</span>
+        </div>
+        <p class="proj-desc">Telemetry data plane: streaming ingestion (Redpanda → TimescaleDB), unsupervised anomaly detection, React/TypeScript ops console. F1 0.720 (recall 0.808) over 180,000+ streamed records.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">redpanda</span><span class="proj-tag">timescaledb</span><span class="proj-tag">react</span></div>
+          <a href="https://github.com/maisymylod/constellation" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card fade-in" data-tags="ai" data-text="aegis security ed25519 signed command authentication replay protection key rotation mutual tls adversarial harness defense heliosnet">
+        <div class="proj-head">
+          <h3 class="proj-name">aegis</h3>
+          <span class="proj-status">flagship</span>
+        </div>
+        <p class="proj-desc">Security layer: Ed25519 signed-command auth (replay protection, key rotation, verifying chain), mutual TLS, adversarial harness with a measured defense stack. Defenses off: 11/11 land. On: 0/11.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">ed25519</span><span class="proj-tag">mtls</span><span class="proj-tag">security</span></div>
+          <a href="https://github.com/maisymylod/aegis" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card fade-in" data-tags="fullstack" data-text="liftoff go deploy build reliability declarative suite spec cloud on-prem air-gapped bare metal terraform helm kubeconform shellcheck slo rollback deterministic heliosnet">
+        <div class="proj-head">
+          <h3 class="proj-name">liftoff</h3>
+          <span class="proj-status">flagship</span>
+        </div>
+        <p class="proj-desc">Deploy and build-reliability layer in Go. One declarative suite spec rendered for cloud, on-prem, and air-gapped bare-metal, with SLO-driven rollback. All three targets pass terraform, helm/kubeconform, shellcheck, byte-for-byte deterministic.</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">go</span><span class="proj-tag">terraform</span><span class="proj-tag">helm</span></div>
+          <a href="https://github.com/maisymylod/liftoff" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
 
       <article class="proj-card fade-in" data-tags="math fullstack" data-text="quantlib-mm python quantitative monte carlo black-scholes">
         <div class="proj-head">
@@ -151,9 +202,9 @@
           <h3 class="proj-name">athena ai</h3>
           <span class="proj-status">featured</span>
         </div>
-        <p class="proj-desc">Deepfake / synthetic-image detection focused on protecting women and children. CV classifiers, perceptual hashing, automated reporting.</p>
+        <p class="proj-desc">Deployed real-vs-AI image classifier (EfficientNet-B0) behind a live API. 0.996 accuracy, 0.9999 ROC-AUC on held-out data, a verdict in ~150 ms, and an honest model card.</p>
         <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">pytorch</span><span class="proj-tag">cv</span></div>
+          <div class="proj-tags"><span class="proj-tag">pytorch</span><span class="proj-tag">efficientnet</span><span class="proj-tag">api</span></div>
           <a href="https://github.com/maisymylod/athena-ai" target="_blank" rel="noopener" class="proj-link">github ↗</a>
         </div>
       </article>
@@ -289,7 +340,7 @@
       <li data-label="projects" data-href="projects.html">projects</li>
       <li data-label="dashboard" data-href="dashboard.html">dashboard</li>
       <li data-label="contact" data-href="contact.html">contact</li>
-      <li data-label="featured athena" data-section="featured">↓ featured</li>
+      <li data-label="flagship heliosnet" data-section="featured">↓ flagship</li>
       <li data-label="all projects" data-section="all-projects">↓ all projects</li>
       <li data-label="github" data-href="https://github.com/maisymylod">open github ↗</li>
     </ul>
