@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Maisy Mylod — AI and agent-systems engineer with a security focus and a pure-mathematics foundation. LangGraph multi-agent systems, MCP, RAG, and the data, security, and deploy layers underneath. NYC.">
-<meta name="theme-color" content="#282828">
-<meta property="og:title" content="maisy mylod — ai + agent-systems engineer">
-<meta property="og:description" content="I build and ship LLM-based agentic systems end to end — the multi-agent brains, the data plane, the security layer, and the deploy system. Every claim matched to running code.">
+<meta name="description" content="Maisy Mylod — AI Lead and Software Engineer in New York. I build systems that keep a human in the loop, and the evaluation that measures whether they work. Pure mathematics, University of Michigan.">
+<meta name="theme-color" content="#faf8f4">
+<meta property="og:title" content="Maisy Mylod — AI Lead &amp; Software Engineer">
+<meta property="og:description" content="Human-in-the-loop systems, and the evaluation that says whether they work. Every number on the page regenerates from a committed eval.">
 <meta property="og:type" content="website">
-<title>maisy mylod — ai + agent-systems engineer</title>
+<title>Maisy Mylod — AI Lead &amp; Software Engineer</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=B612+Mono:wght@400;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="theme.css">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -23,473 +23,591 @@
 
 <nav class="site-nav" aria-label="Primary">
   <div class="nav-inner">
-    <a href="index.html" class="brand">
-      <span class="prompt-dot">$</span>
-      <span>maisy mylod</span>
-      <span class="blink" aria-hidden="true"></span>
-    </a>
+    <a href="index.html" class="brand"><span class="brand-rule" aria-hidden="true"></span>Maisy Mylod</a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link active">home</a>
-      <a href="experience.html" class="nav-link">experience</a>
-      <a href="projects.html" class="nav-link">projects</a>
-      <a href="dashboard.html" class="nav-link">dashboard</a>
-      <a href="contact.html" class="nav-link">contact</a>
-      <button class="nav-cta" data-open-palette aria-label="Open command palette">⌘ K</button>
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="experience.html" class="nav-link">Experience</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <button class="nav-cta" data-open-palette aria-label="Open command palette">⌘K</button>
     </div>
-    <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
   </div>
 </nav>
 
 <div id="mobile-menu" class="hidden" role="menu">
-  <a href="index.html">home</a>
-  <a href="experience.html">experience</a>
-  <a href="projects.html">projects</a>
-  <a href="dashboard.html">dashboard</a>
-  <a href="contact.html">contact</a>
-  <a href="https://github.com/maisymylod" target="_blank" rel="noopener">github ↗</a>
-  <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">linkedin ↗</a>
-</div>
-
-<!-- Keyword marquee (pauses on hover, respects reduced motion) -->
-<div class="marquee" aria-label="Tech stack">
-  <div class="marquee-track">
-    <span class="marquee-item"><span class="dot">·</span>langgraph</span>
-    <span class="marquee-item"><span class="dot">·</span>mcp</span>
-    <span class="marquee-item"><span class="dot">·</span>rag</span>
-    <span class="marquee-item"><span class="dot">·</span>multi-agent</span>
-    <span class="marquee-item"><span class="dot">·</span>python</span>
-    <span class="marquee-item"><span class="dot">·</span>go</span>
-    <span class="marquee-item"><span class="dot">·</span>pytorch</span>
-    <span class="marquee-item"><span class="dot">·</span>red-teaming</span>
-    <span class="marquee-item"><span class="dot">·</span>ed25519</span>
-    <span class="marquee-item"><span class="dot">·</span>kubernetes</span>
-    <span class="marquee-item"><span class="dot">·</span>terraform</span>
-    <span class="marquee-item"><span class="dot">·</span>timescaledb</span>
-    <span class="marquee-item"><span class="dot">·</span>typescript</span>
-    <span class="marquee-item"><span class="dot">·</span>pure mathematics</span>
-  </div>
+  <a href="index.html">Home</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="contact.html">Contact</a>
+  <a href="https://github.com/maisymylod" target="_blank" rel="noopener">GitHub ↗</a>
+  <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">LinkedIn ↗</a>
 </div>
 
 <main>
 
 <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
-<section id="hero" style="position:relative;">
-  <canvas id="hero-flow" class="hero-flow" aria-hidden="true"></canvas>
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-glow-cyan" aria-hidden="true"></div>
+<section id="hero">
+  <div class="hero-wash" aria-hidden="true"></div>
   <div class="container">
-    <span class="eyebrow hero-fade-1">ai + agent-systems engineer · security focus · pure-math foundation</span>
-    <h1 class="headline hero-fade-2">
-      I build and ship LLM-based agentic systems
-      <span class="dim">end to end.</span>
+
+    <div class="hero-meta reveal">
+      <span class="eyebrow">AI Lead &amp; Software Engineer</span>
+      <span class="sep" aria-hidden="true">/</span>
+      <span class="eyebrow">Goldsmith &amp; Co.</span>
+      <span class="sep" aria-hidden="true">/</span>
+      <span class="eyebrow">New York</span>
+    </div>
+
+    <h1 class="display reveal">
+      Systems that keep a human in the loop.
+      <span class="dim block">And the evaluation that says whether they work.</span>
     </h1>
-    <p class="lede hero-fade-3">
-      I'm Maisy Mylod. I design multi-agent LLM systems, the data and security layers underneath them, and the infrastructure that deploys them &mdash; including to air-gapped environments. I treat security as a design property rather than a bolt-on, and I keep every claim matched to what the code does. Pure-math grad from Michigan; fullstack engineer at <a href="experience.html" style="color:var(--accent-light);border-bottom:1px solid rgba(184,187,38,0.3);">Goldsmith &amp; Co</a> in NYC.
-    </p>
 
-    <div class="hero-fade-3" style="display:flex;flex-wrap:wrap;gap:0.7rem;margin-bottom:3rem;">
-      <a href="projects.html" class="btn btn-primary">see the work →</a>
-      <a href="contact.html" class="btn btn-secondary">say hi</a>
-      <a href="https://github.com/maisymylod" target="_blank" rel="noopener" class="btn btn-secondary">github ↗</a>
-      <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener" class="btn btn-secondary">linkedin ↗</a>
-    </div>
+    <div class="hero-grid">
+      <div class="stack-md">
+        <p class="lede reveal">
+          I am Maisy Mylod. I am the sole engineer at an executive search firm, where I own every
+          production system end to end: a Rails and Postgres API, a client-facing portal, a Snowflake
+          reporting layer, and an internal agent platform in daily use by non-technical staff.
+        </p>
+        <p class="lede reveal">
+          The part I care most about is the part that usually gets skipped. Not the model. The correction
+          loop where real annotators fix the data, and the grader you calibrate <em class="slant">before</em>
+          you let it tell you that you are making progress.
+        </p>
 
-    <!-- Hero showpiece: spectral graph community detection -->
-    <div class="hero-fade-4">
-      <div class="compare-card" aria-label="Spectral graph community detection: raw graph vs detected partitions">
-        <div class="compare-grid">
-          <div class="compare-side left has-canvas" style="min-height:360px;">
-            <canvas id="showpiece-raw" class="showpiece-canvas" aria-hidden="true"></canvas>
-            <span class="compare-label">raw graph</span>
-          </div>
-          <div class="compare-side right has-canvas" style="min-height:360px;">
-            <canvas id="showpiece-cluster" class="showpiece-canvas" aria-hidden="true"></canvas>
-            <span class="compare-label">partitioned</span>
-          </div>
+        <div class="btn-row reveal">
+          <a href="projects.html" class="btn btn-primary">Selected work <span class="arr" aria-hidden="true">→</span></a>
+          <a href="experience.html" class="btn btn-secondary">Experience</a>
+          <a href="https://github.com/maisymylod" target="_blank" rel="noopener" class="btn btn-secondary">GitHub ↗</a>
+        </div>
+
+        <div class="reveal">
+          <span class="avail"><span class="beacon" aria-hidden="true"></span>Open to AI engineering roles</span>
         </div>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem;margin-top:1.4rem;">
-        <div class="showpiece-stat">
-          <span class="num">60</span><span>nodes</span>
-          <span class="arrow">→</span>
-          <span class="num">4</span><span>communities</span>
-        </div>
-        <div class="showpiece-stat" style="color:rgba(235,219,178,0.4)">
-          <span>via the Fiedler vector of the graph laplacian L = D − A</span>
-        </div>
-      </div>
+      <!-- Showpiece: the correction loop, drawn from the production system -->
+      <div class="reveal">
+        <figure class="diagram-frame">
+          <figcaption class="diagram-head">
+            <span class="t">The correction loop</span>
+            <span class="s">goldsmith &amp; co · production</span>
+          </figcaption>
 
-      <div style="margin-top:1.2rem;">
-        <span class="copy-cmd">
-          <span class="prompt">$</span>
-          <code>pip install networkx scipy &amp;&amp; python spectral_demo.py</code>
-          <button class="copy-icon" aria-label="Copy install command">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          </button>
-        </span>
+          <div class="diagram-body">
+            <svg id="loop-svg" viewBox="0 0 460 262" role="img"
+                 aria-label="A four-stage cycle: the system of record shows a record, a non-engineer corrects it inline, the correction is staged in an override store, a human reviews it, and the accepted correction is merged back into the system of record.">
+
+              <!-- Edges, drawn in sequence by script.js -->
+              <path class="edge" d="M158,60 L296,60"/>
+              <path class="edge" d="M370,84 L370,164"/>
+              <path class="edge" d="M302,194 L164,194"/>
+              <path class="edge hot" d="M90,170 L90,90"/>
+
+              <polygon class="arrowhead" points="296,56 304,60 296,64"/>
+              <polygon class="arrowhead" points="366,164 370,172 374,164"/>
+              <polygon class="arrowhead" points="164,190 156,194 164,198"/>
+              <polygon class="arrowhead hot" points="86,90 90,82 94,90"/>
+
+              <!-- Edge labels -->
+              <text class="node-sub" x="227" y="52" text-anchor="middle">edit</text>
+              <text class="node-sub" x="380" y="128">stage</text>
+              <text class="node-sub" x="233" y="186" text-anchor="middle">review</text>
+              <text class="node-sub" x="80" y="132" text-anchor="end">merge</text>
+
+              <!-- Nodes -->
+              <g class="node">
+                <rect class="node-box" x="22" y="36" width="136" height="48" rx="4"/>
+                <text class="node-label" x="90" y="58" text-anchor="middle">System of record</text>
+                <text class="node-sub" x="90" y="72" text-anchor="middle">postgres</text>
+              </g>
+
+              <g class="node">
+                <rect class="node-box human" x="302" y="36" width="136" height="48" rx="4"/>
+                <text class="node-label on-accent" x="370" y="58" text-anchor="middle">Inline correction</text>
+                <text class="node-sub" x="370" y="72" text-anchor="middle">non-engineer</text>
+              </g>
+
+              <g class="node">
+                <rect class="node-box" x="302" y="170" width="136" height="48" rx="4"/>
+                <text class="node-label" x="370" y="192" text-anchor="middle">Override store</text>
+                <text class="node-sub" x="370" y="206" text-anchor="middle">staged</text>
+              </g>
+
+              <g class="node">
+                <rect class="node-box human" x="22" y="170" width="136" height="48" rx="4"/>
+                <text class="node-label on-accent" x="90" y="192" text-anchor="middle">Human review</text>
+                <text class="node-sub" x="90" y="206" text-anchor="middle">accept · reject</text>
+              </g>
+
+              <!-- The circulating packet -->
+              <circle class="packet" r="3.5" cx="158" cy="60"/>
+            </svg>
+          </div>
+
+          <div class="diagram-legend">
+            <span class="k"><span class="sw human" aria-hidden="true"></span>human decision</span>
+            <span class="k"><span class="sw" aria-hidden="true"></span>automated</span>
+            <span class="k">accepted corrections feed the system of record</span>
+          </div>
+        </figure>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ BY THE NUMBERS ═══════════════════ -->
-<section id="numbers">
+<!-- ═══════════════════════════ THE THROUGH-LINE ═══════════════════════════ -->
+<section id="approach" class="sunk ruled">
   <div class="container">
-    <div class="fade-in">
-      <span class="eyebrow">by the numbers</span>
-      <h2 class="headline tight">
-        2,230 contributions this year.
-        <span class="dim">37 repos. 553 pull requests. Counting.</span>
-      </h2>
-    </div>
-
-    <div class="stat-grid stagger" style="margin-top:2.5rem;">
-      <div class="stat-card fade-in">
-        <div class="stat-num" data-counter="2230">0</div>
-        <div class="stat-label">contributions / year</div>
+    <div class="spine">
+      <div class="spine-rail reveal">
+        <span class="rail-label">Approach</span>
+        <p class="rail-note">Three commitments that show up in every repository below.</p>
       </div>
-      <div class="stat-card fade-in">
-        <div class="stat-num" data-counter="1506">0</div>
-        <div class="stat-label">commits pushed</div>
-      </div>
-      <div class="stat-card fade-in">
-        <div class="stat-num" data-counter="553">0</div>
-        <div class="stat-label">pull requests</div>
-      </div>
-      <div class="stat-card fade-in">
-        <div class="stat-num" data-counter="37">0</div>
-        <div class="stat-label">repos contributed</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════ THE WORK ═══════════════════════════ -->
-<section id="work">
-  <div class="container-narrow">
-    <div class="fade-in">
-      <span class="eyebrow">the work</span>
-      <h2 class="headline tight">
-        Fullstack at a small NYC firm.
-        <span class="dim">After a $1B revenue forecast at CLEAR.</span>
-      </h2>
-    </div>
+      <div>
+        <h2 class="headline reveal" style="margin-bottom:2.25rem;">
+          The interesting problem is rarely the model.
+          <span class="dim block">It is the loop around it.</span>
+        </h2>
 
-    <div style="margin-top:3rem;">
-      <article class="role-block fade-in">
-        <div class="role-head">
-          <h3 class="role-where">Goldsmith &amp; Co <span class="role-role">/ software engineer</span></h3>
-          <span class="role-when">2025 — present · nyc</span>
-        </div>
-        <ul class="role-bullets">
-          <li>Rails + Postgres client portal: 38 endpoints, 13 tables, multi-tenant accounts wired against the firm's ats.</li>
-          <li>Shipped recruiter-facing reporting and candidate-pipeline tooling partner-facing from week one.</li>
-          <li>OAuth2 + Pundit authorization; React/TypeScript bits glued to a vanilla-js portal frontend.</li>
-        </ul>
-        <div class="role-stack">
-          <span class="chip">rails</span><span class="chip">postgres</span><span class="chip">typescript</span><span class="chip">react</span><span class="chip">oauth2</span><span class="chip">pundit</span>
-        </div>
-      </article>
+        <div class="pillars stagger">
+          <article class="pillar reveal">
+            <h3>The gate is a design property</h3>
+            <p>
+              Not a review step bolted on afterward. In production, recruiters correct records inline,
+              the correction lands in an override store, an admin is pinged to review, and only the
+              accepted version reaches the system of record. Real annotators who are not engineers,
+              on data the business depends on.
+            </p>
+            <span class="cite">goldsmith &amp; co · in production</span>
+          </article>
 
-      <article class="role-block fade-in">
-        <div class="role-head">
-          <h3 class="role-where">CLEAR <span class="role-role">/ data analyst</span></h3>
-          <span class="role-when">jan 2025 — sep 2025 · nyc</span>
-        </div>
-        <ul class="role-bullets">
-          <li>Daily finance &amp; subscriber actualization feeding a $1B+ revenue forecast.</li>
-          <li>Derived LookML models cut manual reconciliation time by ~40%.</li>
-          <li>Snowflake ML on churn and pricing scenarios; standardized legacy reporting into Looker / Power BI.</li>
-        </ul>
-        <div class="role-stack">
-          <span class="chip">snowflake</span><span class="chip">sql</span><span class="chip">lookml</span><span class="chip">python</span><span class="chip">power bi</span>
-        </div>
-      </article>
+          <article class="pillar reveal">
+            <h3>Grade the grader first</h3>
+            <p>
+              An eval you have not calibrated is a number you cannot use. Two reference policies pin the
+              scale: a gate-compliant oracle must score 1.0, a bypass baseline must score 0.0, and CI fails
+              if that calibration drifts. A broken grader fails loudly instead of quietly reporting progress.
+            </p>
+            <span class="cite">groundstation-train · enforced in CI</span>
+          </article>
 
-      <article class="role-block fade-in">
-        <div class="role-head">
-          <h3 class="role-where">Estée Lauder <span class="role-role">/ software dev intern</span></h3>
-          <span class="role-when">jun 2022 — aug 2022 · nyc</span>
+          <article class="pillar reveal">
+            <h3>Every number regenerates</h3>
+            <p>
+              Nothing here is asserted. Each metric on this page comes from a held-out eval or benchmark
+              committed in its repository, alongside the exact command that reproduces it from a clean
+              checkout. Where a number needs hardware I do not have, it is labelled as pending, not claimed.
+            </p>
+            <span class="cite">heliosnet · make eval</span>
+          </article>
         </div>
-        <ul class="role-bullets">
-          <li>Internal IT web app in Python (Flask + SQLAlchemy), with authn and access control.</li>
-          <li>Modular APIs automating reporting; ci-style two-week sprint cadence.</li>
-        </ul>
-        <div class="role-stack">
-          <span class="chip">python</span><span class="chip">flask</span><span class="chip">sqlalchemy</span><span class="chip">sql</span>
-        </div>
-      </article>
-
-      <div class="fade-in" style="margin-top:1.5rem;">
-        <a href="experience.html" class="btn btn-secondary">full work history →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ MATH + CODE ═══════════════════════════ -->
-<section id="math">
+<!-- ═══════════════════════════ MEASURED ═══════════════════════════ -->
+<section id="measured">
   <div class="container">
-    <div class="fade-in">
-      <span class="eyebrow">math + code</span>
-      <h2 class="headline tight">
-        Pure math, made interactive.
-        <span class="dim">Three live demos, written in the browser.</span>
-      </h2>
-      <p class="lede" style="margin-top:1.2rem;">
-        Math I write code for: stochastic processes for option pricing, spectral methods on graphs, persistent homology on point clouds. Each demo runs locally in your tab.
-      </p>
-    </div>
-
-    <div style="margin-top:3rem;">
-
-      <!-- Demo 1: Monte Carlo / GBM -->
-      <div class="math-module fade-in">
-        <div>
-          <span class="eyebrow">monte carlo</span>
-          <h3 class="headline tight">
-            100,000 paths
-            <span class="dim">one option price.</span>
-          </h3>
-          <p style="color:rgba(235,219,178,0.65);font-size:0.95rem;margin:0.8rem 0 1.2rem;">
-            Geometric Brownian motion for a European call. Each pale line is a simulated path; the pink one is the latest. Average their payoffs, discount to today, and you get a Black-Scholes-matching price.
-          </p>
-          <div class="code-block">
-            <div class="code-head">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="file">quantlib_mm/pricer.py</span>
-            </div>
-            <div class="code-body">
-<pre><span class="tok-kw">from</span> quantlib_mm <span class="tok-kw">import</span> simulate, european_call
-
-paths = simulate(s0=<span class="tok-num">100</span>, mu=<span class="tok-num">0.08</span>, sigma=<span class="tok-num">0.22</span>,
-                 n_paths=<span class="tok-num">100_000</span>, n_steps=<span class="tok-num">252</span>)
-price, std = european_call(paths, k=<span class="tok-num">100</span>, r=<span class="tok-num">0.04</span>)
-<span class="tok-com"># price ≈ 10.45, std ≈ 0.04</span></pre>
-            </div>
-          </div>
-          <div class="typing-line"><span class="dots-anim"><i></i><i></i><i></i></span> sampling 252 timesteps × 100k paths…</div>
-        </div>
-        <div class="module-canvas-wrap"><canvas id="monte-carlo-canvas" aria-label="Monte Carlo simulated paths"></canvas></div>
+    <div class="spine">
+      <div class="spine-rail reveal">
+        <span class="rail-label">Measured</span>
+        <p class="rail-note">Held-out evals, committed in the repository named beside each row.</p>
       </div>
 
-      <!-- Demo 2: Spectral graph -->
-      <div class="math-module fade-in">
-        <div class="module-canvas-wrap"><canvas id="graph-canvas" aria-label="Spectral graph community detection"></canvas></div>
-        <div>
-          <span class="eyebrow">spectral graph</span>
-          <h3 class="headline tight">
-            n nodes
-            <span class="dim">k communities, no labels.</span>
-          </h3>
-          <p style="color:rgba(235,219,178,0.65);font-size:0.95rem;margin:0.8rem 0 1.2rem;">
-            Build the graph laplacian L = D − A, take its bottom eigenvectors, k-means the rows. Communities pop out without ever telling the algorithm what they are.
-          </p>
-          <div class="code-block">
-            <div class="code-head">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="file">spectral_cluster.py</span>
-            </div>
-            <div class="code-body">
-<pre><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-<span class="tok-kw">from</span> scipy.linalg <span class="tok-kw">import</span> eigh
+      <div>
+        <h2 class="headline reveal">
+          Measured, not asserted.
+          <span class="dim block">Each row regenerates with one command.</span>
+        </h2>
 
-L = D - A                              <span class="tok-com"># graph laplacian</span>
-vals, vecs = eigh(L)                   <span class="tok-com"># spectrum</span>
-labels = kmeans(vecs[:, <span class="tok-num">1</span>:k+<span class="tok-num">1</span>], k)   <span class="tok-com"># cluster rows</span></pre>
-            </div>
+        <div class="metrics reveal" style="margin-top:2rem;">
+
+          <div class="metric">
+            <span class="metric-what">
+              Retrieval citation accuracy, top-1, on held-out QA with gold citations
+              <span class="src">groundstation-rag · make eval · CI gate 0.90</span>
+            </span>
+            <span class="metric-val">0.967</span>
+            <span class="meter"><i data-meter="0.967"></i></span>
           </div>
-          <div class="typing-line"><span class="dots-anim"><i></i><i></i><i></i></span> computing fiedler vector…</div>
-        </div>
-      </div>
 
-      <!-- Demo 3: Persistent homology -->
-      <div class="math-module fade-in">
-        <div>
-          <span class="eyebrow">persistent homology</span>
-          <h3 class="headline tight">
-            point cloud
-            <span class="dim">Betti(0,1,2), as scale grows.</span>
-          </h3>
-          <p style="color:rgba(235,219,178,0.65);font-size:0.95rem;margin:0.8rem 0 1.2rem;">
-            Grow a ball around each point. Watch the Vietoris-Rips complex form, holes appear and die. The features that persist across scale are the real shape of the data.
-          </p>
-          <div class="code-block">
-            <div class="code-head">
-              <span class="dots"><i></i><i></i><i></i></span>
-              <span class="file">rips_complex.py</span>
-            </div>
-            <div class="code-body">
-<pre><span class="tok-kw">from</span> ripser <span class="tok-kw">import</span> ripser
-
-result = ripser(points, maxdim=<span class="tok-num">2</span>)
-dgms = result[<span class="tok-str">'dgms'</span>]              <span class="tok-com"># persistence diagrams</span>
-betti = [<span class="tok-fn">len</span>(d) <span class="tok-kw">for</span> d <span class="tok-kw">in</span> dgms]    <span class="tok-com"># [β0, β1, β2]</span></pre>
-            </div>
+          <div class="metric">
+            <span class="metric-what">
+              Real-vs-synthetic image classifier accuracy, held-out test set
+              <span class="src">athena-ai · EfficientNet-B0 · ROC-AUC 0.9999</span>
+            </span>
+            <span class="metric-val">0.996</span>
+            <span class="meter"><i data-meter="0.996"></i></span>
           </div>
-          <div class="typing-line"><span class="dots-anim"><i></i><i></i><i></i></span> tracking births and deaths…</div>
+
+          <div class="metric">
+            <span class="metric-what">
+              Anomaly-type classifier accuracy, held-out satellites
+              <span class="src">groundstation · make train · macro-F1 0.931</span>
+            </span>
+            <span class="metric-val">0.967</span>
+            <span class="meter"><i data-meter="0.967"></i></span>
+          </div>
+
+          <div class="metric">
+            <span class="metric-what">
+              Defect-segmentation mean IoU, held-out frames, trained from scratch
+              <span class="src">constellation-vision · make eval · per-class 0.76 to 0.95</span>
+            </span>
+            <span class="metric-val">0.882</span>
+            <span class="meter"><i data-meter="0.882"></i></span>
+          </div>
+
+          <div class="metric">
+            <span class="metric-what">
+              Adversarial attacks blocked with the defense stack enabled
+              <span class="src">aegis · make demo · 11/11 land with defenses off</span>
+            </span>
+            <span class="metric-val">11 / 11</span>
+            <span class="meter"><i data-meter="1"></i></span>
+          </div>
+
+          <div class="metric">
+            <span class="metric-what">
+              Approval-gate eval calibration: oracle policy versus bypass baseline
+              <span class="src">groundstation-train · make eval-refs · 77-scenario held-out set</span>
+            </span>
+            <span class="metric-val">1.0 / 0.0</span>
+            <span class="meter"><i data-meter="1"></i></span>
+          </div>
+
         </div>
-        <div class="module-canvas-wrap"><canvas id="topology-canvas" aria-label="Vietoris-Rips complex growing"></canvas></div>
-      </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════ FLAGSHIP: HELIOSNET ═══════════════════ -->
-<section id="featured">
-  <div class="container">
-    <div class="fade-in">
-      <span class="eyebrow">flagship</span>
-      <h2 class="headline tight">
-        The Heliosnet ground system.
-        <span class="dim">Four interoperating projects: the brains, the data plane, the shield, the deploy.</span>
-      </h2>
-      <p class="lede" style="margin-top:1.2rem;max-width:64ch;">
-        A satellite constellation's ground segment, simulated end to end. <code style="color:var(--accent-light);">liftoff</code> deploys the stack that <code style="color:var(--accent-light);">groundstation</code> operates over <code style="color:var(--accent-light);">constellation</code>'s telemetry, with <code style="color:var(--accent-light);">aegis</code> authenticating the command path. One coherent system &mdash; each project also stands alone and runs on its own.
-      </p>
-    </div>
-
-    <div class="proj-grid stagger" style="margin-top:2.5rem;">
-      <article class="proj-card fade-in">
-        <div class="proj-head">
-          <h3 class="proj-name">groundstation</h3>
-          <span class="proj-status">the brains</span>
-        </div>
-        <p class="proj-desc">Agentic mission-ops copilot: a LangGraph multi-agent graph operating the system through MCP tools and RAG-cited playbooks, with tiered model routing and a human-in-the-loop approval gate. Trained anomaly-type classifier hits <strong>96.7%</strong> accuracy (0.931 macro-F1) on held-out satellites.</p>
-        <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">langgraph</span><span class="proj-tag">mcp</span><span class="proj-tag">rag</span><span class="proj-tag">python</span></div>
-          <a href="https://github.com/maisymylod/groundstation" target="_blank" rel="noopener" class="proj-link">github ↗</a>
-        </div>
-      </article>
-
-      <article class="proj-card fade-in">
-        <div class="proj-head">
-          <h3 class="proj-name">constellation</h3>
-          <span class="proj-status">the data plane</span>
-        </div>
-        <p class="proj-desc">Telemetry data plane: streaming ingestion (Redpanda → TimescaleDB), unsupervised anomaly detection, and a React/TypeScript ops console. Anomaly detection F1 <strong>0.720</strong> (recall 0.808) over 180,000+ streamed records.</p>
-        <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">redpanda</span><span class="proj-tag">timescaledb</span><span class="proj-tag">react</span></div>
-          <a href="https://github.com/maisymylod/constellation" target="_blank" rel="noopener" class="proj-link">github ↗</a>
-        </div>
-      </article>
-
-      <article class="proj-card fade-in">
-        <div class="proj-head">
-          <h3 class="proj-name">aegis</h3>
-          <span class="proj-status">the shield</span>
-        </div>
-        <p class="proj-desc">Security layer: Ed25519 signed-command authentication (replay protection, key rotation, verifying chain), mutual TLS, and an adversarial harness with a measured defense stack. Defenses off: <strong>11/11</strong> attacks land. Defenses on: <strong>0/11</strong>.</p>
-        <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">ed25519</span><span class="proj-tag">mtls</span><span class="proj-tag">security</span></div>
-          <a href="https://github.com/maisymylod/aegis" target="_blank" rel="noopener" class="proj-link">github ↗</a>
-        </div>
-      </article>
-
-      <article class="proj-card fade-in">
-        <div class="proj-head">
-          <h3 class="proj-name">liftoff</h3>
-          <span class="proj-status">the deploy</span>
-        </div>
-        <p class="proj-desc">Deploy and build-reliability layer in Go: one declarative suite spec rendered for cloud, on-prem, and air-gapped bare-metal, with SLO-driven rollback. All <strong>three</strong> targets pass terraform, helm/kubeconform, and shellcheck, byte-for-byte deterministic.</p>
-        <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">go</span><span class="proj-tag">terraform</span><span class="proj-tag">helm</span></div>
-          <a href="https://github.com/maisymylod/liftoff" target="_blank" rel="noopener" class="proj-link">github ↗</a>
-        </div>
-      </article>
-    </div>
-
-    <div class="fade-in" style="margin-top:2rem;color:rgba(235,219,178,0.7);max-width:64ch;font-size:0.98rem;line-height:1.6;">
-      Also shipped: <a href="https://github.com/maisymylod/athena-ai" target="_blank" rel="noopener" style="color:var(--accent-light);border-bottom:1px solid rgba(184,187,38,0.3);">athena-ai</a>, a deployed real-vs-AI image classifier (EfficientNet-B0) behind a live API &mdash; 0.996 accuracy, 0.9999 ROC-AUC, a verdict in ~150&nbsp;ms &mdash; and <a href="https://github.com/maisymylod/quantlib-mm" target="_blank" rel="noopener" style="color:var(--accent-light);border-bottom:1px solid rgba(184,187,38,0.3);">quantlib-mm</a>, a quant library on a pure-math foundation (Monte Carlo, option pricing, VaR/CVaR, Greeks).
-    </div>
-
-    <div class="fade-in" style="margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:0.7rem;">
-      <a href="projects.html" class="btn btn-primary">all projects →</a>
-      <a href="https://github.com/maisymylod" target="_blank" rel="noopener" class="btn btn-secondary">github ↗</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════ THE STACK (cycling) ═══════════════════ -->
-<section id="stack">
-  <div class="container">
-    <div class="fade-in">
-      <span class="eyebrow">the stack</span>
-      <h2 class="headline tight">
-        Wraps anything I build with.
-        <span class="dim">A few of the systems behind the work.</span>
-      </h2>
-    </div>
-
-    <div class="cycling-row" style="margin-top:2.5rem;">
-      <div class="fade-in">
-        <p style="color:rgba(235,219,178,0.65);max-width:48ch;font-size:0.98rem;">
-          The toolchain rotates depending on the problem. Agents are LangGraph + MCP + RAG. Models are tiered Claude routing and PyTorch training. The shield is Ed25519 and red-teaming. The deploy is Terraform, Helm, and Kubernetes &mdash; cloud through air-gapped.
+        <p class="footnote reveal" style="margin-top:1.25rem;">
+          One caveat stated up front, because it belongs up front: <code>groundstation-train</code>'s
+          model headline (a base versus SFT+DPO lift) needs a GPU fine-tune I have not run. What is
+          committed and CI-enforced there is the eval harness itself. The training pipeline is real; the
+          model number is honestly pending.
         </p>
       </div>
-
-      <div class="cycling-list fade-in" aria-live="polite" aria-label="Rotating tech examples">
-        <div class="item"><span class="name">LangGraph + MCP</span><span class="what">groundstation mission-ops copilot</span></div>
-        <div class="item"><span class="name">Redpanda + TimescaleDB</span><span class="what">constellation telemetry plane</span></div>
-        <div class="item"><span class="name">Ed25519 + mTLS</span><span class="what">aegis signed command auth</span></div>
-        <div class="item"><span class="name">Go + Terraform</span><span class="what">liftoff air-gapped deploy</span></div>
-        <div class="item"><span class="name">PyTorch + EfficientNet</span><span class="what">athena-ai image classifier</span></div>
-        <div class="item"><span class="name">Rails + Postgres</span><span class="what">goldsmith client portal</span></div>
-      </div>
     </div>
+  </div>
+</section>
 
-    <div class="skills-grid stagger">
-      <div class="skill-card fade-in">
-        <h3>ai / agents</h3>
-        <ul><li>langgraph multi-agent</li><li>mcp servers + clients</li><li>rag over pgvector</li><li>tiered claude routing</li><li>pytorch train + eval</li></ul>
+<!-- ═══════════════════════════ SELECTED WORK ═══════════════════════════ -->
+<section id="work" class="sunk ruled">
+  <div class="container">
+    <div class="spine">
+      <div class="spine-rail reveal">
+        <span class="rail-label">Selected work</span>
+        <p class="rail-note">Twenty-seven public repositories. These eight carry the thesis.</p>
       </div>
-      <div class="skill-card fade-in">
-        <h3>security</h3>
-        <ul><li>prompt-injection red-team</li><li>jailbreak / exfil testing</li><li>ed25519 signed auth</li><li>mutual tls</li><li>threat modeling</li></ul>
-      </div>
-      <div class="skill-card fade-in">
-        <h3>data</h3>
-        <ul><li>kafka / redpanda</li><li>stream processing</li><li>timescaledb / time-series</li><li>anomaly detection</li><li>pandas / numpy / sklearn</li></ul>
-      </div>
-      <div class="skill-card fade-in">
-        <h3>infrastructure</h3>
-        <ul><li>terraform (eks + gpu)</li><li>helm / kubernetes crds</li><li>controller-runtime</li><li>docker / gh actions</li><li>air-gapped + gpu deploy</li></ul>
-      </div>
-      <div class="skill-card fade-in">
-        <h3>languages</h3>
-        <ul><li>python</li><li>go</li><li>typescript / js</li><li>sql</li></ul>
-      </div>
-      <div class="skill-card fade-in">
-        <h3>mathematics</h3>
-        <ul><li>topology</li><li>stochastic calculus</li><li>graph theory</li><li>linear algebra</li><li>ml / dl</li></ul>
+
+      <div>
+        <h2 class="headline reveal">
+          Built, evaluated, and shipped.
+          <span class="dim block">Alignment, agents, adversarial testing, annotation, data, infrastructure.</span>
+        </h2>
+
+        <div class="work-list" style="margin-top:2rem;">
+
+          <a class="work-item reveal" href="https://github.com/maisymylod/groundstation-train" target="_blank" rel="noopener">
+            <span class="work-kind">Preference<br>alignment</span>
+            <span>
+              <span class="work-name">groundstation-train <span class="go" aria-hidden="true">↗</span></span>
+              <span class="work-desc block">
+                SFT followed by DPO on preference pairs where the chosen response defers to a human approval
+                gate and the rejected one bypasses it. The eval harness is graded before it is trusted: an
+                oracle policy pins 1.0, a bypass baseline pins 0.0, and the calibration is asserted in CI.
+              </span>
+              <span class="work-foot">
+                <span class="result">oracle 1.0 · bypass 0.0</span>
+                <span class="result pending">model lift pending GPU</span>
+                <span class="tag">python</span><span class="tag">dpo</span><span class="tag">lora</span>
+              </span>
+            </span>
+          </a>
+
+          <a class="work-item reveal" href="https://github.com/maisymylod/groundstation" target="_blank" rel="noopener">
+            <span class="work-kind">Agent<br>orchestration</span>
+            <span>
+              <span class="work-name">groundstation <span class="go" aria-hidden="true">↗</span></span>
+              <span class="work-desc block">
+                A LangGraph multi-agent graph operating a live system through MCP tools and retrieval-cited
+                playbooks, with tiered model routing by task cost. It halts at an approval gate and emits
+                nothing until a human decides.
+              </span>
+              <span class="work-foot">
+                <span class="result">accuracy 0.967 · macro-F1 0.931</span>
+                <span class="tag">langgraph</span><span class="tag">mcp</span><span class="tag">rag</span>
+              </span>
+            </span>
+          </a>
+
+          <a class="work-item reveal" href="https://github.com/maisymylod/gauntlet" target="_blank" rel="noopener">
+            <span class="work-kind">Adversarial<br>evaluation</span>
+            <span>
+              <span class="work-name">gauntlet <span class="go" aria-hidden="true">↗</span></span>
+              <span class="work-desc block">
+                Fifteen documented attack cases across five classes (direct and indirect injection, jailbreak,
+                exfiltration, tool abuse), each with a machine-checkable success oracle. Every defense toggles
+                independently with per-defense attribution, so contributions are ablated rather than assumed.
+                The whole evaluation runs offline and deterministically, with no API key.
+              </span>
+              <span class="work-foot">
+                <span class="result">15 cases · 5 attack classes</span>
+                <span class="tag">python</span><span class="tag">red-team</span><span class="tag">deterministic</span>
+              </span>
+            </span>
+          </a>
+
+          <a class="work-item reveal" href="https://github.com/maisymylod/truth-editor" target="_blank" rel="noopener">
+            <span class="work-kind">Annotation<br>schema</span>
+            <span>
+              <span class="work-name">truth-editor <span class="go" aria-hidden="true">↗</span></span>
+              <span class="work-desc block">
+                Decomposes a document into atomic, self-contained factual claims, then verifies each one
+                independently and returns a verdict plus sources per claim. The point is the schema: an
+                annotation unit small enough that a reviewer can actually adjudicate it.
+              </span>
+              <span class="work-foot">
+                <span class="result">per-claim verdicts + sources</span>
+                <span class="tag">claude api</span><span class="tag">web search</span><span class="tag">python</span>
+              </span>
+            </span>
+          </a>
+
+          <a class="work-item reveal" href="https://github.com/maisymylod/groundstation-rag" target="_blank" rel="noopener">
+            <span class="work-kind">Retrieval<br>quality</span>
+            <span>
+              <span class="work-name">groundstation-rag <span class="go" aria-hidden="true">↗</span></span>
+              <span class="work-desc block">
+                Retrieval over a large engineering and standards corpus, answering with <code>doc#section</code>
+                citations. Retrieval quality is a build gate: a regression in citation accuracy, recall, or
+                ranking below threshold fails CI rather than quietly degrading.
+              </span>
+              <span class="work-foot">
+                <span class="result">citation-acc 0.967 · recall@k 1.0 · MRR 0.976</span>
+                <span class="tag">llamaindex</span><span class="tag">qdrant</span>
+              </span>
+            </span>
+          </a>
+
+          <a class="work-item reveal" href="https://github.com/maisymylod/athena-ai" target="_blank" rel="noopener">
+            <span class="work-kind">Applied<br>modeling</span>
+            <span>
+              <span class="work-name">athena-ai <span class="go" aria-hidden="true">↗</span></span>
+              <span class="work-desc block">
+                A deployed real-versus-synthetic image classifier behind a live API, built for a
+                consumer-protection product. Decision thresholds were set against the asymmetric cost of a
+                false positive versus a false negative rather than optimizing a symmetric metric, with an
+                eval set built to detect drift as the underlying generative models moved.
+              </span>
+              <span class="work-foot">
+                <span class="result">0.996 accuracy · 0.9999 ROC-AUC</span>
+                <span class="tag">pytorch</span><span class="tag">efficientnet-b0</span><span class="tag">model card</span>
+              </span>
+            </span>
+          </a>
+
+          <a class="work-item reveal" href="https://github.com/maisymylod/constellation-stream" target="_blank" rel="noopener">
+            <span class="work-kind">Data<br>infrastructure</span>
+            <span>
+              <span class="work-name">constellation-stream <span class="go" aria-hidden="true">↗</span></span>
+              <span class="work-desc block">
+                Kafka to Flink to Iceberg, with stateful event-time windowing, watermarks, allowed lateness,
+                and an exactly-once sink. Records that arrive too late are dead-lettered, never dropped.
+              </span>
+              <span class="work-foot">
+                <span class="result">22,388 rec/s · p99 1.31 ms at 1M rows</span>
+                <span class="tag">kafka</span><span class="tag">flink</span><span class="tag">iceberg</span>
+              </span>
+            </span>
+          </a>
+
+          <a class="work-item reveal" href="https://github.com/maisymylod/outpost" target="_blank" rel="noopener">
+            <span class="work-kind">Deployment<br>tooling</span>
+            <span>
+              <span class="work-name">outpost <span class="go" aria-hidden="true">↗</span></span>
+              <span class="work-desc block">
+                One declarative workload spec, rendered for managed cloud, on-prem Kubernetes, and an
+                air-gapped bare-metal bundle. Every rendered artifact is validated by the real tool
+                (terraform, helm, kubeconform, shellcheck), not merely produced. Output is byte-identical
+                across re-renders.
+              </span>
+              <span class="work-foot">
+                <span class="result">3 targets · deterministic output</span>
+                <span class="tag">go</span><span class="tag">terraform</span><span class="tag">helm</span>
+              </span>
+            </span>
+          </a>
+
+        </div>
+
+        <p class="footnote reveal" style="margin-top:1.5rem;">
+          Also public: <code>aegis</code> and <code>aegis-java</code> (Ed25519 command authentication, with
+          38 shared test vectors passing byte-for-byte across both languages), <code>constellation</code>,
+          <code>constellation-vision</code>, <code>groundstation-console</code>, <code>liftoff</code>,
+          <code>argus</code>, <code>slew</code>, <code>prediction-market-platform</code>,
+          <code>nfl-moneyball</code>, <code>apex-portfolio</code>, <code>quantlib-mm</code>, and
+          <code>manim-explainer</code>.
+        </p>
+
+        <div class="btn-row reveal" style="margin-top:1.5rem;">
+          <a href="projects.html" class="btn btn-primary">All projects <span class="arr" aria-hidden="true">→</span></a>
+          <a href="https://github.com/maisymylod" target="_blank" rel="noopener" class="btn btn-secondary">GitHub ↗</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ CLOSING CTA ═══════════════════════════ -->
-<section id="contact-cta">
-  <div class="container-narrow">
-    <div class="final-cta fade-in">
-      <span class="eyebrow">say hi</span>
-      <h2 class="headline" style="margin-top:0.5rem;">
-        Always open to interesting problems.
-        <span class="dim">Let's talk.</span>
-      </h2>
-      <div class="actions">
-        <a href="contact.html" class="btn btn-primary">get in touch →</a>
-        <a href="mailto:maisymylod@gmail.com" class="btn btn-secondary">maisymylod@gmail.com</a>
+<!-- ═══════════════════════════ EXPERIENCE ═══════════════════════════ -->
+<section id="experience">
+  <div class="container">
+    <div class="spine">
+      <div class="spine-rail reveal">
+        <span class="rail-label">Experience</span>
+        <p class="rail-note">Sole engineer, founder, and analyst. Full history on the experience page.</p>
       </div>
-      <div style="margin-top:2rem;">
+
+      <div>
+        <h2 class="headline reveal">
+          Production systems, owned end to end.
+          <span class="dim block">Small teams, real users, no one else to hand it to.</span>
+        </h2>
+
+        <div style="margin-top:2rem;">
+
+          <article class="role-block reveal">
+            <div class="role-head">
+              <h3 class="role-where">Goldsmith &amp; Co. <span class="role-role">AI Lead &amp; Software Engineer</span></h3>
+              <span class="role-when">Jan 2025 — present · New York</span>
+            </div>
+            <ul class="role-bullets">
+              <li>Sole engineer: I own the Rails and Postgres API, a client-facing portal (OAuth 2.0 with PKCE, role-scoped authorization), a Snowflake reporting layer, and an internal AI platform, and I set technical direction with firm leadership.</li>
+              <li>Built the human correction loop for a production data pipeline, diagrammed above: non-engineer annotators correct records inline, an admin reviews, and accepted corrections feed back into the system of record.</li>
+              <li>Designed and shipped an agent platform (LangGraph.js and the Claude API) now in daily use by non-technical staff, plus the evaluation framework measuring whether its output is correct, including adversarial testing against a curated attack corpus.</li>
+              <li>Diagnosed a silent 8% data loss in a production sync pipeline (4,840+ failed syncs, missing history rows, phantom records) that had corrupted downstream reporting undetected. Traced root cause, repaired the historical record, and added invariant checks so the failure now surfaces immediately.</li>
+              <li>Supervised an ML intern on a learning-to-rank project (LambdaMART, NDCG). Established by measurement that ranking quality was capped by label sparsity rather than model choice, and redirected the work instead of tuning against a ceiling.</li>
+            </ul>
+            <div class="role-stack">
+              <span class="chip">rails</span><span class="chip">postgres</span><span class="chip">langgraph</span><span class="chip">claude api</span><span class="chip">snowflake</span><span class="chip">oauth 2.0 / pkce</span>
+            </div>
+          </article>
+
+          <article class="role-block reveal">
+            <div class="role-head">
+              <h3 class="role-where">Athena <span class="role-role">Founder &amp; Engineer</span></h3>
+              <span class="role-when">2025 — present · New York</span>
+            </div>
+            <ul class="role-bullets">
+              <li>Founded a consumer-protection startup detecting synthetic media and non-consensual imagery. Applied to Y Combinator.</li>
+              <li>Trained and deployed an image classifier (EfficientNet-B0, PyTorch) with perceptual hashing for near-duplicate matching: 0.996 accuracy on a held-out set of real and synthetic images.</li>
+              <li>Set decision thresholds against the asymmetric cost of a false positive versus a false negative, and maintained an eval set built to detect drift as the underlying generative models moved.</li>
+            </ul>
+            <div class="role-stack">
+              <span class="chip">pytorch</span><span class="chip">efficientnet</span><span class="chip">perceptual hashing</span><span class="chip">eval design</span>
+            </div>
+          </article>
+
+          <article class="role-block reveal">
+            <div class="role-head">
+              <h3 class="role-where">CLEAR <span class="role-role">Data Analyst</span></h3>
+              <span class="role-when">Jan 2024 — Jan 2025 · New York</span>
+            </div>
+            <ul class="role-bullets">
+              <li>Built churn forecasting models across a 20M+ member base at a biometric identity company, and ran scenario analysis on how pricing changes traded retained volume against revenue.</li>
+              <li>Automated a $1B+ revenue forecast, replacing a hand-assembled analysis with a reproducible pipeline that could be re-run and checked against realized results.</li>
+            </ul>
+            <div class="role-stack">
+              <span class="chip">snowflake</span><span class="chip">sql</span><span class="chip">python</span><span class="chip">forecasting</span>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="btn-row reveal" style="margin-top:1.75rem;">
+          <a href="experience.html" class="btn btn-secondary">Full work history <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ BY THE NUMBERS ═══════════════════════════ -->
+<section id="numbers" class="sunk ruled">
+  <div class="container">
+    <div class="spine">
+      <div class="spine-rail reveal">
+        <span class="rail-label">Output</span>
+        <p class="rail-note">GitHub, 2026 year to date. Read from the contributions API on 4 August 2026.</p>
+      </div>
+
+      <div>
+        <h2 class="headline reveal">
+          I write a lot of code.
+          <span class="dim block">Most of it is public and reproducible.</span>
+        </h2>
+
+        <div class="stat-grid stagger reveal" style="margin-top:2rem;">
+          <div class="stat-card">
+            <div class="stat-num" data-counter="2524">0</div>
+            <div class="stat-label">contributions this year</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-counter="1712">0</div>
+            <div class="stat-label">commits pushed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-counter="633">0</div>
+            <div class="stat-label">pull requests opened</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num" data-counter="50">0</div>
+            <div class="stat-label">repositories contributed to</div>
+          </div>
+        </div>
+
+        <blockquote class="pullquote reveal" style="margin-top:2.5rem;">
+          The labels were the bottleneck, not the model.
+        </blockquote>
+        <p class="footnote reveal" style="margin-top:0.85rem;">
+          The conclusion from the learning-to-rank work above, and the reason this page leads with
+          annotation and evaluation rather than with architecture.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CLOSING ═══════════════════════════ -->
+<section id="contact-cta">
+  <div class="container">
+    <div class="final-cta reveal">
+      <span class="eyebrow">Get in touch</span>
+      <h2 class="headline" style="margin-top:0.6rem;">
+        I would like to work on this at a larger scale.
+        <span class="dim block">If that is the problem you are working on, let's talk.</span>
+      </h2>
+      <p style="margin-top:1.1rem;">
+        Based in New York. Reachable at <a href="mailto:maisymylod@gmail.com" style="color:inherit;border-bottom:1px solid rgba(250,248,244,0.35);">maisymylod@gmail.com</a>.
+      </p>
+      <div class="actions">
+        <a href="contact.html" class="btn btn-primary">Contact <span class="arr" aria-hidden="true">→</span></a>
+        <a href="https://github.com/maisymylod" target="_blank" rel="noopener" class="btn btn-secondary">GitHub ↗</a>
+        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn ↗</a>
+      </div>
+      <div style="margin-top:1.75rem;">
         <span class="copy-cmd">
-          <span class="prompt">$</span>
-          <code>git clone https://github.com/maisymylod</code>
-          <button class="copy-icon" aria-label="Copy git command">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="prompt" aria-hidden="true">$</span>
+          <code>gh repo list maisymylod --limit 30</code>
+          <button class="copy-icon" aria-label="Copy command">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </span>
       </div>
@@ -502,35 +620,34 @@ betti = [<span class="tok-fn">len</span>(d) <span class="tok-kw">for</span> d <s
 <footer class="site-foot">
   <div class="container">
     <div class="row">
-      <span>&copy; 2026 maisy mylod · nyc</span>
+      <span>© 2026 Maisy Mylod · New York</span>
       <div class="links">
-        <a href="mailto:maisymylod@gmail.com">email</a>
-        <a href="https://github.com/maisymylod" target="_blank" rel="noopener">github</a>
-        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">linkedin</a>
+        <a href="mailto:maisymylod@gmail.com">Email</a>
+        <a href="https://github.com/maisymylod" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- Command palette (Cmd/Ctrl-K) -->
+<!-- Command palette (⌘K / Ctrl-K) -->
 <div class="palette-mask hidden" role="dialog" aria-modal="true" aria-label="Command palette">
   <div class="palette">
-    <input type="text" class="palette-input" placeholder="jump to…  (type to filter)" aria-label="Filter commands">
+    <input type="text" class="palette-input" placeholder="Jump to…" aria-label="Filter commands">
     <ul class="palette-list" role="listbox">
-      <li data-label="home" data-href="index.html">home <span class="key">g h</span></li>
-      <li data-label="experience" data-href="experience.html">experience <span class="key">g e</span></li>
-      <li data-label="projects" data-href="projects.html">projects <span class="key">g p</span></li>
-      <li data-label="dashboard" data-href="dashboard.html">dashboard <span class="key">g d</span></li>
-      <li data-label="contact" data-href="contact.html">contact <span class="key">g c</span></li>
-      <li data-label="hero showpiece" data-section="hero">↓ hero showpiece</li>
-      <li data-label="by the numbers" data-section="numbers">↓ by the numbers</li>
-      <li data-label="the work" data-section="work">↓ the work</li>
-      <li data-label="math + code demos" data-section="math">↓ math + code</li>
-      <li data-label="flagship heliosnet ground system" data-section="featured">↓ flagship</li>
-      <li data-label="the stack" data-section="stack">↓ the stack</li>
-      <li data-label="github" data-href="https://github.com/maisymylod">open github ↗</li>
-      <li data-label="linkedin" data-href="https://linkedin.com/in/maisymylod">open linkedin ↗</li>
-      <li data-label="email" data-href="mailto:maisymylod@gmail.com">send email ↗</li>
+      <li data-label="home" data-href="index.html">Home <span class="key">g h</span></li>
+      <li data-label="experience" data-href="experience.html">Experience <span class="key">g e</span></li>
+      <li data-label="projects" data-href="projects.html">Projects <span class="key">g p</span></li>
+      <li data-label="dashboard" data-href="dashboard.html">Dashboard <span class="key">g d</span></li>
+      <li data-label="contact" data-href="contact.html">Contact <span class="key">g c</span></li>
+      <li data-label="approach through-line" data-section="approach">↓ Approach</li>
+      <li data-label="measured metrics evals" data-section="measured">↓ Measured</li>
+      <li data-label="selected work projects" data-section="work">↓ Selected work</li>
+      <li data-label="experience roles" data-section="experience">↓ Experience</li>
+      <li data-label="by the numbers github" data-section="numbers">↓ Output</li>
+      <li data-label="github" data-href="https://github.com/maisymylod">Open GitHub ↗</li>
+      <li data-label="linkedin" data-href="https://linkedin.com/in/maisymylod">Open LinkedIn ↗</li>
+      <li data-label="email" data-href="mailto:maisymylod@gmail.com">Send email ↗</li>
     </ul>
     <div class="palette-foot">
       <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>

@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Contact Maisy Mylod — email, LinkedIn, GitHub, or send a message.">
-<meta name="theme-color" content="#282828">
-<title>contact — maisy mylod</title>
+<meta name="description" content="Contact Maisy Mylod — AI Lead & Software Engineer in New York. Email, LinkedIn, GitHub, or send a message directly.">
+<meta name="theme-color" content="#faf8f4">
+<title>Contact — Maisy Mylod</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=B612+Mono:wght@400;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="theme.css">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -20,38 +20,40 @@
 
 <nav class="site-nav" aria-label="Primary">
   <div class="nav-inner">
-    <a href="index.html" class="brand"><span class="prompt-dot">$</span><span>maisy mylod</span><span class="blink" aria-hidden="true"></span></a>
+    <a href="index.html" class="brand"><span class="brand-rule" aria-hidden="true"></span>Maisy Mylod</a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link">home</a>
-      <a href="experience.html" class="nav-link">experience</a>
-      <a href="projects.html" class="nav-link">projects</a>
-      <a href="dashboard.html" class="nav-link">dashboard</a>
-      <a href="contact.html" class="nav-link active">contact</a>
-      <button class="nav-cta" data-open-palette aria-label="Open command palette">⌘ K</button>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="experience.html" class="nav-link">Experience</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="contact.html" class="nav-link active">Contact</a>
+      <button class="nav-cta" data-open-palette aria-label="Open command palette">⌘K</button>
     </div>
-    <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
   </div>
 </nav>
 
 <div id="mobile-menu" class="hidden" role="menu">
-  <a href="index.html">home</a>
-  <a href="experience.html">experience</a>
-  <a href="projects.html">projects</a>
-  <a href="dashboard.html">dashboard</a>
-  <a href="contact.html">contact</a>
+  <a href="index.html">Home</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="contact.html">Contact</a>
+  <a href="https://github.com/maisymylod" target="_blank" rel="noopener">GitHub ↗</a>
 </div>
 
-<header class="page-header" style="margin-top:3.6rem;">
+<header class="page-header">
   <div class="container">
-    <span class="eyebrow">contact</span>
-    <h1 class="headline">
+    <span class="eyebrow reveal">Contact</span>
+    <h1 class="display reveal" style="margin-top:0.8rem;">
       Get in touch.
-      <span class="dim">Open to interesting problems.</span>
+      <span class="dim block">Especially about human data, evaluation, and agent systems.</span>
     </h1>
-    <p class="lede" style="margin-top:1rem;">
-      Software engineer at Goldsmith &amp; Co in NYC. Always interested in collaboration, consulting, and conversations about math, systems, or anything fullstack.
+    <p class="lede reveal" style="margin-top:1.3rem;">
+      I am in New York and currently open to AI engineering roles. If you are working on the problem of
+      how humans and models correct each other at scale, that is the conversation I most want to have.
     </p>
   </div>
 </header>
@@ -60,89 +62,91 @@
 <section id="form" style="padding-top:0;">
   <div class="container">
     <div class="contact-grid">
-      <form class="fade-in" id="contact-form" action="https://formspree.io/f/mblegbld" method="POST" novalidate>
+
+      <form class="reveal" id="contact-form" action="https://formspree.io/f/mblegbld" method="POST" novalidate>
         <div class="form-field">
-          <label for="name">name <span class="req">*</span></label>
+          <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
           <input type="text" id="name" name="name" required autocomplete="name">
         </div>
         <div class="form-field">
-          <label for="email">email <span class="req">*</span></label>
+          <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
           <input type="email" id="email" name="email" required autocomplete="email">
         </div>
         <div class="form-field">
-          <label for="company">company</label>
+          <label for="company">Company</label>
           <input type="text" id="company" name="company" autocomplete="organization">
         </div>
         <div class="form-field">
-          <label for="subject">subject <span class="req">*</span></label>
+          <label for="subject">Subject <span class="req" aria-hidden="true">*</span></label>
           <select id="subject" name="subject" required>
-            <option value="">choose one…</option>
-            <option value="Job opportunity">job opportunity</option>
-            <option value="Project inquiry">project inquiry</option>
-            <option value="Collaboration">collaboration</option>
-            <option value="Other">other</option>
+            <option value="">Choose one…</option>
+            <option value="Job opportunity">Job opportunity</option>
+            <option value="Project inquiry">Project inquiry</option>
+            <option value="Collaboration">Collaboration</option>
+            <option value="Other">Other</option>
           </select>
         </div>
         <div class="form-field">
-          <label for="message">message <span class="req">*</span></label>
+          <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
           <textarea id="message" name="message" required maxlength="500"></textarea>
           <div class="char-count"><span id="char-count">0</span> / 500</div>
         </div>
-        <button type="submit" class="btn btn-primary" id="submit-btn">send message →</button>
+        <button type="submit" class="btn btn-primary" id="submit-btn">Send message <span class="arr" aria-hidden="true">→</span></button>
         <div class="form-message" id="form-message" role="status" aria-live="polite"></div>
       </form>
 
-      <aside class="fade-in">
+      <aside class="reveal">
         <div class="contact-list">
           <div class="row">
-            <span class="icon">@</span>
+            <span class="icon" aria-hidden="true">@</span>
             <div class="body">
-              <div class="label">email</div>
+              <div class="label">Email</div>
               <div class="val"><a href="mailto:maisymylod@gmail.com">maisymylod@gmail.com</a></div>
             </div>
           </div>
           <div class="row">
-            <span class="icon">in</span>
+            <span class="icon" aria-hidden="true">in</span>
             <div class="body">
-              <div class="label">linkedin</div>
-              <div class="val"><a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">maisy mylod ↗</a></div>
+              <div class="label">LinkedIn</div>
+              <div class="val"><a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">Maisy Mylod ↗</a></div>
             </div>
           </div>
           <div class="row">
-            <span class="icon">gh</span>
+            <span class="icon" aria-hidden="true">gh</span>
             <div class="body">
-              <div class="label">github</div>
+              <div class="label">GitHub</div>
               <div class="val"><a href="https://github.com/maisymylod" target="_blank" rel="noopener">@maisymylod ↗</a></div>
             </div>
           </div>
           <div class="row">
-            <span class="icon">·</span>
+            <span class="icon" aria-hidden="true">·</span>
             <div class="body">
-              <div class="label">location</div>
-              <div class="val">new york, ny</div>
-              <div style="color:rgba(235,219,178,0.45);font-size:0.8rem;font-family:var(--font-mono);margin-top:0.2rem;">available for remote</div>
+              <div class="label">Location</div>
+              <div class="val">New York, NY</div>
+              <div class="footnote" style="margin-top:0.2rem;">Open to on-site, hybrid, or remote.</div>
             </div>
           </div>
           <div class="row">
-            <span class="icon">~</span>
+            <span class="icon" aria-hidden="true">~</span>
             <div class="body">
-              <div class="label">response</div>
-              <div class="val">24 — 48 hours</div>
-              <div style="color:rgba(235,219,178,0.45);font-size:0.8rem;font-family:var(--font-mono);margin-top:0.2rem;">faster on weekdays</div>
+              <div class="label">Response</div>
+              <div class="val">Within 48 hours</div>
+              <div class="footnote" style="margin-top:0.2rem;">Faster on weekdays.</div>
             </div>
           </div>
         </div>
 
         <div style="margin-top:1.75rem;">
           <span class="copy-cmd">
-            <span class="prompt">$</span>
-            <code>echo "hi maisy" | mail maisymylod@gmail.com</code>
-            <button class="copy-icon" aria-label="Copy command">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="prompt" aria-hidden="true">$</span>
+            <code>maisymylod@gmail.com</code>
+            <button class="copy-icon" aria-label="Copy email address">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             </button>
           </span>
         </div>
       </aside>
+
     </div>
   </div>
 </section>
@@ -151,11 +155,11 @@
 <footer class="site-foot">
   <div class="container">
     <div class="row">
-      <span>&copy; 2026 maisy mylod · nyc</span>
+      <span>© 2026 Maisy Mylod · New York</span>
       <div class="links">
-        <a href="mailto:maisymylod@gmail.com">email</a>
-        <a href="https://github.com/maisymylod" target="_blank" rel="noopener">github</a>
-        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">linkedin</a>
+        <a href="mailto:maisymylod@gmail.com">Email</a>
+        <a href="https://github.com/maisymylod" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </div>
@@ -163,17 +167,21 @@
 
 <div class="palette-mask hidden" role="dialog" aria-modal="true" aria-label="Command palette">
   <div class="palette">
-    <input type="text" class="palette-input" placeholder="jump to…  (type to filter)" aria-label="Filter commands">
+    <input type="text" class="palette-input" placeholder="Jump to…" aria-label="Filter commands">
     <ul class="palette-list" role="listbox">
-      <li data-label="home" data-href="index.html">home</li>
-      <li data-label="experience" data-href="experience.html">experience</li>
-      <li data-label="projects" data-href="projects.html">projects</li>
-      <li data-label="dashboard" data-href="dashboard.html">dashboard</li>
-      <li data-label="contact" data-href="contact.html">contact</li>
-      <li data-label="email" data-href="mailto:maisymylod@gmail.com">send email ↗</li>
+      <li data-label="home" data-href="index.html">Home <span class="key">g h</span></li>
+      <li data-label="experience" data-href="experience.html">Experience <span class="key">g e</span></li>
+      <li data-label="projects" data-href="projects.html">Projects <span class="key">g p</span></li>
+      <li data-label="dashboard" data-href="dashboard.html">Dashboard <span class="key">g d</span></li>
+      <li data-label="contact" data-href="contact.html">Contact <span class="key">g c</span></li>
+      <li data-label="email" data-href="mailto:maisymylod@gmail.com">Send email ↗</li>
+      <li data-label="github" data-href="https://github.com/maisymylod">Open GitHub ↗</li>
+      <li data-label="linkedin" data-href="https://linkedin.com/in/maisymylod">Open LinkedIn ↗</li>
     </ul>
     <div class="palette-foot">
-      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> select</span><span><kbd>esc</kbd> close</span>
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> select</span>
+      <span><kbd>esc</kbd> close</span>
     </div>
   </div>
 </div>
@@ -183,9 +191,11 @@
 (function contactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
-    const msg = document.getElementById('form-message');
+
+    const msg     = document.getElementById('form-message');
     const msgArea = document.getElementById('message');
     const counter = document.getElementById('char-count');
+
     msgArea.addEventListener('input', () => { counter.textContent = msgArea.value.length; });
 
     form.addEventListener('submit', async (e) => {
@@ -193,24 +203,22 @@
         const btn = document.getElementById('submit-btn');
         btn.disabled = true;
         msg.className = 'form-message loading';
-        msg.textContent = 'sending…';
+        msg.textContent = 'Sending…';
+
         try {
             const res = await fetch(form.action, {
                 method: 'POST',
                 body: new FormData(form),
                 headers: { 'Accept': 'application/json' }
             });
-            if (res.ok) {
-                msg.className = 'form-message ok';
-                msg.textContent = 'message sent. I\'ll be in touch within 24 — 48 hours.';
-                form.reset();
-                counter.textContent = '0';
-            } else {
-                throw new Error('formspree returned non-ok');
-            }
+            if (!res.ok) throw new Error('Formspree returned a non-ok status');
+            msg.className = 'form-message ok';
+            msg.textContent = 'Message sent. I will be in touch within 48 hours.';
+            form.reset();
+            counter.textContent = '0';
         } catch (_) {
             msg.className = 'form-message err';
-            msg.textContent = 'something went wrong. email maisymylod@gmail.com directly.';
+            msg.textContent = 'Something went wrong. Please email maisymylod@gmail.com directly.';
         } finally {
             btn.disabled = false;
         }

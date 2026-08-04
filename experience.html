@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Maisy Mylod's full work history. Goldsmith & Co, CLEAR, Estée Lauder, plus University of Michigan.">
-<meta name="theme-color" content="#282828">
-<title>experience — maisy mylod</title>
+<meta name="description" content="Maisy Mylod's work history — AI Lead & Software Engineer at Goldsmith & Co., founder of Athena, data analyst at CLEAR, integrator at the National Museum of Mathematics. B.S. Pure Mathematics, University of Michigan.">
+<meta name="theme-color" content="#faf8f4">
+<title>Experience — Maisy Mylod</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=B612+Mono:wght@400;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="theme.css">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -20,156 +20,269 @@
 
 <nav class="site-nav" aria-label="Primary">
   <div class="nav-inner">
-    <a href="index.html" class="brand"><span class="prompt-dot">$</span><span>maisy mylod</span><span class="blink" aria-hidden="true"></span></a>
+    <a href="index.html" class="brand"><span class="brand-rule" aria-hidden="true"></span>Maisy Mylod</a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link">home</a>
-      <a href="experience.html" class="nav-link active">experience</a>
-      <a href="projects.html" class="nav-link">projects</a>
-      <a href="dashboard.html" class="nav-link">dashboard</a>
-      <a href="contact.html" class="nav-link">contact</a>
-      <button class="nav-cta" data-open-palette aria-label="Open command palette">⌘ K</button>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="experience.html" class="nav-link active">Experience</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <button class="nav-cta" data-open-palette aria-label="Open command palette">⌘K</button>
     </div>
-    <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
   </div>
 </nav>
 
 <div id="mobile-menu" class="hidden" role="menu">
-  <a href="index.html">home</a>
-  <a href="experience.html">experience</a>
-  <a href="projects.html">projects</a>
-  <a href="dashboard.html">dashboard</a>
-  <a href="contact.html">contact</a>
+  <a href="index.html">Home</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="contact.html">Contact</a>
+  <a href="https://github.com/maisymylod" target="_blank" rel="noopener">GitHub ↗</a>
 </div>
 
-<header class="page-header" style="margin-top:3.6rem;">
+<header class="page-header">
   <div class="container-narrow">
-    <span class="eyebrow">experience</span>
-    <h1 class="headline">
-      Fullstack, data, and internal tools.
-      <span class="dim">Three companies. One pure-math degree.</span>
+    <span class="eyebrow reveal">Experience</span>
+    <h1 class="display reveal" style="margin-top:0.8rem;">
+      Sole engineer, founder, analyst.
+      <span class="dim block">All of it on a <span style="white-space:nowrap;">pure-mathematics</span> foundation.</span>
     </h1>
   </div>
 </header>
 
 <main>
-<section style="padding-top:0;">
+
+<section id="roles" style="padding-top:0;">
   <div class="container-narrow">
 
-    <article class="role-block fade-in">
+    <article class="role-block reveal">
       <div class="role-head">
-        <h2 class="role-where">Goldsmith &amp; Co <span class="role-role">/ software engineer</span></h2>
-        <span class="role-when">2025 — present · new york, ny</span>
+        <h2 class="role-where">Goldsmith &amp; Co. <span class="role-role">AI Lead &amp; Software Engineer</span></h2>
+        <span class="role-when">Jan 2025 — present · New York, NY</span>
       </div>
       <ul class="role-bullets">
-        <li>Building fullstack client portal: Rails API, Postgres, vanilla JS frontend, OAuth2. 38 endpoints, 13 tables, multi-tenant accounts wired against the firm's ATS.</li>
-        <li>Shipped recruiter-facing reporting and candidate-pipeline tooling partner-facing from week one.</li>
-        <li>Architecting authorization (Pundit), serialization (jsonapi-serializer), and audit/event-ledger plumbing to keep portal data accurate against the ATS source of truth.</li>
-        <li>Collaborate across engineering, product, and the recruiter team to ship features that matter on Monday morning.</li>
+        <li>Sole engineer at an executive search firm: I own every production system end to end, including a Rails and Postgres API, a client-facing portal (JavaScript, OAuth 2.0 with PKCE, role-scoped authorization), a Snowflake reporting layer, and an internal AI platform, and I set technical direction with firm leadership.</li>
+        <li>Built the human correction loop for a production data pipeline: recruiters edit records inline in the portal, corrections land in an override store, an admin is pinged for review, and the accepted correction feeds back into the system of record. Real annotators who are not engineers, on data the business depends on.</li>
+        <li>Designed and shipped an agent platform (LangGraph.js and the Claude API) now in daily use by non-technical staff, plus the evaluation framework measuring whether its output is actually correct, including adversarial testing against a curated attack corpus.</li>
+        <li>Kept that portal healthy while requirements shifted weekly: automated build and deploy, render-escaping invariants, contract tests, and a full security-audit remediation round.</li>
+        <li>Diagnosed a silent 8% data loss in a production sync pipeline (4,840+ failed syncs, missing history rows, phantom records) that had corrupted downstream reporting undetected. Traced root cause, repaired the historical record, and added invariant checks so the failure surfaces immediately rather than silently.</li>
+        <li>Supervised an ML intern on a learning-to-rank project (LambdaMART, NDCG). Established by measurement that ranking quality was structurally capped by label sparsity rather than model choice, and redirected the work instead of tuning against a ceiling. The labels were the bottleneck, not the model.</li>
       </ul>
       <div class="role-stack">
-        <span class="chip">rails</span><span class="chip">postgres</span><span class="chip">typescript</span><span class="chip">react</span><span class="chip">oauth2</span><span class="chip">pundit</span><span class="chip">snowflake</span>
+        <span class="chip">rails</span><span class="chip">postgres</span><span class="chip">langgraph.js</span><span class="chip">claude api</span><span class="chip">snowflake</span><span class="chip">oauth 2.0 / pkce</span><span class="chip">javascript</span><span class="chip">eval design</span>
       </div>
     </article>
 
-    <article class="role-block fade-in">
+    <article class="role-block reveal">
       <div class="role-head">
-        <h2 class="role-where">CLEAR <span class="role-role">/ data analyst</span></h2>
-        <span class="role-when">jan 2025 — sep 2025 · new york, ny</span>
+        <h2 class="role-where">Athena <span class="role-role">Founder &amp; Engineer</span></h2>
+        <span class="role-when">2025 — present · New York, NY</span>
       </div>
       <ul class="role-bullets">
-        <li>Developed daily finance and subscriber actualization process informing a $1B+ revenue forecast.</li>
-        <li>Optimized reporting models by developing derived tables in LookML, reducing manual reconciliation time by ~40%.</li>
-        <li>Built SQL queries and LookML dashboards enabling Finance and Strategy teams to access real-time data.</li>
-        <li>Partnered with Marketing, Finance, and Operations to establish KPIs and reduce customer acquisition cost.</li>
-        <li>Applied Snowflake ML models to forecast churn and scenario-test pricing strategies.</li>
-        <li>Standardized legacy reporting into automated Power BI, Looker, and Snowflake dashboards.</li>
+        <li>Founded a consumer-protection startup detecting synthetic media and non-consensual imagery. Applied to Y Combinator.</li>
+        <li>Trained and deployed an image classifier (EfficientNet-B0, PyTorch) with perceptual hashing for near-duplicate matching: 0.996 accuracy on a held-out set of real and synthetic images.</li>
+        <li>Set decision thresholds against the asymmetric cost of a false positive versus a false negative rather than optimizing a symmetric metric, and maintained an eval set built to detect drift as the underlying generative models moved.</li>
       </ul>
       <div class="role-stack">
-        <span class="chip">snowflake</span><span class="chip">sql</span><span class="chip">lookml</span><span class="chip">python</span><span class="chip">power bi</span><span class="chip">looker</span><span class="chip">ml</span>
+        <span class="chip">pytorch</span><span class="chip">efficientnet-b0</span><span class="chip">perceptual hashing</span><span class="chip">threshold calibration</span><span class="chip">model cards</span>
       </div>
     </article>
 
-    <article class="role-block fade-in">
+    <article class="role-block reveal">
       <div class="role-head">
-        <h2 class="role-where">Estée Lauder Companies <span class="role-role">/ software development intern</span></h2>
-        <span class="role-when">jun 2022 — aug 2022 · new york, ny</span>
+        <h2 class="role-where">CLEAR <span class="role-role">Data Analyst</span></h2>
+        <span class="role-when">Jan 2024 — Jan 2025 · New York, NY</span>
       </div>
       <ul class="role-bullets">
-        <li>Designed and developed an internal IT web application in Python with Flask and SQLAlchemy.</li>
-        <li>Built modular APIs and data-processing scripts to automate report generation.</li>
-        <li>Implemented user authentication, secure access controls, and exception-handling frameworks.</li>
-        <li>Delivered production-ready code on a two-week sprint cadence; ran end-to-end testing and performance tuning.</li>
+        <li>Built churn forecasting models across a 20M+ member base at a biometric identity company (NYSE: YOU), and ran scenario analysis on how pricing changes traded retained volume against revenue.</li>
+        <li>Automated a $1B+ revenue forecast, replacing a hand-assembled analysis with a reproducible pipeline that could be re-run and checked against realized results.</li>
       </ul>
       <div class="role-stack">
-        <span class="chip">python</span><span class="chip">flask</span><span class="chip">sqlalchemy</span><span class="chip">sql</span><span class="chip">apis</span>
+        <span class="chip">snowflake</span><span class="chip">sql</span><span class="chip">python</span><span class="chip">forecasting</span><span class="chip">scenario analysis</span>
       </div>
     </article>
 
-    <article class="role-block fade-in">
+    <article class="role-block reveal">
       <div class="role-head">
-        <h2 class="role-where">4Salamin Productions LLC <span class="role-role">/ production assistant</span></h2>
-        <span class="role-when">jun 2021 — aug 2021 · bloomfield hills, mi</span>
+        <h2 class="role-where">National Museum of Mathematics <span class="role-role">Integrator</span></h2>
+        <span class="role-when">Jan 2025 — present · New York, NY</span>
       </div>
       <ul class="role-bullets">
-        <li>Coordinated on-set logistics and managed production schedules.</li>
-        <li>Assisted with scene setup and shot alignment.</li>
-        <li>Supported post-production organization and asset management.</li>
+        <li>Explain mathematical ideas on the museum floor to visitors of every age, adjusting to the person in real time. The best training I have had in finding the explanation that actually lands for the person in front of me.</li>
       </ul>
+      <div class="role-stack">
+        <span class="chip">exposition</span><span class="chip">mathematics</span>
+      </div>
     </article>
+
+    <article class="role-block reveal">
+      <div class="role-head">
+        <h2 class="role-where">Estée Lauder Companies <span class="role-role">Software Development Intern</span></h2>
+        <span class="role-when">Jun 2022 — Aug 2022 · New York, NY</span>
+      </div>
+      <ul class="role-bullets">
+        <li>Designed and built an internal IT web application in Python (Flask, SQLAlchemy) with user authentication and secure access controls.</li>
+        <li>Built modular APIs and data-processing scripts to automate report generation, delivered on a two-week sprint cadence.</li>
+      </ul>
+      <div class="role-stack">
+        <span class="chip">python</span><span class="chip">flask</span><span class="chip">sqlalchemy</span><span class="chip">sql</span>
+      </div>
+    </article>
+
   </div>
 </section>
 
-<section id="education">
+<!-- ═══════════════════════════ EDUCATION ═══════════════════════════ -->
+<section id="education" class="sunk ruled">
   <div class="container-narrow">
-    <div class="fade-in">
-      <span class="eyebrow">education</span>
-      <h2 class="headline tight">
-        University of Michigan.
-        <span class="dim">B.S. pure mathematics.</span>
-      </h2>
-    </div>
+    <span class="eyebrow reveal">Education</span>
+    <h2 class="headline reveal" style="margin-top:0.7rem;">
+      University of Michigan.
+      <span class="dim block">B.S. Pure Mathematics; Studies in Ukrainian.</span>
+    </h2>
 
-    <article class="role-block fade-in" style="margin-top:2rem;">
+    <article class="role-block reveal" style="margin-top:1.75rem;">
       <div class="role-head">
         <h3 class="role-where">University of Michigan</h3>
-        <span class="role-when">aug 2020 — dec 2024 · ann arbor, mi</span>
+        <span class="role-when">Aug 2020 — Dec 2024 · Ann Arbor, MI</span>
       </div>
       <ul class="role-bullets">
-        <li>B.S. Pure Mathematics.</li>
-        <li><strong style="color:var(--accent-light);">James B. Angell Scholar</strong> (2021, 2022) for two consecutive terms of all-A grades.</li>
-        <li>Relevant coursework: machine learning, database systems, software engineering, data structures &amp; algorithms, operating systems, artificial intelligence.</li>
+        <li><strong>James B. Angell Scholar</strong> (2021, 2022), awarded for consecutive terms of all-A academic standing.</li>
+        <li>Selected by the Department of Mathematics to deliver the Departmental Commencement Address, Class of 2024.</li>
+        <li>Officer, Women in Mathematics. ICPC-style competitive programming.</li>
+        <li>Coursework across machine learning, artificial intelligence, database systems, operating systems, software engineering, and data structures and algorithms, on a pure-mathematics core of topology, analysis, and algebra.</li>
       </ul>
     </article>
   </div>
 </section>
 
-<section>
-  <div class="container-narrow">
-    <div class="final-cta fade-in">
-      <span class="eyebrow">next</span>
-      <h2 class="headline" style="margin-top:0.5rem;">
-        Want the project list?
-        <span class="dim">It lives on the next page.</span>
-      </h2>
-      <div class="actions">
-        <a href="projects.html" class="btn btn-primary">see the projects →</a>
-        <a href="contact.html" class="btn btn-secondary">get in touch</a>
+<!-- ═══════════════════════════ SKILLS ═══════════════════════════ -->
+<section id="skills">
+  <div class="container">
+    <div class="spine">
+      <div class="spine-rail reveal">
+        <span class="rail-label">Technical</span>
+        <p class="rail-note">Grouped by what I use it for rather than by how long the list can be made.</p>
+      </div>
+
+      <div>
+        <h2 class="headline reveal">
+          The toolchain.
+          <span class="dim block">Everything here appears in a repository or a production system.</span>
+        </h2>
+
+        <div class="skills-grid stagger reveal" style="margin-top:2rem;">
+          <div class="skill-card">
+            <h3>AI systems</h3>
+            <ul>
+              <li>Claude API</li>
+              <li>LangGraph orchestration</li>
+              <li>MCP servers and clients</li>
+              <li>SFT / DPO on preference data</li>
+              <li>RAG with cited retrieval</li>
+              <li>Human-in-the-loop approval gates</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Evaluation</h3>
+            <ul>
+              <li>Eval harness design</li>
+              <li>Grader calibration</li>
+              <li>Held-out set construction</li>
+              <li>Adversarial / red-team corpora</li>
+              <li>Annotation schema design</li>
+              <li>Quality gates in CI</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Languages</h3>
+            <ul>
+              <li>TypeScript / JavaScript</li>
+              <li>Python</li>
+              <li>Ruby</li>
+              <li>SQL</li>
+              <li>Go</li>
+              <li>C++</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Backend &amp; data</h3>
+            <ul>
+              <li>Rails, Sinatra</li>
+              <li>PostgreSQL, Snowflake</li>
+              <li>Kafka, Flink, Iceberg</li>
+              <li>TimescaleDB</li>
+              <li>pandas, NumPy, scikit-learn</li>
+              <li>PyTorch</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Infrastructure</h3>
+            <ul>
+              <li>Docker</li>
+              <li>Terraform, Helm, Kubernetes</li>
+              <li>GitHub Actions CI/CD</li>
+              <li>AWS, Heroku, Render</li>
+              <li>Linux</li>
+              <li>Air-gapped delivery</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Front end</h3>
+            <ul>
+              <li>HTML / CSS / JS</li>
+              <li>React, Angular</li>
+              <li>esbuild</li>
+              <li>OAuth 2.0 / PKCE</li>
+              <li>Review interfaces for non-technical users</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Mathematics</h3>
+            <ul>
+              <li>Topology</li>
+              <li>Stochastic calculus</li>
+              <li>Graph theory</li>
+              <li>Linear algebra</li>
+              <li>Probability and statistics</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<section id="closing" class="sunk ruled">
+  <div class="container-narrow">
+    <div class="final-cta reveal">
+      <span class="eyebrow">Next</span>
+      <h2 class="headline" style="margin-top:0.6rem;">
+        The project list is where the detail lives.
+        <span class="dim block">Every claim there points at running code.</span>
+      </h2>
+      <div class="actions">
+        <a href="projects.html" class="btn btn-primary">Projects <span class="arr" aria-hidden="true">→</span></a>
+        <a href="contact.html" class="btn btn-secondary">Contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer class="site-foot">
   <div class="container">
     <div class="row">
-      <span>&copy; 2026 maisy mylod · nyc</span>
+      <span>© 2026 Maisy Mylod · New York</span>
       <div class="links">
-        <a href="mailto:maisymylod@gmail.com">email</a>
-        <a href="https://github.com/maisymylod" target="_blank" rel="noopener">github</a>
-        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">linkedin</a>
+        <a href="mailto:maisymylod@gmail.com">Email</a>
+        <a href="https://github.com/maisymylod" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </div>
@@ -177,19 +290,23 @@
 
 <div class="palette-mask hidden" role="dialog" aria-modal="true" aria-label="Command palette">
   <div class="palette">
-    <input type="text" class="palette-input" placeholder="jump to…  (type to filter)" aria-label="Filter commands">
+    <input type="text" class="palette-input" placeholder="Jump to…" aria-label="Filter commands">
     <ul class="palette-list" role="listbox">
-      <li data-label="home" data-href="index.html">home</li>
-      <li data-label="experience" data-href="experience.html">experience</li>
-      <li data-label="projects" data-href="projects.html">projects</li>
-      <li data-label="dashboard" data-href="dashboard.html">dashboard</li>
-      <li data-label="contact" data-href="contact.html">contact</li>
-      <li data-label="education" data-section="education">↓ education</li>
-      <li data-label="github" data-href="https://github.com/maisymylod">open github ↗</li>
-      <li data-label="linkedin" data-href="https://linkedin.com/in/maisymylod">open linkedin ↗</li>
+      <li data-label="home" data-href="index.html">Home <span class="key">g h</span></li>
+      <li data-label="experience" data-href="experience.html">Experience <span class="key">g e</span></li>
+      <li data-label="projects" data-href="projects.html">Projects <span class="key">g p</span></li>
+      <li data-label="dashboard" data-href="dashboard.html">Dashboard <span class="key">g d</span></li>
+      <li data-label="contact" data-href="contact.html">Contact <span class="key">g c</span></li>
+      <li data-label="roles work history" data-section="roles">↓ Roles</li>
+      <li data-label="education michigan" data-section="education">↓ Education</li>
+      <li data-label="skills technical toolchain" data-section="skills">↓ Technical skills</li>
+      <li data-label="github" data-href="https://github.com/maisymylod">Open GitHub ↗</li>
+      <li data-label="linkedin" data-href="https://linkedin.com/in/maisymylod">Open LinkedIn ↗</li>
     </ul>
     <div class="palette-foot">
-      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> select</span><span><kbd>esc</kbd> close</span>
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> select</span>
+      <span><kbd>esc</kbd> close</span>
     </div>
   </div>
 </div>
