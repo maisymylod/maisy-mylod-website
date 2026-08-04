@@ -3,61 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Maisy Mylod portfolio analytics dashboard — visitor traffic, engagement, geography.">
-<meta name="theme-color" content="#282828">
-<title>dashboard — maisy mylod</title>
+<meta name="description" content="Maisy Mylod — engineering output dashboard. Real GitHub contribution data: commits, pull requests, language distribution, and per-repository activity.">
+<meta name="theme-color" content="#faf8f4">
+<title>Output — Maisy Mylod</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=B612+Mono:wght@400;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="theme.css">
 <link rel="stylesheet" href="styles.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4" defer></script>
+<style>
+  /* Chart roles. Validated against the #ffffff card surface with
+     dataviz/scripts/validate_palette.js: chroma, CVD separation
+     (worst adjacent deutan ΔE 26.1), normal-vision ΔE 28.9, and 3:1
+     contrast all pass. Do not re-pick these by eye. */
+  .viz {
+    --series-1: #9c4221;  /* sienna — the site accent */
+    --series-2: #2a78d6;  /* blue   — cool counterpart */
+    --viz-grid: #eae6dd;
+    --viz-tick: #6a6558;
+  }
+</style>
 </head>
-<body>
+<body class="viz">
 <div class="grain" aria-hidden="true"></div>
 <div class="scroll-progress" aria-hidden="true"></div>
 
 <nav class="site-nav" aria-label="Primary">
   <div class="nav-inner">
-    <a href="index.html" class="brand"><span class="prompt-dot">$</span><span>maisy mylod</span><span class="blink" aria-hidden="true"></span></a>
+    <a href="index.html" class="brand"><span class="brand-rule" aria-hidden="true"></span>Maisy Mylod</a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link">home</a>
-      <a href="experience.html" class="nav-link">experience</a>
-      <a href="projects.html" class="nav-link">projects</a>
-      <a href="dashboard.html" class="nav-link active">dashboard</a>
-      <a href="contact.html" class="nav-link">contact</a>
-      <button class="nav-cta" data-open-palette aria-label="Open command palette">⌘ K</button>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="experience.html" class="nav-link">Experience</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="dashboard.html" class="nav-link active">Dashboard</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <button class="nav-cta" data-open-palette aria-label="Open command palette">⌘K</button>
     </div>
-    <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
   </div>
 </nav>
 
 <div id="mobile-menu" class="hidden" role="menu">
-  <a href="index.html">home</a>
-  <a href="experience.html">experience</a>
-  <a href="projects.html">projects</a>
-  <a href="dashboard.html">dashboard</a>
-  <a href="contact.html">contact</a>
+  <a href="index.html">Home</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="contact.html">Contact</a>
+  <a href="https://github.com/maisymylod" target="_blank" rel="noopener">GitHub ↗</a>
 </div>
 
-<header class="page-header" style="margin-top:3.6rem;">
+<header class="page-header">
   <div class="container">
-    <span class="eyebrow">dashboard</span>
-    <h1 class="headline">
-      Portfolio analytics.
-      <span class="dim">Real-time visitor signal.</span>
+    <span class="eyebrow reveal">Output</span>
+    <h1 class="display reveal" style="margin-top:0.8rem;">
+      What I actually shipped.
+      <span class="dim block">Read from the GitHub API, not estimated.</span>
     </h1>
-    <div class="dash-toolbar">
-      <span class="live-badge"><span class="pulse"></span>3 live now</span>
-      <div class="range-group" role="tablist" aria-label="Time range">
-        <button class="active" data-range="7">7d</button>
-        <button data-range="30">30d</button>
-        <button data-range="90">90d</button>
-      </div>
+    <p class="lede reveal" style="margin-top:1.3rem;">
+      Every figure on this page comes from the GitHub contributions and repository APIs for
+      <code>@maisymylod</code>, read on 4 August 2026. Private client repositories are counted but
+      never named. The trailing window is 4 August 2025 to 4 August 2026.
+    </p>
+    <div class="dash-toolbar reveal">
+      <span class="live-badge"><span class="pulse" aria-hidden="true"></span>source: GitHub API</span>
+      <span class="footnote" style="margin:0;">Snapshot, not a live feed. Regenerate with the command at the bottom of the page.</span>
     </div>
   </div>
 </header>
@@ -66,101 +80,110 @@
 <section style="padding-top:0;">
   <div class="container">
 
-    <div class="dash-grid stagger">
+    <!-- ── Headline counters ── -->
+    <div class="dash-grid dash-counters stagger reveal">
+      <div class="dash-card">
+        <h3>contributions</h3>
+        <div class="value" data-counter="2590">0</div>
+        <div class="sub">trailing 12 months</div>
+      </div>
+      <div class="dash-card">
+        <h3>commits</h3>
+        <div class="value" data-counter="1744">0</div>
+        <div class="sub">across 50 repositories</div>
+      </div>
+      <div class="dash-card">
+        <h3>pull requests</h3>
+        <div class="value" data-counter="638">0</div>
+        <div class="sub">opened</div>
+      </div>
+      <div class="dash-card">
+        <h3>reviews</h3>
+        <div class="value" data-counter="48">0</div>
+        <div class="sub">pull requests reviewed</div>
+      </div>
+      <div class="dash-card">
+        <h3>issues</h3>
+        <div class="value" data-counter="93">0</div>
+        <div class="sub">opened</div>
+      </div>
+    </div>
 
-      <div class="dash-card fade-in">
-        <h3>visitors</h3>
-        <div class="value" data-metric="visitors">324</div>
-        <div class="delta">+12.4% vs prev</div>
-      </div>
-      <div class="dash-card fade-in">
-        <h3>page views</h3>
-        <div class="value" data-metric="views">689</div>
-        <div class="delta">+8.1%</div>
-      </div>
-      <div class="dash-card fade-in">
-        <h3>avg session</h3>
-        <div class="value">1m 42s</div>
-        <div class="delta">+11s</div>
-      </div>
-      <div class="dash-card fade-in">
-        <h3>bounce rate</h3>
-        <div class="value">52.3%</div>
-        <div class="delta neg">+1.2%</div>
-      </div>
-      <div class="dash-card fade-in">
-        <h3>pages / session</h3>
-        <div class="value">2.13</div>
-        <div class="delta">+0.18</div>
-      </div>
-      <div class="dash-card fade-in">
-        <h3>return visitors</h3>
-        <div class="value">18.7%</div>
-        <div class="delta">+2.4%</div>
-      </div>
+    <!-- ── Charts ── -->
+    <div class="dash-grid reveal" style="margin-top:1rem;">
 
-      <div class="dash-card span-2 fade-in">
-        <h3>traffic / last 30 days</h3>
-        <div style="height:200px;"><canvas id="traffic-chart"></canvas></div>
-      </div>
-      <div class="dash-card fade-in">
-        <h3>device</h3>
-        <div style="height:200px;"><canvas id="device-chart"></canvas></div>
-      </div>
-
-      <div class="dash-card fade-in">
-        <h3>geographic distribution</h3>
-        <div style="height:220px;"><canvas id="geo-chart"></canvas></div>
-      </div>
-      <div class="dash-card span-2 fade-in">
-        <h3>hourly pattern</h3>
-        <div style="height:220px;"><canvas id="hourly-chart"></canvas></div>
+      <div class="dash-card span-2">
+        <h3>contributions by month</h3>
+        <p class="footnote" style="margin:-0.35rem 0 0.8rem;">
+          Eleven complete months, September 2025 through July 2026. The two partial months at the
+          ends of the window are excluded rather than shown short.
+        </p>
+        <div style="height:230px;"><canvas id="monthly-chart" role="img" aria-label="Monthly GitHub contributions from September 2025 to July 2026, peaking at 645 in March 2026."></canvas></div>
       </div>
 
-      <div class="dash-card fade-in">
-        <h3>top pages</h3>
-        <ul class="top-list">
-          <li><span>home</span><span class="v">285</span></li>
-          <li><span>projects</span><span class="v">168</span></li>
-          <li><span>experience</span><span class="v">124</span></li>
-          <li><span>dashboard</span><span class="v">71</span></li>
-          <li><span>contact</span><span class="v">41</span></li>
+      <div class="dash-card">
+        <h3>2026 commits: public vs private</h3>
+        <p class="footnote" style="margin:-0.35rem 0 0.8rem;">
+          Most of the work is client code that cannot be published.
+        </p>
+        <div style="height:120px;"><canvas id="split-chart" role="img" aria-label="Of 1,712 commits in 2026, 1,384 are to private client repositories and 328 are to public repositories."></canvas></div>
+        <ul class="top-list" style="margin-top:0.6rem;">
+          <li><span>private client repositories</span><span class="v">1,384 · 80.8%</span></li>
+          <li><span>public repositories</span><span class="v">328 · 19.2%</span></li>
         </ul>
       </div>
-      <div class="dash-card fade-in">
-        <h3>traffic source</h3>
-        <div style="height:200px;"><canvas id="source-chart"></canvas></div>
-      </div>
-      <div class="dash-card fade-in">
-        <h3>tech interest</h3>
-        <div style="height:200px;"><canvas id="radar-chart"></canvas></div>
+
+      <div class="dash-card span-2">
+        <h3>commits per public repository, 2026</h3>
+        <p class="footnote" style="margin:-0.35rem 0 0.8rem;">
+          Top twelve by commit count. Ranking is unfiltered, so a weekend project sits beside the
+          engineering work if it earned the position.
+        </p>
+        <div style="height:290px;"><canvas id="repo-chart" role="img" aria-label="Commits per public repository in 2026: athena-ai 41, maisy-mylod-website 28, quantlib-mm 21, gauntlet 20, setlist-voter 15, constellation-vision 14, outpost 13, constellation-stream 13, aegis 12, groundstation-rag 11, groundstation 11, apex-portfolio 11."></canvas></div>
       </div>
 
-      <div class="dash-card span-2 fade-in">
-        <h3>conversion funnel</h3>
-        <ul class="top-list">
-          <li><span>all visitors</span><span class="v">324 · 100%</span></li>
-          <li><span>viewed projects</span><span class="v">168 · 51.9%</span></li>
-          <li><span>visited contact</span><span class="v">41 · 12.7%</span></li>
-          <li><span>form submission</span><span class="v">8 · 2.5%</span></li>
-        </ul>
-      </div>
-      <div class="dash-card fade-in">
-        <h3>status</h3>
-        <div style="display:flex;flex-direction:column;gap:0.5rem;font-family:var(--font-mono);font-size:0.82rem;color:rgba(235,219,178,0.75);margin-top:0.4rem;">
-          <div style="display:flex;justify-content:space-between;"><span>uptime</span><span class="cyan-text">99.98%</span></div>
-          <div style="display:flex;justify-content:space-between;"><span>p50 latency</span><span class="cyan-text">42ms</span></div>
-          <div style="display:flex;justify-content:space-between;"><span>p95 latency</span><span class="cyan-text">128ms</span></div>
-          <div style="display:flex;justify-content:space-between;"><span>error rate</span><span class="accent-text">0.04%</span></div>
-          <div style="display:flex;justify-content:space-between;"><span>cdn hits</span><span class="accent-text">94.7%</span></div>
-        </div>
+      <div class="dash-card">
+        <h3>language distribution</h3>
+        <p class="footnote" style="margin:-0.35rem 0 0.8rem;">
+          Bytes of source across all public repositories, as GitHub classifies them.
+        </p>
+        <div style="height:290px;"><canvas id="lang-chart" role="img" aria-label="Source bytes by language across public repositories: Python 1,066 KB, HTML 272 KB, TypeScript 270 KB, Go 171 KB, CSS 68 KB, Java 57 KB, JavaScript 35 KB, C++ 33 KB, other 60 KB."></canvas></div>
       </div>
 
     </div>
 
-    <p style="margin-top:1.5rem;font-family:var(--font-mono);font-size:0.74rem;color:rgba(235,219,178,0.4);">
-      <span class="prompt" style="color:var(--accent-light);">$</span> illustrative analytics. data refreshes simulated for the demo.
-    </p>
+    <!-- ── Reproduce it ── -->
+    <div class="dash-card reveal" style="margin-top:1rem;">
+      <h3>reproduce this page</h3>
+      <p class="footnote" style="margin:-0.35rem 0 0.9rem;">
+        The same principle as every metric on this site: if a number is on the page, the command that
+        produced it is on the page too.
+      </p>
+      <span class="copy-cmd">
+        <span class="prompt" aria-hidden="true">$</span>
+        <code>gh api graphql -f query='{user(login:"maisymylod"){contributionsCollection{contributionCalendar{totalContributions}}}}'</code>
+        <button class="copy-icon" aria-label="Copy command">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </span>
+    </div>
+
+  </div>
+</section>
+
+<section class="sunk ruled">
+  <div class="container">
+    <div class="final-cta reveal">
+      <span class="eyebrow">Context</span>
+      <h2 class="headline" style="margin-top:0.6rem;">
+        Volume is not the point.
+        <span class="dim block">It is only the evidence that the rest of the site is not hypothetical.</span>
+      </h2>
+      <div class="actions">
+        <a href="projects.html" class="btn btn-primary">See the work <span class="arr" aria-hidden="true">→</span></a>
+        <a href="contact.html" class="btn btn-secondary">Contact</a>
+      </div>
+    </div>
   </div>
 </section>
 </main>
@@ -168,11 +191,11 @@
 <footer class="site-foot">
   <div class="container">
     <div class="row">
-      <span>&copy; 2026 maisy mylod · nyc</span>
+      <span>© 2026 Maisy Mylod · New York</span>
       <div class="links">
-        <a href="mailto:maisymylod@gmail.com">email</a>
-        <a href="https://github.com/maisymylod" target="_blank" rel="noopener">github</a>
-        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">linkedin</a>
+        <a href="mailto:maisymylod@gmail.com">Email</a>
+        <a href="https://github.com/maisymylod" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </div>
@@ -180,126 +203,148 @@
 
 <div class="palette-mask hidden" role="dialog" aria-modal="true" aria-label="Command palette">
   <div class="palette">
-    <input type="text" class="palette-input" placeholder="jump to…  (type to filter)" aria-label="Filter commands">
+    <input type="text" class="palette-input" placeholder="Jump to…" aria-label="Filter commands">
     <ul class="palette-list" role="listbox">
-      <li data-label="home" data-href="index.html">home</li>
-      <li data-label="experience" data-href="experience.html">experience</li>
-      <li data-label="projects" data-href="projects.html">projects</li>
-      <li data-label="dashboard" data-href="dashboard.html">dashboard</li>
-      <li data-label="contact" data-href="contact.html">contact</li>
+      <li data-label="home" data-href="index.html">Home <span class="key">g h</span></li>
+      <li data-label="experience" data-href="experience.html">Experience <span class="key">g e</span></li>
+      <li data-label="projects" data-href="projects.html">Projects <span class="key">g p</span></li>
+      <li data-label="dashboard" data-href="dashboard.html">Dashboard <span class="key">g d</span></li>
+      <li data-label="contact" data-href="contact.html">Contact <span class="key">g c</span></li>
+      <li data-label="github" data-href="https://github.com/maisymylod">Open GitHub ↗</li>
     </ul>
     <div class="palette-foot">
-      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> select</span><span><kbd>esc</kbd> close</span>
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> select</span>
+      <span><kbd>esc</kbd> close</span>
     </div>
   </div>
 </div>
 
 <script src="script.js" defer></script>
 <script defer>
+/* Charts. Every dataset below is a literal read from the GitHub API on
+   2026-08-04 — nothing is generated, simulated, or randomized. */
 window.addEventListener('load', () => {
     if (typeof Chart === 'undefined') return;
-    const css = getComputedStyle(document.documentElement);
-    const fg     = css.getPropertyValue('--fg-strong').trim() || '#ebdbb2';
-    const accent = css.getPropertyValue('--accent').trim()    || '#8ec07c';
-    const cyan   = css.getPropertyValue('--cyan').trim()      || '#d3869b';
-    const warn   = css.getPropertyValue('--warning').trim()   || '#fabd2f';
-    const grid   = 'rgba(235,219,178,0.06)';
-    const tick   = 'rgba(235,219,178,0.5)';
 
-    Chart.defaults.font.family = "'B612 Mono', ui-monospace, monospace";
-    Chart.defaults.font.size = 10;
-    Chart.defaults.color = tick;
+    const css     = getComputedStyle(document.body);
+    const S1      = css.getPropertyValue('--series-1').trim() || '#9c4221';
+    const S2      = css.getPropertyValue('--series-2').trim() || '#2a78d6';
+    const gridCol = css.getPropertyValue('--viz-grid').trim() || '#eae6dd';
+    const tickCol = css.getPropertyValue('--viz-tick').trim() || '#6a6558';
 
-    const axis = {
-        grid: { color: grid, drawBorder: false },
-        ticks: { color: tick }
-    };
+    Chart.defaults.font.family = "'Hanken Grotesk', system-ui, sans-serif";
+    Chart.defaults.font.size = 11;
+    Chart.defaults.color = tickCol;
+    Chart.defaults.plugins.tooltip.backgroundColor = '#17150f';
+    Chart.defaults.plugins.tooltip.padding = 9;
+    Chart.defaults.plugins.tooltip.cornerRadius = 3;
+    Chart.defaults.plugins.tooltip.displayColors = false;
 
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const dur = reduced ? 0 : 800;
+    const dur = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 750;
 
-    // Traffic line chart
-    const days = Array.from({length: 30}, (_, i) => `d${i+1}`);
-    const seed = (s, base, vol) => Array.from({length: 30}, (_, i) => Math.round(base + Math.sin((i + s)/3.2) * vol + (Math.random() - 0.5) * vol * 0.6));
-    new Chart(document.getElementById('traffic-chart'), {
-        type: 'line',
-        data: {
-            labels: days,
-            datasets: [
-                { label: 'visitors',   data: seed(1, 11, 5), borderColor: accent, backgroundColor: 'rgba(142,192,124,0.12)', tension: 0.35, fill: true, pointRadius: 0, borderWidth: 1.5 },
-                { label: 'page views', data: seed(2, 22, 9), borderColor: cyan,   backgroundColor: 'rgba(211,134,155,0.10)', tension: 0.35, fill: true, pointRadius: 0, borderWidth: 1.5 }
-            ]
-        },
-        options: { responsive: true, maintainAspectRatio: false, animation: { duration: dur },
-            scales: { x: axis, y: axis },
-            plugins: { legend: { labels: { color: tick, boxWidth: 10 } } } }
-    });
+    // Recessive chrome: hairline grid on the value axis only, no border.
+    const valueAxis = { grid: { color: gridCol, drawBorder: false }, ticks: { color: tickCol } };
+    const catAxis   = { grid: { display: false, drawBorder: false }, ticks: { color: tickCol } };
 
-    // Device doughnut
-    new Chart(document.getElementById('device-chart'), {
-        type: 'doughnut',
-        data: { labels: ['desktop', 'mobile', 'tablet'], datasets: [{ data: [72, 24, 4], backgroundColor: [accent, cyan, warn], borderColor: 'transparent' }] },
-        options: { responsive: true, maintainAspectRatio: false, animation: { duration: dur },
-            plugins: { legend: { position: 'bottom', labels: { color: tick, boxWidth: 8 } } }, cutout: '62%' }
-    });
-
-    // Geographic bar
-    new Chart(document.getElementById('geo-chart'), {
+    /* ── Contributions by month (single series, so no legend) ── */
+    new Chart(document.getElementById('monthly-chart'), {
         type: 'bar',
         data: {
-            labels: ['us', 'uk', 'ca', 'in', 'de', 'au', 'other'],
-            datasets: [{ data: [68, 8, 7, 5, 4, 3, 5], backgroundColor: accent, borderRadius: 2 }]
+            labels: ['Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26','May 26','Jun 26','Jul 26'],
+            datasets: [{
+                label: 'contributions',
+                data: [10, 0, 38, 0, 36, 267, 645, 416, 574, 528, 58],
+                backgroundColor: S1,
+                borderRadius: 4,
+                borderSkipped: 'bottom',
+                maxBarThickness: 42
+            }]
         },
-        options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, animation: { duration: dur },
-            scales: { x: axis, y: axis }, plugins: { legend: { display: false } } }
+        options: {
+            responsive: true, maintainAspectRatio: false, animation: { duration: dur },
+            scales: { x: catAxis, y: { ...valueAxis, beginAtZero: true } },
+            plugins: {
+                legend: { display: false },
+                tooltip: { callbacks: { label: (c) => `${c.parsed.y.toLocaleString()} contributions` } }
+            }
+        }
     });
 
-    // Hourly area chart (24h)
-    const hours = Array.from({length: 24}, (_, h) => `${h}h`);
-    const hourlyPattern = [3,2,2,2,1,2,4,7,12,16,20,22,21,19,18,17,15,14,12,10,8,6,5,4];
-    new Chart(document.getElementById('hourly-chart'), {
-        type: 'line',
-        data: { labels: hours, datasets: [{
-            data: hourlyPattern, borderColor: cyan, backgroundColor: 'rgba(211,134,155,0.18)',
-            tension: 0.4, fill: true, pointRadius: 0, borderWidth: 1.5
-        }] },
-        options: { responsive: true, maintainAspectRatio: false, animation: { duration: dur },
-            scales: { x: axis, y: axis }, plugins: { legend: { display: false } } }
+    /* ── 2026 commits, public vs private (two series → legend present) ── */
+    new Chart(document.getElementById('split-chart'), {
+        type: 'bar',
+        data: {
+            labels: ['2026'],
+            datasets: [
+                { label: 'private client', data: [1384], backgroundColor: S1, borderRadius: 4, borderSkipped: false, maxBarThickness: 30 },
+                { label: 'public',          data: [328],  backgroundColor: S2, borderRadius: 4, borderSkipped: false, maxBarThickness: 30 }
+            ]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true, maintainAspectRatio: false, animation: { duration: dur },
+            // 2px surface gap between stacked segments
+            datasets: { bar: { borderColor: '#ffffff', borderWidth: { left: 1, right: 1, top: 0, bottom: 0 } } },
+            scales: {
+                x: { stacked: true, ...valueAxis, beginAtZero: true },
+                y: { stacked: true, ...catAxis, ticks: { display: false } }
+            },
+            plugins: {
+                legend: { position: 'bottom', labels: { color: tickCol, boxWidth: 10, boxHeight: 10, usePointStyle: true, pointStyle: 'rectRounded' } },
+                tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${c.parsed.x.toLocaleString()} commits` } }
+            }
+        }
     });
 
-    // Traffic source doughnut
-    new Chart(document.getElementById('source-chart'), {
-        type: 'doughnut',
-        data: { labels: ['linkedin', 'direct', 'google', 'github', 'twitter', 'other'],
-                datasets: [{ data: [38, 28, 15, 12, 4, 3], backgroundColor: [accent, cyan, warn, '#83a598', '#b8bb26', '#928374'], borderColor: 'transparent' }] },
-        options: { responsive: true, maintainAspectRatio: false, animation: { duration: dur },
-            plugins: { legend: { position: 'bottom', labels: { color: tick, boxWidth: 8 } } }, cutout: '62%' }
+    /* ── Commits per public repository (single series) ── */
+    new Chart(document.getElementById('repo-chart'), {
+        type: 'bar',
+        data: {
+            labels: ['athena-ai','maisy-mylod-website','quantlib-mm','gauntlet','setlist-voter','constellation-vision','outpost','constellation-stream','aegis','groundstation-rag','groundstation','apex-portfolio'],
+            datasets: [{
+                label: 'commits',
+                data: [41, 28, 21, 20, 15, 14, 13, 13, 12, 11, 11, 11],
+                backgroundColor: S1,
+                borderRadius: 4,
+                borderSkipped: 'start',
+                maxBarThickness: 15
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true, maintainAspectRatio: false, animation: { duration: dur },
+            scales: { x: { ...valueAxis, beginAtZero: true }, y: catAxis },
+            plugins: {
+                legend: { display: false },
+                tooltip: { callbacks: { label: (c) => `${c.parsed.x} commits in 2026` } }
+            }
+        }
     });
 
-    // Radar: tech interest
-    new Chart(document.getElementById('radar-chart'), {
-        type: 'radar',
-        data: { labels: ['agents', 'python', 'security', 'go', 'ml/ai', 'devops'],
-                datasets: [{ data: [94, 92, 86, 80, 88, 76],
-                    backgroundColor: 'rgba(142,192,124,0.18)', borderColor: accent, borderWidth: 1.5, pointRadius: 2, pointBackgroundColor: accent }] },
-        options: { responsive: true, maintainAspectRatio: false, animation: { duration: dur },
-            scales: { r: { grid: { color: grid }, angleLines: { color: grid }, pointLabels: { color: tick }, ticks: { display: false }, suggestedMin: 0, suggestedMax: 100 } },
-            plugins: { legend: { display: false } } }
-    });
-
-    // Range buttons (purely visual — re-scale metric values)
-    const ranges = { '7': 1, '30': 4.3, '90': 12.9 };
-    document.querySelectorAll('.range-group button').forEach(b => {
-        b.addEventListener('click', () => {
-            document.querySelectorAll('.range-group button').forEach(x => x.classList.remove('active'));
-            b.classList.add('active');
-            const mult = ranges[b.dataset.range];
-            document.querySelectorAll('[data-metric]').forEach(el => {
-                const baseAttr = el.dataset.base || el.textContent.replace(/[^\d]/g, '');
-                el.dataset.base = baseAttr;
-                el.textContent = Math.round(Number(baseAttr) * mult).toLocaleString();
-            });
-        });
+    /* ── Language distribution (single series) ── */
+    new Chart(document.getElementById('lang-chart'), {
+        type: 'bar',
+        data: {
+            labels: ['Python','HTML','TypeScript','Go','CSS','Java','JavaScript','C++','Other'],
+            datasets: [{
+                label: 'KB of source',
+                data: [1041, 266, 263, 167, 66, 55, 34, 32, 59],
+                backgroundColor: S1,
+                borderRadius: 4,
+                borderSkipped: 'start',
+                maxBarThickness: 17
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true, maintainAspectRatio: false, animation: { duration: dur },
+            scales: { x: { ...valueAxis, beginAtZero: true }, y: catAxis },
+            plugins: {
+                legend: { display: false },
+                tooltip: { callbacks: { label: (c) => `${c.parsed.x.toLocaleString()} KB` } }
+            }
+        }
     });
 });
 </script>

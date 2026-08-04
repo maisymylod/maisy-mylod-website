@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Projects by Maisy Mylod — math, AI, data analytics, and fullstack tools.">
-<meta name="theme-color" content="#282828">
-<title>projects — maisy mylod</title>
+<meta name="description" content="Projects by Maisy Mylod — preference alignment, agent orchestration, adversarial evaluation, annotation schemas, streaming data, and deployment tooling. Every headline number regenerates from a committed eval.">
+<meta name="theme-color" content="#faf8f4">
+<title>Projects — Maisy Mylod</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=B612+Mono:wght@400;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="theme.css">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -20,312 +20,466 @@
 
 <nav class="site-nav" aria-label="Primary">
   <div class="nav-inner">
-    <a href="index.html" class="brand"><span class="prompt-dot">$</span><span>maisy mylod</span><span class="blink" aria-hidden="true"></span></a>
+    <a href="index.html" class="brand"><span class="brand-rule" aria-hidden="true"></span>Maisy Mylod</a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link">home</a>
-      <a href="experience.html" class="nav-link">experience</a>
-      <a href="projects.html" class="nav-link active">projects</a>
-      <a href="dashboard.html" class="nav-link">dashboard</a>
-      <a href="contact.html" class="nav-link">contact</a>
-      <button class="nav-cta" data-open-palette aria-label="Open command palette">⌘ K</button>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="experience.html" class="nav-link">Experience</a>
+      <a href="projects.html" class="nav-link active">Projects</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <button class="nav-cta" data-open-palette aria-label="Open command palette">⌘K</button>
     </div>
-    <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <button class="nav-toggle" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
   </div>
 </nav>
 
 <div id="mobile-menu" class="hidden" role="menu">
-  <a href="index.html">home</a>
-  <a href="experience.html">experience</a>
-  <a href="projects.html">projects</a>
-  <a href="dashboard.html">dashboard</a>
-  <a href="contact.html">contact</a>
+  <a href="index.html">Home</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="contact.html">Contact</a>
+  <a href="https://github.com/maisymylod" target="_blank" rel="noopener">GitHub ↗</a>
 </div>
 
-<header class="page-header" style="margin-top:3.6rem;">
+<header class="page-header">
   <div class="container">
-    <span class="eyebrow">projects</span>
-    <h1 class="headline">
-      Math, AI, data, fullstack.
-      <span class="dim">Some shipped, some shipping.</span>
+    <span class="eyebrow reveal">Projects</span>
+    <h1 class="display reveal" style="margin-top:0.8rem;">
+      Twenty-three public repositories.
+      <span class="dim block">Every headline number regenerates from a committed eval.</span>
     </h1>
+    <p class="lede reveal" style="margin-top:1.4rem;">
+      Where a metric needs hardware I do not have, it is marked pending rather than claimed. Where a repository
+      is private client work, it says so and shows no link. Filter by domain or search by name below.
+    </p>
   </div>
 </header>
 
 <main>
-<section id="featured" style="padding-top:0;">
+
+<!-- ═══════════════════════════ HELIOSNET ═══════════════════════════ -->
+<section id="heliosnet" class="sunk ruled" style="padding-top:clamp(2.5rem,6vw,4rem);">
   <div class="container">
-    <div class="fade-in">
-      <span class="eyebrow">flagship</span>
-      <div class="featured" style="margin-top:1rem;">
-        <h2 class="headline tight" style="margin-bottom:1rem;">
-          The Heliosnet ground system
-          <span class="dim">a satellite ground segment, simulated end to end.</span>
+    <div class="spine">
+      <div class="spine-rail reveal">
+        <span class="rail-label">System</span>
+        <p class="rail-note">Twelve of the repositories below are one platform, not twelve unrelated demos.</p>
+      </div>
+
+      <div>
+        <h2 class="headline reveal">
+          Heliosnet: twelve repositories, one system.
+          <span class="dim block">Each stands alone and runs on its own.</span>
         </h2>
-        <p style="color:rgba(235,219,178,0.78);max-width:64ch;font-size:1.02rem;line-height:1.6;">
-          Four interoperating projects: the agentic brains (<strong>groundstation</strong>), the telemetry data plane (<strong>constellation</strong>), the security layer (<strong>aegis</strong>), and the deploy system (<strong>liftoff</strong>). One coherent system &mdash; <code style="color:var(--accent-light);">liftoff</code> deploys the stack that <code style="color:var(--accent-light);">groundstation</code> operates over <code style="color:var(--accent-light);">constellation</code>'s telemetry, with <code style="color:var(--accent-light);">aegis</code> authenticating the command path. Each also stands alone and runs on its own.
-        </p>
-        <div class="tech-chips">
-          <span class="chip">langgraph</span><span class="chip">mcp</span><span class="chip">rag</span><span class="chip">ed25519</span><span class="chip">timescaledb</span><span class="chip">go</span><span class="chip">terraform</span>
+
+        <div class="prose reveal" style="margin-top:1.2rem;">
+          <p>
+            A mission-operations platform for a fictional satellite constellation, built as a set of standalone
+            engineering projects that fit together. Telemetry flows up from the data plane
+            (<code>constellation</code>, <code>constellation-stream</code>) through the agentic copilot
+            (<code>groundstation</code>) to the operator console (<code>groundstation-console</code>). The
+            copilot's reasoning core is trained by <code>groundstation-train</code> and grounded by the
+            retrieval systems (<code>groundstation-rag</code>, <code>argus</code>). Every command the copilot
+            proposes is authenticated by <code>aegis</code> and emitted only after a human approves it. The
+            whole thing is deployed by <code>liftoff</code>.
+          </p>
+          <p>
+            The reason it is worth building as a system rather than as isolated projects: the approval gate,
+            the citation format, and the evaluation contract have to mean the same thing in every component,
+            and that constraint is where the interesting engineering lives.
+          </p>
         </div>
-        <div style="margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:0.7rem;">
-          <a href="https://github.com/maisymylod/groundstation" target="_blank" rel="noopener" class="btn btn-primary">groundstation ↗</a>
-          <a href="https://github.com/maisymylod/constellation" target="_blank" rel="noopener" class="btn btn-secondary">constellation ↗</a>
-          <a href="https://github.com/maisymylod/aegis" target="_blank" rel="noopener" class="btn btn-secondary">aegis ↗</a>
-          <a href="https://github.com/maisymylod/liftoff" target="_blank" rel="noopener" class="btn btn-secondary">liftoff ↗</a>
+
+        <div class="btn-row reveal" style="margin-top:1.5rem;">
+          <a href="https://github.com/maisymylod/heliosnet" target="_blank" rel="noopener" class="btn btn-primary">Read the system map ↗</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════════════════ ALL PROJECTS ═══════════════════════════ -->
 <section id="all-projects">
   <div class="container">
-    <div class="fade-in">
-      <span class="eyebrow">all projects</span>
-      <h2 class="headline tight">
-        Everything else.
-        <span class="dim">Filter by domain or search.</span>
-      </h2>
-    </div>
+    <span class="eyebrow reveal">All projects</span>
+    <h2 class="headline reveal" style="margin-top:0.7rem;">
+      Everything, filterable.
+      <span class="dim block">Public repositories first, private client work at the end.</span>
+    </h2>
 
-    <div class="filter-bar fade-in" role="toolbar" aria-label="Project filter">
-      <input type="search" class="filter-search" id="proj-search" placeholder="search projects…" aria-label="Search projects">
-      <button class="filter-btn active" data-filter="all">all</button>
-      <button class="filter-btn" data-filter="math">math</button>
-      <button class="filter-btn" data-filter="data">data</button>
-      <button class="filter-btn" data-filter="ai">ai</button>
-      <button class="filter-btn" data-filter="fullstack">fullstack</button>
+    <div class="filter-bar reveal" role="toolbar" aria-label="Project filter">
+      <input type="search" class="filter-search" id="proj-search" placeholder="Search projects…" aria-label="Search projects">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="llm">LLM systems</button>
+      <button class="filter-btn" data-filter="eval">Evaluation</button>
+      <button class="filter-btn" data-filter="ml">ML</button>
+      <button class="filter-btn" data-filter="data">Data</button>
+      <button class="filter-btn" data-filter="infra">Infrastructure</button>
+      <button class="filter-btn" data-filter="math">Math</button>
     </div>
 
     <div class="proj-grid stagger" id="proj-grid">
 
-      <article class="proj-card fade-in" data-tags="ai" data-text="groundstation langgraph multi-agent mcp rag mission ops copilot human in the loop tiered model routing anomaly classifier heliosnet">
+      <article class="proj-card reveal" data-tags="llm eval ml" data-text="groundstation-train sft dpo lora qlora preference alignment approval gate compliance eval harness calibration heliosnet">
+        <div class="proj-head">
+          <h3 class="proj-name">groundstation-train</h3>
+          <span class="proj-status flag">alignment</span>
+        </div>
+        <p class="proj-desc">SFT then DPO on preference pairs where the chosen response defers to a human approval gate and the rejected one bypasses it. The eval harness is calibrated by two reference policies and the calibration is asserted in CI, so a broken grader fails loudly.</p>
+        <p class="proj-metric">oracle 1.0 / bypass 0.0 on a 77-scenario held-out set · model lift pending GPU</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">dpo</span><span class="proj-tag">lora</span></div>
+          <a href="https://github.com/maisymylod/groundstation-train" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="llm eval" data-text="groundstation langgraph multi-agent mcp rag mission ops copilot human in the loop approval gate tiered model routing anomaly classifier heliosnet">
         <div class="proj-head">
           <h3 class="proj-name">groundstation</h3>
-          <span class="proj-status">flagship</span>
+          <span class="proj-status flag">agents</span>
         </div>
-        <p class="proj-desc">Agentic mission-ops copilot. LangGraph multi-agent graph over MCP tools and RAG-cited playbooks, tiered model routing, human-in-the-loop gate. Anomaly-type classifier: 96.7% accuracy, 0.931 macro-F1.</p>
+        <p class="proj-desc">A LangGraph multi-agent graph operating a live system through MCP tools and retrieval-cited playbooks, with tiered model routing by task cost. It halts at an approval gate and emits nothing until a human decides.</p>
+        <p class="proj-metric">anomaly-type classifier: accuracy 0.967, macro-F1 0.931 on held-out satellites</p>
         <div class="proj-foot">
           <div class="proj-tags"><span class="proj-tag">langgraph</span><span class="proj-tag">mcp</span><span class="proj-tag">rag</span></div>
           <a href="https://github.com/maisymylod/groundstation" target="_blank" rel="noopener" class="proj-link">github ↗</a>
         </div>
       </article>
 
-      <article class="proj-card fade-in" data-tags="data ai" data-text="constellation telemetry data plane redpanda kafka timescaledb streaming anomaly detection react ops console heliosnet">
+      <article class="proj-card reveal" data-tags="llm eval" data-text="gauntlet adversarial llm agents red team defense prompt injection jailbreak exfiltration tool abuse deterministic offline ablation">
+        <div class="proj-head">
+          <h3 class="proj-name">gauntlet</h3>
+          <span class="proj-status flag">adversarial</span>
+        </div>
+        <p class="proj-desc">Fifteen documented attack cases across five classes, each with a machine-checkable success oracle. Every defense toggles independently with per-defense attribution, so contributions are ablated rather than assumed. Runs offline and deterministically with no API key, so scores are CI-safe.</p>
+        <p class="proj-metric">15 cases · 5 attack classes · quality gate fails the build below threshold</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">red-team</span><span class="proj-tag">security</span></div>
+          <a href="https://github.com/maisymylod/gauntlet" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="llm eval" data-text="truth-editor fact check atomic claims verdict sources annotation schema claude web search rewrite">
+        <div class="proj-head">
+          <h3 class="proj-name">truth-editor</h3>
+          <span class="proj-status flag">annotation</span>
+        </div>
+        <p class="proj-desc">Decomposes a document into atomic, self-contained factual claims, verifies each against the live web in parallel, and returns a verdict plus sources per claim. The point is the schema: an annotation unit small enough that a reviewer can actually adjudicate it.</p>
+        <p class="proj-metric">supported / contradicted / unverified per claim, with confidence and sources</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">claude api</span><span class="proj-tag">web search</span><span class="proj-tag">python</span></div>
+          <a href="https://github.com/maisymylod/truth-editor" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="llm eval data" data-text="groundstation-rag retrieval llamaindex qdrant citation accuracy recall mrr ci gate corpus heliosnet">
+        <div class="proj-head">
+          <h3 class="proj-name">groundstation-rag</h3>
+          <span class="proj-status">retrieval</span>
+        </div>
+        <p class="proj-desc">Retrieval over a large engineering and standards corpus, answering with <code>doc#section</code> citations. Retrieval quality is a build gate: a regression in citation accuracy, recall, or ranking below threshold fails CI rather than quietly degrading.</p>
+        <p class="proj-metric">citation-acc 0.967 · recall@k 1.0 · MRR 0.976</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">llamaindex</span><span class="proj-tag">qdrant</span><span class="proj-tag">python</span></div>
+          <a href="https://github.com/maisymylod/groundstation-rag" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="ml eval" data-text="athena-ai deepfake synthetic media detection efficientnet pytorch classifier roc auc model card asymmetric cost threshold drift">
+        <div class="proj-head">
+          <h3 class="proj-name">athena-ai</h3>
+          <span class="proj-status flag">modeling</span>
+        </div>
+        <p class="proj-desc">A deployed real-versus-synthetic image classifier behind a live API, built for a consumer-protection product. Thresholds set against the asymmetric cost of a false positive versus a false negative, with an eval set built to detect drift as generative models moved. Ships an honest model card.</p>
+        <p class="proj-metric">0.996 accuracy · 0.9999 ROC-AUC on held-out test</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">pytorch</span><span class="proj-tag">efficientnet-b0</span><span class="proj-tag">api</span></div>
+          <a href="https://github.com/maisymylod/athena-ai" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="llm ml data" data-text="argus earth observation geospatial mcp sentinel-2 stac ndvi onnx webgl deck.gl agent tool calling">
+        <div class="proj-head">
+          <h3 class="proj-name">argus</h3>
+          <span class="proj-status">llm + geospatial</span>
+        </div>
+        <p class="proj-desc">Natural-language exploration of public earth-observation imagery. An LLM agent plans and calls geospatial tools, grounds answers with retrieval, and animates results onto a WebGL map. The same tools are exposed over MCP, so any MCP host can drive them. Runs offline with a deterministic scripted agent when no key is present.</p>
+        <p class="proj-metric">public Sentinel-2 L2A only · deterministic offline mode</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">mcp</span><span class="proj-tag">fastapi</span><span class="proj-tag">deck.gl</span></div>
+          <a href="https://github.com/maisymylod/argus" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="ml eval" data-text="constellation-vision unet semantic segmentation from scratch onnx defect detection iou heliosnet">
+        <div class="proj-head">
+          <h3 class="proj-name">constellation-vision</h3>
+          <span class="proj-status">computer vision</span>
+        </div>
+        <p class="proj-desc">A compact UNet trained from scratch, no pretrained weights and no model download, segmenting surface defects across four classes. Exported to ONNX and wired back into <code>argus</code> as an enrichment step. Reproducible from a clean clone with one command.</p>
+        <p class="proj-metric">mean IoU 0.882 on 160 held-out frames · per-class 0.76 to 0.95</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">pytorch</span><span class="proj-tag">unet</span><span class="proj-tag">onnx</span></div>
+          <a href="https://github.com/maisymylod/constellation-vision" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="data infra" data-text="constellation-stream kafka flink iceberg lakehouse watermark late data exactly once idempotent sink grafana heliosnet">
+        <div class="proj-head">
+          <h3 class="proj-name">constellation-stream</h3>
+          <span class="proj-status">streaming</span>
+        </div>
+        <p class="proj-desc">Kafka to Flink to Iceberg, with stateful event-time windowing, bounded-out-of-orderness watermarks, allowed lateness that updates a fired window, and an exactly-once sink. Records that arrive too late are dead-lettered, never dropped. Two runtimes with identical semantics: a real Flink cluster and a cluster-free reference engine for CI.</p>
+        <p class="proj-metric">22,388 rec/s · p99 query 1.31 ms at 1,000,000 rows</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">kafka</span><span class="proj-tag">flink</span><span class="proj-tag">iceberg</span></div>
+          <a href="https://github.com/maisymylod/constellation-stream" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="data ml" data-text="constellation telemetry data plane redpanda timescaledb streaming ingestion anomaly detection react ops console heliosnet">
         <div class="proj-head">
           <h3 class="proj-name">constellation</h3>
-          <span class="proj-status">flagship</span>
+          <span class="proj-status">data plane</span>
         </div>
-        <p class="proj-desc">Telemetry data plane: streaming ingestion (Redpanda → TimescaleDB), unsupervised anomaly detection, React/TypeScript ops console. F1 0.720 (recall 0.808) over 180,000+ streamed records.</p>
+        <p class="proj-desc">Telemetry data plane: streaming ingestion from Redpanda into TimescaleDB, unsupervised anomaly detection, a query and metering API, and a React ops console.</p>
+        <p class="proj-metric">anomaly detection F1 0.720 (recall 0.808) over 180,000+ streamed records</p>
         <div class="proj-foot">
           <div class="proj-tags"><span class="proj-tag">redpanda</span><span class="proj-tag">timescaledb</span><span class="proj-tag">react</span></div>
           <a href="https://github.com/maisymylod/constellation" target="_blank" rel="noopener" class="proj-link">github ↗</a>
         </div>
       </article>
 
-      <article class="proj-card fade-in" data-tags="ai" data-text="aegis security ed25519 signed command authentication replay protection key rotation mutual tls adversarial harness defense heliosnet">
+      <article class="proj-card reveal" data-tags="infra eval" data-text="aegis security ed25519 signed command authentication replay protection key rotation offline root mutual tls adversarial defense harness heliosnet">
         <div class="proj-head">
           <h3 class="proj-name">aegis</h3>
-          <span class="proj-status">flagship</span>
+          <span class="proj-status">security</span>
         </div>
-        <p class="proj-desc">Security layer: Ed25519 signed-command auth (replay protection, key rotation, verifying chain), mutual TLS, adversarial harness with a measured defense stack. Defenses off: 11/11 land. On: 0/11.</p>
+        <p class="proj-desc">Command authority for a system where a wrong command is expensive: Ed25519 signed envelopes chaining to an offline root, key rotation, replay protection, mutual TLS, and an adversarial harness with a measured, toggleable defense stack.</p>
+        <p class="proj-metric">11/11 attacks land with defenses off · 0/11 with defenses on</p>
         <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">ed25519</span><span class="proj-tag">mtls</span><span class="proj-tag">security</span></div>
+          <div class="proj-tags"><span class="proj-tag">ed25519</span><span class="proj-tag">mtls</span><span class="proj-tag">python</span></div>
           <a href="https://github.com/maisymylod/aegis" target="_blank" rel="noopener" class="proj-link">github ↗</a>
         </div>
       </article>
 
-      <article class="proj-card fade-in" data-tags="fullstack" data-text="liftoff go deploy build reliability declarative suite spec cloud on-prem air-gapped bare metal terraform helm kubeconform shellcheck slo rollback deterministic heliosnet">
+      <article class="proj-card reveal" data-tags="infra" data-text="aegis-java cross language parity port java 11 ed25519 rfc 8032 test vectors byte for byte javac">
         <div class="proj-head">
-          <h3 class="proj-name">liftoff</h3>
-          <span class="proj-status">flagship</span>
+          <h3 class="proj-name">aegis-java</h3>
+          <span class="proj-status">parity port</span>
         </div>
-        <p class="proj-desc">Deploy and build-reliability layer in Go. One declarative suite spec rendered for cloud, on-prem, and air-gapped bare-metal, with SLO-driven rollback. All three targets pass terraform, helm/kubeconform, shellcheck, byte-for-byte deterministic.</p>
+        <p class="proj-desc">A Java 11 port of the <code>aegis</code> cryptographic core, including a pure-Java Ed25519 implementation, proven correct by replaying the original's behavioural test vectors and reproducing every output byte for byte. Builds and tests with a plain <code>javac</code> harness and no third-party jars.</p>
+        <p class="proj-metric">38 shared test vectors pass byte-for-byte across Python and Java</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">java</span><span class="proj-tag">ed25519</span><span class="proj-tag">rfc 8032</span></div>
+          <a href="https://github.com/maisymylod/aegis-java" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="infra" data-text="outpost go cli multi target deployment generator cloud on-prem air gapped bare metal terraform helm kubeconform shellcheck gpu nccl infiniband deterministic">
+        <div class="proj-head">
+          <h3 class="proj-name">outpost</h3>
+          <span class="proj-status">deployment</span>
+        </div>
+        <p class="proj-desc">One declarative workload spec (the running example is a multi-GPU inference server) rendered for managed cloud, on-prem Kubernetes with a controller-runtime operator, and an air-gapped bare-metal bundle. Every artifact is validated by the real tool, not merely produced. GPU specifics are wired correctly in each target.</p>
+        <p class="proj-metric">3 targets · byte-identical re-render · validated on amd64, arm64, darwin</p>
         <div class="proj-foot">
           <div class="proj-tags"><span class="proj-tag">go</span><span class="proj-tag">terraform</span><span class="proj-tag">helm</span></div>
+          <a href="https://github.com/maisymylod/outpost" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="infra" data-text="liftoff go deploy build reliability declarative suite spec cloud on-prem air gapped slo rollback mtls ed25519 secrets heliosnet">
+        <div class="proj-head">
+          <h3 class="proj-name">liftoff</h3>
+          <span class="proj-status">delivery</span>
+        </div>
+        <p class="proj-desc">The suite-level deploy layer: one spec rendered and validated for cloud (Terraform, EKS with GPU nodes), on-prem (Helm, CRD, operator), and air-gapped bare metal, with mTLS and Ed25519 secrets and SLO-driven rollback.</p>
+        <p class="proj-metric">all 3 targets pass terraform, helm/kubeconform, and shellcheck</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">go</span><span class="proj-tag">kubernetes</span><span class="proj-tag">slo</span></div>
           <a href="https://github.com/maisymylod/liftoff" target="_blank" rel="noopener" class="proj-link">github ↗</a>
         </div>
       </article>
 
-      <article class="proj-card fade-in" data-tags="math fullstack" data-text="quantlib-mm python quantitative monte carlo black-scholes">
+      <article class="proj-card reveal" data-tags="infra data" data-text="groundstation-console angular go kafka profiled slo terraform bazel operator console spa heliosnet">
+        <div class="proj-head">
+          <h3 class="proj-name">groundstation-console</h3>
+          <span class="proj-status">ops console</span>
+        </div>
+        <p class="proj-desc">The operator console: a Go service owning telemetry and incident state behind an HTTP/JSON API fed live off Kafka, with an Angular SPA over it. Runs from a clean clone against a bundled deterministic fixture and switches to live telemetry when a broker is configured. Profiled with committed before-and-after artifacts.</p>
+        <p class="proj-metric">fleet endpoint ~1,720x faster after profiling · SPA bundle -17.6%</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">go</span><span class="proj-tag">angular</span><span class="proj-tag">bazel</span></div>
+          <a href="https://github.com/maisymylod/groundstation-console" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="math infra" data-text="slew c++20 spacecraft attitude control quaternion rigid body euler equations pd controller saturating actuator deterministic fixed rate jitter">
+        <div class="proj-head">
+          <h3 class="proj-name">slew</h3>
+          <span class="proj-status">c++20</span>
+        </div>
+        <p class="proj-desc">A 3-DOF attitude-control simulator: real rotational dynamics via Euler's equations rather than a small-angle shortcut, a quaternion-PD controller that respects a finite actuator, and a fixed-rate loop that produces a bit-identical trajectory every run. Builds and tests with nothing but a C++20 compiler.</p>
+        <p class="proj-metric">30° slew settles in 7.246 s to 0.0008° final error at 1 kHz</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">c++20</span><span class="proj-tag">control</span><span class="proj-tag">quaternions</span></div>
+          <a href="https://github.com/maisymylod/slew" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="data infra" data-text="prediction-market-platform kalshi polymarket typescript cross venue risk analytics event contracts postgres real time basis">
+        <div class="proj-head">
+          <h3 class="proj-name">prediction-market-platform</h3>
+          <span class="proj-status">typescript</span>
+        </div>
+        <p class="proj-desc">A unified real-time risk and analytics layer for event contracts held across two venues. Ingests positions and live market data, continuously recomputes one risk picture, and flags where the same real-world event is priced differently. Read-only and analytical: it places no orders.</p>
+        <p class="proj-metric">boots on simulated data with zero secrets via docker compose</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">typescript</span><span class="proj-tag">postgres</span><span class="proj-tag">docker</span></div>
+          <a href="https://github.com/maisymylod/prediction-market-platform" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="ml data" data-text="nfl-moneyball roster value model contract data missing values imputation confidence labels github actions daily retraining streamlit dashboard">
+        <div class="proj-head">
+          <h3 class="proj-name">nfl-moneyball</h3>
+          <span class="proj-status">autonomous</span>
+        </div>
+        <p class="proj-desc">A per-position roster-value model comparing on-field production to contract cost, retraining itself daily via GitHub Actions and publishing to a live dashboard. The interesting part is data discipline: missing contract values are never imputed to zero, every player carries a match-quality flag, and low-sample players are routed to a committed diagnostic file rather than silently dropped.</p>
+        <p class="proj-metric">retrains daily at 11:00 UTC · excluded players committed for audit</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">gh actions</span><span class="proj-tag">streamlit</span></div>
+          <a href="https://github.com/maisymylod/nfl-moneyball" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="ml data" data-text="apex-portfolio paper portfolio 13f self supervised conviction bias journal github actions cron yfinance">
+        <div class="proj-head">
+          <h3 class="proj-name">apex-portfolio</h3>
+          <span class="proj-status">autonomous</span>
+        </div>
+        <p class="proj-desc">A paper portfolio (no broker, no real money) that marks to market each weekday via a GitHub Actions cron, computes benchmark-relative analytics and a data-quality check, updates a self-supervised per-ticker conviction bias, and writes a journal entry every run.</p>
+        <p class="proj-metric">daily cron · live P&amp;L table rewritten in the README each run</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">gh actions</span><span class="proj-tag">yfinance</span></div>
+          <a href="https://github.com/maisymylod/apex-portfolio" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="math" data-text="quantlib-mm quantitative finance monte carlo black scholes option pricing portfolio optimization value at risk cvar greeks">
         <div class="proj-head">
           <h3 class="proj-name">quantlib-mm</h3>
           <span class="proj-status">python</span>
         </div>
-        <p class="proj-desc">A small quant library. Monte Carlo + Black-Scholes pricing, mean-variance portfolios, value-at-risk.</p>
+        <p class="proj-desc">A small quantitative library on a pure-math foundation: Monte Carlo and Black-Scholes option pricing, Greeks, mean-variance portfolio optimization, and VaR/CVaR risk analysis.</p>
         <div class="proj-foot">
           <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">numpy</span><span class="proj-tag">scipy</span></div>
           <a href="https://github.com/maisymylod/quantlib-mm" target="_blank" rel="noopener" class="proj-link">github ↗</a>
         </div>
       </article>
 
-      <article class="proj-card fade-in" data-tags="ai" data-text="gauntlet adversarial llm agents red-team defense prompt injection security harness in-flight detection">
+      <article class="proj-card reveal" data-tags="math" data-text="manim-explainer 3blue1brown math explainer fourier series epicycles rotating vectors square wave animation manim community">
         <div class="proj-head">
-          <h3 class="proj-name">gauntlet</h3>
-          <span class="proj-status">python</span>
+          <h3 class="proj-name">manim-explainer</h3>
+          <span class="proj-status">exposition</span>
         </div>
-        <p class="proj-desc">Adversarial test &amp; defense harness for LLM agents. Red-team corpus, a layered defense stack, in-flight detection, and an attack-surface report.</p>
+        <p class="proj-desc">Animated math explainers built on Manim Community, reproducing the visual grammar of 3Blue1Brown: equations animated in lockstep with the geometry they describe. The main scene builds a square wave from chained rotating vectors, with odd harmonics falling off like 1/n.</p>
+        <p class="proj-metric">committed demo render · pinned dependency lockfile</p>
         <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">llm</span><span class="proj-tag">security</span></div>
-          <a href="https://github.com/maisymylod/gauntlet" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+          <div class="proj-tags"><span class="proj-tag">manim</span><span class="proj-tag">python</span><span class="proj-tag">latex</span></div>
+          <a href="https://github.com/maisymylod/manim-explainer" target="_blank" rel="noopener" class="proj-link">github ↗</a>
         </div>
       </article>
 
-      <article class="proj-card fade-in" data-tags="fullstack" data-text="outpost go cli deployment generator cloud on-prem air-gapped bare-metal devops infrastructure">
+      <article class="proj-card reveal" data-tags="infra eval" data-text="heliosnet system map meta repo live headline metrics collect_metrics scheduled retraining eval gating">
         <div class="proj-head">
-          <h3 class="proj-name">outpost</h3>
-          <span class="proj-status">go</span>
+          <h3 class="proj-name">heliosnet</h3>
+          <span class="proj-status">system map</span>
         </div>
-        <p class="proj-desc">One deployment spec, rendered for cloud, on-prem, and air-gapped bare-metal. A single Go CLI with no runtime dependencies.</p>
+        <p class="proj-desc">The map for the twelve-repository system: how the pieces connect, the live headline metric for each, and the exact command that regenerates every number. A collector reads the committed metrics artifacts and reprints them, so the map cannot drift silently from the repositories it describes.</p>
+        <p class="proj-metric">8 headline metrics, each backed by a committed artifact</p>
         <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">go</span><span class="proj-tag">cli</span><span class="proj-tag">devops</span></div>
-          <a href="https://github.com/maisymylod/outpost" target="_blank" rel="noopener" class="proj-link">github ↗</a>
+          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">docs</span><span class="proj-tag">metrics</span></div>
+          <a href="https://github.com/maisymylod/heliosnet" target="_blank" rel="noopener" class="proj-link">github ↗</a>
         </div>
       </article>
 
-      <article class="proj-card fade-in" data-tags="fullstack" data-text="client portal rails postgres oauth pundit goldsmith">
+      <article class="proj-card reveal" data-tags="infra" data-text="portfolio site this website html css javascript esbuild github pages command palette svg animation">
         <div class="proj-head">
-          <h3 class="proj-name">client portal</h3>
-          <span class="proj-status">active</span>
-        </div>
-        <p class="proj-desc">Fullstack portal for an executive-search firm. 38 endpoints, 13 tables, multi-tenant, OAuth2 + Pundit, ATS integration.</p>
-        <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">rails</span><span class="proj-tag">postgres</span><span class="proj-tag">react</span><span class="proj-tag">oauth</span></div>
-          <span class="proj-private">private repo</span>
-        </div>
-      </article>
-
-      <article class="proj-card fade-in" data-tags="ai math" data-text="athena deepfake cv pytorch detection">
-        <div class="proj-head">
-          <h3 class="proj-name">athena ai</h3>
-          <span class="proj-status">featured</span>
-        </div>
-        <p class="proj-desc">Deployed real-vs-AI image classifier (EfficientNet-B0) behind a live API. 0.996 accuracy, 0.9999 ROC-AUC on held-out data, a verdict in ~150 ms, and an honest model card.</p>
-        <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">pytorch</span><span class="proj-tag">efficientnet</span><span class="proj-tag">api</span></div>
-          <a href="https://github.com/maisymylod/athena-ai" target="_blank" rel="noopener" class="proj-link">github ↗</a>
-        </div>
-      </article>
-
-      <article class="proj-card fade-in" data-tags="data fullstack" data-text="ir analytics private equity dashboard react postgres">
-        <div class="proj-head">
-          <h3 class="proj-name">ir analytics platform</h3>
-          <span class="proj-status muted">2025</span>
-        </div>
-        <p class="proj-desc">Investor-relations dashboard for a private-equity client. Charts, fund-level drilldowns, scheduled report exports.</p>
-        <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">react</span><span class="proj-tag">postgres</span><span class="proj-tag">sql</span></div>
-          <span class="proj-private">private repo</span>
-        </div>
-      </article>
-
-      <article class="proj-card fade-in" data-tags="data" data-text="financial forecasting snowflake sql lookml clear">
-        <div class="proj-head">
-          <h3 class="proj-name">financial forecasting</h3>
-          <span class="proj-status muted">2025</span>
-        </div>
-        <p class="proj-desc">Daily actualization &amp; forecast pipelines informing a $1B+ revenue picture at CLEAR. Derived LookML, Snowflake ML.</p>
-        <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">snowflake</span><span class="proj-tag">sql</span><span class="proj-tag">lookml</span><span class="proj-tag">python</span></div>
-          <span class="proj-private">internal</span>
-        </div>
-      </article>
-
-      <article class="proj-card fade-in" data-tags="data" data-text="kpi dashboard power bi looker churn renewal">
-        <div class="proj-head">
-          <h3 class="proj-name">kpi dashboard suite</h3>
-          <span class="proj-status muted">2025</span>
-        </div>
-        <p class="proj-desc">Standardized reporting dashboards giving Finance, Strategy, and Marketing real-time visibility into enrollment, renewal, and churn.</p>
-        <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">power bi</span><span class="proj-tag">looker</span><span class="proj-tag">sql</span></div>
-          <span class="proj-private">internal</span>
-        </div>
-      </article>
-
-      <article class="proj-card fade-in" data-tags="fullstack" data-text="settlers catan canvas game multiplayer hex">
-        <div class="proj-head">
-          <h3 class="proj-name">settlers of catan</h3>
-          <span class="proj-status">demo</span>
-        </div>
-        <p class="proj-desc">Browser-based Settlers of Catan. Canvas rendering, hex-grid math, multiplayer state, dice + trading.</p>
-        <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">html</span><span class="proj-tag">canvas</span><span class="proj-tag">js</span></div>
-          <a href="https://github.com/maisymylod/settlers-of-catan" target="_blank" rel="noopener" class="proj-link">github ↗</a>
-        </div>
-      </article>
-
-      <article class="proj-card fade-in" data-tags="fullstack" data-text="internal it estee lauder flask sqlalchemy python">
-        <div class="proj-head">
-          <h3 class="proj-name">internal it app</h3>
-          <span class="proj-status muted">2022</span>
-        </div>
-        <p class="proj-desc">Internal IT web application at Estée Lauder. Authn, automated reporting, sync of legacy datasources.</p>
-        <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">flask</span><span class="proj-tag">sqlalchemy</span></div>
-          <span class="proj-private">internal</span>
-        </div>
-      </article>
-
-      <article class="proj-card fade-in" data-tags="math data" data-text="algorithmic trading research time series factor michigan qis">
-        <div class="proj-head">
-          <h3 class="proj-name">algorithmic trading research</h3>
-          <span class="proj-status muted">2021 — 24</span>
-        </div>
-        <p class="proj-desc">Time-series analysis and backtesting for factor-based investing and statistical arbitrage. Michigan QIS.</p>
-        <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">python</span><span class="proj-tag">scikit-learn</span><span class="proj-tag">pandas</span></div>
-          <span class="proj-private">research</span>
-        </div>
-      </article>
-
-      <article class="proj-card fade-in" data-tags="fullstack" data-text="portfolio website chart analytics this site">
-        <div class="proj-head">
-          <h3 class="proj-name">portfolio site</h3>
+          <h3 class="proj-name">maisy-mylod-website</h3>
           <span class="proj-status">live</span>
         </div>
-        <p class="proj-desc">This site. Five pages, three live math demos, animated centerpiece, command-palette nav, dashboard with Chart.js.</p>
+        <p class="proj-desc">This site. Static, dependency-free, hosted on GitHub Pages: hand-written CSS with a token layer, one shared script, an animated SVG diagram, and a command palette. No framework and no build step.</p>
+        <p class="proj-metric">reduced-motion path for every animation on the site</p>
         <div class="proj-foot">
-          <div class="proj-tags"><span class="proj-tag">html</span><span class="proj-tag">css</span><span class="proj-tag">js</span><span class="proj-tag">chart.js</span></div>
+          <div class="proj-tags"><span class="proj-tag">html</span><span class="proj-tag">css</span><span class="proj-tag">javascript</span></div>
           <a href="https://github.com/maisymylod/maisy-mylod-website" target="_blank" rel="noopener" class="proj-link">github ↗</a>
         </div>
       </article>
 
+      <!-- Private client work -->
+      <article class="proj-card reveal" data-tags="llm data infra" data-text="client portal rails postgres oauth pkce authorization ats integration goldsmith private correction loop override store">
+        <div class="proj-head">
+          <h3 class="proj-name">client portal + ATS</h3>
+          <span class="proj-status">production</span>
+        </div>
+        <p class="proj-desc">The production system behind the correction loop on the home page. Rails and Postgres API, a client-facing JavaScript portal with OAuth 2.0 + PKCE and role-scoped authorization, a Snowflake reporting layer, automated build and deploy, render-escaping invariants, contract tests, and a full security-audit remediation round.</p>
+        <p class="proj-metric pending">private repository · described, not linked</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">rails</span><span class="proj-tag">postgres</span><span class="proj-tag">oauth 2.0</span></div>
+          <span class="proj-private">private</span>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="llm eval" data-text="internal agent platform langgraph.js claude api evaluation framework adversarial attack corpus non-technical staff goldsmith private">
+        <div class="proj-head">
+          <h3 class="proj-name">internal agent platform</h3>
+          <span class="proj-status">production</span>
+        </div>
+        <p class="proj-desc">A LangGraph.js and Claude API agent platform in daily use by non-technical staff, shipped alongside the evaluation framework that measures whether its output is actually correct, including adversarial testing against a curated attack corpus.</p>
+        <p class="proj-metric pending">private repository · described, not linked</p>
+        <div class="proj-foot">
+          <div class="proj-tags"><span class="proj-tag">langgraph.js</span><span class="proj-tag">claude api</span><span class="proj-tag">evals</span></div>
+          <span class="proj-private">private</span>
+        </div>
+      </article>
+
     </div>
 
-    <div id="proj-empty" style="display:none;text-align:center;padding:3rem 0;color:rgba(235,219,178,0.45);font-family:var(--font-mono);font-size:0.86rem;">
-      no projects match that filter.
-    </div>
+    <div id="proj-empty" class="empty-note" style="display:none;">No projects match that filter.</div>
   </div>
 </section>
 
-<section>
-  <div class="container-narrow">
-    <div class="final-cta fade-in">
-      <span class="eyebrow">collaborate</span>
-      <h2 class="headline" style="margin-top:0.5rem;">
-        Have a build in mind?
-        <span class="dim">Tell me about it.</span>
+<section id="closing" class="sunk ruled">
+  <div class="container">
+    <div class="final-cta reveal">
+      <span class="eyebrow">Next</span>
+      <h2 class="headline" style="margin-top:0.6rem;">
+        Happy to walk through any of these.
+        <span class="dim block">Including the parts that did not work.</span>
       </h2>
       <div class="actions">
-        <a href="contact.html" class="btn btn-primary">get in touch →</a>
-        <a href="https://github.com/maisymylod" target="_blank" rel="noopener" class="btn btn-secondary">browse all repos ↗</a>
+        <a href="contact.html" class="btn btn-primary">Contact <span class="arr" aria-hidden="true">→</span></a>
+        <a href="https://github.com/maisymylod" target="_blank" rel="noopener" class="btn btn-secondary">Browse all repositories ↗</a>
       </div>
     </div>
   </div>
 </section>
+
 </main>
 
 <footer class="site-foot">
   <div class="container">
     <div class="row">
-      <span>&copy; 2026 maisy mylod · nyc</span>
+      <span>© 2026 Maisy Mylod · New York</span>
       <div class="links">
-        <a href="mailto:maisymylod@gmail.com">email</a>
-        <a href="https://github.com/maisymylod" target="_blank" rel="noopener">github</a>
-        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">linkedin</a>
+        <a href="mailto:maisymylod@gmail.com">Email</a>
+        <a href="https://github.com/maisymylod" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/maisymylod" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </div>
@@ -333,54 +487,63 @@
 
 <div class="palette-mask hidden" role="dialog" aria-modal="true" aria-label="Command palette">
   <div class="palette">
-    <input type="text" class="palette-input" placeholder="jump to…  (type to filter)" aria-label="Filter commands">
+    <input type="text" class="palette-input" placeholder="Jump to…" aria-label="Filter commands">
     <ul class="palette-list" role="listbox">
-      <li data-label="home" data-href="index.html">home</li>
-      <li data-label="experience" data-href="experience.html">experience</li>
-      <li data-label="projects" data-href="projects.html">projects</li>
-      <li data-label="dashboard" data-href="dashboard.html">dashboard</li>
-      <li data-label="contact" data-href="contact.html">contact</li>
-      <li data-label="flagship heliosnet" data-section="featured">↓ flagship</li>
-      <li data-label="all projects" data-section="all-projects">↓ all projects</li>
-      <li data-label="github" data-href="https://github.com/maisymylod">open github ↗</li>
+      <li data-label="home" data-href="index.html">Home <span class="key">g h</span></li>
+      <li data-label="experience" data-href="experience.html">Experience <span class="key">g e</span></li>
+      <li data-label="projects" data-href="projects.html">Projects <span class="key">g p</span></li>
+      <li data-label="dashboard" data-href="dashboard.html">Dashboard <span class="key">g d</span></li>
+      <li data-label="contact" data-href="contact.html">Contact <span class="key">g c</span></li>
+      <li data-label="heliosnet system" data-section="heliosnet">↓ Heliosnet</li>
+      <li data-label="all projects" data-section="all-projects">↓ All projects</li>
+      <li data-label="github" data-href="https://github.com/maisymylod">Open GitHub ↗</li>
     </ul>
     <div class="palette-foot">
-      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> select</span><span><kbd>esc</kbd> close</span>
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> select</span>
+      <span><kbd>esc</kbd> close</span>
     </div>
   </div>
 </div>
 
 <script src="script.js" defer></script>
 <script>
+/* Project filter + search. Kept local to this page. */
 (function projFilter() {
     const grid = document.getElementById('proj-grid');
     const empty = document.getElementById('proj-empty');
     if (!grid) return;
+
     const cards = Array.from(grid.querySelectorAll('.proj-card'));
-    const btns = document.querySelectorAll('.filter-btn');
+    const btns = Array.from(document.querySelectorAll('.filter-btn'));
     const search = document.getElementById('proj-search');
     let activeFilter = 'all';
 
     const apply = () => {
         const q = (search.value || '').trim().toLowerCase();
         let shown = 0;
-        cards.forEach(c => {
-            const tags = (c.dataset.tags || '').split(/\s+/);
-            const text = (c.dataset.text || '').toLowerCase();
+
+        cards.forEach(card => {
+            const tags = (card.dataset.tags || '').split(/\s+/);
+            const text = (card.dataset.text || '').toLowerCase();
+            const name = card.querySelector('.proj-name').textContent.toLowerCase();
             const matchFilter = activeFilter === 'all' || tags.includes(activeFilter);
-            const matchSearch = !q || text.includes(q) || c.querySelector('.proj-name').textContent.toLowerCase().includes(q);
+            const matchSearch = !q || text.includes(q) || name.includes(q);
             const show = matchFilter && matchSearch;
-            c.style.display = show ? '' : 'none';
+            card.style.display = show ? '' : 'none';
             if (show) shown++;
         });
+
         empty.style.display = shown === 0 ? 'block' : 'none';
     };
-    btns.forEach(b => b.addEventListener('click', () => {
-        btns.forEach(x => x.classList.remove('active'));
-        b.classList.add('active');
-        activeFilter = b.dataset.filter;
+
+    btns.forEach(btn => btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
         apply();
     }));
+
     search.addEventListener('input', apply);
 }());
 </script>
